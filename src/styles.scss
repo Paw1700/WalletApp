@@ -345,3 +345,15 @@ div.PAGE {
 	left: 0;
 	z-index: 1;
 }
+
+:root {
+	--app-theme: #fff;
+	--app-theme-with-transparence: rgba(255,255,255, .85);
+	--font-color: #000;
+
+	@media (prefers-color-scheme: dark) {
+		--app-theme: #000;
+		--app-theme-with-transparence: rgba(0, 0, 0, .75);
+		--font-color: #fff;
+	}
+}

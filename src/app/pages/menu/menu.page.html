@@ -1,0 +1,9 @@
+@if(show) {
+    <div [@PAGE] class="PAGE">
+        <div [@LIST_OF_LOCATIONS]="app_locations.length" class="LIST_OF_LOCATIONS">
+            @for(item of app_locations; track item.name) {
+                <p class="LOCATION" [class.ACTIVE]="item.active" >{{ item.name }}</p>
+            }
+        </div>
+    </div>
+}

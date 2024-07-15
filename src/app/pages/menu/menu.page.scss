@@ -1,0 +1,23 @@
+div.PAGE {
+    background-color: var(--app-theme-with-transparence);
+    backdrop-filter: blur(5px);
+
+    div.LIST_OF_LOCATIONS{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 21px;
+
+        p.LOCATION {
+            font-size: 1.6rem;
+            color: var(--font-color);
+            opacity: 0.25;
+            font-weight: 600;
+
+            &.ACTIVE {
+                opacity: 1;
+            }
+        }
+    }
+}
