@@ -1,0 +1,62 @@
+[
+    {
+        "id": "ALI-ANK",
+        "name": "Alior Bank",
+        "logo_src": "/assets/banks_logos/alior_bank.webp"
+    },
+    {
+        "id": "BNP-BAS",
+        "name": "BNP Paribas",
+        "logo_src": "/assets/banks_logos/bnp_paribas.webp"
+    },
+    {
+        "id": "CIT-OWY",
+        "name": "citi handlowy",
+        "logo_src": "/assets/banks_logos/city_handlowy.webp"
+    },
+    {
+        "id": "BAN-KAO",
+        "name": "Bank Pekao",
+        "logo_src": "/assets/banks_logos/bank_pekao.webp"
+    },
+    {
+        "id": "SAN-DER",
+        "name": "Santander",
+        "logo_src": "/assets/banks_logos/santander.webp"
+    },
+    {
+        "id": "CRE-OLE",
+        "name": "Credit Agricole",
+        "logo_src": "/assets/banks_logos/credit_agricole.webp"
+    },
+    {
+        "id": "PKO-SKI",
+        "name": "PKO Bank Polski",
+        "logo_src": "/assets/banks_logos/pko_bank_polski.webp"
+    },
+    {
+        "id": "MIL-ANK",
+        "name": "Millennium Bank",
+        "logo_src": "/assets/banks_logos/millennium_bank.webp"
+    },
+    {
+        "id": "BOS-ANK",
+        "name": "BOŚ Bank",
+        "logo_src": "/assets/banks_logos/bos_bank.webp"
+    },
+    {
+        "id": "BAN-OWY",
+        "name": "Bank Pocztowy",
+        "logo_src": "/assets/banks_logos/bank_pocztowy.webp"
+    },
+    {
+        "id": "ING-SKI",
+        "name": "ING Bank Śląski",
+        "logo_src": "/assets/banks_logos/ing_bank_slaski.webp"
+    },
+    {
+        "id": "MBA-XNK",
+        "name": "mBank",
+        "logo_src": "/assets/banks_logos/mbank.webp"
+    }
+]
