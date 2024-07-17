@@ -15,7 +15,6 @@ export interface Account {
             bottom: string | null
         },
         stats_alternative_colors: {
-            funds: string | null,
             plus: string | null,
             minus: string | null
         },
@@ -23,11 +22,7 @@ export interface Account {
     }
 }
 
-export enum Currency {
-    PLN,
-    USD,
-    EUR
-}
+export type Currency = "PLN" | "USD" | "EUR"
 
 export interface User_Account {
     id: string,

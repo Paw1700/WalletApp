@@ -1,0 +1,376 @@
+[
+    {
+        "id": "KON-RNE-ALI-ANK",
+        "bank_id": "ALI-ANK",
+        "name": "Konto Elitarne",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#4B4C4C",
+                "bottom": "#030303"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": null
+        }
+    },
+    {
+        "id": "KON-STE-ALI-ANK",
+        "bank_id": "ALI-ANK",
+        "name": "Konto Jakże Osobiste",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#6B113D",
+                "bottom": "#4A0725"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": null
+        }
+    },
+    {
+        "id": "MOJ-IUM-BNP-BAS",
+        "bank_id": "BNP-BAS",
+        "name": "Moje konto Premium",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#404040",
+                "bottom": "#0F0E0C"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+        }
+    },
+    {
+        "id": "KON-STE-BNP-BAS",
+        "bank_id": "BNP-BAS",
+        "name": "Konto Osobiste",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#00A874",
+                "bottom": "#008669"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+        }
+    },
+    {
+        "id": "KON-OLD-CIT-OWY",
+        "bank_id": "CIT-OWY",
+        "name": "Konto CitiGold",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#DBAA89",
+                "bottom": "#00000C"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+        }
+    },
+    {
+        "id": "KON-NTO-CIT-OWY",
+        "bank_id": "CIT-OWY",
+        "name": "Konto CitiKonto",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#0072C6",
+                "bottom": "#00000C"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/city_handlowy.webp"
+        }
+    },
+    {
+        "id": "KON-TNE-BAN-KAO",
+        "bank_id": "BAN-KAO",
+        "name": "Konto Przekorzystne",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#B71614",
+                "bottom": "#79150D"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FFFFFF"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
+        }
+    },
+    {
+        "id": "KON-ING-BAN-KAO",
+        "bank_id": "BAN-KAO",
+        "name": "Konto Private Banking",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#4B4744",
+                "bottom": "#24201D"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
+        }
+    },
+    {
+        "id": "KON-ECT-SAN-DER",
+        "bank_id": "SAN-DER",
+        "name": "Konto Select",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#8A9094",
+                "bottom": "#000000"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/santander.webp"
+        }
+    },
+    {
+        "id": "KON-DER-SAN-DER",
+        "bank_id": "SAN-DER",
+        "name": "Konto Santander",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#E1261D",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FFFFFF"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/santander.webp"
+        }
+    },
+    {
+        "id": "KON-VIP-CRE-OLE",
+        "bank_id": "CRE-OLE",
+        "name": "Konto dla Ciebie VIP",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#008A91",
+                "bottom": "#006645"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
+        }
+    },
+    {
+        "id": "KON-BIE-CRE-OLE",
+        "bank_id": "CRE-OLE",
+        "name": "Konto dla Ciebie",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#008A91",
+                "bottom": "#006645"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
+        }
+    },
+    {
+        "id": "KON-RUM-PKO-SKI",
+        "bank_id": "PKO-SKI",
+        "name": "Konto Aurum",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#004895",
+                "bottom": "#000010"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
+        }
+    },
+    {
+        "id": "KON-ERO-PKO-SKI",
+        "bank_id": "PKO-SKI",
+        "name": "Konto za Zero",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#004895",
+                "bottom": "#000010"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
+        }
+    },
+    {
+        "id": "MIL-360-MIL-ANK",
+        "bank_id": "MIL-ANK",
+        "name": "Millennium 360°",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#9A1856",
+                "bottom": "#1A2344"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/millennium_bank.webp"
+        }
+    },
+    {
+        "id": "KON-LUS-BOS-ANK",
+        "bank_id": "BOS-ANK",
+        "name": "Konto VIP PLUS",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#DFBD4F",
+                "bottom": "#CA8E27"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bos_bank.webp"
+        }
+    },
+    {
+        "id": "KON-TOW-BOS-ANK",
+        "bank_id": "BOS-ANK",
+        "name": "Konto bez Kosztów",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#007854",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bos_bank.webp"
+        }
+    },
+    {
+        "id": "KON-DKU-BAN-OWY",
+        "bank_id": "BAN-OWY",
+        "name": "Konto w Porządku",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#BA9673",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/bank_pocztowy.webp"
+        }
+    },
+    {
+        "id": "KON-IVE-ING-SKI",
+        "bank_id": "ING-SKI",
+        "name": "Konto Active",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#F68121",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
+        }
+    },
+    {
+        "id": "KON-ECT-ING-SKI",
+        "bank_id": "ING-SKI",
+        "name": "Konto Direct",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#F68121",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "alternative_bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
+        }
+    },
+    {
+        "id": "PRI-ING-MBA-XNK",
+        "bank_id": "MBA-XNK",
+        "name": "Private Banking",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#9A884A",
+                "bottom": "#1E1506"
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FF0000"
+            },
+            "alternative_bank_logo_src": null
+        }
+    },
+    {
+        "id": "EKO-NTO-MBA-XNK",
+        "bank_id": "MBA-XNK",
+        "name": "eKonto",
+        "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#AE0100",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "alternative_bank_logo_src": null
+        }
+    }
+]
