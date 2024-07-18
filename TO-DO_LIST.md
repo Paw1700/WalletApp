@@ -1,0 +1,31 @@
+# TO-DO LIST
+- [ ] Build interface
+    - [ ] Pages
+        - [x] Menu
+        - [ ] Main 
+        - [ ] Adding transaction 
+        - [ ] List of accounts 
+        - [ ] Adding account 
+        - [ ] Overview account 
+        - [ ] List of planned transaction 
+        - [ ] Adding planned transaction
+        - [ ] List of credits
+        - [ ] Adding credit
+        - [ ] Stock Market 
+        - [ ] Adding Stock
+        - [ ] Settings
+    - [ ] Components
+        - [ ] Account Bar (3 types: BIG/MIDDLE/SMALL)
+        - [ ] Transaction Bar
+        - [ ] Categorie Choose Bar
+        - [ ] Receiver Choose Bar
+        - [ ] Description Bar (BIG / SMALL)
+        - [ ] Price Bar (BIG / SMALL)
+        - [ ] Number Input Bar (BIG / SMALL)
+        - [ ] Account Choose Bar
+- [ ] Build logic
+    - [ ] Add static data
+        - [x] Banks
+        - [x] Accounts
+        - [ ] Receivers
+        - [ ] Stock Markets
