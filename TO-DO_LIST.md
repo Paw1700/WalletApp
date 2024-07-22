@@ -15,7 +15,7 @@
         - [ ] Adding Stock
         - [ ] Settings
     - [ ] Components
-        - [ ] Account Bar (3 types: BIG/MIDDLE/SMALL)
+        - [x] Account Bar (3 types: BIG/MIDDLE/SMALL)
         - [ ] Transaction Bar
         - [ ] Categorie Choose Bar
         - [ ] Receiver Choose Bar
@@ -29,3 +29,4 @@
         - [x] Accounts
         - [ ] Receivers
         - [ ] Stock Markets
+        - [ ] Accounts for Stock Markets

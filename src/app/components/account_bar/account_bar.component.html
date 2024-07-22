@@ -1,0 +1,30 @@
+<div [style.background]="bar_background" class="ACCOUNT_BAR">
+    <div class="TITLE_BAR">
+        <p class="TITLE">{{ component_data.name }}</p>
+        <img class="BANK_LOGO" [src]="bank_logo">
+    </div>
+    @if(bar_type == 'FUNDS_ONLY' || bar_type === 'FULL') {
+        <div class="AVAIBLE_FUNDS">
+            <p class="DESC">Dostępne środki</p>
+            <div class="FUNDS">
+                <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
+                <p class="CURRENCY">{{ component_data.currency }}</p>
+            </div>
+        </div>
+    }
+    @if(bar_type === 'FULL') {
+        <div class="STATS">
+            <p class="DESC">W ciągu ostatnich 30 dni</p>
+            <div class="VALUES">
+                <div [style.color]="component_data.apperance.stats_alternative_colors.plus !== null ? component_data.apperance.stats_alternative_colors.plus : '#42FF00'" class="PLUS">
+                    <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
+                    <p class="CURRENCY">{{ component_data.currency }}</p>
+                </div>
+                <div [style.color]="component_data.apperance.stats_alternative_colors.minus !== null ? component_data.apperance.stats_alternative_colors.minus : '#CE0000'" class="MINUS">
+                    <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
+                    <p class="CURRENCY">{{ component_data.currency }}</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
