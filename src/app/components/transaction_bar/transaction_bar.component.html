@@ -1,0 +1,12 @@
+<div class="TRANSACTION_BAR">
+    <div class="LEFT_SIDE">
+        <div class="CATEGORY_ICON">
+            <img [src]="component_data.category.logo_src.dark" />
+        </div>
+        <div class="TRANSACTION_DESC">
+            <p class="DESC">{{ component_data.description }}</p>
+            <p class="RECEIVER">{{ component_data.receiver_name }}</p>
+        </div>
+    </div>
+    <p [class.INCOME]="component_data.transaction_price > 0" class="PRICE">{{ component_data.transaction_price | number_separator }} {{ component_data.transaction_currency }}</p>
+</div>

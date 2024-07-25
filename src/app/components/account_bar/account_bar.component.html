@@ -16,11 +16,11 @@
         <div class="STATS">
             <p class="DESC">W ciągu ostatnich 30 dni</p>
             <div class="VALUES">
-                <div [style.color]="component_data.apperance.stats_alternative_colors.plus !== null ? component_data.apperance.stats_alternative_colors.plus : '#42FF00'" class="PLUS">
+                <div [style.color]="component_data.apperance.stats_alternative_colors.plus !== null ? component_data.apperance.stats_alternative_colors.plus : 'var(--app-green)'" class="PLUS">
                     <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
                     <p class="CURRENCY">{{ component_data.currency }}</p>
                 </div>
-                <div [style.color]="component_data.apperance.stats_alternative_colors.minus !== null ? component_data.apperance.stats_alternative_colors.minus : '#CE0000'" class="MINUS">
+                <div [style.color]="component_data.apperance.stats_alternative_colors.minus !== null ? component_data.apperance.stats_alternative_colors.minus : 'var(--app-red)'" class="MINUS">
                     <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
                     <p class="CURRENCY">{{ component_data.currency }}</p>
                 </div>

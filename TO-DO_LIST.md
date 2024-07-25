@@ -16,7 +16,7 @@
         - [ ] Settings
     - [ ] Components
         - [x] Account Bar (3 types: BIG/MIDDLE/SMALL)
-        - [ ] Transaction Bar
+        - [x] Transaction Bar
         - [ ] Categorie Choose Bar
         - [ ] Receiver Choose Bar
         - [ ] Description Bar (BIG / SMALL)
@@ -27,6 +27,7 @@
     - [ ] Add static data
         - [x] Banks
         - [x] Accounts
+        - [x] Categories
         - [ ] Receivers
         - [ ] Stock Markets
         - [ ] Accounts for Stock Markets

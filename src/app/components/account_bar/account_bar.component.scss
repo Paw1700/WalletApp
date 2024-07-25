@@ -1,5 +1,5 @@
 div.ACCOUNT_BAR {
-    width: 81.4vw;
+    width: 84.5vw;
     border-radius: 3.88vw;
     color: white;
     padding: 1.7vh 3.8vw;
@@ -58,6 +58,8 @@ div.ACCOUNT_BAR {
             div.MINUS {
                 display: flex;
                 flex-direction: row;
+                align-items: flex-end;
+                gap: .5vw;
             }
         }
 
