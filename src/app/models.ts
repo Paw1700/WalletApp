@@ -38,11 +38,11 @@ export interface Receiver {
 
 export interface Category {
     id: string,
+    name: string,
     logo_src: {
         light: string,
         dark: string
-    },
-    name: string
+    }
 }
 
 export interface Transaction {

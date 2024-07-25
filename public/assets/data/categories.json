@@ -1,0 +1,130 @@
+[
+    {
+        "id": "AUT",
+        "name": "Auto",
+        "logo_src": {
+            "light": "/assets/category_icons/auto_light.webp",
+            "dark": "/assets/category_icons/auto_dark.webp"
+        }
+    },
+    {
+        "id": "BIL",
+        "name": "Rachunki",
+        "logo_src": {
+            "light": "/assets/category_icons/bills_light.webp",
+            "dark": "/assets/category_icons/bills_dark.webp"
+        }
+    },
+    {
+        "id": "CLH",
+        "name": "Moda",
+        "logo_src": {
+            "light": "/assets/category_icons/clothes_light.webp",
+            "dark": "/assets/category_icons/clothes_dark.webp"
+        }
+    },
+    {
+        "id": "COS",
+        "name": "Kosmetyki",
+        "logo_src": {
+            "light": "/assets/category_icons/cosmetics_light.webp",
+            "dark": "/assets/category_icons/cosmetics_dark.webp"
+        }
+    },
+    {
+        "id": "EDU",
+        "name": "Edukacja",
+        "logo_src": {
+            "light": "/assets/category_icons/education_light.webp",
+            "dark": "/assets/category_icons/education_dark.webp"
+        }
+    },
+    {
+        "id": "ELE",
+        "name": "Elektronika",
+        "logo_src": {
+            "light": "/assets/category_icons/electronics_light.webp",
+            "dark": "/assets/category_icons/elecctronics_dark.webp"
+        }
+    },
+    {
+        "id": "ENT",
+        "name": "Rozrywka",
+        "logo_src": {
+            "light": "/assets/category_icons/entertaiment_light.webp",
+            "dark": "/assets/category_icons/entertaiment_dark.webp"
+        }
+    },
+    {
+        "id": "GAS",
+        "name": "Paliwo",
+        "logo_src": {
+            "light": "/assets/category_icons/gasoline_light.webp",
+            "dark": "/assets/category_icons/gasoline_dark.webp"
+        }
+    },
+    {
+        "id": "HAZ",
+        "name": "Hazard",
+        "logo_src": {
+            "light": "/assets/category_icons/hazard_light.webp",
+            "dark": "/assets/category_icons/hazard_dark.webp"
+        }
+    },
+    {
+        "id": "HEA",
+        "name": "Zdrowie",
+        "logo_src": {
+            "light": "/assets/category_icons/health_light.webp",
+            "dark": "/assets/category_icons/health_dark.webp"
+        }
+    },
+    {
+        "id": "HOU",
+        "name": "Dom",
+        "logo_src": {
+            "light": "/assets/category_icons/house_light.webp",
+            "dark": "/assets/category_icons/house_dark.webp"
+        }
+    },
+    {
+        "id": "INS",
+        "name": "Ubezpieczenie",
+        "logo_src": {
+            "light": "/assets/category_icons/insurance_light.webp",
+            "dark": "/assets/category_icons/insurance_dark.webp"
+        }
+    },
+    {
+        "id": "OTH",
+        "name": "Inne",
+        "logo_src": {
+            "light": "/assets/category_icons/other_light.webp",
+            "dark": "/assets/category_icons/other_dark.webp"
+        }
+    },
+    {
+        "id": "PAR",
+        "name": "Uroczystość",
+        "logo_src": {
+            "light": "/assets/category_icons/party_light.webp",
+            "dark": "/assets/category_icons/party_dark.webp"
+        }
+    },
+    {
+        "id": "SHO",
+        "name": "Zakupy",
+        "logo_src": {
+            "light": "/assets/category_icons/shopping_light.webp",
+            "dark": "/assets/category_icons/shopping_dark.webp"
+        }
+    },
+    {
+        "id": "TAX",
+        "name": "Podatki",
+        "logo_src": {
+            "light": "/assets/category_icons/tax_light.webp",
+            "dark": "/assets/category_icons/tax_dark.webp"
+        }
+    }
+]
