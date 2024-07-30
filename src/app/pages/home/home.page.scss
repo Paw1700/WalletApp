@@ -1,0 +1,58 @@
+div.PAGE {
+    width: 91.36vw;
+    height: 96vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7vh;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2vh 4.32vw;
+
+    div.WELCOME_BAR {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6vh;
+        align-items: flex-start;
+        justify-content: center;
+
+        p {
+            &.WELCOME_TEXT {
+                font-size: 1rem;
+                font-weight: 400;
+                color: var(--font-color-secendary);
+            }
+
+            &.USER_NAME {
+                font-size: 1.58rem;
+                font-weight: 600;
+            }
+        }
+    }
+
+    div.TRANSACTIONS {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding-top: 1.7vh;
+        gap: 1.17vh;
+
+        p.TITLE {
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        div.LIST {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.17vh;
+        }
+    }
+}
