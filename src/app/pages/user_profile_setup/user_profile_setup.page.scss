@@ -1,0 +1,21 @@
+div.PAGE {
+    width: 91.36vw;
+    height: 96vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 2vh 4.32vw;
+    justify-content: flex-start;
+    gap: 3.5vh;
+
+    p {
+        &.WELCOME {
+            font-size: 1.76rem;
+            font-weight: 700;
+        }
+    }
+
+    img {
+        width: 57.25vw;
+        object-fit: contain;
+    }
+}
