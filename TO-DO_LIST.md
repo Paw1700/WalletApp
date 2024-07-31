@@ -2,7 +2,7 @@
 - [ ] Build interface
     - [ ] Pages
         - [x] Menu
-        - [ ] Main 
+        - [x] Home 
         - [ ] Adding transaction 
         - [ ] List of accounts 
         - [ ] Adding account 
@@ -14,6 +14,8 @@
         - [ ] Stock Market 
         - [ ] Adding Stock
         - [ ] Settings
+        - [x] Boot Screen
+        - [ ] First setup
     - [ ] Components
         - [x] Account Bar (3 types: BIG/MIDDLE/SMALL)
         - [x] Transaction Bar
