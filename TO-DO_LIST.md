@@ -22,8 +22,8 @@
         - [ ] Categorie Choose Bar
         - [ ] Receiver Choose Bar
         - [ ] Description Bar (BIG / SMALL)
-        - [ ] Price Bar (BIG / SMALL)
-        - [ ] Number Input Bar (BIG / SMALL)
+        - [ ] Number Input Bar
+        - [x] Bank Choose Bar
         - [ ] Account Choose Bar
 - [ ] Build logic
     - [ ] Add static data
