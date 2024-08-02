@@ -1,14 +1,16 @@
 <div [style.background]="bar_background" class="ACCOUNT_BAR">
     <div class="TITLE_BAR">
-        <p class="TITLE">{{ component_data.name }}</p>
-        <img class="BANK_LOGO" [src]="bank_logo">
+        <p class="TITLE">{{ account.name }}</p>
+        @if(bar_type !== 'NAME_ONLY') {
+            <img class="BANK_LOGO" [src]="bank_logo">
+        }
     </div>
     @if(bar_type == 'FUNDS_ONLY' || bar_type === 'FULL') {
         <div class="AVAIBLE_FUNDS">
             <p class="DESC">Dostępne środki</p>
             <div class="FUNDS">
-                <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
-                <p class="CURRENCY">{{ component_data.currency }}</p>
+                <p class="AMOUNT">{{ account_funds_data.avaible_funds | number_separator }}</p>
+                <p class="CURRENCY">{{ account.currency }}</p>
             </div>
         </div>
     }
@@ -16,13 +18,13 @@
         <div class="STATS">
             <p class="DESC">W ciągu ostatnich 30 dni</p>
             <div class="VALUES">
-                <div [style.color]="component_data.apperance.stats_alternative_colors.plus !== null ? component_data.apperance.stats_alternative_colors.plus : 'var(--app-green)'" class="PLUS">
-                    <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
-                    <p class="CURRENCY">{{ component_data.currency }}</p>
+                <div [style.color]="account.apperance.stats_alternative_colors.plus !== null ? account.apperance.stats_alternative_colors.plus : 'var(--app-green)'" class="PLUS">
+                    <p class="AMOUNT">{{ account_funds_data.avaible_funds | number_separator }}</p>
+                    <p class="CURRENCY">{{ account.currency }}</p>
                 </div>
-                <div [style.color]="component_data.apperance.stats_alternative_colors.minus !== null ? component_data.apperance.stats_alternative_colors.minus : 'var(--app-red)'" class="MINUS">
-                    <p class="AMOUNT">{{ component_data.avaible_funds | number_separator }}</p>
-                    <p class="CURRENCY">{{ component_data.currency }}</p>
+                <div [style.color]="account.apperance.stats_alternative_colors.minus !== null ? account.apperance.stats_alternative_colors.minus : 'var(--app-red)'" class="MINUS">
+                    <p class="AMOUNT">{{ account_funds_data.avaible_funds | number_separator }}</p>
+                    <p class="CURRENCY">{{ account.currency }}</p>
                 </div>
             </div>
         </div>

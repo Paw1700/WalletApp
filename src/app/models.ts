@@ -18,7 +18,7 @@ export interface Account {
             plus: string | null,
             minus: string | null
         },
-        alternative_bank_logo_src: string | null
+        bank_logo_src: string
     }
 }
 

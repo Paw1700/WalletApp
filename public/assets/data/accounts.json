@@ -13,7 +13,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": null
+            "bank_logo_src": "/assets/banks_logos/alior_bank.webp"
         }
     },
     {
@@ -30,7 +30,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": null
+            "bank_logo_src": "/assets/banks_logos/alior_bank.webp"
         }
     },
     {
@@ -47,7 +47,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
         }
     },
     {
@@ -64,7 +64,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
         }
     },
     {
@@ -81,7 +81,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
         }
     },
     {
@@ -98,7 +98,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/city_handlowy.webp"
+            "bank_logo_src": "/assets/account_bank_logos/city_handlowy.webp"
         }
     },
     {
@@ -115,7 +115,7 @@
                 "plus": null,
                 "minus": "#FFFFFF"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
         }
     },
     {
@@ -132,7 +132,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
         }
     },
     {
@@ -149,7 +149,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/santander.webp"
+            "bank_logo_src": "/assets/account_bank_logos/santander.webp"
         }
     },
     {
@@ -166,7 +166,7 @@
                 "plus": null,
                 "minus": "#FFFFFF"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/santander.webp"
+            "bank_logo_src": "/assets/account_bank_logos/santander.webp"
         }
     },
     {
@@ -183,7 +183,7 @@
                 "plus": null,
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
+            "bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
         }
     },
     {
@@ -200,7 +200,7 @@
                 "plus": null,
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
+            "bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
         }
     },
     {
@@ -217,7 +217,7 @@
                 "plus": null,
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
+            "bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
         }
     },
     {
@@ -234,7 +234,7 @@
                 "plus": null,
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
+            "bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
         }
     },
     {
@@ -251,7 +251,7 @@
                 "plus": null,
                 "minus": null
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/millennium_bank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/millennium_bank.webp"
         }
     },
     {
@@ -268,7 +268,7 @@
                 "plus": null,
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bos_bank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bos_bank.webp"
         }
     },
     {
@@ -285,7 +285,7 @@
                 "plus": null,
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bos_bank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bos_bank.webp"
         }
     },
     {
@@ -302,7 +302,7 @@
                 "plus": "#00FF00",
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/bank_pocztowy.webp"
+            "bank_logo_src": "/assets/account_bank_logos/bank_pocztowy.webp"
         }
     },
     {
@@ -319,7 +319,7 @@
                 "plus": "#00FF00",
                 "minus": "#FFFFFF"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
+            "bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
         }
     },
     {
@@ -336,7 +336,7 @@
                 "plus": "#00FF00",
                 "minus": "#FFFFFF"
             },
-            "alternative_bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
+            "bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
         }
     },
     {
@@ -353,7 +353,7 @@
                 "plus": "#00FF00",
                 "minus": "#FF0000"
             },
-            "alternative_bank_logo_src": null
+            "bank_logo_src": "/assets/banks_logos/mbank.webp"
         }
     },
     {
@@ -370,7 +370,7 @@
                 "plus": "#00FF00",
                 "minus": "#FFFFFF"
             },
-            "alternative_bank_logo_src": null
+            "bank_logo_src": "/assets/banks_logos/mbank.webp"
         }
     }
 ]

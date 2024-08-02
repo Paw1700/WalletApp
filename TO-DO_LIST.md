@@ -24,7 +24,7 @@
         - [ ] Description Bar (BIG / SMALL)
         - [ ] Number Input Bar
         - [x] Bank Choose Bar
-        - [ ] Account Choose Bar
+        - [x] Account Choose Bar
 - [ ] Build logic
     - [ ] Add static data
         - [x] Banks
