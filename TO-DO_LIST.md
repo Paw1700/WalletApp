@@ -22,7 +22,7 @@
         - [ ] Categorie Choose Bar
         - [ ] Receiver Choose Bar
         - [ ] Description Bar (BIG / SMALL)
-        - [ ] Number Input Bar
+        - [x] Number Input Bar
         - [x] Bank Choose Bar
         - [x] Account Choose Bar
 - [ ] Build logic

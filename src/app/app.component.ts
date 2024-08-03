@@ -4,11 +4,12 @@ import { BankChooseBarComponent } from './components/bank_choose_bar/bank_choose
 import { HttpClient } from '@angular/common/http';
 import { Account, Bank } from './models';
 import { AccountChooseBarComponent } from './components/account_choose_bar/account_choose_bar.component';
+import { NumberInputComponent } from './components/number_input_bar/number_input_bar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BankChooseBarComponent, AccountChooseBarComponent],
+  imports: [RouterOutlet, BankChooseBarComponent, AccountChooseBarComponent, NumberInputComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

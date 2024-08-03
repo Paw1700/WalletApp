@@ -5,9 +5,12 @@ import { Pipe, PipeTransform } from "@angular/core";
     standalone: true
 })
 export class NumberSeparator implements PipeTransform {
-    transform(v: number) {
+    transform(v: number | string | null) {
         if (typeof v === 'string') {
             v = +v
+        }
+        if (!v) {
+            v = 0
         }
         let value = v.toFixed(2)
         let value_length_without_cents = value.length - 3
