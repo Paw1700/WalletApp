@@ -5,7 +5,7 @@
         - [x] Home 
         - [ ] Adding transaction 
         - [ ] List of accounts 
-        - [ ] Adding account 
+        - [x] Adding account 
         - [ ] Overview account 
         - [ ] List of planned transaction 
         - [ ] Adding planned transaction

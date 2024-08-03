@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { Bank } from "../../models";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { OpenAbleComponent } from "../../interfaces/openable.component";
 
 @Component({
     selector: 'bank_choose_bar',
@@ -28,11 +29,9 @@ import { animate, style, transition, trigger } from "@angular/animations";
         ])
     ]
 })
-export class BankChooseBarComponent {
-    @Input() banks_list: Bank[] = []
-    @Input() component_open: boolean = false
+export class BankChooseBarComponent extends OpenAbleComponent{
+    @Input({required: true}) banks_list: Bank[] = []
     @Output() choosed_bank_id = new EventEmitter<string>()
-    @Output() component_openess_state = new EventEmitter<boolean>()
 
     choosed_bank: Bank | null = null
     
@@ -45,10 +44,5 @@ export class BankChooseBarComponent {
             this.changeComponentOpenessState(true)
             this.choosed_bank_id.emit('')
         }
-    }
-
-    private changeComponentOpenessState(open: boolean) {
-        this.component_open = open
-        this.component_openess_state.emit(open)
     }
 }

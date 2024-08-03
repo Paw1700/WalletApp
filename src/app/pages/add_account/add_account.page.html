@@ -1,0 +1,7 @@
+<div class="PAGE">
+    <bank_choose_bar [banks_list]="banks_list" (choosed_bank_id)="receiveAccounts($event)"/>
+    <account_choose_bar [accounts_list]="accounts_list" />
+    <number_input [title]="'Stan początkowy konta'" [currency]="'PLN'" />
+    <number_input [title]="'Limit debetu'" [currency]="'PLN'" />
+    <number_input [title]="'Oprocentowanie debetu'" [currency]="'%'" />
+</div>

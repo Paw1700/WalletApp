@@ -36,11 +36,11 @@ export class AccountBarComponent implements OnChanges{
             minus: 0
         }
     }
-    bar_background = `linear-gradient(to bottom, ${this.account.apperance.background_gradient.top}, ${this.account.apperance.background_gradient.bottom})`
+    bar_background = `linear-gradient(to bottom, ${this.account.apperance.background_gradient.top}, ${this.account.apperance.background_gradient.bottom !== null ? this.account.apperance.background_gradient.bottom : this.account.apperance.background_gradient.top})`
     bank_logo = this.account.apperance.bank_logo_src
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.bar_background = `linear-gradient(to bottom, ${this.account.apperance.background_gradient.top}, ${this.account.apperance.background_gradient.bottom})`
+        this.bar_background = `linear-gradient(to bottom, ${this.account.apperance.background_gradient.top}, ${this.account.apperance.background_gradient.bottom !== null ? this.account.apperance.background_gradient.bottom : this.account.apperance.background_gradient.top})`
         this.bank_logo = this.account.apperance.bank_logo_src
     }
 }

@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { AccountBarComponent } from "../account_bar/account_bar.component";
 import { Account } from "../../models";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { OpenAbleComponent } from "../../interfaces/openable.component";
 
 @Component({
     selector: 'account_choose_bar',
@@ -30,15 +31,16 @@ import { animate, style, transition, trigger } from "@angular/animations";
         ])
     ]
 })
-export class AccountChooseBarComponent {
+export class AccountChooseBarComponent extends OpenAbleComponent{
     @Input() accounts_list: Account[] = []
-    @Input() component_open: boolean = false
     @Output() choosed_account_id = new EventEmitter<string>()
-    @Output() component_openess_state = new EventEmitter<boolean>()
 
     choosed_account: Account | null = null
 
     changeAccount(account: Account | null) {
+        if (this.accounts_list.length === 0) {
+            return
+        }
         if(account) {
             this.changeComponentOpenessState(false)
             this.choosed_account = account
@@ -46,10 +48,5 @@ export class AccountChooseBarComponent {
             this.changeComponentOpenessState(true)
             this.choosed_account = null
         }
-    }
-
-    private changeComponentOpenessState(open: boolean) {
-        this.component_open = open
-        this.component_openess_state.emit(open)
     }
 }
