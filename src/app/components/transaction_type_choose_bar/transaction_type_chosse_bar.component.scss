@@ -1,0 +1,65 @@
+div.TRANSACTION_CHOOSE_BAR {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.17vh;
+
+    div.TOP {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 3.8vw;
+
+        p.TITLE {
+            font-size: 1.58rem;
+            font-weight: 400;
+            text-align: left;
+            transition: .25s ease;
+    
+            &.CLOSED {
+                opacity: .2;
+            }
+        }
+
+        div.OPTION_BADGE {
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: var(--app-accent);
+            color: white;
+            padding: .8vh 1.25vw;
+            border-radius: 2.5vw;
+        }
+    }
+
+
+    div.SWITCH {
+        width: 97.5%;
+        height: 4.7vh;
+        background-color: #dfdfdf;
+        border-radius: 2.5vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+
+        div.OPTION {
+            font-size: 1rem;
+            font-weight: 600;
+            width: 40vw;
+            height: 75%;
+            border-radius: 2.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.CHOOSED {
+                background-color: green;
+                color: white;
+            }
+        }
+    }
+}

@@ -22,6 +22,7 @@
         - [ ] Categorie Choose Bar
         - [ ] Receiver Choose Bar
         - [ ] Description Bar (BIG / SMALL)
+        - [x] Transaction Type Choose Bar
         - [x] Number Input Bar
         - [x] Bank Choose Bar
         - [x] Account Choose Bar

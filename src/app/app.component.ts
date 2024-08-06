@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AddAccountPage } from './pages/add_account/add_account.page';
+import { AddTransactionPage } from './pages/add_transaction/add_transaction.page';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AddAccountPage],
+  imports: [RouterOutlet, AddTransactionPage],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
