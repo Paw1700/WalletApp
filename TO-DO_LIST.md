@@ -19,9 +19,9 @@
     - [ ] Components
         - [x] Account Bar (3 types: BIG/MIDDLE/SMALL)
         - [x] Transaction Bar
-        - [ ] Categorie Choose Bar
+        - [x] Categorie Choose Bar
         - [ ] Receiver Choose Bar
-        - [ ] Description Bar (BIG / SMALL)
+        - [ ] Description Bar
         - [x] Transaction Type Choose Bar
         - [x] Number Input Bar
         - [x] Bank Choose Bar

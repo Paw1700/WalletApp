@@ -1,14 +1,16 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter } from "@angular/core";
+import CATEGORIES from '../../../../public/assets/data/categories.json'
 import { OpenAbleComponent } from "../../interfaces/openable.component";
-import { animate, style, transition, trigger } from "@angular/animations";
+import { Category } from "../../models";
+import { trigger, transition, style, animate } from "@angular/animations";
 
 @Component({
-    selector: 'transaction_choose_bar',
+    selector: 'category_choose_bar',
     standalone: true,
-    templateUrl: './transaction_type_chosse_bar.component.html',
-    styleUrl: './transaction_type_chosse_bar.component.scss',
+    templateUrl: './category_choose_bar.component.html',
+    styleUrl: './category_choose_bar.component.scss',
     animations: [
-        trigger('switch', [
+        trigger('list', [
             transition(":enter", [
                 style({
                     opacity: 0,
@@ -46,11 +48,19 @@ import { animate, style, transition, trigger } from "@angular/animations";
         ])
     ]
 })
-export class TransactionTypeChooseBar extends OpenAbleComponent {
-    choosed_option: number = 0
+export class CategoryChooseBar extends OpenAbleComponent{
+    readonly categories_list: Category[] = CATEGORIES
+    choosed_categorie: Category | null = null
+    choosed_categorie_id = new EventEmitter<string>()
 
-    setOption(option: number) {
-        this.choosed_option = option
-        this.changeComponentOpenessState(false)
+    setCategory(category?: Category) {
+        if (category) {
+            this.choosed_categorie = category
+            this.choosed_categorie_id.emit(category.id)
+            this.changeComponentOpenessState(false)
+        } else {
+            this.choosed_categorie = null
+            this.choosed_categorie_id.emit('')
+        }
     }
 }

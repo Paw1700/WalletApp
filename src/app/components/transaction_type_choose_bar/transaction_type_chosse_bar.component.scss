@@ -57,7 +57,7 @@ div.TRANSACTION_CHOOSE_BAR {
             justify-content: center;
 
             &.CHOOSED {
-                background-color: green;
+                background-color: var(--app-accent);
                 color: white;
             }
         }

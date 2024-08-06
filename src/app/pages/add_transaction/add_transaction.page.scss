@@ -3,8 +3,13 @@ div.PAGE {
     height: 96.6vh;
     justify-content: flex-start;
     padding: 1.7vh 4.32vw;
+    gap: 1.7vh;
 
-    transaction_choose_bar {
+    transaction_choose_bar{
         width: 91.34vw;
+    }
+
+    category_choose_bar {
+        width: 100vw;
     }
 }
