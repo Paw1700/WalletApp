@@ -1,7 +1,7 @@
 <div class="NUMBER_INPUT_BAR">
     <div (click)="openComponent(true)" class="TITLE_BAR">
         <p [class.INACTIVE]="!component_open && !inputed_number" class="TITLE">  
-            @if (!component_open && inputed_number) {
+            @if (!component_open && inputed_number && title.length > 10) {
                 {{ title.slice(0,10) + '...' }}
             } @else {
                 {{ title }}

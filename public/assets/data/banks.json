@@ -10,9 +10,9 @@
         "logo_src": "/assets/banks_logos/bnp_paribas.webp"
     },
     {
-        "id": "CIT-OWY",
-        "name": "citi handlowy",
-        "logo_src": "/assets/banks_logos/city_handlowy.webp"
+        "id": "BOS-ANK",
+        "name": "BOŚ Bank",
+        "logo_src": "/assets/banks_logos/bos_bank.webp"
     },
     {
         "id": "BAN-KAO",
@@ -20,9 +20,9 @@
         "logo_src": "/assets/banks_logos/bank_pekao.webp"
     },
     {
-        "id": "SAN-DER",
-        "name": "Santander",
-        "logo_src": "/assets/banks_logos/santander.webp"
+        "id": "BAN-OWY",
+        "name": "Bank Pocztowy",
+        "logo_src": "/assets/banks_logos/bank_pocztowy.webp"
     },
     {
         "id": "CRE-OLE",
@@ -30,9 +30,9 @@
         "logo_src": "/assets/banks_logos/credit_agricole.webp"
     },
     {
-        "id": "PKO-SKI",
-        "name": "PKO Bank Polski",
-        "logo_src": "/assets/banks_logos/pko_bank_polski.webp"
+        "id": "ING-SKI",
+        "name": "ING Bank Śląski",
+        "logo_src": "/assets/banks_logos/ing_bank_slaski.webp"
     },
     {
         "id": "MIL-ANK",
@@ -40,19 +40,19 @@
         "logo_src": "/assets/banks_logos/millennium_bank.webp"
     },
     {
-        "id": "BOS-ANK",
-        "name": "BOŚ Bank",
-        "logo_src": "/assets/banks_logos/bos_bank.webp"
+        "id": "PKO-SKI",
+        "name": "PKO Bank Polski",
+        "logo_src": "/assets/banks_logos/pko_bank_polski.webp"
     },
     {
-        "id": "BAN-OWY",
-        "name": "Bank Pocztowy",
-        "logo_src": "/assets/banks_logos/bank_pocztowy.webp"
+        "id": "SAN-DER",
+        "name": "Santander",
+        "logo_src": "/assets/banks_logos/santander.webp"
     },
     {
-        "id": "ING-SKI",
-        "name": "ING Bank Śląski",
-        "logo_src": "/assets/banks_logos/ing_bank_slaski.webp"
+        "id": "CIT-OWY",
+        "name": "citi handlowy",
+        "logo_src": "/assets/banks_logos/city_handlowy.webp"
     },
     {
         "id": "MBA-XNK",
