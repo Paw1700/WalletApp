@@ -1,0 +1,11 @@
+<div class="TEXT_INPUT_BAR">
+    <div (click)="changeComponentOpenessState()" class="TOP">
+        <p [class.INACTIVE]="!component_open && inputed_text === ''" class="TITLE">{{ title }}</p>
+        @if (!component_open && inputed_text !== '') {
+            <p [@badge] class="TEXT_BAGDE">{{ inputed_text }}</p>
+        }
+    </div>
+    @if (component_open) {
+        <input type="text" [value]="inputed_text" [placeholder]="placeholder" (blur)="changeComponentOpenessState()" (input)="setValue($event)">
+    }
+</div>

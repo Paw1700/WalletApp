@@ -1,0 +1,45 @@
+div.TEXT_INPUT_BAR {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.7vh;
+
+    div.TOP {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1.3vw;
+
+        p.TITLE {
+            font-size: 1.58rem;
+            font-weight: 400;
+            min-width: 1%;
+            text-align: left;
+
+            &.INACTIVE {
+                opacity: .2;
+            }
+        }
+
+        p.TEXT_BAGDE {
+            max-width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: var(--app-accent);
+            color: white;
+            padding: .8vh 1.25vw;
+            border-radius: 2.5vw;
+        }
+    }
+
+    input {
+        width: calc(100% - 6vw);
+        padding: 3vw;
+        border: 1px solid var(--font-color);
+        border-radius: 2.5vw;
+    }
+}

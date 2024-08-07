@@ -38,10 +38,6 @@ export class NumberInputComponent extends OpenAbleComponent {
     inputed_number: number | null = null
     input_is_in_focus: boolean = false
 
-    openComponent(open: boolean) {
-        this.changeComponentOpenessState(open)
-    }
-
     setValue(value: any) {
         let v = value.target.value
         if (v === '') {
@@ -57,7 +53,9 @@ export class NumberInputComponent extends OpenAbleComponent {
     inputIsInFocus(bool: any) {
         this.input_is_in_focus = bool
         if (!bool) {
-            this.openComponent(false)
+            setTimeout(() => {
+                this.changeComponentOpenessState(false)
+            }, 500)
         }
     }
 }

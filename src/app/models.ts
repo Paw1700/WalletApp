@@ -55,6 +55,8 @@ export interface Transaction {
     description: string
 }
 
+export type Transaction_Type = 'income' | 'expense'
+
 export interface ScheduleTransaction {
     id: string,
     transaction: Transaction,

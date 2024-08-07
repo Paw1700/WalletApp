@@ -1,5 +1,7 @@
 <div class="PAGE">
-    <transaction_choose_bar />
+    <transaction_choose_bar (choosed_option_type)="changeTransactionType($event)" />
     <category_choose_bar />
+    <receiver_choose_bar [transaction_type]="transaction_type" />
     <number_input [title]="'Kwota'" [currency]="'PLN'" />
+    <text_input_bar [title]="'Opis'" [placeholder]="'nie wymagane'" />
 </div>

@@ -1,15 +1,15 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Receiver, Transaction_Type } from "../../models";
 import { OpenAbleComponent } from "../../interfaces/openable.component";
-import { animate, style, transition, trigger } from "@angular/animations";
-import { Transaction_Type } from "../../models";
+import { trigger, transition, style, animate } from "@angular/animations";
 
 @Component({
-    selector: 'transaction_choose_bar',
+    selector: 'receiver_choose_bar',
     standalone: true,
-    templateUrl: './transaction_type_chosse_bar.component.html',
-    styleUrl: './transaction_type_chosse_bar.component.scss',
+    templateUrl: './receiver_choose_bar.component.html',
+    styleUrl: './receiver_choose_bar.component.scss',
     animations: [
-        trigger('switch', [
+        trigger('list', [
             transition(":enter", [
                 style({
                     opacity: 0,
@@ -47,13 +47,16 @@ import { Transaction_Type } from "../../models";
         ])
     ]
 })
-export class TransactionTypeChooseBar extends OpenAbleComponent {
-    choosed_option: Transaction_Type | null = null
-    @Output() choosed_option_type = new EventEmitter<Transaction_Type>()
+export class ReceiverChooseBar extends OpenAbleComponent{
+    readonly receivers_list: Receiver[] = []
+    @Input() transaction_type: Transaction_Type = 'expense'
+    @Output() choosed_receiver_id = new EventEmitter<string>()
 
-    setOption(option: Transaction_Type) {
-        this.choosed_option = option
-        this.changeComponentOpenessState(false)
-        this.choosed_option_type.emit(option)
+    choosed_receiver: Receiver | null = null
+
+    setReceiver(receiver: Receiver | null) { 
+        this.choosed_receiver = receiver
+        this.changeComponentOpenessState()
+        this.choosed_receiver_id.emit(receiver ? receiver.id : '')
     }
 }
