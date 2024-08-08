@@ -26,6 +26,7 @@
         - [x] Number Input Bar
         - [x] Bank Choose Bar
         - [x] Account Choose Bar
+        - [ ] Bottom Nav Bar
 - [ ] Build logic
     - [ ] Add static data
         - [x] Banks
@@ -34,3 +35,31 @@
         - [ ] Receivers
         - [ ] Stock Markets
         - [ ] Accounts for Stock Markets
+    - [ ] Build logic
+        - [ ] IndexedDB Driver
+        - [ ] -- MAIN --
+            - [ ] Application Start Logic
+                - [ ] Check App Version
+                - [ ] Check App is Configured
+                - [ ] Check if there is schedule transactions
+                - [ ] Navigate Away to Home Page
+            - [ ] App Version Checking
+            - [ ] App Navigation
+        - [ ] -- APPERANCE --
+            - [ ] Changing Status Bar Color
+            - [ ] Changing Acccent Color
+        - [ ] -- UPDATE --
+            - [ ] App Data Update Scripts
+            - [ ] App Backup Update Scripts
+        - [ ] -- BACKUP --
+            - [ ] Create Backup
+            - [ ] Implement Backup Data
+        - [ ] -- VALIDATOR --
+            - [ ] Check App Backup validity
+            - [ ] Check Profile Validity
+            - [ ] Checkc Account Data Validity
+            - [ ] Check Transaction Data Validity
+        - [ ] -- DATA --
+            - [ ] -- ACCOUNT --
+            - [ ] -- PROFILE --
+- [ ] Error Logic
