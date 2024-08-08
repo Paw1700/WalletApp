@@ -40,14 +40,14 @@
         - [ ] -- MAIN --
             - [ ] Application Start Logic
                 - [ ] Check App Version
-                - [ ] Check App is Configured
+                - [x] Check App is Configured
                 - [ ] Check if there is schedule transactions
-                - [ ] Navigate Away to Home Page
+                - [x] Navigate Away to Home Page
             - [ ] App Version Checking
             - [ ] App Navigation
         - [ ] -- APPERANCE --
-            - [ ] Changing Status Bar Color
-            - [ ] Changing Acccent Color
+            - [x] Changing Status Bar Color Method
+            - [x] Changing Acccent Color Method
         - [ ] -- UPDATE --
             - [ ] App Data Update Scripts
             - [ ] App Backup Update Scripts
@@ -61,5 +61,8 @@
             - [ ] Check Transaction Data Validity
         - [ ] -- DATA --
             - [ ] -- ACCOUNT --
-            - [ ] -- PROFILE --
+            - [x] -- PROFILE --
+                - [x] Adding profile
+                - [x] Getting profile
+                - [x] Deleting profile
 - [ ] Error Logic

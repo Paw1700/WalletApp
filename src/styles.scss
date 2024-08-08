@@ -345,9 +345,8 @@ div.PAGE {
 :root {
 	--app-theme: #fff;
 	--app-theme-with-transparence: rgba(255,255,255, .85);
-	// --app-accent: #D9D9D9;
-	--app-accent: #006645;
-	--app-default-accent: #D9D9D9;
+	--app-accent: var(--app-default-accent);
+	--app-default-accent: #607D8B;
 	--font-color: #000;
 	--font-color-secendary: #BEBEBE;
 	--app-green: #42FF00;

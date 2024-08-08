@@ -6,6 +6,13 @@ import { provideServiceWorker } from '@angular/service-worker';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { APP_SERVICE } from './app.service';
+import { APP_DATA } from './services/data.service';
+import { APP_APPERANCE } from './services/apperance.service';
+import { APP_BACKUP } from './services/backup.service';
+import { APP_SCHEDULE } from './services/schedule.service';
+import { APP_UPDATE } from './services/update.service';
+import { APP_VALIDATOR } from './services/validator.service';
+import { PROFILE_DATA_SERVICE } from './services/data/profile.data.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +24,13 @@ export const appConfig: ApplicationConfig = {
             registrationStrategy: 'registerWhenStable:30000'
     }),
     provideHttpClient(),
-    APP_SERVICE
+    APP_SERVICE,
+    APP_DATA,
+    APP_APPERANCE,
+    APP_BACKUP,
+    APP_SCHEDULE,
+    APP_UPDATE,
+    APP_VALIDATOR,
+    PROFILE_DATA_SERVICE
   ]
 };

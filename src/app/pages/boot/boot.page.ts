@@ -35,6 +35,4 @@ import { Component } from "@angular/core";
         ])
     ]
 })
-export class BootPage {
-
-}
+export class BootPage {}

@@ -1,3 +1,10 @@
+export interface Profile {
+    id: string,
+    name: string,
+    surname: string,
+    image: string
+}
+
 export interface Bank {
     id: string,
     name: string,
