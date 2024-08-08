@@ -36,7 +36,7 @@
         - [ ] Stock Markets
         - [ ] Accounts for Stock Markets
     - [ ] Build logic
-        - [ ] IndexedDB Driver
+        - [x] IndexedDB Driver
         - [ ] -- MAIN --
             - [ ] Application Start Logic
                 - [ ] Check App Version
