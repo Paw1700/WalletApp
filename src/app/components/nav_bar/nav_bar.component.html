@@ -1,0 +1,27 @@
+<div class="NAV_BAR">
+    @switch (left_side) {
+        @case ('arrow_left') {
+            <oval_button [icon]="left_side" />
+        }
+        @case ('arrow_right') {
+            <oval_button [icon]="left_side" />
+        }
+        @case ('menu') {
+            <oval_button [icon]="left_side" />
+        }
+    }
+    @switch (right_side) {
+        @case ('arrow_right') {
+            <oval_button [icon]="right_side" />
+        }
+        @case ('add_transaction') {
+            <rectangle_button [option]="right_side" />
+        }
+        @case ('add_account') {
+            <rectangle_button [option]="right_side" />
+        }
+        @case ('save') {
+            <rectangle_button [option]="right_side" />
+        }
+    }
+</div>
