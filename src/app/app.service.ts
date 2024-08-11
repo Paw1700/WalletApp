@@ -22,32 +22,24 @@ export class APP_SERVICE {
     startApp(): Promise<void> {
         return new Promise(async resolve => {
             this.navigate('bootstrap')
-            this.APPERANCE.restart();
-    
+            this.APPERANCE.restart()
+
+            await this.DATA.init()
+
             let redirection_location: App_Locations = 'home'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
-    
+
             if (!app_is_configured) {
                 redirection_location = 'app_first_configuration'
             } else if (app_is_configured && !app_is_up_to_date) {
                 redirection_location = 'app_data_update'
             }
-    
-            if (redirection_location === 'app_data_update') {
-                this.navigate('app_data_update')
+
+            setTimeout(() => {
+                this.navigate(redirection_location)
                 resolve()
-                return
-            }
-    
-            this.DATA
-                .init()
-                .then(() => {
-                    setTimeout(() => {
-                        this.navigate('home')
-                        resolve()
-                    }, 500)
-                })
+            }, 1500)
         })
     }
 
@@ -60,6 +52,7 @@ export class APP_SERVICE {
                 this.ROUTER.navigateByUrl('/')
                 break
             case "app_first_configuration":
+                this.ROUTER.navigateByUrl('create_profile')
                 break
         }
     }
@@ -70,7 +63,7 @@ export class APP_SERVICE {
             if (!profile) {
                 resolve(false)
             } else {
-                resolve (true)
+                resolve(true)
             }
         })
     }

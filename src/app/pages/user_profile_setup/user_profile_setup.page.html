@@ -1,5 +1,13 @@
 <div class="PAGE">
     <p class="WELCOME">Witaj !!!</p>
     <p class="DESC">Konfiguracje aplikacji rozpoczniemy od podania danych użytkownika</p>
-    <img src="/assets/UI/user_image_not_set/light.webp"/>
+    <div class="USER_IMAGE">
+        @if (profile.image !== '') {
+            <img [src]="profile.image">
+        } @else {
+            <img src="/assets/UI/user_image_not_set/light.webp"/>
+        }
+        <input type="file" (input)="handleImageInput($event)" />
+    </div>
+    <text_input_bar (inputed_text)="handleTextInput($event)" [title]="'Imię i nazwisko'" [component_open]="true" [block_openess_state_change]="true" />
 </div>

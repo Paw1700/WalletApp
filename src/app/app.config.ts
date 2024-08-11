@@ -13,6 +13,7 @@ import { APP_SCHEDULE } from './services/schedule.service';
 import { APP_UPDATE } from './services/update.service';
 import { APP_VALIDATOR } from './services/validator.service';
 import { PROFILE_DATA_SERVICE } from './services/data/profile.data.service';
+import { DatabaseManager } from './util/db.driver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
             registrationStrategy: 'registerWhenStable:30000'
     }),
     provideHttpClient(),
+    DatabaseManager,
     APP_SERVICE,
     APP_DATA,
     APP_APPERANCE,

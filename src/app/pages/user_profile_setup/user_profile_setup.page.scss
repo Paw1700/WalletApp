@@ -14,8 +14,30 @@ div.PAGE {
         }
     }
 
-    img {
-        width: 57.25vw;
-        object-fit: contain;
+    div.USER_IMAGE {
+        width:  57.25vw;
+        height: 57.25vw;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+    }
+
+
+    text_input_bar {
+        width: 100%;
     }
 }
