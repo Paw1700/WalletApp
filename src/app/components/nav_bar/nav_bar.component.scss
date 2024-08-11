@@ -1,0 +1,11 @@
+div.NAV_BAR {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 92vw;
+    padding-inline: 4vw;
+    position: absolute;
+    bottom: 4.5vh;
+    left: 0;
+}
