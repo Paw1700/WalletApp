@@ -6,11 +6,13 @@ import { APP_SCHEDULE } from "./services/schedule.service";
 import { APP_BACKUP } from "./services/backup.service";
 import { APP_VALIDATOR } from "./services/validator.service";
 import { Router } from "@angular/router";
+import { APP_STATE } from "./services/state.service";
 
 @Injectable()
 export class APP_SERVICE {
     constructor(
         public DATA: APP_DATA,
+        public STATE: APP_STATE,
         public APPERANCE: APP_APPERANCE,
         public UPDATE: APP_UPDATE,
         public SCHEDULE: APP_SCHEDULE,
@@ -47,12 +49,18 @@ export class APP_SERVICE {
         switch (location) {
             case "home":
                 this.ROUTER.navigateByUrl('/home')
+                this.STATE.nav_bar_left_button_option$.next('menu')
+                this.STATE.nav_bar_right_button_option$.next('add_transaction')
                 break
             case "bootstrap":
                 this.ROUTER.navigateByUrl('/')
+                this.STATE.nav_bar_left_button_option$.next(null)
+                this.STATE.nav_bar_right_button_option$.next(null)
                 break
             case "app_first_configuration":
                 this.ROUTER.navigateByUrl('create_profile')
+                this.STATE.nav_bar_left_button_option$.next(null)
+                this.STATE.nav_bar_right_button_option$.next('arrow_right')
                 break
         }
     }

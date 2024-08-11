@@ -1,7 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, inject, OnInit } from "@angular/core";
 import { TextInputBar } from "../../components/text_input_bar/text_input_bar.component";
 import { imageToBase64 } from "../../util/image_to_base64";
 import { Profile } from "../../models";
+import { NgUnsubscriber } from "../../util/ngUnsubscriber";
+import { APP_SERVICE } from "../../app.service";
+import { takeUntil } from "rxjs";
 
 @Component({
     selector: 'user_profile_setup',
@@ -12,12 +15,28 @@ import { Profile } from "../../models";
     templateUrl: './user_profile_setup.page.html',
     styleUrl: './user_profile_setup.page.scss'
 })
-export class UserProfileSetupPage {
+export class UserProfileSetupPage extends NgUnsubscriber implements OnInit{
+    readonly APP = inject(APP_SERVICE)
     profile: Profile = {
         id: '',
         name: '',
         surname: '',
         image: ''
+    }
+
+    ngOnInit(): void {
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            this.saveProfile()
+        })
+    }
+
+    saveProfile() {
+        if (this.APP.VALIDATOR.validateUserProfile(this.profile)) {
+            this.APP.DATA.PROFILE.save(this.profile)
+            .then(() => {
+                this.APP.navigate('home')
+            })
+        }
     }
 
     handleImageInput(e: any) {
@@ -36,6 +55,5 @@ export class UserProfileSetupPage {
             this.profile.name = text
             this.profile.surname = ''
         }
-        
     }
 }

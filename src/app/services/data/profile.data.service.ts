@@ -18,16 +18,27 @@ export class PROFILE_DATA_SERVICE {
         })
     }
 
-    save(profile: Profile, updatedMode: boolean) {
+    save(profile: Profile) {
         return new Promise<void>(async (resolve, reject) => {
             try {
-                if (!updatedMode) {
-                    profile.id = await this.DB.GENERATE_INDEX(this.DB_STORE)
-                }
+                profile.id = await this.DB.GENERATE_INDEX(this.DB_STORE)
                 await this.DB.insertObject(this.DB_STORE, profile)
                 resolve()
             } catch (err) {
                 // !!! ADD ERROR CODE !!!
+                reject()
+            }
+        })
+    }
+
+    update(profile: Profile) {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                await this.DB.insertObject(this.DB_STORE, profile)
+                resolve()
+            } catch (err) {
+                // !!! ADD ERROR CODE !!!
+                reject()
             }
         })
     }
