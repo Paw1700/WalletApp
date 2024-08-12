@@ -31,7 +31,7 @@ export interface Account {
 
 export type Currency = "PLN" | "USD" | "EUR"
 
-export interface User_Account {
+export interface UserAccount {
     id: string,
     account_id: string,
     avaible_funds: number

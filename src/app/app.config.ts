@@ -15,6 +15,7 @@ import { APP_VALIDATOR } from './services/validator.service';
 import { PROFILE_DATA_SERVICE } from './services/data/profile.data.service';
 import { DatabaseManager } from './util/db.driver';
 import { APP_STATE } from './services/state.service';
+import { USER_ACCOUNT_DATA_SERVICE } from './services/data/user_account.data.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,6 +36,7 @@ export const appConfig: ApplicationConfig = {
     APP_SCHEDULE,
     APP_UPDATE,
     APP_VALIDATOR,
-    PROFILE_DATA_SERVICE
+    PROFILE_DATA_SERVICE,
+    USER_ACCOUNT_DATA_SERVICE
   ]
 };

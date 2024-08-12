@@ -65,8 +65,9 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_right_button_option$.next('arrow_right')
                 break
             case 'accounts_list':
-                console.log('WORKS!');
-                
+                this.ROUTER.navigateByUrl('accounts_list')
+                this.APPERANCE.nav_bar_left_button_option$.next('menu')
+                this.APPERANCE.nav_bar_right_button_option$.next('add_account')
                 break
         }
     }

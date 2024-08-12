@@ -1,6 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { DatabaseManager } from "../util/db.driver";
 import { PROFILE_DATA_SERVICE } from "./data/profile.data.service";
+import { USER_ACCOUNT_DATA_SERVICE } from "./data/user_account.data.service";
 
 export class DB_STORES {
     constructor(
@@ -18,6 +19,7 @@ export class LS_STORES {
 @Injectable()
 export class APP_DATA {
     readonly PROFILE = inject(PROFILE_DATA_SERVICE)
+    readonly USER_ACCOUNT = inject(USER_ACCOUNT_DATA_SERVICE)
 
     private readonly DB = inject(DatabaseManager)
     private readonly DB_NAME = 'WalletApp';

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { BootPage } from './pages/boot/boot.page';
 import { HomePage } from './pages/home/home.page';
 import { UserProfileSetupPage } from './pages/user_profile_setup/user_profile_setup.page';
+import { AccountsListPage } from './pages/accounts_list/accounts_list.page';
 
 export const routes: Routes = [
     {
@@ -28,9 +29,12 @@ export const routes: Routes = [
             page_name: 'create_profile'
         }
     },
-    // {
-    //     path: 'accounts_list',
-    //     pathMatch: 'full',
-    //     component: 
-    // }
+    {
+        path: 'accounts_list',
+        pathMatch: 'full',
+        component: AccountsListPage,
+        data: {
+            page_name: 'accounts_list'
+        }
+    }
 ];
