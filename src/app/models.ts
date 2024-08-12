@@ -89,7 +89,7 @@ export interface StockMarket {
         full: string,
         shortcut: string
     },
-    country_of_origin: Country 
+    country_of_origin: Country
 }
 
 export interface Country {
@@ -116,4 +116,11 @@ export interface UserStock {
         actual: number,
         when_bought: number
     }
+}
+
+export type AppLocations = 'home' | 'bootstrap' | 'app_first_configuration' | 'app_data_update' | 'add_account' | 'add_transaction' | 'accounts_list' | 'settings' | 'credits_list' | 'add_credit' | 'account_page' | 'credit_page'
+
+export type AppLocationListItem = {
+    name: string,
+    active: boolean
 }

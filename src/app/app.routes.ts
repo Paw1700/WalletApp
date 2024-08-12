@@ -27,5 +27,10 @@ export const routes: Routes = [
         data: {
             page_name: 'create_profile'
         }
-    }
+    },
+    // {
+    //     path: 'accounts_list',
+    //     pathMatch: 'full',
+    //     component: 
+    // }
 ];

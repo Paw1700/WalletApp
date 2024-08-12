@@ -7,6 +7,7 @@ import { APP_BACKUP } from "./services/backup.service";
 import { APP_VALIDATOR } from "./services/validator.service";
 import { Router } from "@angular/router";
 import { APP_STATE } from "./services/state.service";
+import { AppLocations } from "./models";
 
 @Injectable()
 export class APP_SERVICE {
@@ -28,7 +29,7 @@ export class APP_SERVICE {
 
             await this.DATA.init()
 
-            let redirection_location: App_Locations = 'home'
+            let redirection_location: AppLocations = 'home'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
 
@@ -45,22 +46,27 @@ export class APP_SERVICE {
         })
     }
 
-    navigate(location: App_Locations) {
+    navigate(location: AppLocations) {
+        this.STATE.app_current_location$.next(location)
         switch (location) {
             case "home":
                 this.ROUTER.navigateByUrl('/home')
-                this.STATE.nav_bar_left_button_option$.next('menu')
-                this.STATE.nav_bar_right_button_option$.next('add_transaction')
+                this.APPERANCE.nav_bar_left_button_option$.next('menu')
+                this.APPERANCE.nav_bar_right_button_option$.next('add_transaction')
                 break
             case "bootstrap":
                 this.ROUTER.navigateByUrl('/')
-                this.STATE.nav_bar_left_button_option$.next(null)
-                this.STATE.nav_bar_right_button_option$.next(null)
+                this.APPERANCE.nav_bar_left_button_option$.next(null)
+                this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case "app_first_configuration":
                 this.ROUTER.navigateByUrl('create_profile')
-                this.STATE.nav_bar_left_button_option$.next(null)
-                this.STATE.nav_bar_right_button_option$.next('arrow_right')
+                this.APPERANCE.nav_bar_left_button_option$.next(null)
+                this.APPERANCE.nav_bar_right_button_option$.next('arrow_right')
+                break
+            case 'accounts_list':
+                console.log('WORKS!');
+                
                 break
         }
     }
@@ -82,4 +88,3 @@ export class APP_SERVICE {
     }
 }
 
-type App_Locations = 'home' | 'bootstrap' | 'app_first_configuration' | 'app_data_update'

@@ -1,8 +1,8 @@
-@if(show) {
+@if(show_page) {
     <div [@PAGE] class="PAGE">
         <div [@LIST_OF_LOCATIONS]="app_locations.length" class="LIST_OF_LOCATIONS">
-            @for(item of app_locations; track item.name) {
-                <p class="LOCATION" [class.ACTIVE]="item.active" >{{ item.name }}</p>
+            @for(item of app_locations; track item.name; let i = $index) {
+                <p class="LOCATION" (click)="changeAppLocation(i)" [class.ACTIVE]="item.active" >{{ item.name }}</p>
             }
         </div>
     </div>

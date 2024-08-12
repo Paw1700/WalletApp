@@ -1,9 +1,13 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
+import { NavBarButtonOptions } from "../components/nav_bar/nav_bar.component";
 
 @Injectable()
 export class APP_APPERANCE {
     dark_mode_state$ = new BehaviorSubject<boolean>(false)
+    nav_bar_left_button_option$ = new BehaviorSubject<NavBarButtonOptions | null>(null)
+    nav_bar_right_button_option$ = new BehaviorSubject<NavBarButtonOptions | null>(null)
+
 
     /**
      * Restarts app apperance settings to default

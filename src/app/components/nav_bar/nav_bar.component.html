@@ -1,13 +1,13 @@
 <div class="NAV_BAR">
     @switch (left_side) {
         @case ('arrow_left') {
-            <oval_button (click)="left_button_clicked.emit()" [icon]="left_side" />
+            <oval_button (click)="left_button_clicked()" [icon]="left_side" />
         }
         @case ('arrow_right') {
-            <oval_button (click)="left_button_clicked.emit()" [icon]="left_side" />
+            <oval_button (click)="left_button_clicked()" [icon]="left_side" />
         }
         @case ('menu') {
-            <oval_button (click)="left_button_clicked.emit()" [icon]="left_side" />
+            <oval_button (click)="left_button_clicked()" [icon]="left_side" />
         }
         @default {
             <div class="BLANK_SPOT"></div>
@@ -15,16 +15,16 @@
     }
     @switch (right_side) {
         @case ('arrow_right') {
-            <oval_button (click)="right_button_clicked.emit()" [icon]="right_side" />
+            <oval_button (click)="right_button_clicked()" [icon]="right_side" />
         }
         @case ('add_transaction') {
-            <rectangle_button (click)="right_button_clicked.emit()" [option]="right_side" />
+            <rectangle_button (click)="right_button_clicked()" [option]="right_side" />
         }
         @case ('add_account') {
-            <rectangle_button (click)="right_button_clicked.emit()" [option]="right_side" />
+            <rectangle_button (click)="right_button_clicked()" [option]="right_side" />
         }
         @case ('save') {
-            <rectangle_button (click)="right_button_clicked.emit()" [option]="right_side" />
+            <rectangle_button (click)="right_button_clicked()" [option]="right_side" />
         }
     }
 </div>

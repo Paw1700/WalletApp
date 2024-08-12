@@ -4,7 +4,8 @@ import { PROFILE_DATA_SERVICE } from "./data/profile.data.service";
 
 export class DB_STORES {
     constructor(
-        public profile = 'profile'
+        public profile = 'profile',
+        public accounts = 'accounts'
     ) { }
 }
 
