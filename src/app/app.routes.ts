@@ -3,6 +3,7 @@ import { BootPage } from './pages/boot/boot.page';
 import { HomePage } from './pages/home/home.page';
 import { UserProfileSetupPage } from './pages/user_profile_setup/user_profile_setup.page';
 import { AccountsListPage } from './pages/accounts_list/accounts_list.page';
+import { AddAccountPage } from './pages/add_account/add_account.page';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,14 @@ export const routes: Routes = [
         component: AccountsListPage,
         data: {
             page_name: 'accounts_list'
+        }
+    },
+    {
+        path: 'add_account',
+        pathMatch: 'full',
+        component: AddAccountPage,
+        data: {
+            page_name: 'add_account'
         }
     }
 ];

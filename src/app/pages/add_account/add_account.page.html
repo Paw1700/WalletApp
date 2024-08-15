@@ -1,7 +1,7 @@
 <div class="PAGE">
-    <bank_choose_bar [banks_list]="banks_list" (choosed_bank_id)="receiveAccounts($event)"/>
-    <account_choose_bar [accounts_list]="accounts_list" />
-    <number_input [title]="'Stan początkowy konta'" [currency]="'PLN'" />
-    <number_input [title]="'Limit debetu'" [currency]="'PLN'" />
-    <number_input [title]="'Oprocentowanie debetu'" [currency]="'%'" />
+    <bank_choose_bar [banks_list]="BANKS_LIST" (choosed_bank_id)="receiveAccounts($event)"/>
+    <account_choose_bar (choosed_account_id)="handleFormInput('account_id', $event)" [accounts_list]="account_list_of_choosen_bank" />
+    <number_input (inputed_value)="handleFormInput('start_funds', $event)" [title]="'Stan początkowy konta'" [currency]="'PLN'" />
+    <number_input (inputed_value)="handleFormInput('debet_limit', $event)" [title]="'Limit debetu'" [currency]="'PLN'" />
+    <number_input (inputed_value)="handleFormInput('debet_interest', $event)" [title]="'Oprocentowanie debetu'" [currency]="'%'" />
 </div>

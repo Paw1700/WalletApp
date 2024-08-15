@@ -10,9 +10,9 @@
                 </select>
             }
         </div>
-        } @else {
-            <account-bar (click)="changeAccount(null)" [bar_type]="'NAME_ONLY'" [account]="choosed_account" />
-        }
+    } @else {
+        <account-bar (click)="changeAccount(null)" [bar_type]="'NAME_ONLY'" [account]="choosed_account" />
+    }
     @if(component_open) {
         @for(account of accounts_list; track account.id) {
             <account-bar (click)="changeAccount(account)" [bar_type]="'NAME_ONLY'" [account]="account" />

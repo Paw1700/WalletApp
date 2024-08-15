@@ -1,9 +1,13 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { BankChooseBarComponent } from "../../components/bank_choose_bar/bank_choose_bar.component";
-import { HttpClient } from "@angular/common/http";
-import { Account, Bank } from "../../models";
+import { Account, Bank, UserAccount } from "../../models";
 import { AccountChooseBarComponent } from "../../components/account_choose_bar/account_choose_bar.component";
 import { NumberInputComponent } from "../../components/number_input_bar/number_input_bar.component";
+import BANKS_LIST_JSON from '../../../../public/assets/data/banks.json'
+import ACCOUNTS_LIST_JSON from '../../../../public/assets/data/accounts.json'
+import { NgUnsubscriber } from "../../util/ngUnsubscriber";
+import { APP_SERVICE } from "../../app.service";
+import { takeUntil } from "rxjs";
 
 @Component({
     selector: 'add_account_page',
@@ -16,28 +20,68 @@ import { NumberInputComponent } from "../../components/number_input_bar/number_i
     templateUrl: './add_account.page.html',
     styleUrl: './add_account.page.scss'
 })
-export class AddAccountPage implements OnInit {
-    http = inject(HttpClient)
-    banks_list: Bank[] = []
-    accounts_list: Account[] = []
+export class AddAccountPage extends NgUnsubscriber implements OnInit{
+    readonly APP = inject(APP_SERVICE)
+
+    readonly BANKS_LIST = BANKS_LIST_JSON as Bank[]
+    readonly ACCOUNTS_LIST = ACCOUNTS_LIST_JSON as Account[]
+    account_list_of_choosen_bank: Account[] = []
 
     ngOnInit(): void {
-        this.http.get<Bank[]>('/assets/data/banks.json').subscribe(banks => {
-            this.banks_list = banks
-        })
+        this.reactToLeftNavBarClicked()
+        this.reactToRightNavBarClicked()
     }
 
+    user_new_account: UserAccount = {
+        id: '',
+        account_id: '',
+        avaible_funds: 0,
+        debet: {
+            limit: 0,
+            interest: 0
+        }
+    } 
+
     receiveAccounts(bank_id: any) {
-        if (bank_id !== '') {
-            this.getAccountsList(bank_id).then(list => this.accounts_list = list)
+        this.account_list_of_choosen_bank = this.ACCOUNTS_LIST.filter(acc => acc.bank_id === bank_id)
+    }
+
+    handleFormInput(type: 'account_id' | 'start_funds' | 'debet_limit' | 'debet_interest', payload: any) {
+        switch(type) {
+            case "account_id":
+                this.user_new_account.account_id = payload
+                break
+            case "start_funds":
+                this.user_new_account.avaible_funds = payload
+                break
+            case "debet_limit":
+                this.user_new_account.debet.limit = payload
+                break
+            case "debet_interest":
+                this.user_new_account.debet.interest = payload
+                break
         }
     }
 
-    private getAccountsList(bank_id: string): Promise<Account[]> {
-        return new Promise((resolve, reject) => {
-            this.http.get<Account[]>('/assets/data/accounts.json').subscribe(accounts => {
-                resolve(accounts.filter(v => v.bank_id == bank_id))
+    saveAccount() {
+        const validation_result = this.APP.VALIDATOR.validateUserAccount(this.user_new_account)
+        if (validation_result) {
+            this.APP.DATA.USER_ACCOUNT.save(this.user_new_account)
+            .then(() => {
+                this.APP.navigate('accounts_list')
             })
+        }
+    }
+
+    private reactToLeftNavBarClicked() {
+        this.APP.STATE.nav_bar_left_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            this.APP.navigate('accounts_list')
+        })
+    }
+
+    private reactToRightNavBarClicked() {
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            this.saveAccount()
         })
     }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
 import { AccountBarComponent } from "../account_bar/account_bar.component";
 import { Account } from "../../models";
 import { animate, style, transition, trigger } from "@angular/animations";
@@ -31,11 +31,18 @@ import { OpenAbleComponent } from "../../interfaces/openable.component";
         ])
     ]
 })
-export class AccountChooseBarComponent extends OpenAbleComponent{
+export class AccountChooseBarComponent extends OpenAbleComponent implements OnChanges{
     @Input() accounts_list: Account[] = []
     @Output() choosed_account_id = new EventEmitter<string>()
 
     choosed_account: Account | null = null
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.accounts_list.length === 0 && this.choosed_account) {
+            this.choosed_account = null
+            this.choosed_account_id.emit('')
+        }
+    }
 
     changeAccount(account: Account | null) {
         if (this.accounts_list.length === 0) {
@@ -44,9 +51,11 @@ export class AccountChooseBarComponent extends OpenAbleComponent{
         if(account) {
             this.changeComponentOpenessState(false)
             this.choosed_account = account
+            this.choosed_account_id.emit(account.id)
         } else {
             this.changeComponentOpenessState(true)
             this.choosed_account = null
+            this.choosed_account_id.emit('')
         }
     }
 }

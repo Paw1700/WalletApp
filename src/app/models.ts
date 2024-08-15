@@ -34,7 +34,11 @@ export type Currency = "PLN" | "USD" | "EUR"
 export interface UserAccount {
     id: string,
     account_id: string,
-    avaible_funds: number
+    avaible_funds: number,
+    debet: {
+        limit: number,
+        interest: number
+    }
 }
 
 export interface Receiver {

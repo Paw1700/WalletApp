@@ -69,6 +69,11 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next('add_account')
                 break
+            case 'add_account':
+                this.ROUTER.navigateByUrl('add_account')
+                this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
+                this.APPERANCE.nav_bar_right_button_option$.next('save')
+                break   
         }
     }
 
