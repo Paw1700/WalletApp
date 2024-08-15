@@ -22,6 +22,7 @@ import { MenuPage } from './pages/menu/menu.page';
   `,
   animations: [
     trigger('ROUTE_ANIMATION', [
+      // ** FADE */
       transition('boot => *', [
         group([
           query(":enter", [
@@ -29,7 +30,7 @@ import { MenuPage } from './pages/menu/menu.page';
             animate('350ms ease-out', style({
               opacity: 1
             }))
-          ]),
+          ], { optional: true }),
           query(":leave", [
             style({ zIndex: 2, opacity: 1 }),
             animate('350ms ease-in', style({
@@ -37,7 +38,45 @@ import { MenuPage } from './pages/menu/menu.page';
             }))
           ], { optional: true })
         ])
-      ])
+      ]),
+
+      //** SLIDE TO LEFT */
+      transition('accounts_list => add_account',[
+        group([
+          query(":enter", [
+            style({ position: 'absolute', left: '100vw', zIndex: 2 }),
+            animate('350ms linear', style({
+              left: 0
+            }))
+          ], { optional: true }),
+          query(":leave", [
+            style({ zIndex: 1, position: 'absolute', left: 0, opacity: 1}),
+            animate('350ms linear', style({
+              left: '-100vw',
+              opacity: 0
+            }))
+          ], { optional: true })
+        ])
+      ]),
+
+      //** SLIDE TO RIGHT */
+      transition('add_account => accounts_list',[
+        group([
+          query(":enter", [
+            style({ zIndex: 1, position: 'absolute', left: '-100vw'}),
+            animate('350ms linear', style({
+              left: 0
+            }))
+          ], { optional: true }),
+          query(":leave", [
+            style({ zIndex: 2, position: 'absolute', left: 0, opacity: 1 }),
+            animate('350ms linear', style({
+              left: '100vw',
+              opacity: 0
+            }))
+          ], { optional: true })
+        ])
+      ]),
     ])
   ]
 })
