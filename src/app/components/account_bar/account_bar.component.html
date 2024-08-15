@@ -19,11 +19,11 @@
             <p class="DESC">W ciągu ostatnich 30 dni</p>
             <div class="VALUES">
                 <div [style.color]="account.apperance.stats_alternative_colors.plus !== null ? account.apperance.stats_alternative_colors.plus : 'var(--app-green)'" class="PLUS">
-                    <p class="AMOUNT">{{ account_funds_data.avaible_funds | number_separator }}</p>
+                    <p class="AMOUNT">{{ account_funds_data.stats_data.plus| number_separator }}</p>
                     <p class="CURRENCY">{{ account.currency }}</p>
                 </div>
                 <div [style.color]="account.apperance.stats_alternative_colors.minus !== null ? account.apperance.stats_alternative_colors.minus : 'var(--app-red)'" class="MINUS">
-                    <p class="AMOUNT">{{ account_funds_data.avaible_funds | number_separator }}</p>
+                    <p class="AMOUNT">{{ account_funds_data.stats_data.minus | number_separator }}</p>
                     <p class="CURRENCY">{{ account.currency }}</p>
                 </div>
             </div>
