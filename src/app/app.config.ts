@@ -16,6 +16,8 @@ import { PROFILE_DATA_SERVICE } from './services/data/profile.data.service';
 import { DatabaseManager } from './util/db.driver';
 import { APP_STATE } from './services/state.service';
 import { USER_ACCOUNT_DATA_SERVICE } from './services/data/user_account.data.service';
+import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
+import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,6 +39,8 @@ export const appConfig: ApplicationConfig = {
     APP_UPDATE,
     APP_VALIDATOR,
     PROFILE_DATA_SERVICE,
-    USER_ACCOUNT_DATA_SERVICE
+    USER_ACCOUNT_DATA_SERVICE,
+    USER_ACCOUNTS_RESOLVER,
+    PROFILE_RESOLVER
   ]
 };

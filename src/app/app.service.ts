@@ -46,31 +46,31 @@ export class APP_SERVICE {
         })
     }
 
-    navigate(location: AppLocations) {
+    async navigate(location: AppLocations) {
         this.STATE.app_current_location$.next(location)
         switch (location) {
             case "home":
-                this.ROUTER.navigateByUrl('/home')
+                await this.ROUTER.navigateByUrl('/home')
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case "bootstrap":
-                this.ROUTER.navigateByUrl('/')
+                await this.ROUTER.navigateByUrl('/')
                 this.APPERANCE.nav_bar_left_button_option$.next(null)
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case "app_first_configuration":
-                this.ROUTER.navigateByUrl('create_profile')
+                await this.ROUTER.navigateByUrl('create_profile')
                 this.APPERANCE.nav_bar_left_button_option$.next(null)
                 this.APPERANCE.nav_bar_right_button_option$.next('arrow_right')
                 break
             case 'accounts_list':
-                this.ROUTER.navigateByUrl('accounts_list')
+                await this.ROUTER.navigateByUrl('accounts_list')
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next('add_account')
                 break
             case 'add_account':
-                this.ROUTER.navigateByUrl('add_account')
+                await this.ROUTER.navigateByUrl('add_account')
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break   

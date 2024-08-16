@@ -4,6 +4,8 @@ import { HomePage } from './pages/home/home.page';
 import { UserProfileSetupPage } from './pages/user_profile_setup/user_profile_setup.page';
 import { AccountsListPage } from './pages/accounts_list/accounts_list.page';
 import { AddAccountPage } from './pages/add_account/add_account.page';
+import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
+import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 
 export const routes: Routes = [
     {
@@ -20,6 +22,10 @@ export const routes: Routes = [
         component: HomePage,
         data: {
             page_name: 'home'
+        },
+        resolve: {
+            user_accounts: USER_ACCOUNTS_RESOLVER,
+            profile: PROFILE_RESOLVER
         }
     },
     {
@@ -36,6 +42,9 @@ export const routes: Routes = [
         component: AccountsListPage,
         data: {
             page_name: 'accounts_list'
+        },
+        resolve: {
+            user_accounts: USER_ACCOUNTS_RESOLVER
         }
     },
     {
