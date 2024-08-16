@@ -1,6 +1,5 @@
 div.ACCOUNTS_CAROUSEL {
     width: 100%;
-    overflow-x: hidden;
 
     div.CAROUSEL {
         min-width: 100%;
@@ -8,9 +7,14 @@ div.ACCOUNTS_CAROUSEL {
         flex-direction: row;
         align-content: center;
         justify-content: flex-start;
-        position: relative;
-        right: 0vw;
-        transition: right 0.15s ease;
+        overflow-x: scroll;
+
+        //* HIDE SCROLLBAR
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
 
         div.ALL_ACCOUNTS {
             min-width: 92vw;
@@ -46,7 +50,7 @@ div.ACCOUNTS_CAROUSEL {
                 }
             }
         }
-    
+
         account-bar {
             padding-inline: 4vw;
         }
@@ -60,12 +64,6 @@ div.ACCOUNTS_CAROUSEL {
         justify-content: center;
         gap: 1.25vw;
         margin-top: 1.25vh;
-        opacity: 0;
-        transition: opacity 200ms ease;
-
-        &.SHOW {
-            opacity: 1;
-        }
 
         div.MAIN_DOT,
         div.DOT {
