@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class NumberSeparator implements PipeTransform {
     transform(v: number | string | null) {
         if (typeof v === 'string') {
-            v = +v
+            v = Number(v)
         }
         if (!v) {
             v = 0

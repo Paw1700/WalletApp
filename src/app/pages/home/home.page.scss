@@ -44,11 +44,14 @@ div.PAGE {
         }
     }
 
+    accounts_carousel {
+        width: 100vw;
+    }
+
     div.TRANSACTIONS {
         width: 100%;
         display: flex;
         flex-direction: column;
-        padding-top: 1.7vh;
         gap: 1.17vh;
 
         p.TITLE {

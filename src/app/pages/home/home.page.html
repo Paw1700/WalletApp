@@ -6,15 +6,14 @@
         </div>
         <img [src]="profile.image" />
     </div>
-    <!-- !!! ADD CAROUSEL OF ACCOUNT-BARS  !!! -->
-    <account-bar />
+    <accounts_carousel [accounts_data]="accounts_carousel_data" (active_account_number)="handleActiveAccountChange($event)" />
     <div class="TRANSACTIONS">
         <p class="TITLE">Lista transakcji</p>
         <div class="LIST">
+            <!-- <transaction-bar />
             <transaction-bar />
             <transaction-bar />
-            <transaction-bar />
-            <transaction-bar />
+            <transaction-bar /> -->
         </div>
     </div>
 </div>

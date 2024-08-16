@@ -4,7 +4,7 @@ import { APP_SERVICE } from "../../app.service";
 import ACCOUNTS_LIST_JSON from '../../../../public/assets/data/accounts.json'
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
-import { AccountBarComponent } from "../../components/account_bar/account_bar.component";
+import { AccountBar_Data, AccountBarComponent } from "../../components/account_bar/account_bar.component";
 
 @Component({
     selector: 'accounts_list',
@@ -20,7 +20,7 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit{
     readonly ACCOUNTS_LIST = ACCOUNTS_LIST_JSON as Account[]
 
     user_accounts_list: UserAccount[] = []
-    user_accounts_list_to_display: {account: Account, user_account: UserAccount}[] = []
+    user_accounts_list_to_display: AccountBar_Data[] = []
 
     ngOnInit(): void {
         this.fetchAllUserAccounts()
@@ -33,15 +33,11 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit{
             this.user_accounts_list_to_display = []
             this.user_accounts_list.forEach( user_acc => {
                 let account = this.ACCOUNTS_LIST.filter(acc => acc.id === user_acc.account_id)[0]
-                this.user_accounts_list_to_display.push({account: account, user_account: user_acc})
+                this.user_accounts_list_to_display.push({account: account, funds_data: {avaible_funds: user_acc.avaible_funds, stats_data: {plus: 0, minus: 0}}})
             })
         } catch (err) {
             console.error(err)
         }
-        // this.APP.DATA.USER_ACCOUNT.getAll()
-        //     .then( list => {
-        //         this.user_accounts_list = list
-        //     })
     }
 
     private listenToNavBarRightButtonClick() {

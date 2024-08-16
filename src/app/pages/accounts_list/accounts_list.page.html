@@ -3,8 +3,8 @@
     @if (user_accounts_list_to_display.length === 0) {
         <p class="NO_ACCOUNTS">Brak kont bankowych</p>
     } @else {
-        @for (item of user_accounts_list_to_display; track item.user_account.id) {
-            <account-bar [account]="item.account" [account_funds_data]="{avaible_funds: item.user_account.avaible_funds, stats_data: {plus: 0, minus: 0}}"/>
+        @for (item of user_accounts_list_to_display; track $index) {
+            <account-bar [bar_data]="{account: item.account, funds_data: item.funds_data}"/>
         }
     }
 </div>
