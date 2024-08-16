@@ -52,7 +52,7 @@ export class APP_SERVICE {
             case "home":
                 this.ROUTER.navigateByUrl('/home')
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
-                this.APPERANCE.nav_bar_right_button_option$.next('add_transaction')
+                this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case "bootstrap":
                 this.ROUTER.navigateByUrl('/')

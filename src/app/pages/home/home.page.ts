@@ -27,8 +27,11 @@ export class HomePage extends NgUnsubscriber implements OnInit{
     }
 
     handleActiveAccountChange(account_list_number: number) {
-        console.log(account_list_number);
-        
+        if (account_list_number < 0) {
+            this.APP.APPERANCE.nav_bar_right_button_option$.next(null)
+        } else {
+            this.APP.APPERANCE.nav_bar_right_button_option$.next('add_transaction')
+        }
     }
 
     private async fetchUserData() {

@@ -6,14 +6,18 @@
         </div>
         <img [src]="profile.image" />
     </div>
-    <accounts_carousel [accounts_data]="accounts_carousel_data" (active_account_number)="handleActiveAccountChange($event)" />
-    <div class="TRANSACTIONS">
-        <p class="TITLE">Lista transakcji</p>
-        <div class="LIST">
-            <!-- <transaction-bar />
-            <transaction-bar />
-            <transaction-bar />
-            <transaction-bar /> -->
+    @if (accounts_carousel_data.length !== 0) {
+        <accounts_carousel [accounts_data]="accounts_carousel_data" (active_account_number)="handleActiveAccountChange($event)" />
+        <div class="TRANSACTIONS">
+            <p class="TITLE">Lista transakcji</p>
+            <div class="LIST">
+                <!-- <transaction-bar />
+                <transaction-bar />
+                <transaction-bar />
+                <transaction-bar /> -->
+            </div>
         </div>
-    </div>
+    } @else {
+        <p class="NO_ACCOUNTS">Brak kont bankowych przejdź do zakładki konta i dodaj jedną</p>
+    }
 </div>
