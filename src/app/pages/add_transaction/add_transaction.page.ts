@@ -6,6 +6,7 @@ import { ReceiverChooseBar } from "../../components/receiver_choose_bar/receiver
 import { Transaction, Transaction_Type } from "../../models";
 import { TextInputBar } from "../../components/text_input_bar/text_input_bar.component";
 import { ActivatedRoute } from "@angular/router";
+import { DateChooseBar } from "../../components/date_choose_bar/date_choose_bar.component";
 
 @Component({
     selector: 'add_transaction_page',
@@ -15,12 +16,13 @@ import { ActivatedRoute } from "@angular/router";
         CategoryChooseBar,
         NumberInputComponent,
         ReceiverChooseBar,
-        TextInputBar
+        TextInputBar,
+        DateChooseBar
     ],
     templateUrl: './add_transaction.page.html',
     styleUrl: './add_transaction.page.scss'
 })
-export class AddTransactionPage implements OnInit{
+export class AddTransactionPage implements OnInit {
     readonly ROUTE = inject(ActivatedRoute)
 
     transaction_type: Transaction_Type = 'expense'
@@ -35,15 +37,23 @@ export class AddTransactionPage implements OnInit{
     }
 
     ngOnInit(): void {
-        this.ROUTE.queryParamMap.subscribe( data => {
+        this.ROUTE.queryParamMap.subscribe(data => {
             this.new_transaction.user_account_id = data.get('id')!
         })
     }
 
-    handleFormInput(type: 'transaction_type' | 'category_id' | 'receiver_id' | 'amount' | 'desc', payload: any) {
-        switch(type) {
+    handleFormInput(type: 'date' | 'transaction_type' | 'category_id' | 'receiver_id' | 'amount' | 'desc', payload: any) {
+        switch (type) {
+            case 'date':
+                this.new_transaction.date = payload
+                break
             case 'transaction_type':
                 this.transaction_type = payload
+                if (this.transaction_type === 'expense') {
+                    this.new_transaction.amount = -Math.abs(this.new_transaction.amount)
+                } else if (this.transaction_type = 'income') {
+                    this.new_transaction.amount = Math.abs(this.new_transaction.amount)
+                }
                 break
             case 'category_id':
                 this.new_transaction.category_id = payload
@@ -52,10 +62,10 @@ export class AddTransactionPage implements OnInit{
                 this.new_transaction.receiver_id = payload
                 break
             case 'amount':
-                if (this.transaction_type === 'expense'){
-                    this.new_transaction.amount = -Number(payload)
-                } else {
-                    this.new_transaction.amount = Number(payload)
+                if (this.transaction_type === 'expense') {
+                    this.new_transaction.amount = -Math.abs(payload)
+                } else if (this.transaction_type = 'income') {
+                    this.new_transaction.amount = Math.abs(payload)
                 }
                 break
             case 'desc':
