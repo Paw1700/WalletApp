@@ -6,6 +6,7 @@ import { AccountsListPage } from './pages/accounts_list/accounts_list.page';
 import { AddAccountPage } from './pages/add_account/add_account.page';
 import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
+import { AddTransactionPage } from './pages/add_transaction/add_transaction.page';
 
 export const routes: Routes = [
     {
@@ -53,6 +54,14 @@ export const routes: Routes = [
         component: AddAccountPage,
         data: {
             page_name: 'add_account'
+        }
+    },
+    {
+        path: 'add_transaction',
+        pathMatch: 'full',
+        component: AddTransactionPage,
+        data: {
+            page_name: 'add_transaction'
         }
     }
 ];

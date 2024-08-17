@@ -46,7 +46,7 @@ export class APP_SERVICE {
         })
     }
 
-    async navigate(location: AppLocations) {
+    async navigate(location: AppLocations, options?: any) {
         this.STATE.app_current_location$.next(location)
         switch (location) {
             case "home":
@@ -74,6 +74,15 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break   
+            case 'add_transaction':
+                if (!options) {
+                    console.error('Lack of user account id in navigation method');
+                    return 
+                }
+                await this.ROUTER.navigateByUrl(`add_transaction?id=${options}`)
+                this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
+                this.APPERANCE.nav_bar_right_button_option$.next('save')
+                break
         }
     }
 

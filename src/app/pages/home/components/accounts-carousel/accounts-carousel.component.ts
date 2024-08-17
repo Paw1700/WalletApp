@@ -28,7 +28,6 @@ export class AccountsCarousel {
 
     handleTouchEnd() {
         const scroll_value_divided_by_window_width_rounded_to_integer = Math.round(this.scroll_value / window.innerWidth)
-        console.log(scroll_value_divided_by_window_width_rounded_to_integer);
         document.getElementById('CAROUSEL')?.scrollTo({ left: scroll_value_divided_by_window_width_rounded_to_integer * window.innerWidth, top: 0, behavior: 'smooth' })
         this.informOfAccountChange(scroll_value_divided_by_window_width_rounded_to_integer - 1)
     }

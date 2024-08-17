@@ -6,6 +6,7 @@ import { AccountsCarousel } from "./components/accounts-carousel/accounts-carous
 import { AccountBar_Data, AccountFundsData } from "../../components/account_bar/account_bar.component";
 import ACCOUNTS_DATA_JSON from '../../../../public/assets/data/accounts.json'
 import { ActivatedRoute } from "@angular/router";
+import { takeUntil } from "rxjs";
 
 @Component({
     selector: 'home_page',
@@ -23,12 +24,15 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     profile: Profile = { id: '', name: '', surname: '', image: '' }
     user_accounts: UserAccount[] = []
     accounts_carousel_data: AccountBar_Data[] = []
+    active_user_account = -1
 
     ngOnInit(): void {
         this.fetchUserData()
+        this.reactToNavBarRightButtonClicked()
     }
 
     handleActiveAccountChange(account_list_number: number) {
+        this.active_user_account = account_list_number
         if (account_list_number < 0) {
             this.APP.APPERANCE.nav_bar_right_button_option$.next(null)
         } else {
@@ -41,15 +45,23 @@ export class HomePage extends NgUnsubscriber implements OnInit {
             this.user_accounts = route_data['user_accounts']
             this.profile = route_data['profile']
         })
-        this.updateAccountCarouselData(this.user_accounts)
+        this.updateAccountCarouselData()
     }
 
-    private updateAccountCarouselData(user_accounts: UserAccount[]) {
-        this.user_accounts = []
-        user_accounts.forEach(us_acc => {
+    private updateAccountCarouselData() {
+        this.accounts_carousel_data = []
+        this.user_accounts.forEach(us_acc => {
             let account = this.ACCOUNTS_DATA.filter(acc => acc.id === us_acc.account_id)[0] as Account
             let funds_d: AccountFundsData = { avaible_funds: us_acc.avaible_funds, stats_data: { plus: 0, minus: 0 } }
             this.accounts_carousel_data.push({ account: account, funds_data: funds_d })
+        })
+    }
+
+    private reactToNavBarRightButtonClicked() {
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            if (this.active_user_account > -1) {
+                this.APP.navigate('add_transaction', this.user_accounts[this.active_user_account].id)
+            }
         })
     }
 }

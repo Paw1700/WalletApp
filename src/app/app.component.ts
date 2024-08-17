@@ -41,7 +41,7 @@ import { MenuPage } from './pages/menu/menu.page';
       ]),
 
       //** SLIDE TO LEFT */
-      transition('accounts_list => add_account',[
+      transition('accounts_list => add_account, home => add_transaction',[
         group([
           query(":enter", [
             style({ position: 'absolute', left: '100vw', zIndex: 2 }),
