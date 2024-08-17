@@ -1,0 +1,137 @@
+[
+    {
+        "id": "AGA-BLE",
+        "name": "Agata Meble",
+        "logo_src": "/assets/receivers_logos/agata_meble.webp"
+    },
+    {
+        "id": "ALD-LDI",
+        "name": "Aldi",
+        "logo_src": "/assets/receivers_logos/aldi.webp"
+    },
+    {
+        "id": "ALL-GRO",
+        "name": "Allegro",
+        "logo_src": "/assets/receivers_logos/allegro.webp"
+    },
+    {
+        "id": "AUC-HAN",
+        "name": "Auchan",
+        "logo_src": "/assets/receivers_logos/auchan.webp"
+    },
+    {
+        "id": "AUC-HAN",
+        "name": "Auchan",
+        "logo_src": "/assets/receivers_logos/auchan.webp"
+    },
+    {
+        "id": "BIE-NKA",
+        "name": "Biedronka",
+        "logo_src": "/assets/receivers_logos/biedronka.webp"
+    },
+    {
+        "id": "BLA-ITE",
+        "name": "Black Red White",
+        "logo_src": "/assets/receivers_logos/black_red_white.webp"
+    },
+    {
+        "id": "BRI-CHE",
+        "name": "Bricomarche",
+        "logo_src": "/assets/receivers_logos/bricomarche.webp"
+    },
+    {
+        "id": "CAR-OUR",
+        "name": "Carrefour",
+        "logo_src": "/assets/receivers_logos/carrefour.webp"
+    },
+    {
+        "id": "CAS-AMA",
+        "name": "Castorama",
+        "logo_src": "/assets/receivers_logos/castorama.webp"
+    },
+    {
+        "id": "DEA-ALZ",
+        "name": "Dealz",
+        "logo_src": "/assets/receivers_logos/dealz.webp"
+    },
+    {
+        "id": "DIN-INO",
+        "name": "Dino",
+        "logo_src": "/assets/receivers_logos/dino.webp"
+    },
+    {
+        "id": "E.L-ERC",
+        "name": "E.Leclerc",
+        "logo_src": "/assets/receivers_logos/eleclerc.webp"
+    },
+    {
+        "id": "EMP-PIK",
+        "name": "Empik",
+        "logo_src": "/assets/receivers_logos/empik.webp"
+    },
+    {
+        "id": "GOO-GLE",
+        "name": "Google",
+        "logo_src": "/assets/receivers_logos/google.webp"
+    },
+    {
+        "id": "H&M-H&M",
+        "name": "H&M",
+        "logo_src": "/assets/receivers_logos/h&m.webp"
+    },
+    {
+        "id": "IKE-KEA",
+        "name": "Ikea",
+        "logo_src": "/assets/receivers_logos/ikea.webp"
+    },
+    {
+        "id": "INT-CHE",
+        "name": "Intermarché",
+        "logo_src": "/assets/receivers_logos/intermarche.webp"
+    },
+    {
+        "id": "KAU-AND",
+        "name": "Kaufland",
+        "logo_src": "/assets/receivers_logos/kaufland.webp"
+    },
+    {
+        "id": "LID_IDL",
+        "name": "Lidl",
+        "logo_src": "/assets/receivers_logos/lidl.webp"
+    },
+    {
+        "id": "NET-TTO",
+        "name": "Netto",
+        "logo_src": "/assets/receivers_logos/netto.webp"
+    },
+    {
+        "id": "ORL-LEN",
+        "name": "Orlen",
+        "logo_src": "/assets/receivers_logos/orlen.webp"
+    },
+    {
+        "id": "PEP-PCO",
+        "name": "Pepco",
+        "logo_src": "/assets/receivers_logos/pepco.webp"
+    },
+    {
+        "id": "POL-KET",
+        "name": "Polomarket",
+        "logo_src": "/assets/receivers_logos/polomarket.webp"
+    },
+    {
+        "id": "POL-KET",
+        "name": "Polomarket",
+        "logo_src": "/assets/receivers_logos/polomarket.webp"
+    },
+    {
+        "id": "ROS-ANN",
+        "name": "Rossmann",
+        "logo_src": "/assets/receivers_logos/rossmann.webp"
+    },
+    {
+        "id": "ZAB-BKA",
+        "name": "Żabka",
+        "logo_src": "/assets/receivers_logos/zabka.webp"
+    }
+]
