@@ -1,7 +1,10 @@
 <div class="PAGE">
-    <transaction_choose_bar (choosed_option_type)="changeTransactionType($event)" />
-    <category_choose_bar />
-    <receiver_choose_bar [transaction_type]="transaction_type" />
-    <number_input [title]="'Kwota'" [currency]="'PLN'" />
-    <text_input_bar [title]="'Opis'" [placeholder]="'nie wymagane'" />
+    <transaction_choose_bar (choosed_option_type)="handleFormInput('transaction_type', $event)" />
+
+    <!-- !!! ADD DATE FORM INPUT !!! -->
+    
+    <category_choose_bar (choosed_categorie_id)="handleFormInput('category_id', $event)" />
+    <receiver_choose_bar (choosed_receiver_id)="handleFormInput('receiver_id', $event)" [transaction_type]="transaction_type" />
+    <number_input (inputed_value)="handleFormInput('amount', $event)" [title]="'Kwota'" [currency]="'PLN'" />
+    <text_input_bar (inputed_text)="handleFormInput('desc', $event)" [title]="'Opis'" [placeholder]="'nie wymagane'" />
 </div>
