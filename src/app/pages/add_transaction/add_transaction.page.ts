@@ -100,7 +100,12 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     
     private reactToNavBarRightButtonClicked() {
         this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
-            
+            if (this.APP.VALIDATOR.validateTranasaction(this.new_transaction)) {
+                this.APP.DATA.TRANSACTION.save(this.new_transaction)
+                .then(() => {
+                    this.APP.navigate('home')
+                })
+            }
         })
     }
 }

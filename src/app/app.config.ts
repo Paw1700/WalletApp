@@ -20,6 +20,7 @@ import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
+import { TRANSACTION_DATA_SERVICE } from './services/data/transaction.data.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,6 +46,7 @@ export const appConfig: ApplicationConfig = {
     USER_ACCOUNTS_RESOLVER,
     PROFILE_RESOLVER,
     ACCOUNTS_RESOLVER,
-    RECEIVERS_RESOLVER
+    RECEIVERS_RESOLVER,
+    TRANSACTION_DATA_SERVICE
   ]
 };
