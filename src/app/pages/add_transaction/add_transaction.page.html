@@ -2,7 +2,7 @@
     <date_choose_bar (choosed_date)="handleFormInput('date', $event)" />
     <transaction_choose_bar (choosed_option_type)="handleFormInput('transaction_type', $event)" />
     <category_choose_bar (choosed_categorie_id)="handleFormInput('category_id', $event)" />
-    <receiver_choose_bar (choosed_receiver_id)="handleFormInput('receiver_id', $event)" [transaction_type]="transaction_type" />
+    <receiver_choose_bar (choosed_receiver_id)="handleFormInput('receiver_id', $event)" [full_receiver_list]="receivers_list" [transaction_type]="transaction_type" />
     <number_input (inputed_value)="handleFormInput('amount', $event)" [title]="'Kwota'" [currency]="'PLN'" />
     <text_input_bar (inputed_text)="handleFormInput('desc', $event)" [title]="'Opis'" [placeholder]="'nie wymagane'" />
 </div>

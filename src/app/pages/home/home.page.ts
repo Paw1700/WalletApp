@@ -4,9 +4,9 @@ import { Account, Profile, UserAccount } from "../../models";
 import { APP_SERVICE } from "../../app.service";
 import { AccountsCarousel } from "./components/accounts-carousel/accounts-carousel.component";
 import { AccountBar_Data, AccountFundsData } from "../../components/account_bar/account_bar.component";
-import ACCOUNTS_DATA_JSON from '../../../../public/assets/data/accounts.json'
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
     selector: 'home_page',
@@ -19,15 +19,16 @@ import { takeUntil } from "rxjs";
 })
 export class HomePage extends NgUnsubscriber implements OnInit {
     readonly APP = inject(APP_SERVICE)
+    readonly http = inject(HttpClient)
     readonly ROUTE = inject(ActivatedRoute)
-    private readonly ACCOUNTS_DATA = ACCOUNTS_DATA_JSON
+    private ACCOUNTS_DATA: Account[] = []
     profile: Profile = { id: '', name: '', surname: '', image: '' }
     user_accounts: UserAccount[] = []
     accounts_carousel_data: AccountBar_Data[] = []
     active_user_account = -1
 
     ngOnInit(): void {
-        this.fetchUserData()
+        this.fetchRouteData()
         this.reactToNavBarRightButtonClicked()
     }
 
@@ -40,10 +41,11 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         }
     }
 
-    private fetchUserData() {
+    private fetchRouteData() {
         this.ROUTE.data.subscribe(route_data => {
             this.user_accounts = route_data['user_accounts']
             this.profile = route_data['profile']
+            this.ACCOUNTS_DATA = route_data['accounts']
         })
         this.updateAccountCarouselData()
     }

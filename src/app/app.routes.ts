@@ -7,6 +7,8 @@ import { AddAccountPage } from './pages/add_account/add_account.page';
 import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 import { AddTransactionPage } from './pages/add_transaction/add_transaction.page';
+import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
+import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 
 export const routes: Routes = [
     {
@@ -26,7 +28,8 @@ export const routes: Routes = [
         },
         resolve: {
             user_accounts: USER_ACCOUNTS_RESOLVER,
-            profile: PROFILE_RESOLVER
+            profile: PROFILE_RESOLVER,
+            accounts: ACCOUNTS_RESOLVER
         }
     },
     {
@@ -62,6 +65,9 @@ export const routes: Routes = [
         component: AddTransactionPage,
         data: {
             page_name: 'add_transaction'
+        },
+        resolve: {
+            receivers: RECEIVERS_RESOLVER
         }
     }
 ];

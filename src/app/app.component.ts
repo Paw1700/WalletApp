@@ -60,7 +60,7 @@ import { MenuPage } from './pages/menu/menu.page';
       ]),
 
       //** SLIDE TO RIGHT */
-      transition('add_account => accounts_list',[
+      transition('add_account => accounts_list, add_transaction => home',[
         group([
           query(":enter", [
             style({ zIndex: 1, position: 'absolute', left: '-100vw'}),

@@ -3,10 +3,13 @@ import { TransactionTypeChooseBar } from "../../components/transaction_type_choo
 import { CategoryChooseBar } from "../../components/category_choose_bar/category_choose_bar.component";
 import { NumberInputComponent } from "../../components/number_input_bar/number_input_bar.component";
 import { ReceiverChooseBar } from "../../components/receiver_choose_bar/receiver_choose_bar.component";
-import { Transaction, Transaction_Type } from "../../models";
+import { Receiver, Transaction, Transaction_Type } from "../../models";
 import { TextInputBar } from "../../components/text_input_bar/text_input_bar.component";
 import { ActivatedRoute } from "@angular/router";
 import { DateChooseBar } from "../../components/date_choose_bar/date_choose_bar.component";
+import { APP_SERVICE } from "../../app.service";
+import { NgUnsubscriber } from "../../util/ngUnsubscriber";
+import { takeUntil } from "rxjs";
 
 @Component({
     selector: 'add_transaction_page',
@@ -22,9 +25,11 @@ import { DateChooseBar } from "../../components/date_choose_bar/date_choose_bar.
     templateUrl: './add_transaction.page.html',
     styleUrl: './add_transaction.page.scss'
 })
-export class AddTransactionPage implements OnInit {
+export class AddTransactionPage extends NgUnsubscriber implements OnInit {
+    readonly APP = inject(APP_SERVICE)
     readonly ROUTE = inject(ActivatedRoute)
 
+    receivers_list: Receiver[] = []
     transaction_type: Transaction_Type = 'expense'
     new_transaction: Transaction = {
         id: "",
@@ -37,9 +42,9 @@ export class AddTransactionPage implements OnInit {
     }
 
     ngOnInit(): void {
-        this.ROUTE.queryParamMap.subscribe(data => {
-            this.new_transaction.user_account_id = data.get('id')!
-        })
+        this.fetchRouteData()
+        this.reactToNavBarLeftButtonClicked()
+        this.reactToNavBarRightButtonClicked()
     }
 
     handleFormInput(type: 'date' | 'transaction_type' | 'category_id' | 'receiver_id' | 'amount' | 'desc', payload: any) {
@@ -76,5 +81,26 @@ export class AddTransactionPage implements OnInit {
 
     changeTransactionType(type: Transaction_Type) {
         this.transaction_type = type
+    }
+
+    private fetchRouteData() {
+        this.ROUTE.queryParamMap.subscribe(data => {
+            this.new_transaction.user_account_id = data.get('id')!
+        })
+        this.ROUTE.data.subscribe( route_data => {
+            this.receivers_list = route_data['receivers']
+        })
+    }
+
+    private reactToNavBarLeftButtonClicked() {
+        this.APP.STATE.nav_bar_left_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            this.APP.navigate('home')
+        })
+    }
+    
+    private reactToNavBarRightButtonClicked() {
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            
+        })
     }
 }

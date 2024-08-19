@@ -18,6 +18,8 @@ import { APP_STATE } from './services/state.service';
 import { USER_ACCOUNT_DATA_SERVICE } from './services/data/user_account.data.service';
 import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
+import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
+import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -41,6 +43,8 @@ export const appConfig: ApplicationConfig = {
     PROFILE_DATA_SERVICE,
     USER_ACCOUNT_DATA_SERVICE,
     USER_ACCOUNTS_RESOLVER,
-    PROFILE_RESOLVER
+    PROFILE_RESOLVER,
+    ACCOUNTS_RESOLVER,
+    RECEIVERS_RESOLVER
   ]
 };

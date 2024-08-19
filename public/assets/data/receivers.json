@@ -20,11 +20,6 @@
         "logo_src": "/assets/receivers_logos/auchan.webp"
     },
     {
-        "id": "AUC-HAN",
-        "name": "Auchan",
-        "logo_src": "/assets/receivers_logos/auchan.webp"
-    },
-    {
         "id": "BIE-NKA",
         "name": "Biedronka",
         "logo_src": "/assets/receivers_logos/biedronka.webp"
@@ -113,11 +108,6 @@
         "id": "PEP-PCO",
         "name": "Pepco",
         "logo_src": "/assets/receivers_logos/pepco.webp"
-    },
-    {
-        "id": "POL-KET",
-        "name": "Polomarket",
-        "logo_src": "/assets/receivers_logos/polomarket.webp"
     },
     {
         "id": "POL-KET",

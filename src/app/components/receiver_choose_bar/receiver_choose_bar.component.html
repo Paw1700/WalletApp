@@ -16,7 +16,7 @@
     </div>
     @if (component_open) {
         <div [@list] class="SEARCH_BAR">
-            <input type="text" class="SEARCH_INPUT" />
+            <input (input)="handleSearchBarInput($event)" type="text" class="SEARCH_INPUT" />
             <p>INNY</p>
         </div>
         <div [@list] class="RECEIVER_LIST">
