@@ -3,8 +3,8 @@
     - [ ] Pages
         - [x] Menu
         - [x] Home 
-        - [ ] Adding transaction 
-        - [ ] List of accounts 
+        - [x] Adding transaction 
+        - [x] List of accounts 
         - [x] Adding account 
         - [ ] Overview account 
         - [ ] List of planned transaction 
@@ -15,18 +15,18 @@
         - [ ] Adding Stock
         - [ ] Settings
         - [x] Boot Screen
-        - [ ] First setup
+        - [x] First setup
     - [ ] Components
         - [x] Account Bar (3 types: BIG/MIDDLE/SMALL)
         - [x] Transaction Bar
         - [x] Categorie Choose Bar
-        - [ ] Receiver Choose Bar
-        - [ ] Description Bar
+        - [x] Receiver Choose Bar
+        - [x] Description Bar
         - [x] Transaction Type Choose Bar
         - [x] Number Input Bar
         - [x] Bank Choose Bar
         - [x] Account Choose Bar
-        - [ ] Bottom Nav Bar
+        - [x] Bottom Nav Bar
 - [ ] Build logic
     - [ ] Add static data
         - [x] Banks
@@ -48,6 +48,7 @@
         - [ ] -- APPERANCE --
             - [x] Changing Status Bar Color Method
             - [x] Changing Acccent Color Method
+            - [ ] Setting Apperance By App
         - [ ] -- UPDATE --
             - [ ] App Data Update Scripts
             - [ ] App Backup Update Scripts
@@ -57,12 +58,22 @@
         - [ ] -- VALIDATOR --
             - [ ] Check App Backup validity
             - [ ] Check Profile Validity
-            - [ ] Checkc Account Data Validity
-            - [ ] Check Transaction Data Validity
+            - [x] Checkc Account Data Validity
+            - [x] Check Transaction Data Validity
         - [ ] -- DATA --
-            - [ ] -- ACCOUNT --
+            - [x] -- TRANSACTION --
+                - [x] Adding transaction
+                - [x] Updating transaction
+                - [x] Getting transaction
+                - [x] Deleting transaction
             - [x] -- PROFILE --
                 - [x] Adding profile
+                - [x] Updating profile 
                 - [x] Getting profile
                 - [x] Deleting profile
+            - [x] -- USER_ACCOUNT --
+                - [x] Adding user account
+                - [x] Updating user account
+                - [x] Getting user account
+                - [x] Deleting user account
 - [ ] Error Logic

@@ -9,6 +9,8 @@ import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 import { AddTransactionPage } from './pages/add_transaction/add_transaction.page';
 import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
+import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
+import { TRANSACTIONS_RESOLVER } from './resolvers/transactions.resolver';
 
 export const routes: Routes = [
     {
@@ -29,7 +31,10 @@ export const routes: Routes = [
         resolve: {
             user_accounts: USER_ACCOUNTS_RESOLVER,
             profile: PROFILE_RESOLVER,
-            accounts: ACCOUNTS_RESOLVER
+            accounts: ACCOUNTS_RESOLVER,
+            categories: CATEGORY_RESOLVER,
+            receivers: RECEIVERS_RESOLVER,
+            transactions: TRANSACTIONS_RESOLVER
         }
     },
     {
