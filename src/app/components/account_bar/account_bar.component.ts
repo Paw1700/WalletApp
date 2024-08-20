@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
-import { Account, Bank, Currency } from "../../models";
+import { Component, Input, OnInit } from "@angular/core";
+import { Account } from "../../models";
 import { NgStyle } from "@angular/common";
 import { NumberSeparator } from "../../pipes/number_separator.pipe";
 
@@ -10,7 +10,7 @@ import { NumberSeparator } from "../../pipes/number_separator.pipe";
     templateUrl: './account_bar.component.html',
     styleUrl: './account_bar.component.scss'
 })
-export class AccountBarComponent implements OnChanges, OnInit {
+export class AccountBarComponent implements OnInit {
     @Input() bar_type: AccountBarComponent_Types = 'FULL'
     @Input() bar_data: AccountBar_Data = {
         account: {
@@ -42,10 +42,6 @@ export class AccountBarComponent implements OnChanges, OnInit {
     bank_logo = ''
 
     ngOnInit(): void {
-        this.setBarStyle()
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
         this.setBarStyle()
     }
     

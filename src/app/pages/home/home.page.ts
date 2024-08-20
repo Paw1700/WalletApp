@@ -6,7 +6,6 @@ import { AccountsCarousel } from "./components/accounts-carousel/accounts-carous
 import { AccountBar_Data, AccountFundsData } from "../../components/account_bar/account_bar.component";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
-import { HttpClient } from "@angular/common/http";
 import { TransactionBarComponent, TransactionBarComponent_Data } from "../../components/transaction_bar/transaction_bar.component";
 
 @Component({
@@ -21,7 +20,6 @@ import { TransactionBarComponent, TransactionBarComponent_Data } from "../../com
 })
 export class HomePage extends NgUnsubscriber implements OnInit {
     readonly APP = inject(APP_SERVICE)
-    readonly http = inject(HttpClient)
     readonly ROUTE = inject(ActivatedRoute)
     private ACCOUNTS_LIST: Account[] = []
     PROFILE: Profile = { id: '', name: '', surname: '', image: '' }
@@ -38,14 +36,18 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         this.fetchRouteData()
         this.reactToNavBarRightButtonClicked()
         this.fetchUserAccountsTransactions()
+        this.APP.APPERANCE.setAppAccentColor(null)
     }
 
     handleActiveAccountChange(account_list_number: number) {
         this.active_user_account = account_list_number
         if (account_list_number < 0) {
             this.APP.APPERANCE.nav_bar_right_button_option$.next(null)
+            this.APP.APPERANCE.setAppAccentColor(null)
         } else {
             this.APP.APPERANCE.nav_bar_right_button_option$.next('add_transaction')
+            const account = this.ACCOUNTS_LIST.filter(acc => acc.id === this.USER_ACCOUNTS[this.active_user_account].account_id)[0]
+            this.APP.APPERANCE.setAppAccentColor(account.apperance.background_gradient.bottom ? account.apperance.background_gradient.bottom : account.apperance.background_gradient.top)
         }
         this.fetchUserAccountsTransactions()
     }
@@ -92,6 +94,16 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         } else {
             transaction_list_to_add_date = this.TRANSACTION_LIST
         }
+
+        transaction_list_to_add_date.sort((a, b) => {
+            if (a.date > b.date) {
+                return -1
+            } else if (a.date < b.date) {
+                return 1
+            } else {
+                return 0
+            }
+        })
 
         transaction_list_to_add_date.forEach((tr) => {
             const category: Category = this.CATEGORIES_LIST.filter(cat => cat.id === tr.category_id)[0]

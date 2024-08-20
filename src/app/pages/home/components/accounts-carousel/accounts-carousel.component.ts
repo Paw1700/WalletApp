@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { AccountBar_Data, AccountBarComponent } from "../../../../components/account_bar/account_bar.component";
 import { NumberSeparator } from "../../../../pipes/number_separator.pipe";
 import { NgStyle } from "@angular/common";
@@ -14,13 +14,20 @@ import { NgStyle } from "@angular/common";
     templateUrl: './accounts-carousel.component.html',
     styleUrl: './accounts-carousel.component.scss'
 })
-export class AccountsCarousel {
+export class AccountsCarousel implements OnInit {
     @Input() accounts_data: AccountBar_Data[] = []
     @Output() active_account_number = new EventEmitter<number>()
 
+    sum_of_avaible_funds = 0
     scroll_value = 0
     active_list_indicator = -1
     show_list_indicator = false
+
+    ngOnInit(): void {
+        this.accounts_data.forEach(acc => {
+            this.sum_of_avaible_funds += acc.funds_data?.avaible_funds!
+        })
+    }
 
     handleScrollGesture(e: any) {
         this.scroll_value = e.target.scrollLeft
