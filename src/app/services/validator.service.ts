@@ -1,22 +1,22 @@
 import { Injectable } from "@angular/core";
-import { Account, Profile, Transaction, UserAccount } from "../models";
+import { Profile, Transaction, UserAccount, ValidationResult } from "../models";
 
 @Injectable()
 export class APP_VALIDATOR {
-    validateUserProfile(profile: Profile): boolean {
+    validateUserProfile(profile: Profile): ValidationResult {
+        if (profile.id === '' || profile.id === undefined || profile.id === null) {
+            return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-ID'}
+        }
         if (profile.image === '' || profile.image === null || profile.image === undefined) {
-            console.error('Profile data do not have image')
-            return false
+            return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-IMAGE'}
         }
         if (profile.name === '' || profile.name === null || profile.name === undefined) {
-            console.error('Profile data do not have name')
-            return false
+            return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-NAME'}
         }
         if (profile.surname === '' || profile.surname === null || profile.surname === undefined) {
-            console.error('Profile data do not have surname')
-            return false
+            return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-SURNAME'}
         }
-        return true
+        return {pass: true}
     }
 
     validateUserAccount(user_account: UserAccount): boolean {
@@ -62,4 +62,12 @@ export class APP_VALIDATOR {
         }
         return true
     }
+
+    private hasStringValue(data: string): boolean {
+        if (data === null || data === undefined || data === '') {
+            return false
+        }
+        return true
+    }
 }
+

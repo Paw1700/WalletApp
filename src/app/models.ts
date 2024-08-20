@@ -128,3 +128,29 @@ export type AppLocationListItem = {
     name: string,
     active: boolean
 }
+
+export type ValidationResult = {
+    pass: boolean,
+    errCode?: ErrorID
+}
+
+// FATAL - break App
+// MAIN - unable to proceed further in App
+// MINOR - something didn't work in background (syncing with external DB, etc.)
+export type ErrorType = 'FATAL' | 'MAIN' | 'MINOR'
+
+export type ErrorID = 
+    'APP-GENERAL' |
+    'APP-DATA-PROFILE-SAVE-ID' |
+    'APP-DATA-PROFILE-SAVE-IMAGE' |
+    'APP-DATA-PROFILE-SAVE-NAME' |
+    'APP-DATA-PROFILE-SAVE-SURNAME' |
+    'APP-DATA-PROFILE-GET' | 
+    'APP-DATA-PROFILE-DELETE'
+
+export interface ErrorModel {
+    id: string,
+    type: ErrorType,
+    title: string,
+    description?: string
+}

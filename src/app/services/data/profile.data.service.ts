@@ -2,10 +2,12 @@ import { inject, Injectable } from "@angular/core";
 import { Profile } from "../../models";
 import { DB_STORES } from "../data.service";
 import { DatabaseManager } from "../../util/db.driver";
+import { APP_VALIDATOR } from "../validator.service";
 
 @Injectable()
 export class PROFILE_DATA_SERVICE {
     private DB = inject(DatabaseManager)
+    private VALIDATOR = inject(APP_VALIDATOR)
     private readonly DB_STORE = new DB_STORES().profile
 
     get(): Promise<Profile> {
@@ -13,7 +15,7 @@ export class PROFILE_DATA_SERVICE {
             try {
                 resolve((await this.DB.getAllObject<Profile>(this.DB_STORE))[0])
             } catch (err) {
-                // !!! ADD ERROR CODE !!!
+                reject("APP-DATA-PROFILE-GET")
             }
         })
     }
@@ -22,11 +24,14 @@ export class PROFILE_DATA_SERVICE {
         return new Promise<void>(async (resolve, reject) => {
             try {
                 profile.id = await this.DB.GENERATE_INDEX(this.DB_STORE)
-                await this.DB.insertObject(this.DB_STORE, profile)
-                resolve()
+                const validation_result = this.VALIDATOR.validateUserProfile(profile)
+                if (validation_result.pass) {
+                    resolve(await this.DB.insertObject(this.DB_STORE, profile))
+                } else {
+                    throw new Error(validation_result.errCode)
+                }
             } catch (err) {
-                // !!! ADD ERROR CODE !!!
-                reject()
+                reject(err)
             }
         })
     }
@@ -34,11 +39,15 @@ export class PROFILE_DATA_SERVICE {
     update(profile: Profile) {
         return new Promise<void>(async (resolve, reject) => {
             try {
-                await this.DB.insertObject(this.DB_STORE, profile)
-                resolve()
+                const validation_result = this.VALIDATOR.validateUserProfile(profile)
+                if (validation_result.pass) {
+                    await this.DB.insertObject(this.DB_STORE, profile)
+                    resolve()
+                } else {
+                    throw new Error(validation_result.errCode)
+                }
             } catch (err) {
-                // !!! ADD ERROR CODE !!!
-                reject()
+                reject(err)
             }
         })
     }
@@ -49,7 +58,7 @@ export class PROFILE_DATA_SERVICE {
                 await this.DB.deleteAllObjects(this.DB_STORE)
                 resolve()
             } catch (err) {
-                // !!! ADD ERROR CODE !!!
+                reject('APP-DATA-PROFILE-DELETE')
             }
         })
     }

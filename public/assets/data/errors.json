@@ -1,0 +1,42 @@
+[
+    {
+        "id": "APP-GENERAL",
+        "type": "MAIN",
+        "title": "Błąd aplikacji",
+        "desc": "Wystąpił nieznany błąd aplikacji"
+    },
+    {
+        "id": "APP-DATA-PROFILE-SAVE-ID",
+        "type": "MAIN",
+        "title": "Błąd zapisu konta użytkownika",
+        "desc": "Brak id w danych konta użytkownika"
+    },
+    {
+        "id": "APP-DATA-PROFILE-SAVE-IMAGE",
+        "type": "MAIN",
+        "title": "Błąd zapisu konta użytkownika",
+        "desc": "Brak zdjęcia w danych konta użytkownika"
+    },
+    {
+        "id": "APP-DATA-PROFILE-SAVE-NAME",
+        "type": "MAIN",
+        "title": "Błąd zapisu konta użytkownika",
+        "desc": "Brak imienia w danych konta użytkownika"
+    },
+    {
+        "id": "APP-DATA-PROFILE-SAVE-SURNAME",
+        "type": "MAIN",
+        "title": "Błąd zapisu konta użytkownika",
+        "desc": "Brak nazwiska w danych konta użytkownika"
+    },
+    {
+        "id": "APP-DATA-PROFILE-GET",
+        "type": "MAIN",
+        "title": "Błąd wczytania konta użytkownika"
+    },
+    {
+        "id": "APP-DATA-PROFILE-DELETE",
+        "type": "MAIN",
+        "title": "Błąd usuwania konta użytkownika"
+    }
+]
