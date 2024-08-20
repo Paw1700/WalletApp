@@ -19,24 +19,20 @@ export class APP_VALIDATOR {
         return {pass: true}
     }
 
-    validateUserAccount(user_account: UserAccount): boolean {
-        if (user_account.account_id === '' || user_account.account_id === null || user_account.account_id === undefined) {
-            console.error('User Account dont have account id')
-            return false
+    validateUserAccount(user_account: UserAccount): ValidationResult {
+        if (this.hasStringValue(user_account.account_id)) {
+            return {pass: false, errCode: "APP-DATA-USER_ACCOUNT-SAVE-ID"}
         }
-        if (user_account.avaible_funds === null || user_account.avaible_funds === undefined) {
-            console.error('User Account dont have start funds')
-            return false
+        if (this.hasNumberValue(user_account.avaible_funds)) {
+            return {pass: false, errCode: "APP-DATA-USER_ACCOUNT-SAVE-AVAIBLE_FUNDS"}
         }
-        if (user_account.debet.interest === null || user_account.debet.interest === undefined) {
-            console.error('User Account dont have debet interest')
-            return false
+        if (this.hasNumberValue(user_account.debet.interest)) {
+            return {pass: false, errCode: "APP-DATA-USER_ACCOUNT-SAVE-INTEREST_RATE"}
         }
-        if (user_account.debet.limit === null || user_account.debet.limit === undefined) {
-            console.error('User Account dont have debet limit')
-            return false
+        if (this.hasNumberValue(user_account.debet.limit)) {
+            return {pass: false, errCode: "APP-DATA-USER_ACCOUNT-SAVE-INTEREST_LIMIT"}
         }
-        return true
+        return {pass: true}
     }
 
     validateTranasaction(transaction: Transaction): ValidationResult {

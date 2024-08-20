@@ -72,5 +72,39 @@
         "id": "APP-DATA-TRANSACTION-DELETE",
         "type": "MAIN",
         "title": "Błąd usuwania danych transakcji"
+    },
+    {
+        "id": "APP-DATA-USER_ACCOUNT-GET",
+        "type": "MAIN",
+        "title": "Błąd otrzymania danych konta bankowego"
+    },
+    {
+        "id": "APP-DATA-USER_ACCOUNT-SAVE-ID",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych konta bankowego",
+        "desc": "Brak danych id konta bankowego"
+    },
+    {
+        "id": "APP-DATA-USER_ACCOUNT-SAVE-AVAIBLE_FUNDS",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych konta bankowego",
+        "desc": "Brak danych stanu początkowego konta bankowego"
+    },
+    {
+        "id": "APP-DATA-USER_ACCOUNT-SAVE-INTEREST_RATE",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych konta bankowego",
+        "desc": "Brak danych oprocentowania debetu konta bankowego"
+    },
+    {
+        "id": "APP-DATA-USER_ACCOUNT-SAVE-INTEREST_LIMIT",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych konta bankowego",
+        "desc": "Brak danych limitu debetu konta bankowego"
+    },
+    {
+        "id": "APP-DATA-USER_ACCOUNT-DELETE",
+        "type": "MAIN",
+        "title": "Błąd usuwania danych konta bankowego"
     }
 ]
