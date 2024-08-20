@@ -4,16 +4,16 @@ import { Profile, Transaction, UserAccount, ValidationResult } from "../models";
 @Injectable()
 export class APP_VALIDATOR {
     validateUserProfile(profile: Profile): ValidationResult {
-        if (profile.id === '' || profile.id === undefined || profile.id === null) {
+        if (this.hasStringValue(profile.id)) {
             return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-ID'}
         }
-        if (profile.image === '' || profile.image === null || profile.image === undefined) {
+        if (this.hasStringValue(profile.image)) {
             return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-IMAGE'}
         }
-        if (profile.name === '' || profile.name === null || profile.name === undefined) {
+        if (this.hasStringValue(profile.name)) {
             return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-NAME'}
         }
-        if (profile.surname === '' || profile.surname === null || profile.surname === undefined) {
+        if (this.hasStringValue(profile.surname)) {
             return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-SURNAME'}
         }
         return {pass: true}
@@ -39,34 +39,43 @@ export class APP_VALIDATOR {
         return true
     }
 
-    validateTranasaction(transaction: Transaction): boolean {
-        if (transaction.amount === null || transaction.amount === undefined ) {
-            console.error('Transaction dont have amount')
-            return false
+    validateTranasaction(transaction: Transaction): ValidationResult {
+        if (this.hasNumberValue(transaction.amount, false)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-AMOUNT'}
         }
-        if (transaction.category_id === null || transaction.category_id === undefined || transaction.category_id === '') {
-            console.error('Transaction dont have cateogry id')
-            return false
+        if (this.hasStringValue(transaction.category_id)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-ID'}
         }
-        if (transaction.date === null || transaction.date === undefined) {
-            console.error('Transaction dont have date')
-            return false
+        if (this.hasDateValue(transaction.date)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-DATE'}
         }
-        if (transaction.receiver_id === null || transaction.receiver_id === undefined || transaction.receiver_id === '') {
-            console.error('Transaction dont have receiver id')
-            return false
+        if (this.hasStringValue(transaction.receiver_id)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-RECEIVER'}
         }
-        if (transaction.user_account_id === null || transaction.user_account_id === undefined || transaction.user_account_id === '') {
-            console.error('Transaction dont have user account id');
-            return false
+        if (this.hasStringValue(transaction.user_account_id)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-UA_ID'}
         }
-        return true
+        return {pass: true}
     }
 
     private hasStringValue(data: string): boolean {
         if (data === null || data === undefined || data === '') {
             return false
         }
+        return true
+    }
+
+    private hasNumberValue(data: number, allowZero: boolean = true) {
+        if (data === null || data === undefined || (!allowZero && data === 0)) {
+            return false
+        }
+        return true
+    }
+
+    private hasDateValue(data: Date) {
+        if (data === undefined || data === null) {
+            return false
+        } 
         return true
     }
 }

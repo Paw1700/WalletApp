@@ -38,5 +38,39 @@
         "id": "APP-DATA-PROFILE-DELETE",
         "type": "MAIN",
         "title": "Błąd usuwania konta użytkownika"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-GET",
+        "type": "MAIN",
+        "title": "Błąd wczytania danych transakcji"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-SAVE-ID",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych transakcji",
+        "desc": "Brak id w danych transakcji"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-SAVE-AMOUNT",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych transakcji",
+        "desc": "Brak kwoty w danych transakcji"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-SAVE-DATE",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych transakcji",
+        "desc": "Brak daty w danych transakcji"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-SAVE-UA_ID",
+        "type": "MAIN",
+        "title": "Błąd zapisywania danych transakcji",
+        "desc": "Brak ID konta bankowego w danych transakcji"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-DELETE",
+        "type": "MAIN",
+        "title": "Błąd usuwania danych transakcji"
     }
 ]

@@ -146,11 +146,18 @@ export type ErrorID =
     'APP-DATA-PROFILE-SAVE-NAME' |
     'APP-DATA-PROFILE-SAVE-SURNAME' |
     'APP-DATA-PROFILE-GET' | 
-    'APP-DATA-PROFILE-DELETE'
+    'APP-DATA-PROFILE-DELETE' |
+    'APP-DATA-TRANSACTION-GET' | 
+    'APP-DATA-TRANSACTION-SAVE-ID' |
+    'APP-DATA-TRANSACTION-SAVE-AMOUNT' |
+    'APP-DATA-TRANSACTION-SAVE-DATE' |
+    'APP-DATA-TRANSACTION-SAVE-RECEIVER' | 
+    'APP-DATA-TRANSACTION-SAVE-UA_ID' |
+    'APP-DATA-TRANSACTION-DELETE'
 
 export interface ErrorModel {
     id: string,
     type: ErrorType,
     title: string,
-    description?: string
+    desc?: string
 }
