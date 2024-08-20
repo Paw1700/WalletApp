@@ -25,7 +25,7 @@ export class AccountsCarousel implements OnInit {
 
     ngOnInit(): void {
         this.accounts_data.forEach(acc => {
-            this.sum_of_avaible_funds += acc.funds_data?.avaible_funds!
+            this.sum_of_avaible_funds += Number(acc.funds_data?.avaible_funds!)
         })
     }
 

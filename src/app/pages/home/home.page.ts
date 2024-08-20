@@ -29,7 +29,7 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     TRANSACTION_LIST: Transaction[] = []
 
     accounts_carousel_data: AccountBar_Data[] = []
-    active_user_account = -1
+    active_user_account_index = -1
     account_transactions_list: TransactionBarComponent_Data[] = []
 
     ngOnInit(): void {
@@ -40,13 +40,13 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     }
 
     handleActiveAccountChange(account_list_number: number) {
-        this.active_user_account = account_list_number
+        this.active_user_account_index = account_list_number
         if (account_list_number < 0) {
             this.APP.APPERANCE.nav_bar_right_button_option$.next(null)
             this.APP.APPERANCE.setAppAccentColor(null)
         } else {
             this.APP.APPERANCE.nav_bar_right_button_option$.next('add_transaction')
-            const account = this.ACCOUNTS_LIST.filter(acc => acc.id === this.USER_ACCOUNTS[this.active_user_account].account_id)[0]
+            const account = this.getAccount(this.USER_ACCOUNTS[this.active_user_account_index].account_id)
             this.APP.APPERANCE.setAppAccentColor(account.apperance.background_gradient.bottom ? account.apperance.background_gradient.bottom : account.apperance.background_gradient.top)
         }
         this.fetchUserAccountsTransactions()
@@ -68,7 +68,7 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     private updateAccountCarouselData() {
         this.accounts_carousel_data = []
         this.USER_ACCOUNTS.forEach(us_acc => {
-            let account = this.ACCOUNTS_LIST.filter(acc => acc.id === us_acc.account_id)[0] as Account
+            let account = this.getAccount(us_acc.account_id)
             let funds_d: AccountFundsData = { avaible_funds: us_acc.avaible_funds, stats_data: { plus: 0, minus: 0 } }
             this.accounts_carousel_data.push({ account: account, funds_data: funds_d })
         })
@@ -76,8 +76,8 @@ export class HomePage extends NgUnsubscriber implements OnInit {
 
     private reactToNavBarRightButtonClicked() {
         this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
-            if (this.active_user_account > -1) {
-                this.APP.navigate('add_transaction', this.USER_ACCOUNTS[this.active_user_account].id)
+            if (this.active_user_account_index > -1) {
+                this.APP.navigate('add_transaction', this.USER_ACCOUNTS[this.active_user_account_index].id)
             }
         })
     }
@@ -85,9 +85,9 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     private async fetchUserAccountsTransactions() {
         this.account_transactions_list = []
         let transaction_list_to_add_date: Transaction[] = []
-        if (this.active_user_account >= 0) {
+        if (this.active_user_account_index >= 0) {
             this.TRANSACTION_LIST.forEach(tr => {
-                if (tr.user_account_id === this.USER_ACCOUNTS[this.active_user_account].id) {
+                if (tr.user_account_id === this.USER_ACCOUNTS[this.active_user_account_index].id) {
                     transaction_list_to_add_date.push(tr)
                 }
             })
@@ -118,5 +118,9 @@ export class HomePage extends NgUnsubscriber implements OnInit {
                 transaction_currency: "PLN"
             })
         })
+    }
+
+    private getAccount(account_id: string): Account {
+        return this.ACCOUNTS_LIST.filter(acc => acc.id === account_id)[0]
     }
 }
