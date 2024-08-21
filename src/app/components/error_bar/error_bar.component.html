@@ -1,0 +1,13 @@
+@if (error_data) {
+    <div [@bar] class="ERROR_BAR">
+        <div [style.backgroundColor]="bar_color" class="BAR">
+            <img src="/assets/UI/error/light.webp" />
+            <div>
+                <p class="TITLE">{{ error_data.title }}</p>
+                @if (error_data.desc) {
+                    <p class="DESC">{{ error_data.desc }}</p>
+                }
+            </div>
+        </div>
+    </div>
+}

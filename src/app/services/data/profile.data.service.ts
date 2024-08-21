@@ -28,7 +28,8 @@ export class PROFILE_DATA_SERVICE {
                 if (validation_result.pass) {
                     resolve(await this.DB.insertObject(this.DB_STORE, profile))
                 } else {
-                    throw new Error(validation_result.errCode)
+                    reject(validation_result.errCode)
+                    return
                 }
             } catch (err) {
                 reject(err)

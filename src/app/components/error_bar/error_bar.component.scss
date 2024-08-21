@@ -1,0 +1,45 @@
+div.ERROR_BAR {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+    top: 2.5vh;
+
+    div.BAR {
+        display: flex;
+        flex-direction: row;
+        width: 85%;
+        border-radius: 2.5vw;
+        padding: 1.17vh 2.5vw;
+        gap: 2.5vw;
+
+        img {
+            width: 15%;
+            object-fit: contain;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+
+            p {
+                color: white;
+                width: 100%;
+                text-align: left;
+            }
+
+            p.TITLE {
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            p.DESC {
+                font-size: .8rem;
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ import { APP_SERVICE } from './app.service';
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 import { NavBar, NavBarButtonOptions } from './components/nav_bar/nav_bar.component';
 import { MenuPage } from './pages/menu/menu.page';
+import { ErrorBar } from './components/error_bar/error_bar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { MenuPage } from './pages/menu/menu.page';
   imports: [
     RouterOutlet,
     NavBar,
-    MenuPage
+    MenuPage,
+    ErrorBar
   ],
   template: `
     <div [@ROUTE_ANIMATION]="getRouteAnimationData()">
@@ -19,6 +21,7 @@ import { MenuPage } from './pages/menu/menu.page';
     </div>
     <nav_bar />
     <menu_page />
+    <error_bar />
   `,
   animations: [
     trigger('ROUTE_ANIMATION', [

@@ -15,7 +15,7 @@ import { takeUntil } from "rxjs";
     templateUrl: './user_profile_setup.page.html',
     styleUrl: './user_profile_setup.page.scss'
 })
-export class UserProfileSetupPage extends NgUnsubscriber implements OnInit{
+export class UserProfileSetupPage extends NgUnsubscriber implements OnInit {
     readonly APP = inject(APP_SERVICE)
     profile: Profile = {
         id: '',
@@ -31,12 +31,13 @@ export class UserProfileSetupPage extends NgUnsubscriber implements OnInit{
     }
 
     saveProfile() {
-        if (this.APP.VALIDATOR.validateUserProfile(this.profile)) {
-            this.APP.DATA.PROFILE.save(this.profile)
+        this.APP.DATA.PROFILE.save(this.profile)
             .then(() => {
                 this.APP.navigate('home')
             })
-        }
+            .catch((err) => {
+                this.APP.STATE.errorHappend(err)
+            })
     }
 
     handleImageInput(e: any) {
