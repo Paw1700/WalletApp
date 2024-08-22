@@ -1,0 +1,1 @@
+export const DAYS_OFFSET = (24*60*60*1000)

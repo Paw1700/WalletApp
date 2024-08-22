@@ -4,6 +4,7 @@ import { APP_SERVICE } from "../../../app.service";
 import { TransactionBarComponentData } from "../../../components/transaction_bar/transaction_bar.component";
 import { Category, Receiver } from "../../../models";
 import { HttpClient } from "@angular/common/http";
+import { DAYS_OFFSET } from "../../../constants";
 
 @Injectable()
 export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarComponentData[]> {
@@ -14,7 +15,7 @@ export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarCom
             const accounts_transactions: TransactionBarComponentData[] = []
             const CATEGORIES_LIST = await this.getCategoryList()
             const RECEIVERS_LIST = await this.getReceiverList()
-            const transactions = await this.APP.DATA.TRANSACTION.getAll()
+            const transactions = await this.APP.DATA.TRANSACTION.getAll({filter_date: {from: new Date().getTime() - DAYS_OFFSET * 30}})
             transactions.sort((a, b) => {
                 if (a.date > b.date) {
                     return -1

@@ -20,33 +20,36 @@ export class TRANSACTION_DATA_SERVICE {
         })
     }
 
-    getAll(user_account_id?: string, filter_date?: {from?: Date, to?: Date}, category_id?: string, receiver_id?: string, filter_amount?: {from: number, to: number}): Promise<Transaction[]> {
+    // getAll(user_account_id?: string, filter_date?: {from?: Date, to?: Date}, category_id?: string, receiver_id?: string, filter_amount?: {from: number, to: number}): Promise<Transaction[]> {
+    getAll(options?: {user_account_id?: string, filter_date?: {from?: number, to?: number}, category_id?: string, receiver_id?: string, filter_amount?: {from: number, to: number}}): Promise<Transaction[]> {
         return new Promise(async (resolve, reject) => {
             try {
                 let all_transactions = await this.DB.getAllObject<Transaction>(this.DB_STORE)
-                if (user_account_id) {
-                    all_transactions = all_transactions.filter(tr => tr.user_account_id === user_account_id)
-                } 
-                if (filter_date) {
-                    if (filter_date.from) {
-                        all_transactions = all_transactions.filter(tr => tr.date >= filter_date.from!)
+                if (options) {
+                    if (options.user_account_id) {
+                        all_transactions = all_transactions.filter(tr => tr.user_account_id === options.user_account_id)
+                    } 
+                    if (options.filter_date) {
+                        if (options.filter_date.from) {
+                            all_transactions = all_transactions.filter(tr => tr.date.getTime() >= options.filter_date!.from!)
+                        }
+                        if (options.filter_date.to) {
+                            all_transactions = all_transactions.filter(tr => tr.date.getTime() <= options.filter_date!.to!)
+                        }
                     }
-                    if (filter_date.to) {
-                        all_transactions = all_transactions.filter(tr => tr.date <= filter_date.to!)
+                    if (options.category_id) {
+                        all_transactions = all_transactions.filter(tr => tr.category_id = options.category_id!)
                     }
-                }
-                if (category_id) {
-                    all_transactions = all_transactions.filter(tr => tr.category_id = category_id)
-                }
-                if (receiver_id) {
-                    all_transactions = all_transactions.filter(tr => tr.receiver_id = receiver_id)
-                }
-                if (filter_amount) {
-                    if (filter_amount.from) {
-                        all_transactions = all_transactions.filter(tr => tr.amount >= filter_amount.from)
+                    if (options.receiver_id) {
+                        all_transactions = all_transactions.filter(tr => tr.receiver_id = options.receiver_id!)
                     }
-                    if (filter_amount.to) {
-                        all_transactions = all_transactions.filter(tr => tr.amount <= filter_amount.to)
+                    if (options.filter_amount) {
+                        if (options.filter_amount.from) {
+                            all_transactions = all_transactions.filter(tr => tr.amount >= options.filter_amount!.from)
+                        }
+                        if (options.filter_amount.to) {
+                            all_transactions = all_transactions.filter(tr => tr.amount <= options.filter_amount!.to)
+                        }
                     }
                 }
                 resolve(all_transactions)
