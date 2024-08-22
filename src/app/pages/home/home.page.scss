@@ -53,6 +53,7 @@ div.PAGE {
         display: flex;
         flex-direction: column;
         gap: 1.17vh;
+        position: relative;
 
         p.TITLE {
             width: 100%;
@@ -63,11 +64,31 @@ div.PAGE {
 
         div.LIST {
             width: 100%;
+            height: 47.5vh;
+            overflow-y: scroll;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             gap: 1.17vh;
+            padding-bottom: 2.5vh;
+
+            //* HIDE SCROLLBAR
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        div.GLOW {
+            position: absolute;
+            bottom: -1vh;
+            left: 0;
+            width: 100%;
+            height: 2.5vh;
+            background: linear-gradient(180deg, rgba(2, 0, 36, 0) 0%, var(--app-theme) 25%);
         }
     }
 
