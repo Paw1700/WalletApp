@@ -106,5 +106,11 @@
         "id": "APP-DATA-USER_ACCOUNT-DELETE",
         "type": "MAIN",
         "title": "Błąd usuwania danych konta bankowego"
+    },
+    {
+        "id": "APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS",
+        "type": "MAIN",
+        "title": "Błąd dodawania transakcji",
+        "desc": "Brak środków na koncie (lub brak limitu debetu)"
     }
 ]

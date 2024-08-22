@@ -3,7 +3,7 @@ import { TransactionTypeChooseBar } from "../../components/transaction_type_choo
 import { CategoryChooseBar } from "../../components/category_choose_bar/category_choose_bar.component";
 import { NumberInputComponent } from "../../components/number_input_bar/number_input_bar.component";
 import { ReceiverChooseBar } from "../../components/receiver_choose_bar/receiver_choose_bar.component";
-import { Receiver, Transaction, Transaction_Type } from "../../models";
+import { Category, Receiver, Transaction, Transaction_Type } from "../../models";
 import { TextInputBar } from "../../components/text_input_bar/text_input_bar.component";
 import { ActivatedRoute } from "@angular/router";
 import { DateChooseBar } from "../../components/date_choose_bar/date_choose_bar.component";
@@ -28,8 +28,9 @@ import { takeUntil } from "rxjs";
 export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     readonly APP = inject(APP_SERVICE)
     readonly ROUTE = inject(ActivatedRoute)
+    RECEIVERS_LIST: Receiver[] = []
+    CATEGORIES_LIST: Category[] = []
 
-    receivers_list: Receiver[] = []
     transaction_type: Transaction_Type = 'expense'
     new_transaction: Transaction = {
         id: "",
@@ -88,7 +89,8 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
             this.new_transaction.user_account_id = data.get('id')!
         })
         this.ROUTE.data.subscribe( route_data => {
-            this.receivers_list = route_data['receivers']
+            this.RECEIVERS_LIST = route_data['receivers']
+            this.CATEGORIES_LIST = route_data['categories']
         })
     }
 
@@ -100,12 +102,13 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     
     private reactToNavBarRightButtonClicked() {
         this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
-            if (this.APP.VALIDATOR.validateTranasaction(this.new_transaction)) {
-                this.APP.DATA.TRANSACTION.save(this.new_transaction)
+            this.APP.DATA.newTransaction(this.new_transaction)
                 .then(() => {
                     this.APP.navigate('home')
                 })
-            }
+                .catch((err) => {
+                    this.APP.STATE.errorHappend(err)
+                })
         })
     }
 }

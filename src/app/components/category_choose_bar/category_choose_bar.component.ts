@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
-import CATEGORIES from '../../../../public/assets/data/categories.json'
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { OpenAbleComponent } from "../../interfaces/openable.component";
 import { Category } from "../../models";
 import { trigger, transition, style, animate } from "@angular/animations";
@@ -49,7 +48,7 @@ import { trigger, transition, style, animate } from "@angular/animations";
     ]
 })
 export class CategoryChooseBar extends OpenAbleComponent{
-    readonly categories_list: Category[] = CATEGORIES
+    @Input({required: true}) categories_list: Category[] = []
     @Output() choosed_categorie_id = new EventEmitter<string>()
     choosed_categorie: Category | null = null
 

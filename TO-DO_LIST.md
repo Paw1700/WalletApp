@@ -1,3 +1,6 @@
+# BUG-LIST 
+- [ ] In Receivers search list is case sensitive
+
 # TO-DO LIST
 - [ ] Build interface
     - [ ] Pages
@@ -61,6 +64,7 @@
             - [x] Checkc Account Data Validity
             - [x] Check Transaction Data Validity
         - [ ] -- DATA --
+            - [x] Adding transaction
             - [x] -- TRANSACTION --
                 - [x] Adding transaction
                 - [x] Updating transaction
@@ -77,3 +81,6 @@
                 - [x] Getting user account
                 - [x] Deleting user account
 - [ ] Error Logic
+    - [x] App Data Profile
+    - [ ] App Data Transaction
+    - [ ] App Data User Account

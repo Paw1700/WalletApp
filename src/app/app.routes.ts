@@ -10,6 +10,7 @@ import { AddTransactionPage } from './pages/add_transaction/add_transaction.page
 import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 import { ACCOUNTS_CAROUSEL_RESOLVER } from './pages/home/resolvers/accounts_carousel.resolver';
 import { ACCOUNTS_TRANSACTIONS_RESOLVER } from './pages/home/resolvers/accounts_transactions.resolver';
+import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
 
 export const routes: Routes = [
     {
@@ -68,7 +69,8 @@ export const routes: Routes = [
             page_name: 'add_transaction'
         },
         resolve: {
-            receivers: RECEIVERS_RESOLVER
+            receivers: RECEIVERS_RESOLVER,
+            categories: CATEGORY_RESOLVER
         }
     }
 ];
