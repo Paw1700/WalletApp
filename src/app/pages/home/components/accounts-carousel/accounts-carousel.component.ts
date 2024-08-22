@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { AccountBar_Data, AccountBarComponent } from "../../../../components/account_bar/account_bar.component";
+import { AccountBarComponent, AccountBarComponentData } from "../../../../components/account_bar/account_bar.component";
 import { NumberSeparator } from "../../../../pipes/number_separator.pipe";
 import { NgStyle } from "@angular/common";
 
@@ -15,7 +15,7 @@ import { NgStyle } from "@angular/common";
     styleUrl: './accounts-carousel.component.scss'
 })
 export class AccountsCarousel implements OnInit {
-    @Input() accounts_data: AccountBar_Data[] = []
+    @Input() accounts_data: AccountBarComponentData[] = []
     @Output() active_account_number = new EventEmitter<number>()
 
     sum_of_avaible_funds = 0
@@ -44,3 +44,4 @@ export class AccountsCarousel implements OnInit {
         this.active_account_number.emit(account_number)
     }
 }
+

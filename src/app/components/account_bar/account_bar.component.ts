@@ -11,8 +11,9 @@ import { NumberSeparator } from "../../pipes/number_separator.pipe";
     styleUrl: './account_bar.component.scss'
 })
 export class AccountBarComponent implements OnInit {
-    @Input() bar_type: AccountBarComponent_Types = 'FULL'
-    @Input() bar_data: AccountBar_Data = {
+    @Input() bar_type: AccountBarComponentDisplayTypes = 'FULL'
+    @Input() bar_data: AccountBarComponentData = {
+        user_account_id: null,
         account: {
             id: "KON-RNE-ALI-ANK",
             bank_id: "ALI-ANK",
@@ -30,13 +31,7 @@ export class AccountBarComponent implements OnInit {
                 bank_logo_src: "/assets/banks_logos/alior_bank.webp"
             }
         },
-        funds_data: {
-            avaible_funds: 0,
-            stats_data: {
-                plus: 0,
-                minus: 0
-            }
-        }
+        funds_data: null
     }
     bar_background = ''
     bank_logo = ''
@@ -51,7 +46,7 @@ export class AccountBarComponent implements OnInit {
     }
 }
 
-export type AccountBarComponent_Types = 'NAME_ONLY' | 'FUNDS_ONLY' | 'FULL'
+export type AccountBarComponentDisplayTypes = 'NAME_ONLY' | 'FUNDS_ONLY' | 'FULL'
 
 export type AccountFundsData = {
     avaible_funds: number,
@@ -61,7 +56,8 @@ export type AccountFundsData = {
     }
 }
 
-export type AccountBar_Data = {
+export type AccountBarComponentData = {
+    user_account_id: string | null,
     account: Account,
     funds_data: AccountFundsData | null
 }

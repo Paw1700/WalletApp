@@ -4,8 +4,8 @@
             <img [src]="component_data.category.logo_src.light" />
         </div>
         <div class="TRANSACTION_DESC">
-            <p class="DESC">{{ component_data.description }}</p>
-            <p class="RECEIVER">{{ component_data.receiver_name }}</p>
+            <p class="DESC">{{ component_data.description ? component_data.description : component_data.category.name }}</p>
+            <p class="RECEIVER">{{ component_data.receiver.name }}</p>
         </div>
     </div>
     <p [class.INCOME]="component_data.transaction_price > 0" class="PRICE">{{ component_data.transaction_price | number_separator }} {{ component_data.transaction_currency }}</p>

@@ -6,8 +6,8 @@
         </div>
         <img [src]="PROFILE.image" />
     </div>
-    @if (accounts_carousel_data.length !== 0) {
-        <accounts_carousel [accounts_data]="accounts_carousel_data" (active_account_number)="handleActiveAccountChange($event)" />
+    @if (ACCOUNTS_CAROUSEL_DATA.length !== 0) {
+        <accounts_carousel [accounts_data]="ACCOUNTS_CAROUSEL_DATA" (active_account_number)="handleActiveAccountChange($event)" />
         <div class="TRANSACTIONS">
             <p class="TITLE">Lista transakcji</p>
             <div class="LIST">

@@ -4,7 +4,7 @@ import { APP_SERVICE } from "../../app.service";
 import ACCOUNTS_LIST_JSON from '../../../../public/assets/data/accounts.json'
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
-import { AccountBar_Data, AccountBarComponent } from "../../components/account_bar/account_bar.component";
+import { AccountBarComponentData, AccountBarComponent } from "../../components/account_bar/account_bar.component";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -22,7 +22,7 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
     readonly ACCOUNTS_LIST = ACCOUNTS_LIST_JSON as Account[]
 
     user_accounts_list: UserAccount[] = []
-    user_accounts_list_to_display: AccountBar_Data[] = []
+    user_accounts_list_to_display: AccountBarComponentData[] = []
 
     ngOnInit(): void {
         this.fetchAllUserAccounts()
@@ -36,7 +36,7 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
         this.user_accounts_list_to_display = []
         this.user_accounts_list.forEach(user_acc => {
             let account = this.ACCOUNTS_LIST.filter(acc => acc.id === user_acc.account_id)[0]
-            this.user_accounts_list_to_display.push({ account: account, funds_data: { avaible_funds: user_acc.avaible_funds, stats_data: { plus: 0, minus: 0 } } })
+            this.user_accounts_list_to_display.push({ user_account_id: user_acc.id , account: account, funds_data: { avaible_funds: user_acc.avaible_funds, stats_data: { plus: 0, minus: 0 } } })
         })
     }
 

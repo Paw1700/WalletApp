@@ -11,11 +11,11 @@
             }
         </div>
     } @else {
-        <account-bar (click)="changeAccount(null)" [bar_type]="'NAME_ONLY'" [bar_data]="{account: choosed_account, funds_data: null}" />
+        <account-bar (click)="changeAccount(null)" [bar_type]="'NAME_ONLY'" [bar_data]="{user_account_id: null, account: choosed_account, funds_data: null}" />
     }
     @if(component_open) {
         @for(acc of accounts_list; track acc.id) {
-            <account-bar (click)="changeAccount(acc)" [bar_type]="'NAME_ONLY'" [bar_data]="{account: acc, funds_data: null}" />
+            <account-bar (click)="changeAccount(acc)" [bar_type]="'NAME_ONLY'" [bar_data]="{user_account_id: null, account: acc, funds_data: null}" />
         }
     }
 </div>

@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { NumberSeparator } from "../../pipes/number_separator.pipe";
-import { Category, Currency } from "../../models";
+import { Category, Currency, Receiver } from "../../models";
 
 @Component({
     selector: "transaction-bar",
@@ -12,6 +12,7 @@ import { Category, Currency } from "../../models";
 export class TransactionBarComponent {
     @Input() component_data: TransactionBarComponent_Data = {
         transaction_id: 'XXX',
+        user_account_id: 'XXX',
         category: {
             id: "GAS",
             name: "Paliwo",
@@ -21,7 +22,11 @@ export class TransactionBarComponent {
             }
         },
         description: 'Paliwo',
-        receiver_name: 'Orlen',
+        receiver: {
+            id: "",
+            name: "Orlen",
+            logo_src: ""
+        },
         transaction_price: -350.98,
         transaction_currency: 'PLN'
     }
@@ -29,9 +34,10 @@ export class TransactionBarComponent {
 
 export type TransactionBarComponent_Data = {
     transaction_id: string,
+    user_account_id: string,
     category: Category,
     description: string,
-    receiver_name: string,
+    receiver: Receiver,
     transaction_price: number,
     transaction_currency: Currency
 }

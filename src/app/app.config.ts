@@ -23,6 +23,8 @@ import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 import { TRANSACTION_DATA_SERVICE } from './services/data/transaction.data.service';
 import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
 import { TRANSACTIONS_RESOLVER } from './resolvers/transactions.resolver';
+import { ACCOUNTS_CAROUSEL_RESOLVER } from './pages/home/resolvers/accounts_carousel.resolver';
+import { ACCOUNTS_TRANSACTIONS_RESOLVER } from './pages/home/resolvers/accounts_transactions.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -51,6 +53,8 @@ export const appConfig: ApplicationConfig = {
     RECEIVERS_RESOLVER,
     TRANSACTION_DATA_SERVICE,
     CATEGORY_RESOLVER,
-    TRANSACTIONS_RESOLVER
+    TRANSACTIONS_RESOLVER,
+    ACCOUNTS_CAROUSEL_RESOLVER,
+    ACCOUNTS_TRANSACTIONS_RESOLVER
   ]
 };

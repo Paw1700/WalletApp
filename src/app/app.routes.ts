@@ -7,10 +7,9 @@ import { AddAccountPage } from './pages/add_account/add_account.page';
 import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 import { AddTransactionPage } from './pages/add_transaction/add_transaction.page';
-import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
-import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
-import { TRANSACTIONS_RESOLVER } from './resolvers/transactions.resolver';
+import { ACCOUNTS_CAROUSEL_RESOLVER } from './pages/home/resolvers/accounts_carousel.resolver';
+import { ACCOUNTS_TRANSACTIONS_RESOLVER } from './pages/home/resolvers/accounts_transactions.resolver';
 
 export const routes: Routes = [
     {
@@ -29,12 +28,9 @@ export const routes: Routes = [
             page_name: 'home'
         },
         resolve: {
-            user_accounts: USER_ACCOUNTS_RESOLVER,
             profile: PROFILE_RESOLVER,
-            accounts: ACCOUNTS_RESOLVER,
-            categories: CATEGORY_RESOLVER,
-            receivers: RECEIVERS_RESOLVER,
-            transactions: TRANSACTIONS_RESOLVER
+            accounts_carousel: ACCOUNTS_CAROUSEL_RESOLVER,
+            accounts_transactions: ACCOUNTS_TRANSACTIONS_RESOLVER
         }
     },
     {
