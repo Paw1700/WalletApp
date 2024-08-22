@@ -11,6 +11,7 @@ import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 import { ACCOUNTS_CAROUSEL_RESOLVER } from './pages/home/resolvers/accounts_carousel.resolver';
 import { ACCOUNTS_TRANSACTIONS_RESOLVER } from './pages/home/resolvers/accounts_transactions.resolver';
 import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
+import { ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE } from './pages/add_transaction/resolvers/account_bar_data_for_add_transaction_page.resolver';
 
 export const routes: Routes = [
     {
@@ -70,7 +71,8 @@ export const routes: Routes = [
         },
         resolve: {
             receivers: RECEIVERS_RESOLVER,
-            categories: CATEGORY_RESOLVER
+            categories: CATEGORY_RESOLVER,
+            account_bar_data: ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE
         }
     }
 ];

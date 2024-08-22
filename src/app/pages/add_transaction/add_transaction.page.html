@@ -1,4 +1,5 @@
 <div class="PAGE">
+    <account-bar [bar_data]="ACCOUNT_BAR_DATA" [bar_type]="'FUNDS_ONLY'" />
     <date_choose_bar (choosed_date)="handleFormInput('date', $event)" />
     <transaction_choose_bar (choosed_option_type)="handleFormInput('transaction_type', $event)" />
     <category_choose_bar [categories_list]="CATEGORIES_LIST" (choosed_categorie_id)="handleFormInput('category_id', $event)" />

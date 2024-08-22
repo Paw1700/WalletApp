@@ -10,6 +10,7 @@ import { DateChooseBar } from "../../components/date_choose_bar/date_choose_bar.
 import { APP_SERVICE } from "../../app.service";
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
+import { AccountBarComponent, AccountBarComponentData } from "../../components/account_bar/account_bar.component";
 
 @Component({
     selector: 'add_transaction_page',
@@ -20,7 +21,8 @@ import { takeUntil } from "rxjs";
         NumberInputComponent,
         ReceiverChooseBar,
         TextInputBar,
-        DateChooseBar
+        DateChooseBar,
+        AccountBarComponent
     ],
     templateUrl: './add_transaction.page.html',
     styleUrl: './add_transaction.page.scss'
@@ -30,6 +32,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     readonly ROUTE = inject(ActivatedRoute)
     RECEIVERS_LIST: Receiver[] = []
     CATEGORIES_LIST: Category[] = []
+    ACCOUNT_BAR_DATA!: AccountBarComponentData
 
     transaction_type: Transaction_Type = 'expense'
     new_transaction: Transaction = {
@@ -91,6 +94,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
         this.ROUTE.data.subscribe( route_data => {
             this.RECEIVERS_LIST = route_data['receivers']
             this.CATEGORIES_LIST = route_data['categories']
+            this.ACCOUNT_BAR_DATA = route_data['account_bar_data']
         })
     }
 

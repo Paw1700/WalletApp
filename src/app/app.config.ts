@@ -25,6 +25,7 @@ import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
 import { TRANSACTIONS_RESOLVER } from './resolvers/transactions.resolver';
 import { ACCOUNTS_CAROUSEL_RESOLVER } from './pages/home/resolvers/accounts_carousel.resolver';
 import { ACCOUNTS_TRANSACTIONS_RESOLVER } from './pages/home/resolvers/accounts_transactions.resolver';
+import { ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE } from './pages/add_transaction/resolvers/account_bar_data_for_add_transaction_page.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -55,6 +56,7 @@ export const appConfig: ApplicationConfig = {
     CATEGORY_RESOLVER,
     TRANSACTIONS_RESOLVER,
     ACCOUNTS_CAROUSEL_RESOLVER,
-    ACCOUNTS_TRANSACTIONS_RESOLVER
+    ACCOUNTS_TRANSACTIONS_RESOLVER,
+    ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE
   ]
 };
