@@ -5,15 +5,17 @@ import { APP_SERVICE } from "../../app.service";
 import { AccountsCarousel } from "./components/accounts-carousel/accounts-carousel.component";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
-import { TransactionBarComponent, TransactionBarComponent_Data } from "../../components/transaction_bar/transaction_bar.component";
+import { TransactionBarComponent, TransactionBarComponentData } from "../../components/transaction_bar/transaction_bar.component";
 import { AccountBarComponentData } from "../../components/account_bar/account_bar.component";
+import { TransactionList } from "./components/transactions_list/transaction_list.component";
 
 @Component({
     selector: 'home_page',
     standalone: true,
     imports: [
         AccountsCarousel,
-        TransactionBarComponent
+        TransactionBarComponent,
+        TransactionList
     ],
     templateUrl: './home.page.html',
     styleUrl: './home.page.scss'
@@ -24,10 +26,10 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     PROFILE: Profile = { id: '', name: '', surname: '', image: '' }
 
     ACCOUNTS_CAROUSEL_DATA: AccountBarComponentData[] = []
-    FULL_ACCOUNTS_TRANSACTIONS_LIST: TransactionBarComponent_Data[] = []
+    FULL_ACCOUNTS_TRANSACTIONS_LIST: TransactionBarComponentData[] = []
 
     active_user_account_index = -1
-    account_transactions_list: TransactionBarComponent_Data[] = []
+    account_transactions_list: TransactionBarComponentData[] = []
 
     ngOnInit(): void {
         this.fetchRouteData()

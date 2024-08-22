@@ -1,0 +1,8 @@
+<div class="TRANSACTIONS_LIST">
+    <p class="TITLE">Najnowsze transakcji</p>
+    <div class="LIST">
+        @for(tr of transactions_list; track tr.transaction_id) {
+            <transaction-bar [component_data]="tr" />
+        }
+    </div>
+</div>

@@ -1,0 +1,34 @@
+div.TRANSACTIONS_LIST {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.17vh;
+    position: relative;
+
+    p.TITLE {
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 700;
+        text-align: left;
+    }
+
+    div.LIST {
+        width: 100%;
+        height: 47.5vh;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1.17vh;
+        padding-bottom: 2.5vh;
+
+        //* HIDE SCROLLBAR
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}

@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from "@angular/router";
 import { APP_SERVICE } from "../../../app.service";
-import { TransactionBarComponent_Data } from "../../../components/transaction_bar/transaction_bar.component";
+import { TransactionBarComponentData } from "../../../components/transaction_bar/transaction_bar.component";
 import { Category, Receiver } from "../../../models";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable()
-export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarComponent_Data[]> {
+export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarComponentData[]> {
     constructor(private APP: APP_SERVICE, private HTTP: HttpClient) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<TransactionBarComponent_Data[]> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<TransactionBarComponentData[]> {
         return new Promise(async (resolve) => {
-            const accounts_transactions: TransactionBarComponent_Data[] = []
+            const accounts_transactions: TransactionBarComponentData[] = []
             const CATEGORIES_LIST = await this.getCategoryList()
             const RECEIVERS_LIST = await this.getReceiverList()
             const transactions = await this.APP.DATA.TRANSACTION.getAll()

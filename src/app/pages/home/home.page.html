@@ -8,15 +8,7 @@
     </div>
     @if (ACCOUNTS_CAROUSEL_DATA.length !== 0) {
         <accounts_carousel [accounts_data]="ACCOUNTS_CAROUSEL_DATA" (active_account_number)="handleActiveAccountChange($event)" />
-        <div class="TRANSACTIONS">
-            <p class="TITLE">Lista transakcji</p>
-            <div class="LIST">
-                @for(tr of account_transactions_list; track tr.transaction_id) {
-                    <transaction-bar [component_data]="tr" />
-                }
-            </div>
-            <div class="GLOW"></div>
-        </div>
+        <transaction_list [transactions_list]="account_transactions_list" />
     } @else {
         <p class="NO_ACCOUNTS">Brak kont bankowych przejdź do zakładki konta i dodaj jedną</p>
     }

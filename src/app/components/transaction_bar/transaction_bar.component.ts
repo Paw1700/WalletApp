@@ -10,7 +10,7 @@ import { Category, Currency, Receiver } from "../../models";
     styleUrl: './transaction_bar.component.scss'
 })
 export class TransactionBarComponent {
-    @Input() component_data: TransactionBarComponent_Data = {
+    @Input() component_data: TransactionBarComponentData = {
         transaction_id: 'XXX',
         user_account_id: 'XXX',
         category: {
@@ -32,7 +32,7 @@ export class TransactionBarComponent {
     }
 }
 
-export type TransactionBarComponent_Data = {
+export type TransactionBarComponentData = {
     transaction_id: string,
     user_account_id: string,
     category: Category,
