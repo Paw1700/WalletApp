@@ -5,11 +5,11 @@ import { Pipe, PipeTransform } from "@angular/core";
     standalone: true
 })
 export class NumberSeparator implements PipeTransform {
-    transform(v: number | string | null) {
+    transform(v: number | string | null | undefined) {
         if (typeof v === 'string') {
             v = Number(v)
         }
-        if (!v) {
+        if (v === null || v === undefined) {
             v = 0
         }
         let value = v.toFixed(2)

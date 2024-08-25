@@ -122,7 +122,7 @@ export interface UserStock {
     }
 }
 
-export type AppLocations = 'home' | 'bootstrap' | 'app_first_configuration' | 'app_data_update' | 'add_account' | 'add_transaction' | 'accounts_list' | 'settings' | 'credits_list' | 'add_credit' | 'account_page' | 'credit_page'
+export type AppLocations = 'home' | 'bootstrap' | 'app_first_configuration' | 'app_data_update' | 'add_account' | 'add_transaction' | 'accounts_list' | 'settings' | 'credits_list' | 'add_credit' | 'account_page' | 'credit_page' | 'transactions_list'
 
 export type AppLocationListItem = {
     name: string,
@@ -139,24 +139,24 @@ export type ValidationResult = {
 // MINOR - something didn't work in background (syncing with external DB, etc.)
 export type ErrorType = 'FATAL' | 'MAIN' | 'MINOR'
 
-export type ErrorID = 
+export type ErrorID =
     'APP-GENERAL' |
     'APP-DATA-PROFILE-SAVE-ID' |
     'APP-DATA-PROFILE-SAVE-IMAGE' |
     'APP-DATA-PROFILE-SAVE-NAME' |
     'APP-DATA-PROFILE-SAVE-SURNAME' |
-    'APP-DATA-PROFILE-GET' | 
+    'APP-DATA-PROFILE-GET' |
     'APP-DATA-PROFILE-DELETE' |
-    'APP-DATA-TRANSACTION-GET' | 
+    'APP-DATA-TRANSACTION-GET' |
     'APP-DATA-TRANSACTION-SAVE-ID' |
     'APP-DATA-TRANSACTION-SAVE-AMOUNT' |
     'APP-DATA-TRANSACTION-SAVE-DATE' |
-    'APP-DATA-TRANSACTION-SAVE-RECEIVER' | 
+    'APP-DATA-TRANSACTION-SAVE-RECEIVER' |
     'APP-DATA-TRANSACTION-SAVE-UA_ID' |
     'APP-DATA-TRANSACTION-DELETE' |
     'APP-DATA-USER_ACCOUNT-GET' |
     'APP-DATA-USER_ACCOUNT-SAVE-ID' |
-    'APP-DATA-USER_ACCOUNT-SAVE-AVAIBLE_FUNDS' | 
+    'APP-DATA-USER_ACCOUNT-SAVE-AVAIBLE_FUNDS' |
     'APP-DATA-USER_ACCOUNT-SAVE-INTEREST_RATE' |
     'APP-DATA-USER_ACCOUNT-SAVE-INTEREST_LIMIT' |
     'APP-DATA-USER_ACCOUNT-DELETE' |

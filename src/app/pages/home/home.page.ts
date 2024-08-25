@@ -7,7 +7,7 @@ import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
 import { TransactionBarComponent, TransactionBarComponentData } from "../../components/transaction_bar/transaction_bar.component";
 import { AccountBarComponentData } from "../../components/account_bar/account_bar.component";
-import { TransactionList } from "./components/transactions_list/transaction_list.component";
+import { HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
 
 @Component({
     selector: 'home_page',
@@ -15,7 +15,7 @@ import { TransactionList } from "./components/transactions_list/transaction_list
     imports: [
         AccountsCarousel,
         TransactionBarComponent,
-        TransactionList
+        HomeTransactionList
     ],
     templateUrl: './home.page.html',
     styleUrl: './home.page.scss'

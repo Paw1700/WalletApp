@@ -7,9 +7,9 @@ import { TransactionBarComponent, TransactionBarComponentData } from "../../../.
     imports: [
         TransactionBarComponent
     ],
-    templateUrl: './transaction_list.component.html',
-    styleUrl: './transaction_list.component.scss'
+    templateUrl: './home_transaction_list.component.html',
+    styleUrl: './home_transaction_list.component.scss'
 })
-export class TransactionList {
+export class HomeTransactionList {
     @Input({required: true}) transactions_list: TransactionBarComponentData[] = []
 }

@@ -6,9 +6,11 @@
     - [ ] Pages
         - [x] Menu
         - [x] Home 
+        - [ ] Transaction list 
         - [x] Adding transaction 
+        - [ ] Editing transaction
         - [x] List of accounts 
-        - [x] Adding account 
+        - [x] Adding account
         - [ ] Overview account 
         - [ ] List of planned transaction 
         - [ ] Adding planned transaction

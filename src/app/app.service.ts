@@ -83,6 +83,11 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break
+            case "transactions_list":
+                await this.ROUTER.navigateByUrl('transactions_list')
+                this.APPERANCE.nav_bar_left_button_option$.next('menu')
+                this.APPERANCE.nav_bar_right_button_option$.next(null)
+                break
         }
     }
 

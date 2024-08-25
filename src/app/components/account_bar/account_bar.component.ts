@@ -53,7 +53,7 @@ export type AccountFundsData = {
     stats_data: {
         plus: number,
         minus: number
-    }
+    } | null
 }
 
 export type AccountBarComponentData = {

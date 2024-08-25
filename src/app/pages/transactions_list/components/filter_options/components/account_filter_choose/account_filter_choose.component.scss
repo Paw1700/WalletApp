@@ -1,0 +1,39 @@
+div.ACCOUNT {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.17vh;
+    
+    div.CAROUSEL {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        overflow-x: scroll;
+
+        //* HIDE SCROLLBAR
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        div.ALL_ACCOUNTS_BAR,
+        account-bar {
+            margin-inline: 4%;
+            min-width: 92%;
+        }
+
+        div.ALL_ACCOUNTS_BAR {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: .75vw solid var(--app-accent);
+            border-radius: 2.5vw;
+            padding-block: 1.17vh;
+        }
+    }
+
+}

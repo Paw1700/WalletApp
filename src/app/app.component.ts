@@ -26,7 +26,7 @@ import { ErrorBar } from './components/error_bar/error_bar.component';
   animations: [
     trigger('ROUTE_ANIMATION', [
       // ** FADE */
-      transition('boot => *', [
+      transition('boot => *, home <=> transactions_list, home <=> accounts_list, accounts_list <=> transactions_list', [
         group([
           query(":enter", [
             style({ zIndex: 1, opacity: 0 }),

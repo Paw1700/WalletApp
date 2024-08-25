@@ -51,6 +51,7 @@ export class MenuPage implements OnInit {
     show_page = false
     app_locations: AppLocationListItem[] = [
         { name: 'Strona główna', active: true },
+        { name: 'Transakcje', active: false},
         { name: 'Konta', active: false },
         { name: 'Kredyty', active: false },
         { name: 'Giełda', active: false },
@@ -71,6 +72,9 @@ export class MenuPage implements OnInit {
                 this.APP.navigate('home')
                 break
             case 1:
+                this.APP.navigate('transactions_list')
+                break
+            case 2:
                 this.APP.navigate('accounts_list')
                 break
         }
@@ -94,8 +98,11 @@ export class MenuPage implements OnInit {
                 case "home":
                     this.app_locations[0].active = true
                     break
-                case 'accounts_list':
+                case 'transactions_list':
                     this.app_locations[1].active = true
+                    break
+                case 'accounts_list':
+                    this.app_locations[2].active = true
                     break
             }
         })

@@ -1,0 +1,17 @@
+div.PAGE {
+    justify-content: flex-start;
+    gap: 1.7vh;
+    
+    p.TITLE {
+        width: 91.34vw;
+        padding-top: 1.7vh;
+        padding-inline: 4.32vw;
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-align: left;
+    }
+
+    filter_options {
+        width: 100%;
+    }
+}

@@ -1,5 +1,5 @@
 div.ACCOUNT_BAR {
-    width: 84.5vw;
+    max-width: 100%;
     border-radius: 3.88vw;
     color: white;
     padding: 1.7vh 3.8vw;
@@ -13,7 +13,8 @@ div.ACCOUNT_BAR {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 2.5vw;
         width: 100%;
 
         p.TITLE {
