@@ -2,7 +2,7 @@ import { Component, inject } from "@angular/core";
 import { FilterOptions } from "./components/filter_options/filter_options.component";
 import { ActivatedRoute } from "@angular/router";
 import { AccountBarComponentData } from "../../components/account_bar/account_bar.component";
-import { UserAccount, Account, Category } from "../../models";
+import { UserAccount, Account, Category, Receiver } from "../../models";
 
 @Component({
     selector: 'transactions_list_page',
@@ -18,6 +18,7 @@ export class TransactionsListPage {
 
     ACCOUNTS_BAR_DATA_LIST: AccountBarComponentData[] = []
     CATEGORIES_LIST: Category[] = []
+    RECEIVERS_LIST: Receiver[] = []
 
     ngOnInit(): void {
         this.readResolverDataAndPopulateData()
@@ -26,6 +27,7 @@ export class TransactionsListPage {
     private readResolverDataAndPopulateData() {
         this.ROUTE.data.subscribe( resolver_data => {
             this.CATEGORIES_LIST = resolver_data['categories_list']
+            this.RECEIVERS_LIST = resolver_data['receivers_list']
             this.populateAccountsBarData(resolver_data['user_accounts_data'] as UserAccount[], resolver_data['accounts_data'] as Account[])
         })
     }

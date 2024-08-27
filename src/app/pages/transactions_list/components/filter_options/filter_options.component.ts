@@ -3,8 +3,9 @@ import { AccountBarComponent, AccountBarComponentData } from "../../../../compon
 import { AccountFilter } from "./components/account_filter_choose/account_filter_choose.component";
 import { AmountFilterChoose } from "./components/amount_filter_choose/amount_filter_choose.component";
 import { CategorieFilterChoose } from "./components/categorie_filter_choose/categorie_filter_choose.component";
-import { Category } from "../../../../models";
+import { Category, Receiver, Transaction_Type } from "../../../../models";
 import { TransactionTypeFilter } from "./components/transactions_type/transactions_type.component";
+import { ReceiverFilter } from "./components/receiver_filter/receiver_filter.component";
 @Component({
     selector: 'filter_options',
     standalone: true,
@@ -13,7 +14,8 @@ import { TransactionTypeFilter } from "./components/transactions_type/transactio
     AccountFilter,
     AmountFilterChoose,
     CategorieFilterChoose,
-    TransactionTypeFilter
+    TransactionTypeFilter,
+    ReceiverFilter
 ],
     templateUrl: './filter_options.component.html',
     styleUrl: './filter_options.component.scss'
@@ -21,13 +23,19 @@ import { TransactionTypeFilter } from "./components/transactions_type/transactio
 export class FilterOptions {
     @Input({required: true}) ACCOUNTS_BAR_DATA: AccountBarComponentData[] = [] 
     @Input({required: true}) CATEGORIES_LIST: Category[] = []
+    @Input({required: true}) RECEIVERS_LIST: Receiver[] = []
+
+    transaction_type: Transaction_Type | null = null
 
     handleFilterChange(type: 'account' | 'amount' | 'category' | 'type', payload: any) {
         switch(type) {
             case "account":
             case "amount":
             case "category":
+                break
             case "type":
+                this.transaction_type = payload
+                break
         }
     }
 }
