@@ -1,0 +1,10 @@
+@if (is_box_open) {
+    <div class="OPTIONS">
+        <p (click)="changeTransactionsType('income')" [class.CHOOSED]="transaction_type === 'income'" class="OPT">Wpływ</p>
+        <p (click)="changeTransactionsType('expense')" [class.CHOOSED]="transaction_type === 'expense'" class="OPT">Wypływ</p>
+    </div>
+} @else if (!is_box_open && transaction_type) {
+    <p (click)="openBox()" class="OPEN_BOX_BUTTON CHOOSED">{{ transaction_type === 'income' ? 'Wpływ' : 'Wypływ' }}</p>
+} @else {
+    <p (click)="openBox()" class="OPEN_BOX_BUTTON">Typ</p>
+}
