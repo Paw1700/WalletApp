@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { AccountBarComponent, AccountBarComponentData } from "../../../../../../components/account_bar/account_bar.component";
 
 @Component({
@@ -11,7 +11,8 @@ import { AccountBarComponent, AccountBarComponentData } from "../../../../../../
     styleUrl: './account_filter_choose.component.scss'
 })
 export class AccountFilter {
-    @Input({required: true}) ACCOUNTS_BAR_DATA: AccountBarComponentData[] = [] 
+    @Input({required: true}) ACCOUNTS_BAR_DATA: AccountBarComponentData[] = []
+    @Output() CHOOSED_ACCOUNT_LIST_INDEX = new EventEmitter<number>() 
 
     selected_account_index = -1
     account_choosed_box_open = false
@@ -33,5 +34,6 @@ export class AccountFilter {
     handleTouchEnd() {
         const scroll_value_divided_by_window_width_rounded_to_integer = Math.round(this.scroll_value / window.innerWidth)
         document.getElementById('CAROUSEL')?.scrollTo({ left: scroll_value_divided_by_window_width_rounded_to_integer * window.innerWidth, top: 0, behavior: 'smooth' })
+        this.CHOOSED_ACCOUNT_LIST_INDEX.emit(scroll_value_divided_by_window_width_rounded_to_integer - 1)
     }
 }

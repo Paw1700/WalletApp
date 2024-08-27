@@ -5,8 +5,13 @@ div.FILTER_OPTIONS {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
+    gap: 2vw;
 
     account_filter {
         width: 100%;
+    }
+
+    amount_filter {
+        width: 92%;
     }
 }

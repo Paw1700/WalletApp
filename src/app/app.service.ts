@@ -29,7 +29,8 @@ export class APP_SERVICE {
 
             await this.DATA.init()
 
-            let redirection_location: AppLocations = 'home'
+            // let redirection_location: AppLocations = 'home'
+            let redirection_location: AppLocations = 'transactions_list'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
 

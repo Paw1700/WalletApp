@@ -1,0 +1,25 @@
+<div class="AMOUNT_BOX" [class.ACTIVE]="active_box">
+    @if (is_box_open) {
+        @if (from || to) {
+            <img (click)="resetForm()" src="/assets/UI/undo/white.webp" />
+        }
+        <p>od</p>
+        <input [value]="from" (input)="handleAmountInput('from', $event)" [class.ERROR]="from_input_box_error" type="number" >
+        <p>do</p>
+        <input [value]="to" (input)="handleAmountInput('to', $event)" [class.ERROR]="to_input_box_error" type="number" >
+        <button (click)="closeBox()">OK</button>
+    } @else if (!is_box_open && (from !== null || to !== null)) {
+        @if (from && to) {
+            <p (click)="openBox()">od {{ from | number_separator }} do {{ to | number_separator }} PLN</p>
+        } @else {
+            @if(from) {
+                <p (click)="openBox()">od {{ from | number_separator }} PLN</p>
+            }
+            @if (to) {
+                <p (click)="openBox()">do {{ to | number_separator }} PLN</p>
+            }
+        }
+    } @else {
+        <p (click)="openBox()">Kwota</p>
+    }
+</div>

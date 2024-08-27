@@ -1,3 +1,4 @@
 <div class="FILTER_OPTIONS">
-   <account_filter [ACCOUNTS_BAR_DATA]="ACCOUNTS_BAR_DATA" />
+   <account_filter [ACCOUNTS_BAR_DATA]="ACCOUNTS_BAR_DATA" (CHOOSED_ACCOUNT_LIST_INDEX)="handleFilterChange('account' ,$event)" />
+   <amount_filter (amount_filter_values)="handleFilterChange('amount', $event)" />
 </div>
