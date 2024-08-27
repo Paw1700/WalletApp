@@ -1,0 +1,67 @@
+div.CATEGORIES {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2.5vw;
+    padding: 1.17vh 3.8vw;
+    background-color: var(--app-accent);
+    color: white;
+    gap: 1.17vh;
+    max-width: 100%;
+
+    div.LIST {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        //* HIDE SCROLLBAR
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        //* HIDE SCROLLBAR
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2.5vw;
+        
+        div.CATEGORIE {
+            min-width: 32.5vw;
+            border-radius: 2.5vw;
+            padding-block: 1.17vh;
+    
+            &.CHOOSED {
+                background-color: white;
+                color: black;
+            }
+    
+            img {
+                width: 7.5vw;
+                object-fit: contain;
+            }
+        }
+    }
+
+    p.RESET_BUTTON {
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+}
+
+
+p.OPEN_BOX_BUTTON {
+    font-size: 1rem;
+    font-weight: 600;
+    border: .75vw solid var(--app-accent);
+    border-radius: 2.5vw;
+    padding: 1.17vh 3.8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.CHOOSED {
+        background-color: var(--app-accent);
+        color: white;
+    }
+}

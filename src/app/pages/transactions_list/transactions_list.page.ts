@@ -2,7 +2,7 @@ import { Component, inject } from "@angular/core";
 import { FilterOptions } from "./components/filter_options/filter_options.component";
 import { ActivatedRoute } from "@angular/router";
 import { AccountBarComponentData } from "../../components/account_bar/account_bar.component";
-import { UserAccount, Account } from "../../models";
+import { UserAccount, Account, Category } from "../../models";
 
 @Component({
     selector: 'transactions_list_page',
@@ -17,24 +17,28 @@ export class TransactionsListPage {
     private readonly ROUTE = inject(ActivatedRoute)
 
     ACCOUNTS_BAR_DATA_LIST: AccountBarComponentData[] = []
+    CATEGORIES_LIST: Category[] = []
 
     ngOnInit(): void {
-        this.readResolverDataAndPopulateAccountsBarData()
+        this.readResolverDataAndPopulateData()
     }
 
-    private readResolverDataAndPopulateAccountsBarData() {
+    private readResolverDataAndPopulateData() {
         this.ROUTE.data.subscribe( resolver_data => {
-            const user_accounts_list = resolver_data['user_accounts_data'] as UserAccount[]
-            const accounts_data = resolver_data['accounts_data'] as Account[]
-            user_accounts_list.forEach( usa => {
-                this.ACCOUNTS_BAR_DATA_LIST.push({
-                    user_account_id: usa.account_id,
-                    account: accounts_data.filter(acc => acc.id === usa.account_id)[0],
-                    funds_data: {
-                        avaible_funds: usa.avaible_funds,
-                        stats_data: null
-                    }
-                })
+            this.CATEGORIES_LIST = resolver_data['categories_list']
+            this.populateAccountsBarData(resolver_data['user_accounts_data'] as UserAccount[], resolver_data['accounts_data'] as Account[])
+        })
+    }
+
+    private populateAccountsBarData(user_accounts_list: UserAccount[], accounts_data: Account[]) {
+        user_accounts_list.forEach( usa => {
+            this.ACCOUNTS_BAR_DATA_LIST.push({
+                user_account_id: usa.account_id,
+                account: accounts_data.filter(acc => acc.id === usa.account_id)[0],
+                funds_data: {
+                    avaible_funds: usa.avaible_funds,
+                    stats_data: null
+                }
             })
         })
     }

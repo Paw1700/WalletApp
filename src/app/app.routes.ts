@@ -86,7 +86,8 @@ export const routes: Routes = [
         },
         resolve: {
             user_accounts_data: USER_ACCOUNTS_RESOLVER,
-            accounts_data: ACCOUNTS_RESOLVER
+            accounts_data: ACCOUNTS_RESOLVER,
+            categories_list: CATEGORY_RESOLVER
         }
     }
 ];

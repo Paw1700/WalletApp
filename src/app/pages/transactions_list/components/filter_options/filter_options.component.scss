@@ -11,7 +11,16 @@ div.FILTER_OPTIONS {
         width: 100%;
     }
 
-    amount_filter {
+    div.OTHER_FILTERS {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2vw;
         width: 92%;
+
+        amount_filter,
+        categorie_filter {
+            max-width: 100%;
+        }
     }
 }
