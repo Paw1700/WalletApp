@@ -1,0 +1,25 @@
+<div class="NUMBER_INPUT_BAR">
+    <div (click)="changeComponentOpenessState()" class="TITLE_BAR">
+        <p [class.INACTIVE]="!component_open && !inputed_number" class="TITLE">  
+            @if (!component_open && inputed_number && title.length > 10) {
+                {{ title.slice(0,10) + '...' }}
+            } @else {
+                {{ title }}
+            }
+        </p>
+        @if (!component_open && inputed_number) {
+            <p class="NUMBER_BAGDE">{{ inputed_number | number_separator }} {{ suffix }}</p>
+        }
+    </div>
+    @if (component_open) {
+        <div [@input_bar] class="INPUT_BAR">
+            <div class="INPUT_BOX" [class.WITH_SUFFIX]="suffix">
+                <input [class.FOCUSED]="input_is_in_focus" type="number" (blur)="inputIsInFocus(false)" (focus)="inputIsInFocus(true)" (input)="setValue($event)"/>
+                <p [class.SHOW]="!input_is_in_focus" [class.FOCUSED]="inputed_number !== 0 && inputed_number !== null">{{ inputed_number | number_separator }}</p>
+            </div>
+            @if (suffix) {
+                <p class="CURRENCY">{{ suffix }}</p>
+            }
+        </div>
+    }
+</div>

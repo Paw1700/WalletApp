@@ -1,25 +1,25 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { TransactionTypeChooseBar } from "../../components/transaction_type_choose_bar/transaction_type_chosse_bar.component";
-import { CategoryChooseBar } from "../../components/category_choose_bar/category_choose_bar.component";
-import { NumberInputComponent } from "../../components/number_input_bar/number_input_bar.component";
-import { ReceiverChooseBar } from "../../components/receiver_choose_bar/receiver_choose_bar.component";
-import { Category, Receiver, Transaction, Transaction_Type } from "../../models";
-import { TextInputBar } from "../../components/text_input_bar/text_input_bar.component";
+import { TransactionTypeChooseWithTitle } from "../../components/forms/transaction_type_choose_with_title/transaction_type_choose_with_titlecomponent";
+import { CategoryChooseScroll } from "../../components/forms/category_choose_scroll/category_choose_scroll.component";
+import { NumberInput } from "../../components/forms/number_input_bar/number_input_bar.component";
+import { ReceiverChooseList } from "../../components/forms/receiver_choose_list/receiver_choose_list.component";
+import { Category, Receiver, Transaction, TransactionType } from "../../models";
+import { TextInputBar } from "../../components/forms/text_input_bar/text_input_bar.component";
 import { ActivatedRoute } from "@angular/router";
-import { DateChooseBar } from "../../components/date_choose_bar/date_choose_bar.component";
+import { DateChooseBar } from "../../components/forms/date_choose_bar/date_choose_bar.component";
 import { APP_SERVICE } from "../../app.service";
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
-import { AccountBarComponent, AccountBarComponentData } from "../../components/account_bar/account_bar.component";
+import { AccountBarComponent, AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 
 @Component({
     selector: 'add_transaction_page',
     standalone: true,
     imports: [
-        TransactionTypeChooseBar,
-        CategoryChooseBar,
-        NumberInputComponent,
-        ReceiverChooseBar,
+        TransactionTypeChooseWithTitle,
+        CategoryChooseScroll,
+        NumberInput,
+        ReceiverChooseList,
         TextInputBar,
         DateChooseBar,
         AccountBarComponent
@@ -34,7 +34,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     CATEGORIES_LIST: Category[] = []
     ACCOUNT_BAR_DATA!: AccountBarComponentData
 
-    transaction_type: Transaction_Type = 'expense'
+    transaction_type: TransactionType = 'expense'
     new_transaction: Transaction = {
         id: "",
         date: new Date(),
@@ -83,7 +83,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
         }
     }
 
-    changeTransactionType(type: Transaction_Type) {
+    changeTransactionType(type: TransactionType) {
         this.transaction_type = type
     }
 

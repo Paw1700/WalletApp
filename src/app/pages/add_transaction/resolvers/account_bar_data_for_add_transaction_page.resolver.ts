@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from "@angular/router";
-import { AccountBarComponentData } from "../../../components/account_bar/account_bar.component";
+import { AccountBarComponentData } from "../../../components/single_components/account_bar/account_bar.component";
 import { APP_SERVICE } from "../../../app.service";
 import { HttpClient } from "@angular/common/http";
 import { Account } from "../../../models";

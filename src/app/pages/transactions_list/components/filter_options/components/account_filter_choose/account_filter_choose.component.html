@@ -1,8 +1,0 @@
-<div class="ACCOUNT">
-    <div id="CAROUSEL" (scroll)="handleScrollGesture($event)" (touchend)="handleTouchEnd()" class="CAROUSEL">
-        <div class="ALL_ACCOUNTS_BAR">Wszystkie konta</div>
-        @for(acc of ACCOUNTS_BAR_DATA; track acc.user_account_id) {
-            <account-bar [bar_type]="'NAME_ONLY'" [bar_data]="acc" />
-        }
-    </div>
-</div>

@@ -1,0 +1,84 @@
+div.RECEIVER_CHOOSE_BOX {
+    min-width: calc(100% - 3.8vw * 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--app-accent);
+    color: white;
+    gap: 1.17vh;
+    padding: 1.17vh 3.8vw;
+    border-radius: 2.5vw;
+
+    input.SEARCH_BAR {
+        min-width: calc(100% - 3.8vw * 2);
+        border: .5vw solid white;
+        padding: 1.17vh 3.8vw;
+        border-radius: 2.5vw;
+        color: white;
+
+        &::placeholder {
+            color: rgba(255,255,255, .75);
+        }
+    }
+
+    p.RESET_BUTTON {
+        width: 100%;
+        background-color: white;
+        color: black;
+        border-radius: 2.5vw;
+        padding-block: 1.17vh;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    div.LIST {
+        min-width: 100%;
+        display: flex;
+        gap: 1.17vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 50vh;
+        overflow-y: scroll;
+
+        div.RECEIVER {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 2.5vw;
+
+            img {
+                width: 15vw;
+                border-radius: 50%;
+                object-fit: contain;
+            }
+
+            p {
+                &.CHOSEN {
+                    font-size: 1.05rem;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+p.OPEN_BOX_BUTTON {
+    font-size: 1rem;
+    font-weight: 600;
+    border: .75vw solid var(--app-accent);
+    border-radius: 2.5vw;
+    padding: 1.17vh 3.8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+
+    &.CHOOSED {
+        background-color: var(--app-accent);
+        color: white;
+    }
+}

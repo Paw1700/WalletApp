@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Receiver, Transaction_Type } from "../../../../../../models";
+import { Receiver, TransactionType } from "../../../../../../models";
 
 @Component({
     selector: 'receiver_filter',
@@ -9,7 +9,7 @@ import { Receiver, Transaction_Type } from "../../../../../../models";
 })
 export class ReceiverFilter implements OnInit{
     @Input({required: true, alias: 'RECEIVERS_LIST'}) FULL_RECEIVERS_LIST: Receiver[] = []
-    @Input({required: true}) TRANSACTIONS_TYPE: Transaction_Type | null = null
+    @Input({required: true}) TRANSACTIONS_TYPE: TransactionType | null = null
     @Output() choosen_receiver = new EventEmitter<Receiver | null>()
 
     receivers_list: Receiver[] = []

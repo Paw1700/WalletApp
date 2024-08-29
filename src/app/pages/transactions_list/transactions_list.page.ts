@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { FilterOptions } from "./components/filter_options/filter_options.component";
 import { ActivatedRoute } from "@angular/router";
-import { AccountBarComponentData } from "../../components/account_bar/account_bar.component";
+import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 import { UserAccount, Account, Category, Receiver } from "../../models";
 
 @Component({
@@ -38,8 +38,7 @@ export class TransactionsListPage {
                 user_account_id: usa.account_id,
                 account: accounts_data.filter(acc => acc.id === usa.account_id)[0],
                 funds_data: {
-                    avaible_funds: usa.avaible_funds,
-                    stats_data: null
+                    avaible_funds: usa.avaible_funds
                 }
             })
         })

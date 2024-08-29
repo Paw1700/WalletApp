@@ -4,7 +4,7 @@ import { APP_SERVICE } from "../../app.service";
 import ACCOUNTS_LIST_JSON from '../../../../public/assets/data/accounts.json'
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
-import { AccountBarComponentData, AccountBarComponent } from "../../components/account_bar/account_bar.component";
+import { AccountBarComponentData, AccountBarComponent } from "../../components/single_components/account_bar/account_bar.component";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { AccountBarComponent, AccountBarComponentData } from "../../../../components/account_bar/account_bar.component";
+import { AccountBarComponent, AccountBarComponentData } from "../../../../components/single_components/account_bar/account_bar.component";
 import { NumberSeparator } from "../../../../pipes/number_separator.pipe";
 import { NgStyle } from "@angular/common";
 

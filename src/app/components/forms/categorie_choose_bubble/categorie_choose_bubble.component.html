@@ -1,0 +1,19 @@
+@if (component_open) {
+    <div class="CATEGORIES">
+        <div class="LIST">
+            @for (cat of CATEGORIES_LIST; track cat.id) {
+                <div (click)="setCategory(cat)" [class.CHOOSED]="choosed_categorie?.id === cat.id" class="CATEGORIE">
+                    <img [src]="choosed_categorie?.id === cat.id ? cat.logo_src.dark : cat.logo_src.light" />
+                    <p>{{ cat.name }}</p>
+                </div>
+            }
+        </div>
+        @if (choosed_categorie) {
+            <p (click)="setCategory()" class="RESET_BUTTON">RESETUJ</p>
+        }
+    </div>
+} @else if (!component_open && choosed_categorie) {
+    <p (click)="changeComponentOpenessState(true)" class="OPEN_BOX_BUTTON CHOOSED">{{ choosed_categorie.name }}</p>
+} @else {
+    <p (click)="changeComponentOpenessState(true)" class="OPEN_BOX_BUTTON">Kategoria</p>
+}

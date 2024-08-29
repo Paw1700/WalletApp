@@ -238,8 +238,8 @@ input[type=week] {}
 
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
+	display: none;
+	-webkit-appearance: none;
 }
 
 /* Button Controls
@@ -342,12 +342,21 @@ div.PAGE {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
+}
+
+.HIDE_SCROLL_BAR {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 :root {
 	--app-theme: #fff;
-	--app-theme-with-transparence: rgba(255,255,255, .85);
+	--app-theme-with-transparence: rgba(255, 255, 255, .85);
 	--app-accent: var(--app-default-accent);
 	--app-default-accent: #607D8B;
 	--font-color: #000;

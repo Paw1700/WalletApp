@@ -1,0 +1,10 @@
+@if (component_open) {
+    <div class="OPTIONS">
+        <p (click)="setType('income')" [class.CHOOSED]="choosed_type === 'income'" class="OPT">Wpływ</p>
+        <p (click)="setType('expense')" [class.CHOOSED]="choosed_type === 'expense'" class="OPT">Wypływ</p>
+    </div>
+} @else if (!component_open && choosed_type) {
+    <p (click)="changeComponentOpenessState(true)" class="OPEN_BOX_BUTTON CHOOSED">{{ choosed_type === 'income' ? 'Wpływ' : 'Wypływ' }}</p>
+} @else {
+    <p (click)="changeComponentOpenessState(true)" class="OPEN_BOX_BUTTON">Typ</p>
+}

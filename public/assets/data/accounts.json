@@ -13,7 +13,7 @@
                 "plus": null,
                 "minus": null
             },
-            "bank_logo_src": "/assets/banks_logos/alior_bank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/alior_bank.webp"
         }
     },
     {
@@ -30,7 +30,7 @@
                 "plus": null,
                 "minus": null
             },
-            "bank_logo_src": "/assets/banks_logos/alior_bank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/alior_bank.webp"
         }
     },
     {
@@ -353,7 +353,7 @@
                 "plus": "#00FF00",
                 "minus": "#FF0000"
             },
-            "bank_logo_src": "/assets/banks_logos/mbank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/mbank.webp"
         }
     },
     {
@@ -370,7 +370,7 @@
                 "plus": "#00FF00",
                 "minus": "#FFFFFF"
             },
-            "bank_logo_src": "/assets/banks_logos/mbank.webp"
+            "bank_logo_src": "/assets/account_bank_logos/mbank.webp"
         }
     }
 ]

@@ -1,0 +1,21 @@
+<div class="BANK_CHOOSE_BAR">
+    @if(component_open || choosed_bank === null) {
+        <p (click)="chooseBank(null)" class="TITLE" [class.INACTIVE]="!choosed_bank && !component_open">Bank</p>
+    } @else if(choosed_bank) {
+        <div (click)="chooseBank(null)" class="CLOSED_VERSION">
+            <img class="BANK_LOGO" [src]="choosed_bank.logo_src" />
+            <p class="BANK_NAME">{{ choosed_bank.name }}</p>
+        </div>
+    }
+    
+    @if(component_open) {
+        <div [@banks_list] class="BANKS_LIST HIDE_SCROLL_BAR">
+            @for (bank of BANKS_LIST; track bank.id) {
+                <div (click)="chooseBank(bank)" class="BANK">
+                    <img [src]="bank.logo_src">
+                    <p>{{ bank.name }}</p>
+                </div>
+            }
+        </div>
+    }
+</div>

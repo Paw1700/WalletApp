@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { TextInputBar } from "../../components/text_input_bar/text_input_bar.component";
+import { TextInputBar } from "../../components/forms/text_input_bar/text_input_bar.component";
 import { imageToBase64 } from "../../util/image_to_base64";
 import { Profile } from "../../models";
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";

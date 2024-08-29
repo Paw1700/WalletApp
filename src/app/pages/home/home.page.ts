@@ -5,8 +5,8 @@ import { APP_SERVICE } from "../../app.service";
 import { AccountsCarousel } from "./components/accounts-carousel/accounts-carousel.component";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
-import { TransactionBarComponent, TransactionBarComponentData } from "../../components/transaction_bar/transaction_bar.component";
-import { AccountBarComponentData } from "../../components/account_bar/account_bar.component";
+import { TransactionBar, TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
+import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 import { HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
 
 @Component({
@@ -14,7 +14,7 @@ import { HomeTransactionList } from "./components/home_transactions_list/home_tr
     standalone: true,
     imports: [
         AccountsCarousel,
-        TransactionBarComponent,
+        TransactionBar,
         HomeTransactionList
     ],
     templateUrl: './home.page.html',

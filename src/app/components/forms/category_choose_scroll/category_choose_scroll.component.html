@@ -1,0 +1,20 @@
+<div class="CATEGORY_CHOOSE_BAR">
+    <div (click)="changeComponentOpenessState()" class="TITLE_BAR">
+        <p [class.CLOSED]="!component_open && choosed_categorie == null" class="TITLE">Kategoria</p>
+        @if (choosed_categorie && !component_open) {
+            <div [@badge] class="CATEGORY_BADGE">{{ choosed_categorie.name }}</div>
+        }
+    </div>
+    @if (component_open) {
+        <div [@list] class="CATEGORY_LIST">
+            @for(cat of CATEGORIES_LIST; track cat.id) {
+                <div (click)="setCategory(cat)" class="CATEGORIE">
+                    <div class="CATEGORY_LOGO">
+                        <img [src]="cat.logo_src.light" />
+                    </div>
+                    <p>{{ cat.name }}</p>
+                </div>
+            }
+        </div>
+    }
+</div>

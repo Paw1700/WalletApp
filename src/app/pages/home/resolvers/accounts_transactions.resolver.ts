@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from "@angular/router";
 import { APP_SERVICE } from "../../../app.service";
-import { TransactionBarComponentData } from "../../../components/transaction_bar/transaction_bar.component";
 import { Category, Receiver } from "../../../models";
 import { HttpClient } from "@angular/common/http";
 import { DAYS_OFFSET } from "../../../constants";
+import { TransactionBarComponentData } from "../../../components/single_components/transaction_bar/transaction_bar.component";
 
 @Injectable()
 export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarComponentData[]> {

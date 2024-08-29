@@ -1,9 +1,9 @@
 <div class="PAGE">
     <account-bar [bar_data]="ACCOUNT_BAR_DATA" [bar_type]="'FUNDS_ONLY'" />
     <date_choose_bar (choosed_date)="handleFormInput('date', $event)" />
-    <transaction_choose_bar (choosed_option_type)="handleFormInput('transaction_type', $event)" />
-    <category_choose_bar [categories_list]="CATEGORIES_LIST" (choosed_categorie_id)="handleFormInput('category_id', $event)" />
-    <receiver_choose_bar (choosed_receiver_id)="handleFormInput('receiver_id', $event)" [full_receiver_list]="RECEIVERS_LIST" [transaction_type]="transaction_type" />
-    <number_input (inputed_value)="handleFormInput('amount', $event)" [title]="'Kwota'" [currency]="'PLN'" />
+    <transaction_type_choose_with_title (choosed_option_type)="handleFormInput('transaction_type', $event)" />
+    <category_choose_scroll [CATEGORIES_LIST]="CATEGORIES_LIST" (choosed_categorie_id)="handleFormInput('category_id', $event)" />
+    <receiver_choose_list (choosed_receiver_id)="handleFormInput('receiver_id', $event)" [RECEIVERS_LIST]="RECEIVERS_LIST" [TRANSACTION_TYPE]="transaction_type" />
+    <number_input (inputed_value)="handleFormInput('amount', $event)" [title]="'Kwota'" [suffix]="'PLN'" />
     <text_input_bar (inputed_text)="handleFormInput('desc', $event)" [title]="'Opis'" [placeholder]="'nie wymagane'" />
 </div>

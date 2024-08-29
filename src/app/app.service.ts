@@ -40,10 +40,10 @@ export class APP_SERVICE {
                 redirection_location = 'app_data_update'
             }
 
-            setTimeout(() => {
-                this.navigate(redirection_location)
-                resolve()
-            }, 1500)
+            // setTimeout(() => {
+            //     this.navigate(redirection_location)
+            //     resolve()
+            // }, 1500)
         })
     }
 

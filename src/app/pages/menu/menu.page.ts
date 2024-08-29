@@ -2,7 +2,7 @@ import { animate, animateChild, group, query, stagger, style, transition, trigge
 import { Component, inject, OnInit } from "@angular/core";
 import { APP_SERVICE } from "../../app.service";
 import { AppLocationListItem } from "../../models";
-import { NavBarButtonOptions } from "../../components/nav_bar/nav_bar.component";
+import { NavBarButtonOptions } from "../../components/UI/nav_bar/nav_bar.component";
 
 @Component({
     selector: 'menu_page',

@@ -1,0 +1,73 @@
+div.BANK_CHOOSE_BAR {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    p.TITLE {
+        width: 100%;
+        font-size: 1.58rem;
+        font-weight: 400;
+        text-align: left;
+        padding-inline: 4.32vw;
+
+        &.INACTIVE {
+            opacity: 0.2;
+        }
+    }
+
+    div.BANKS_LIST {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 3.8vw;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-x: scroll;
+        padding-inline: 4.32vw;
+
+        
+
+        div.BANK {
+            min-width: 38vw;
+            min-height: 38vw;
+            border-radius: 5vw;
+            background-color: var(--app-accent);
+            display: flex;
+            flex-direction: column;
+            gap: 1.7vh;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 700;
+
+            img {
+                width: 15vw;
+                height: 15vw;
+                object-fit: contain;
+            }
+        }
+    }
+
+
+    div.CLOSED_VERSION {
+        width: 91.36vw;
+        padding-inline: 4.32vw;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 3.8vw;
+
+        img.BANK_LOGO {
+            height: 4vh;
+            max-width: 20vw;
+            object-fit: contain;
+        }
+
+        p.BANK_NAME {
+            font-size: 1.58rem;
+            font-weight: 700;
+        }
+    }
+}

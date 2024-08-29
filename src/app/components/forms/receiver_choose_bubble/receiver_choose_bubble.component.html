@@ -1,0 +1,26 @@
+@if (component_open) {
+    <div class="RECEIVER_CHOOSE_BOX">
+        <input (input)="handleSearchBarInput($event)" type="text" class="SEARCH_BAR" placeholder="SZUKAJ...">
+        @if (choosed_receiver) {
+            <p (click)="setReceiver(null)" class="RESET_BUTTON">RESETUJ</p>
+        }
+        <div class="LIST HIDE_SCROLL_BAR">
+            @for (receiver of receivers_list; track receiver.id) {
+                <div (click)="setReceiver(receiver)" class="RECEIVER">
+                    <img [src]="receiver.logo_src">
+                    <p [class.CHOSEN]="choosed_receiver?.id === receiver.id">{{ receiver.name }}</p>
+                </div>
+            }
+        </div>
+    </div>
+} @else if (!component_open && choosed_receiver) {
+    <p (click)="changeComponentOpenessState(true)" class="OPEN_BOX_BUTTON CHOOSED">{{ choosed_receiver.name }}</p>
+} @else {
+    <p (click)="changeComponentOpenessState(true)" class="OPEN_BOX_BUTTON">
+        @switch (TRANSACTION_TYPE) {
+            @case ('income') {Nadawca}
+            @case ('expense') {Odbiorca}
+            @case (null) {Nadawca / Odbiorca}
+        }
+    </p>
+}

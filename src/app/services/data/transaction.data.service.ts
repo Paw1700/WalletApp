@@ -20,15 +20,14 @@ export class TRANSACTION_DATA_SERVICE {
         })
     }
 
-    // getAll(user_account_id?: string, filter_date?: {from?: Date, to?: Date}, category_id?: string, receiver_id?: string, filter_amount?: {from: number, to: number}): Promise<Transaction[]> {
-    getAll(options?: {user_account_id?: string, filter_date?: {from?: number, to?: number}, category_id?: string, receiver_id?: string, filter_amount?: {from: number, to: number}}): Promise<Transaction[]> {
+    getAll(options?: TransactionsFilterOptions): Promise<Transaction[]> {
         return new Promise(async (resolve, reject) => {
             try {
                 let all_transactions = await this.DB.getAllObject<Transaction>(this.DB_STORE)
                 if (options) {
                     if (options.user_account_id) {
                         all_transactions = all_transactions.filter(tr => tr.user_account_id === options.user_account_id)
-                    } 
+                    }
                     if (options.filter_date) {
                         if (options.filter_date.from) {
                             all_transactions = all_transactions.filter(tr => tr.date.getTime() >= options.filter_date!.from!)
@@ -45,10 +44,10 @@ export class TRANSACTION_DATA_SERVICE {
                     }
                     if (options.filter_amount) {
                         if (options.filter_amount.from) {
-                            all_transactions = all_transactions.filter(tr => tr.amount >= options.filter_amount!.from)
+                            all_transactions = all_transactions.filter(tr => tr.amount >= options.filter_amount!.from!)
                         }
                         if (options.filter_amount.to) {
-                            all_transactions = all_transactions.filter(tr => tr.amount <= options.filter_amount!.to)
+                            all_transactions = all_transactions.filter(tr => tr.amount <= options.filter_amount!.to!)
                         }
                     }
                 }
@@ -65,7 +64,7 @@ export class TRANSACTION_DATA_SERVICE {
                 transaction.id = await this.DB.GENERATE_INDEX(this.DB_STORE)
                 const validation_result = this.VALIDATOR.validateTranasaction(transaction)
                 if (validation_result.pass) {
-                    resolve (await this.DB.insertObject<Transaction>(this.DB_STORE, transaction))
+                    resolve(await this.DB.insertObject<Transaction>(this.DB_STORE, transaction))
                 } else {
                     throw new Error(validation_result.errCode)
                 }
@@ -80,7 +79,7 @@ export class TRANSACTION_DATA_SERVICE {
             try {
                 const validation_result = this.VALIDATOR.validateTranasaction(transaction)
                 if (validation_result.pass) {
-                    resolve (await this.DB.insertObject<Transaction>(this.DB_STORE, transaction))
+                    resolve(await this.DB.insertObject<Transaction>(this.DB_STORE, transaction))
                 } else {
                     throw new Error(validation_result.errCode)
                 }
@@ -94,10 +93,23 @@ export class TRANSACTION_DATA_SERVICE {
         return new Promise<void>(async (resolve, reject) => {
             try {
                 await this.DB.RELEASE_INDEX(this.DB_STORE, transaction_id)
-                resolve (await this.DB.deleteObject(this.DB_STORE, transaction_id))
+                resolve(await this.DB.deleteObject(this.DB_STORE, transaction_id))
             } catch (err) {
                 reject("APP-DATA-TRANSACTION-DELETE")
             }
         })
     }
+}
+
+export type TransactionsFilterOptions = {
+    user_account_id?: string,
+    filter_date?: TransactionsFilterNumberFromToOptions,
+    category_id?: string,
+    receiver_id?: string,
+    filter_amount?: TransactionsFilterNumberFromToOptions
+}
+
+export type TransactionsFilterNumberFromToOptions = {
+    from?: number,
+    to?: number
 }

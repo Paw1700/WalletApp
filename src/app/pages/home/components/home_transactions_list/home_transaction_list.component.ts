@@ -1,11 +1,11 @@
 import { Component, Input } from "@angular/core";
-import { TransactionBarComponent, TransactionBarComponentData } from "../../../../components/transaction_bar/transaction_bar.component";
+import { TransactionBar, TransactionBarComponentData } from "../../../../components/single_components/transaction_bar/transaction_bar.component";
 
 @Component({
     selector: 'transaction_list',
     standalone: true,
     imports: [
-        TransactionBarComponent
+        TransactionBar
     ],
     templateUrl: './home_transaction_list.component.html',
     styleUrl: './home_transaction_list.component.scss'

@@ -1,0 +1,101 @@
+div.RECEIVER_CHOOSE_BAR {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.17vh;
+
+    div.TOP {
+        min-width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 3.8vw;
+
+        p.TITLE {
+            font-size: 1.58rem;
+            font-weight: 400;
+            text-align: left;
+            transition: .25s ease;
+    
+            &.CLOSED {
+                opacity: .2;
+            }
+        }
+
+        div.RECEIVER_BADGE {
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: var(--app-accent);
+            color: white;
+            padding: .8vh 1.25vw;
+            border-radius: 2.5vw;
+        }
+    }
+
+    div.SEARCH_BAR {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        input {
+            width: 70%;
+            height: 4.1vh;
+            border: 1px solid var(--font-color);
+            border-radius: 2.5vw;
+            padding-inline: 3.8vw;
+        }
+
+        p {
+            font-size: .8rem;
+            font-weight: 600;
+            background-color: var(--app-accent);
+            color: white;
+            padding-inline: 3.8vw;
+            border-radius: 2.5vw;
+            height: 4.1vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    div.RECEIVER_LIST {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1.4vh;
+        max-height: 100%;
+        overflow-y: scroll;
+
+        div.RECEIVER {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 1.4vh;
+            align-items: center;
+            justify-content: flex-start;
+
+            div.LOGO {
+                width: 15vw;
+                height: 15vw;
+                background-color: var(--app-accent);
+                border-radius: 50%;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+        }
+    }
+}

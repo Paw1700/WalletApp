@@ -1,0 +1,23 @@
+<div class="TRANSACTION_CHOOSE_BAR">
+    <div (click)="changeComponentOpenessState()" class="TOP">
+        <p [class.CLOSED]="!component_open && choosed_type == null" class="TITLE">Rodzaj</p>
+        @if (choosed_type !== null && !component_open) {
+            <div [@badge] class="OPTION_BADGE">
+                @switch (choosed_type) {
+                    @case ('income') {
+                        Dochoód
+                    }
+                    @case ('expense') {
+                        Wydatek
+                    }
+                }
+            </div>
+        }
+    </div>
+    @if (component_open) {
+        <div [@switch] class="SWITCH">
+            <div (click)="setType('income')" [class.CHOOSED]="choosed_type == 'income'" class="OPTION">Dochód</div>
+            <div (click)="setType('expense')" [class.CHOOSED]="choosed_type == 'expense'" class="OPTION">Wydatek</div>
+        </div>
+    }
+</div>

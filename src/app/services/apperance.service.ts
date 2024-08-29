@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
-import { NavBarButtonOptions } from "../components/nav_bar/nav_bar.component";
+import { NavBarButtonOptions } from "../components/UI/nav_bar/nav_bar.component";
 
 @Injectable()
 export class APP_APPERANCE {
