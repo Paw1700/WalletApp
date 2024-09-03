@@ -1,9 +1,0 @@
-<div class="FILTER_OPTIONS">
-   <account_choose_by_scroll [ACCOUNTS_LIST]="ACCOUNTS_LIST_DATA" />
-   <div class="OTHER_FILTERS">
-      <transaction_type_filter (choosed_transactions_type)="handleFilterChange('type', $event)" />
-      <amount_filter (amount_filter_values)="handleFilterChange('amount', $event)" />
-      <categorie_filter [CATEGORIES_LIST]="CATEGORIES_LIST" (choosen_categorie)="handleFilterChange('category', $event)" />
-      <receiver_filter [RECEIVERS_LIST]="RECEIVERS_LIST" [TRANSACTIONS_TYPE]="transaction_type" />
-   </div>
-</div>

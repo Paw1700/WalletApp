@@ -1,39 +1,27 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { NumberSeparator } from "../../../../../../pipes/number_separator.pipe";
+import { NumberSeparator } from "../../../pipes/number_separator.pipe";
+import { OpenAbleComponentInterface } from "../../interfaces/openable.component";
 
 @Component({
-    selector: 'amount_filter',
+    selector: 'amount_filter_choose_bubble',
     standalone: true,
     imports: [
         NumberSeparator
     ],
-    templateUrl: './amount_filter_choose.component.html',
-    styleUrl: './amount_filter_choose.component.scss'
+    templateUrl: './amount_filter_choose_bubble.component.html',
+    styleUrl: './amount_filter_choose_bubble.component.scss'
 })
-export class AmountFilterChoose {
-    @Output() amount_filter_values = new EventEmitter<{from: number | null, to: number | null}>()
-    active_box = false
-    is_box_open = false
+export class AmountFilterChooseBubble extends OpenAbleComponentInterface {
+    @Output() chossen_amount_filter_values = new EventEmitter<{from: number | null, to: number | null}>()
 
     from: number | null = null
     to: number | null = null
     from_input_box_error = false
     to_input_box_error = false
 
-    openBox() {
-        this.is_box_open = true
-        this.active_box = true
-    }
-
     closeBox() {
-        if (this.to_input_box_error || this.from_input_box_error) {
-            return 
-        }
-        this.is_box_open = false
-        if (!this.from && !this.to) {
-            this.active_box = false
-        }
-        this.amount_filter_values.emit({from: this.from, to: this.to})
+        this.emitNewValue()
+        this.changeComponentOpenessState(false)
     }
 
     handleAmountInput(type: 'from' | 'to', e: any) {
@@ -58,6 +46,11 @@ export class AmountFilterChoose {
     resetForm() {
         this.from = null
         this.to = null
+        this.emitNewValue()
         this.closeBox()
+    }
+
+    private emitNewValue() {
+        this.chossen_amount_filter_values.emit({from: this.from, to: this.to})
     }
 }

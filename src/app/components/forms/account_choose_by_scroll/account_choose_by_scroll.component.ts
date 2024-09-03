@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { AccountBarComponent, AccountBarComponentData } from "../../single_components/account_bar/account_bar.component";
+import { Component } from "@angular/core";
+import { AccountBarComponent } from "../../single_components/account_bar/account_bar.component";
 import { AccountChooseBarComponentInterface } from "../../interfaces/account_choose_bar.component";
 
 @Component({
@@ -21,6 +21,6 @@ export class AccountChooseByScroll extends AccountChooseBarComponentInterface {
     handleTouchEnd() {
         const scroll_value_divided_by_window_width_rounded_to_integer = Math.round(this.scroll_value / window.innerWidth)
         document.getElementById('CAROUSEL')?.scrollTo({ left: scroll_value_divided_by_window_width_rounded_to_integer * window.innerWidth, top: 0, behavior: 'smooth' })
-        this.choosed_user_account_id.emit(this.ACCOUNTS_LIST[scroll_value_divided_by_window_width_rounded_to_integer - 1].user_account_id)
+        this.choosed_user_account_id.emit(this.ACCOUNTS_LIST[scroll_value_divided_by_window_width_rounded_to_integer - 1]?.user_account_id)
     }
 }

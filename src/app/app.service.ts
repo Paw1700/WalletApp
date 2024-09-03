@@ -28,8 +28,7 @@ export class APP_SERVICE {
             this.APPERANCE.restart()
 
             await this.DATA.init()
-
-            // let redirection_location: AppLocations = 'home'
+            
             let redirection_location: AppLocations = 'transactions_list'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
@@ -40,10 +39,10 @@ export class APP_SERVICE {
                 redirection_location = 'app_data_update'
             }
 
-            // setTimeout(() => {
-            //     this.navigate(redirection_location)
-            //     resolve()
-            // }, 1500)
+            setTimeout(() => {
+                this.navigate(redirection_location)
+                resolve()
+            }, 1500)
         })
     }
 

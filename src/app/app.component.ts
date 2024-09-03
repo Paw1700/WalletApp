@@ -5,8 +5,6 @@ import { animate, group, query, style, transition, trigger } from '@angular/anim
 import { NavBar } from './components/UI/nav_bar/nav_bar.component';
 import { MenuPage } from './pages/menu/menu.page';
 import { ErrorBar } from './components/UI/error_bar/error_bar.component';
-import { HttpClient } from '@angular/common/http';
-import { Receiver } from './models';
 import { TransactionTypeChooseBubble } from './components/forms/transactions_type_choose_bubble/transactions_type_choose_bubble.component';
 
 @Component({
@@ -20,22 +18,14 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
     TransactionTypeChooseBubble
   ],
   template: `
-  <div class="PAGE">
-    <transaction_type_choose_bubble />
-  </div>
-    <!-- <div [@ROUTE_ANIMATION]="getRouteAnimationData()">
+    <div [@ROUTE_ANIMATION]="getRouteAnimationData()">
       <router-outlet />
-    </div> -->
-    <!-- <nav_bar /> -->
-    <!-- <menu_page /> -->
-    <!-- <error_bar /> -->
+    </div>
+    <nav_bar />
+    <menu_page />
+    <error_bar />
   `,
-  styles: `
-    transaction_type_choose_bubble {
-      max-width: 91.34vw;
-      padding-block: 1.7vh;
-    }
-  `,
+  styles: ``,
   animations: [
     trigger('ROUTE_ANIMATION', [
       // ** FADE */
@@ -96,23 +86,12 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
     ])
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit{
   readonly APP = inject(APP_SERVICE)
-  private h = inject(HttpClient)
   private readonly contexts = inject(ChildrenOutletContexts)
-
-  data: Receiver[] = []
-  comp_open = false
-
-  c(s: boolean) {
-    this.comp_open = s
-  }
 
   ngOnInit(): void {
     this.APP.startApp()
-    this.h.get<Receiver[]>('/assets/data/receivers.json').subscribe( list => {
-      this.data = list
-    })
   }
 
   protected getRouteAnimationData() {
