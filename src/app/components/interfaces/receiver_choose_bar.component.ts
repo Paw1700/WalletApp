@@ -10,7 +10,7 @@ import { OpenAbleComponentInterface } from "../interfaces/openable.component";
 export class ReceiverChooseBarComponentInterface extends OpenAbleComponentInterface implements OnChanges{
     @Input({required: true, alias: 'RECEIVERS_LIST'}) FULL_RECEIVERS_LIST: Receiver[] = []
     @Input() TRANSACTION_TYPE: TransactionType = 'expense'
-    @Output() choosed_receiver_id = new EventEmitter<string>()
+    @Output() choosed_receiver_id = new EventEmitter<string | null>()
     
     receivers_list: Receiver[] = []
     choosed_receiver: Receiver | null = null
@@ -22,7 +22,7 @@ export class ReceiverChooseBarComponentInterface extends OpenAbleComponentInterf
     setReceiver(receiver: Receiver | null) { 
         this.choosed_receiver = receiver
         this.changeComponentOpenessState()
-        this.choosed_receiver_id.emit(receiver ? receiver.id : '')
+        this.choosed_receiver_id.emit(receiver ? receiver.id : null)
         this.receivers_list = this.FULL_RECEIVERS_LIST
     }
 

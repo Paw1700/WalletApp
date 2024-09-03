@@ -1,10 +1,15 @@
 <div class="PAGE">
     <p class="TITLE">Transakcje</p>
-    <account_choose_by_scroll [ACCOUNTS_LIST]="ACCOUNTS_BAR_DATA_LIST" />
+    <account_choose_by_scroll [ACCOUNTS_LIST]="ACCOUNTS_BAR_DATA_LIST" (choosed_user_account_id)="handleFilterChange('user_account_id', $event)" />
     <div class="FILTER_OPTIONS">
-        <transaction_type_choose_bubble />
-        <amount_filter_choose_bubble />
-        <receiver_choose_bubble [class.OPEN]="receiver_choose_bubble_open" (component_openess_state)="reactToReceiverBubbleOpenStateChange($event)" [RECEIVERS_LIST]="RECEIVERS_LIST" />
-        <category_choose_bubble [CATEGORIES_LIST]="CATEGORIES_LIST" />
+        <transaction_type_choose_bubble (choosen_type)="handleFilterChange('type', $event)" />
+        <amount_filter_choose_bubble (chossen_amount_filter_values)="handleFilterChange('filter_amount', $event)" />
+        <receiver_choose_bubble (choosed_receiver_id)="handleFilterChange('receiver_id', $event)" [class.OPEN]="receiver_choose_bubble_open" (component_openess_state)="reactToReceiverBubbleOpenStateChange($event)" [RECEIVERS_LIST]="RECEIVERS_LIST" />
+        <category_choose_bubble (choosen_categorie)="handleFilterChange('category_id', $event)" [CATEGORIES_LIST]="CATEGORIES_LIST" />
+    </div>
+    <div class="TRANSACTIONS_LIST HIDE_SCROLL_BAR">
+        @for (tr of transactions_list; track tr.transaction_id) {
+            <transaction_bar [component_data]="tr" /> 
+        }
     </div>
 </div>

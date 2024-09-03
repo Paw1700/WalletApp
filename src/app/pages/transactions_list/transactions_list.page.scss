@@ -26,4 +26,19 @@ div.PAGE {
             max-width: 100%;
         }
     }
+
+    div.TRANSACTIONS_LIST {
+        width: 91.34vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 58vh;
+        overflow-y: scroll;
+        gap: 1.17vh;
+
+        transaction_bar {
+            width: 100%;
+        }
+    }
 }

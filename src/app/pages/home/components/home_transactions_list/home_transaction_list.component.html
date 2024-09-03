@@ -1,6 +1,6 @@
 <div class="TRANSACTIONS_LIST">
     <p class="TITLE">Najnowsze transakcje z 30 dni</p>
-    <div class="LIST">
+    <div class="LIST HIDE_SCROLL_BAR">
         @for(tr of transactions_list; track tr.transaction_id) {
             <transaction_bar [component_data]="tr" />
         }

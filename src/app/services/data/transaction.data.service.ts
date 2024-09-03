@@ -20,34 +20,41 @@ export class TRANSACTION_DATA_SERVICE {
         })
     }
 
-    getAll(options?: TransactionsFilterOptions): Promise<Transaction[]> {
+    getAll(options: TransactionsFilterOptions | null): Promise<Transaction[]> {
         return new Promise(async (resolve, reject) => {
             try {
                 let all_transactions = await this.DB.getAllObject<Transaction>(this.DB_STORE)
                 if (options) {
-                    if (options.user_account_id) {
-                        all_transactions = all_transactions.filter(tr => tr.user_account_id === options.user_account_id)
+                    if (options.user_account_id !== null) {
+                        const value = options.user_account_id
+                        all_transactions = all_transactions.filter(tr => tr.user_account_id === value)
                     }
                     if (options.filter_date) {
-                        if (options.filter_date.from) {
-                            all_transactions = all_transactions.filter(tr => tr.date.getTime() >= options.filter_date!.from!)
+                        if (options.filter_date.from !== null) {
+                            const value = options.filter_date.from
+                            all_transactions = all_transactions.filter(tr => tr.date.getTime() >= value.getTime())
                         }
-                        if (options.filter_date.to) {
-                            all_transactions = all_transactions.filter(tr => tr.date.getTime() <= options.filter_date!.to!)
+                        if (options.filter_date.to !== null) {
+                            const value = options.filter_date.to
+                            all_transactions = all_transactions.filter(tr => tr.date.getTime() <= value.getTime())
                         }
                     }
-                    if (options.category_id) {
-                        all_transactions = all_transactions.filter(tr => tr.category_id = options.category_id!)
+                    if (options.category_id !== null) {
+                        const value = options.category_id
+                        all_transactions = all_transactions.filter(tr => tr.category_id === value)
                     }
-                    if (options.receiver_id) {
-                        all_transactions = all_transactions.filter(tr => tr.receiver_id = options.receiver_id!)
+                    if (options.receiver_id !== null) {
+                        const value = options.receiver_id
+                        all_transactions = all_transactions.filter(tr => tr.receiver_id === value)
                     }
-                    if (options.filter_amount) {
-                        if (options.filter_amount.from) {
-                            all_transactions = all_transactions.filter(tr => tr.amount >= options.filter_amount!.from!)
+                    if (options.filter_amount !== null) {
+                        if (options.filter_amount.from !== null) {
+                            const value = options.filter_amount.from
+                            all_transactions = all_transactions.filter(tr => tr.amount >= value)
                         }
-                        if (options.filter_amount.to) {
-                            all_transactions = all_transactions.filter(tr => tr.amount <= options.filter_amount!.to!)
+                        if (options.filter_amount.to !== null) {
+                            const value = options.filter_amount.to
+                            all_transactions = all_transactions.filter(tr => tr.amount <= value)
                         }
                     }
                 }
@@ -102,14 +109,20 @@ export class TRANSACTION_DATA_SERVICE {
 }
 
 export type TransactionsFilterOptions = {
-    user_account_id?: string,
-    filter_date?: TransactionsFilterNumberFromToOptions,
-    category_id?: string,
-    receiver_id?: string,
-    filter_amount?: TransactionsFilterNumberFromToOptions
+    user_account_id: string | null,
+    filter_date: TransactionsFilterDateFromToOptions | null,
+    category_id: string | null,
+    receiver_id: string | null,
+    filter_amount: TransactionsFilterNumberFromToOptions | null
 }
 
 export type TransactionsFilterNumberFromToOptions = {
-    from?: number,
-    to?: number
+    from: number | null,
+    to: number | null
 }
+export type TransactionsFilterDateFromToOptions = {
+    from: Date | null,
+    to: Date | null
+}
+
+export type TransactionsFilterOptionsList = 'user_account_id' | 'filter_date' | 'category_id' | 'receiver_id' | 'filter_amount'

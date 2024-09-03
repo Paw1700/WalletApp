@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { NumberSeparator } from "../../../pipes/number_separator.pipe";
 import { OpenAbleComponentInterface } from "../../interfaces/openable.component";
+import { TransactionsFilterNumberFromToOptions } from "../../../services/data/transaction.data.service";
 
 @Component({
     selector: 'amount_filter_choose_bubble',
@@ -12,7 +13,7 @@ import { OpenAbleComponentInterface } from "../../interfaces/openable.component"
     styleUrl: './amount_filter_choose_bubble.component.scss'
 })
 export class AmountFilterChooseBubble extends OpenAbleComponentInterface {
-    @Output() chossen_amount_filter_values = new EventEmitter<{from: number | null, to: number | null}>()
+    @Output() chossen_amount_filter_values = new EventEmitter<TransactionsFilterNumberFromToOptions | null>()
 
     from: number | null = null
     to: number | null = null
@@ -46,7 +47,6 @@ export class AmountFilterChooseBubble extends OpenAbleComponentInterface {
     resetForm() {
         this.from = null
         this.to = null
-        this.emitNewValue()
         this.closeBox()
     }
 

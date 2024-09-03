@@ -23,12 +23,8 @@ div.TRANSACTIONS_LIST {
         gap: 1.17vh;
         padding-bottom: 2.5vh;
 
-        //* HIDE SCROLLBAR
-        &::-webkit-scrollbar {
-            display: none;
+        transaction_bar {
+            width: 100%;
         }
-
-        -ms-overflow-style: none;
-        scrollbar-width: none;
     }
 }
