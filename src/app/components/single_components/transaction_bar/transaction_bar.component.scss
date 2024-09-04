@@ -45,12 +45,25 @@ div.TRANSACTION_BAR {
         }
     }
 
-    p.PRICE {
-        font-size: 1rem;
-        font-weight: 700;
+    div.RIGHT_SIDE {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
 
-        &.INCOME {
-            color: green;
+        p.DATE {
+            font-size: .7rem;
+            font-weight: 700;
+        }
+
+        p.PRICE {
+            font-size: 1rem;
+            font-weight: 700;
+    
+            &.INCOME {
+                color: green;
+            }
         }
     }
+
 }

@@ -89,22 +89,22 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
 
     private fetchRouteData() {
         this.ROUTE.queryParamMap.subscribe(data => {
-            const usa_id = data.get('usa_id')
-            const tr_id = data.get('tr_id')
-            if (usa_id !== null && tr_id === null) {
-                this.new_transaction.user_account_id = usa_id
-            } else if (usa_id === null && tr_id !== null) {
-                this.APP.DATA.TRANSACTION.getOne(tr_id)
-                    .then( tr => {
-                        this.transaction_type = tr.amount > 0 ? 'income' : 'expense'
+            const user_account_id = data.get('usa_id')
+            const transaction_id = data.get('tr_id')
+            if (user_account_id !== null && transaction_id === null) {
+                this.new_transaction.user_account_id = user_account_id
+            } else if (user_account_id === null && transaction_id !== null) {
+                this.APP.DATA.TRANSACTION.getOne(transaction_id)
+                    .then( transaction => {
+                        this.transaction_type = transaction.amount > 0 ? 'income' : 'expense'
                         this.new_transaction = {
-                            id: tr.id,
-                            date: tr.date,
-                            user_account_id: tr.user_account_id,
-                            category_id: tr.category_id,
-                            receiver_id: tr.receiver_id,
-                            amount: tr.amount,
-                            description: tr.description
+                            id: transaction.id,
+                            date: transaction.date,
+                            user_account_id: transaction.user_account_id,
+                            category_id: transaction.category_id,
+                            receiver_id: transaction.receiver_id,
+                            amount: transaction.amount,
+                            description: transaction.description
                         }
                     })
             } else {

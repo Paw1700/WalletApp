@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from
 import { APP_SERVICE } from "../../../app.service";
 import { Category, Receiver } from "../../../models";
 import { HttpClient } from "@angular/common/http";
-import { DAYS_OFFSET } from "../../../constants";
+import { DAYS_OFFSET, SORTING_TRANSACTIONS_BY_DATE } from "../../../constants";
 import { TransactionBarComponentData } from "../../../components/single_components/transaction_bar/transaction_bar.component";
 
 @Injectable()
@@ -22,19 +22,12 @@ export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarCom
                 receiver_id: null,
                 filter_amount: null
             })
-            transactions.sort((a, b) => {
-                if (a.date > b.date) {
-                    return -1
-                } else if (a.date < b.date) {
-                    return 1
-                } else {
-                    return 0
-                }
-            })
+            transactions.sort(SORTING_TRANSACTIONS_BY_DATE)
             transactions.forEach(tr => {
                 accounts_transactions.push({
                     transaction_id: tr.id,
                     user_account_id: tr.user_account_id,
+                    date: tr.date,
                     category: CATEGORIES_LIST.filter(ct => ct.id === tr.category_id)[0],
                     description: tr.description,
                     receiver: RECEIVERS_LIST.filter(r => r.id === tr.receiver_id)[0],

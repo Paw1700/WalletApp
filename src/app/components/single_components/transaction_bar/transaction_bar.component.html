@@ -8,5 +8,8 @@
             <p class="RECEIVER">{{ component_data.receiver.name }}</p>
         </div>
     </div>
-    <p [class.INCOME]="component_data.transaction_price > 0" class="PRICE">{{ component_data.transaction_price | number_separator }} {{ component_data.transaction_currency }}</p>
+    <div class="RIGHT_SIDE">
+        <p class="DATE">{{ component_data.date | date:'dd.MM.yyyy' }}</p>
+        <p [class.INCOME]="component_data.transaction_price > 0" class="PRICE">{{ component_data.transaction_price | number_separator }} {{ component_data.transaction_currency }}</p>
+    </div>
 </div>

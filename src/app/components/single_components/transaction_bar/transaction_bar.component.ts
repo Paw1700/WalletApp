@@ -1,12 +1,14 @@
 import { Component, Input } from "@angular/core";
 import { NumberSeparator } from "../../../pipes/number_separator.pipe";
 import { Category, Currency, Receiver } from "../../../models";
+import { DatePipe } from "@angular/common";
 
 @Component({
     selector: "transaction_bar",
     standalone: true,
     imports: [
-        NumberSeparator
+        NumberSeparator,
+        DatePipe
     ],
     templateUrl: './transaction_bar.component.html',
     styleUrl: './transaction_bar.component.scss'
@@ -15,6 +17,7 @@ export class TransactionBar {
     @Input() component_data: TransactionBarComponentData = {
         transaction_id: 'XXX',
         user_account_id: 'XXX',
+        date: new Date(),
         category: {
             id: "GAS",
             name: "Paliwo",
@@ -37,6 +40,7 @@ export class TransactionBar {
 export type TransactionBarComponentData = {
     transaction_id: string,
     user_account_id: string,
+    date: Date,
     category: Category,
     description: string,
     receiver: Receiver,
