@@ -1,18 +1,18 @@
 div.PAGE {
-    width: 91.34vw;
-    height: 96.6vh;
-    justify-content: flex-start;
-    padding: 1.7vh 4.32vw;
     gap: 1.7vh;
+    padding-top: 1.17vh;
 
-    transaction_choose_bar, 
-    receiver_choose_bar,
+    transaction_type_choose_with_title, 
+    receiver_choose_list,
     text_input_bar,
-    date_choose_bar {
+    number_input,
+    date_choose_bar,
+    account-bar {
         width: 91.34vw;
+        max-height: 40vh;
     }
 
-    category_choose_bar {
+    category_choose_scroll {
         width: 100vw;
     }
 }

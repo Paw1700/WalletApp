@@ -52,6 +52,10 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         }
     }
 
+    handleTransactionClicked(transaction_id: string) {
+        this.APP.navigate('add_transaction', {tr_id: transaction_id})
+    }
+
     private fetchRouteData() {
         this.ROUTE.data.subscribe(route_data => {
             this.PROFILE = route_data['profile']
@@ -72,7 +76,7 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     private reactToNavBarRightButtonClicked() {
         this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
             if (this.active_user_account_index > -1) {
-                this.APP.navigate('add_transaction', this.ACCOUNTS_CAROUSEL_DATA[this.active_user_account_index].user_account_id)
+                this.APP.navigate('add_transaction', {usa_id: this.ACCOUNTS_CAROUSEL_DATA[this.active_user_account_index].user_account_id})
             }
         })
     }

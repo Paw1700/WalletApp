@@ -29,7 +29,7 @@ export class APP_SERVICE {
 
             await this.DATA.init()
             
-            let redirection_location: AppLocations = 'transactions_list'
+            let redirection_location: AppLocations = 'home'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
 
@@ -75,11 +75,15 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break   
             case 'add_transaction':
-                if (!options) {
-                    console.error('Lack of user account id in navigation method');
+                if (!options && (!options.usa_id || !options.tr_id)) {
+                    console.error('Lack of user account id or transaction id in navigation method');
                     return 
                 }
-                await this.ROUTER.navigateByUrl(`add_transaction?id=${options}`)
+                if (options.usa_id) {
+                    await this.ROUTER.navigateByUrl(`add_transaction?usa_id=${options.usa_id}`)
+                } else if (options.tr_id) {
+                    await this.ROUTER.navigateByUrl(`add_transaction?tr_id=${options.tr_id}`)
+                }
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break

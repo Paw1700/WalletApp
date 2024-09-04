@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { OpenAbleComponentInterface } from "../../interfaces/openable.component";
 import { trigger, transition, style, animate } from "@angular/animations";
 
@@ -28,12 +28,19 @@ import { trigger, transition, style, animate } from "@angular/animations";
         ])
     ]
 })
-export class TextInputBar extends OpenAbleComponentInterface {
-    @Input() title = ''
+export class TextInputBar extends OpenAbleComponentInterface implements OnChanges {
+    @Input({required: true}) title = ''
     @Input() placeholder = ''
+    @Input() pre_inputed_text = ''
     @Output('inputed_text') emit_inputed_text = new EventEmitter<string>()
 
     inputed_text = ''
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.pre_inputed_text !== '') {
+            this.inputed_text = this.pre_inputed_text
+        }    
+    }
 
     setValue(value: any) {
         this.inputed_text = value.target.value

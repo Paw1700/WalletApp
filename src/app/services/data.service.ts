@@ -70,7 +70,7 @@ export class APP_DATA {
         });
     }
 
-    newTransaction(transaction: Transaction) {
+    newTransaction(transaction: Transaction): Promise<void> {
         return new Promise<void>(async (resolve, reject) => {
             try {
                 const validation_result = this.VALIDATOR.validateTranasaction(transaction)
@@ -92,6 +92,45 @@ export class APP_DATA {
                 user_account.avaible_funds = Number(user_account_new_avaible_funds)
                 await this.USER_ACCOUNT.update(user_account)
                 await this.TRANSACTION.save(transaction)
+                resolve()
+            } catch (err) {
+                console.error(err);
+                reject(err)
+            }
+        })
+    }
+
+    updateTransaction(transaction: Transaction): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                const validation_result = this.VALIDATOR.validateTranasaction(transaction)
+                if (!validation_result.pass) {
+                    reject(validation_result.errCode)
+                    return
+                }
+                const user_account = await this.USER_ACCOUNT.getOne(transaction.user_account_id)
+                const user_account_old_avaible_funds = user_account.avaible_funds
+                const transaction_old_amount = (await this.TRANSACTION.getOne(transaction.id)).amount
+                const transaction_new_amount = transaction.amount
+                let user_account_new_avaible_funds = user_account_old_avaible_funds
+                if (transaction_old_amount < 0) {
+                    user_account_new_avaible_funds += Math.abs(transaction_old_amount)
+                } else {
+                    user_account_new_avaible_funds -= transaction_old_amount
+                }
+                user_account_new_avaible_funds += transaction_new_amount
+                if (user_account_new_avaible_funds < 0) {
+                    if (
+                        user_account.debet.limit <= 0 ||
+                        (user_account.debet.limit > 0 && user_account.debet.limit <= Math.abs(user_account_new_avaible_funds))
+                    ) {
+                        reject("APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS")
+                        return
+                    }
+                }
+                user_account.avaible_funds = Number(user_account_new_avaible_funds)
+                await this.USER_ACCOUNT.update(user_account)
+                await this.TRANSACTION.update(transaction)
                 resolve()
             } catch (err) {
                 console.error(err);

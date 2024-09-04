@@ -3,7 +3,7 @@ import { TransactionTypeChooseWithTitle } from "../../components/forms/transacti
 import { CategoryChooseScroll } from "../../components/forms/category_choose_scroll/category_choose_scroll.component";
 import { NumberInput } from "../../components/forms/number_input_bar/number_input_bar.component";
 import { ReceiverChooseList } from "../../components/forms/receiver_choose_list/receiver_choose_list.component";
-import { Category, Receiver, Transaction, TransactionType } from "../../models";
+import { Category, ErrorID, Receiver, Transaction, TransactionType } from "../../models";
 import { TextInputBar } from "../../components/forms/text_input_bar/text_input_bar.component";
 import { ActivatedRoute } from "@angular/router";
 import { DateChooseBar } from "../../components/forms/date_choose_bar/date_choose_bar.component";
@@ -65,7 +65,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
                 }
                 break
             case 'category_id':
-                this.new_transaction.category_id = payload
+                this.new_transaction.category_id = payload.id
                 break
             case 'receiver_id':
                 this.new_transaction.receiver_id = payload
@@ -89,7 +89,28 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
 
     private fetchRouteData() {
         this.ROUTE.queryParamMap.subscribe(data => {
-            this.new_transaction.user_account_id = data.get('id')!
+            const usa_id = data.get('usa_id')
+            const tr_id = data.get('tr_id')
+            if (usa_id !== null && tr_id === null) {
+                this.new_transaction.user_account_id = usa_id
+            } else if (usa_id === null && tr_id !== null) {
+                this.APP.DATA.TRANSACTION.getOne(tr_id)
+                    .then( tr => {
+                        this.transaction_type = tr.amount > 0 ? 'income' : 'expense'
+                        this.new_transaction = {
+                            id: tr.id,
+                            date: tr.date,
+                            user_account_id: tr.user_account_id,
+                            category_id: tr.category_id,
+                            receiver_id: tr.receiver_id,
+                            amount: tr.amount,
+                            description: tr.description
+                        }
+                    })
+            } else {
+                console.error('Lack of user account id or transaction id!');
+                // !!! ADD ERROR CODE !!!
+            }
         })
         this.ROUTE.data.subscribe( route_data => {
             this.RECEIVERS_LIST = route_data['receivers']
@@ -105,14 +126,17 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     }
     
     private reactToNavBarRightButtonClicked() {
-        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
-            this.APP.DATA.newTransaction(this.new_transaction)
-                .then(() => {
-                    this.APP.navigate('home')
-                })
-                .catch((err) => {
-                    this.APP.STATE.errorHappend(err)
-                })
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(async () => {
+            try {
+                if (this.new_transaction.id !== '') {
+                    await this.APP.DATA.updateTransaction(this.new_transaction)
+                } else {
+                    await this.APP.DATA.newTransaction(this.new_transaction)
+                }
+                this.APP.navigate('home')
+            } catch (err) {
+                this.APP.STATE.errorHappend(err as ErrorID)
+            }
         })
     }
 }

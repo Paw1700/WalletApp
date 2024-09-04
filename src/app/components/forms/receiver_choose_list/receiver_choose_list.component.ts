@@ -46,6 +46,4 @@ import { ReceiverChooseBarComponentInterface } from "../../interfaces/receiver_c
         ])
     ]
 })
-export class ReceiverChooseList extends ReceiverChooseBarComponentInterface {
-    
-}
+export class ReceiverChooseList extends ReceiverChooseBarComponentInterface { }
