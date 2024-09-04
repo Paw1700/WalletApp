@@ -1,0 +1,30 @@
+div#SCROLL_ABLE_BAR {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1%;
+
+    div.SIDE {
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+
+        img {
+            height: 75%;
+            object-fit: contain;
+        }
+    }
+
+    div.CONTENT {
+        min-width: 99%;
+        min-height: 100%;
+    }
+}

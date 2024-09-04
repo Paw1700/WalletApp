@@ -6,6 +6,8 @@ import { NavBar } from './components/UI/nav_bar/nav_bar.component';
 import { MenuPage } from './pages/menu/menu.page';
 import { ErrorBar } from './components/UI/error_bar/error_bar.component';
 import { TransactionTypeChooseBubble } from './components/forms/transactions_type_choose_bubble/transactions_type_choose_bubble.component';
+import { ScrollSideOptions } from './components/embeddable_components/scroll_side_options/scroll_side_options.component';
+import { TransactionBar } from './components/single_components/transaction_bar/transaction_bar.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,9 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
     NavBar,
     MenuPage,
     ErrorBar,
-    TransactionTypeChooseBubble
+    TransactionTypeChooseBubble,
+    ScrollSideOptions,
+    TransactionBar
   ],
   template: `
     <div [@ROUTE_ANIMATION]="getRouteAnimationData()">
@@ -25,7 +29,11 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
     <menu_page />
     <error_bar />
   `,
-  styles: ``,
+  styles: `
+    scroll_side_options {
+      width: 91.34vw;
+    }
+  `,
   animations: [
     trigger('ROUTE_ANIMATION', [
       // ** FADE */
@@ -47,7 +55,7 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
       ]),
 
       //** SLIDE TO LEFT */
-      transition('accounts_list => add_account, home => add_transaction',[
+      transition('accounts_list => add_account, home => add_transaction', [
         group([
           query(":enter", [
             style({ position: 'absolute', left: '100vw', zIndex: 2 }),
@@ -56,7 +64,7 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
             }))
           ], { optional: true }),
           query(":leave", [
-            style({ zIndex: 1, position: 'absolute', left: 0, opacity: 1}),
+            style({ zIndex: 1, position: 'absolute', left: 0, opacity: 1 }),
             animate('350ms linear', style({
               left: '-100vw',
               opacity: 0
@@ -66,10 +74,10 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
       ]),
 
       //** SLIDE TO RIGHT */
-      transition('add_account => accounts_list, add_transaction => home',[
+      transition('add_account => accounts_list, add_transaction => home', [
         group([
           query(":enter", [
-            style({ zIndex: 1, position: 'absolute', left: '-100vw'}),
+            style({ zIndex: 1, position: 'absolute', left: '-100vw' }),
             animate('350ms linear', style({
               left: 0
             }))
@@ -86,7 +94,7 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
     ])
   ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   readonly APP = inject(APP_SERVICE)
   private readonly contexts = inject(ChildrenOutletContexts)
 

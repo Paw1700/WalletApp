@@ -1,0 +1,33 @@
+<div id="SCROLL_ABLE_BAR" (touchend)="handleTouchEnd()" class="HIDE_SCROLL_BAR">
+    @if (LEFT_SIDE !== null) {
+        <div class="SIDE"
+            (click)="handleSideClick('LEFT')"
+            [style.backgroundColor]="LEFT_SIDE.color" 
+            [style.color]="LEFT_SIDE.color ? 'white' : 'var(--font-color)'" 
+            [style.minWidth.%]="LEFT_SIDE.width_in_percent"
+            [style.borderRadius.vw]="LEFT_SIDE.round_edges ? 2.5 : 0" 
+        >
+            @if (LEFT_SIDE.image) {
+                <img [src]="LEFT_SIDE.image" />
+            }
+            {{ LEFT_SIDE.text }}
+        </div>
+    }
+    <div class="CONTENT">
+        <ng-content></ng-content>
+    </div>
+    @if (RIGHT_SIDE !== null) {
+        <div class="SIDE"
+            (click)="handleSideClick('RIGHT')"
+            [style.backgroundColor]="RIGHT_SIDE.color" 
+            [style.color]="RIGHT_SIDE.color ? 'white' : 'var(--font-color)'" 
+            [style.minWidth.%]="RIGHT_SIDE.width_in_percent" 
+            [style.borderRadius.vw]="RIGHT_SIDE.round_edges ? 2.5 : 0" 
+        >
+            @if (RIGHT_SIDE.image) {
+                <img [src]="RIGHT_SIDE.image" />
+            }
+            {{ RIGHT_SIDE.text }}
+        </div>
+    }
+</div>
