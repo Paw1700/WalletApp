@@ -8,6 +8,7 @@ import { takeUntil } from "rxjs";
 import { TransactionBar, TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 import { ClickedTransactionEmittedValue, HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
+import { ConfirmBox, ConfirmBoxData } from "../../components/UI/confirm_box/confirm_box.component";
 
 @Component({
     selector: 'home_page',
@@ -15,7 +16,8 @@ import { ClickedTransactionEmittedValue, HomeTransactionList } from "./component
     imports: [
         AccountsCarousel,
         TransactionBar,
-        HomeTransactionList
+        HomeTransactionList,
+        ConfirmBox
     ],
     templateUrl: './home.page.html',
     styleUrl: './home.page.scss'
@@ -27,9 +29,11 @@ export class HomePage extends NgUnsubscriber implements OnInit {
 
     ACCOUNTS_CAROUSEL_DATA: AccountBarComponentData[] = []
     FULL_ACCOUNTS_TRANSACTIONS_LIST: TransactionBarComponentData[] = []
+    CONFIRM_BOX_DATA: ConfirmBoxData | null = null
 
     active_user_account_index = -1
     account_transactions_list: TransactionBarComponentData[] = []
+    transaction_id_to_delete: string | null = null
 
     ngOnInit(): void {
         this.fetchRouteData()
@@ -58,8 +62,18 @@ export class HomePage extends NgUnsubscriber implements OnInit {
                 this.APP.navigate('add_transaction', {tr_id: emitted_value.id})
                 break
             case "delete":
-                
+                this.transaction_id_to_delete = emitted_value.id
+                this.CONFIRM_BOX_DATA = {title: 'Na pewno chcesz usunąć transakcje?', desc: 'Nie mozna tej operacji cofnąć!'}
                 break
+        }
+    }
+
+    handleConfirmBoxDecision(decision: boolean) {
+        if (decision) {
+            
+        } else {
+            this.transaction_id_to_delete = null
+            this.CONFIRM_BOX_DATA = null
         }
     }
 

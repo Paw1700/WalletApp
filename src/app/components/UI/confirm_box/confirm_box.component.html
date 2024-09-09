@@ -1,0 +1,14 @@
+@if (box_data !== null) {
+<div [@COMPONENT] class="CONFIRM_BOX_BG">
+    <div class="BOX">
+        <p class="TITLE">{{ box_data.title }}</p>
+        @if (box_data.desc) {
+        <p class="DESC">{{ box_data.desc }}</p>
+        }
+        <div class="BTTNs">
+            <button class="MARK" (click)="decision_made.emit(false)">NIE</button>
+            <button (click)="decision_made.emit(true)">TAK</button>
+        </div>
+    </div>
+</div>
+}
