@@ -8,7 +8,7 @@
     </div>
     @if (ACCOUNTS_CAROUSEL_DATA.length !== 0) {
         <accounts_carousel [accounts_data]="ACCOUNTS_CAROUSEL_DATA" (active_account_number)="handleActiveAccountChange($event)" />
-        <transaction_list (clicked_transaction_id)="handleTransactionClicked($event)" [transactions_list]="account_transactions_list" />
+        <transaction_list (clicked_transaction)="handleTransactionClicked($event)" [transactions_list]="account_transactions_list" />
     } @else {
         <p class="NO_ACCOUNTS">Brak kont bankowych przejdź do zakładki konta i dodaj jedną</p>
     }

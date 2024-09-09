@@ -2,7 +2,9 @@
     <p class="TITLE">Najnowsze transakcje z 30 dni</p>
     <div class="LIST HIDE_SCROLL_BAR">
         @for(tr of transactions_list; track tr.transaction_id) {
-            <transaction_bar (click)="clicked_transaction_id.emit(tr.transaction_id)" [component_data]="tr" />
+            <scroll_side_options (leftSideClicked)="clicked_transaction.emit({type: 'delete', id: tr.transaction_id})" (rightSideClicked)="clicked_transaction.emit({type: 'delete', id: tr.transaction_id})" [component_individual_id]="tr.transaction_id" [LEFT_SIDE]="scroll_side_options" [RIGHT_SIDE]="scroll_side_options" >
+                <transaction_bar (click)="clicked_transaction.emit({type: 'edit', id: tr.transaction_id})" [component_data]="tr" />
+            </scroll_side_options>
         }
     </div>
 </div>

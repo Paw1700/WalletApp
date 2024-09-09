@@ -7,7 +7,7 @@ import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
 import { TransactionBar, TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
-import { HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
+import { ClickedTransactionEmittedValue, HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
 
 @Component({
     selector: 'home_page',
@@ -52,8 +52,15 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         }
     }
 
-    handleTransactionClicked(transaction_id: string) {
-        this.APP.navigate('add_transaction', {tr_id: transaction_id})
+    handleTransactionClicked(emitted_value: ClickedTransactionEmittedValue) {
+        switch(emitted_value.type) {
+            case "edit":
+                this.APP.navigate('add_transaction', {tr_id: emitted_value.id})
+                break
+            case "delete":
+                
+                break
+        }
     }
 
     private fetchRouteData() {

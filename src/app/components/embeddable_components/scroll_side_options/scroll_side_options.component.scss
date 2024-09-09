@@ -1,4 +1,4 @@
-div#SCROLL_ABLE_BAR {
+div.SCROLL_BAR {
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -7,7 +7,6 @@ div#SCROLL_ABLE_BAR {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 1%;
 
     div.SIDE {
         min-height: 100%;
@@ -24,7 +23,8 @@ div#SCROLL_ABLE_BAR {
     }
 
     div.CONTENT {
-        min-width: 99%;
+        min-width: 100%;
         min-height: 100%;
+        margin-inline: 1%;
     }
 }

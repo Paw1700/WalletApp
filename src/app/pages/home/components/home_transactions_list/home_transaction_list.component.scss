@@ -23,7 +23,8 @@ div.TRANSACTIONS_LIST {
         gap: 1.17vh;
         padding-bottom: 2.5vh;
 
-        transaction_bar {
+        transaction_bar, 
+        scroll_side_options {
             width: 100%;
         }
     }
