@@ -6,11 +6,12 @@
         </div>
         <img [src]="PROFILE.image" />
     </div>
-    @if (ACCOUNTS_CAROUSEL_DATA.length !== 0) {
+    <loader />
+    <!-- @if (ACCOUNTS_CAROUSEL_DATA.length !== 0) {
         <accounts_carousel [accounts_data]="ACCOUNTS_CAROUSEL_DATA" (active_account_number)="handleActiveAccountChange($event)" />
         <transaction_list (clicked_transaction)="handleTransactionClicked($event)" [transactions_list]="account_transactions_list" />
     } @else {
         <p class="NO_ACCOUNTS">Brak kont bankowych przejdź do zakładki konta i dodaj jedną</p>
-    }
+    } -->
 </div>
-<confrim_box [box_data]="CONFIRM_BOX_DATA" (decision_made)="handleConfirmBoxDecision($event)" />
+<!-- <confrim_box [box_data]="CONFIRM_BOX_DATA" (decision_made)="handleConfirmBoxDecision($event)" /> -->

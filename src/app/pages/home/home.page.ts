@@ -10,6 +10,7 @@ import { AccountBarComponentData } from "../../components/single_components/acco
 import { ClickedTransactionEmittedValue, HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
 import { ConfirmBox, ConfirmBoxData } from "../../components/UI/confirm_box/confirm_box.component";
 import { DAYS_OFFSET, SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
+import { Loader } from "../../components/UI/loader/loader.component";
 
 @Component({
     selector: 'home_page',
@@ -18,7 +19,8 @@ import { DAYS_OFFSET, SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
         AccountsCarousel,
         TransactionBar,
         HomeTransactionList,
-        ConfirmBox
+        ConfirmBox,
+        Loader
     ],
     templateUrl: './home.page.html',
     styleUrl: './home.page.scss'
@@ -31,7 +33,6 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     ACCOUNTS_CAROUSEL_DATA: AccountBarComponentData[] = []
     CATEGORIES_LIST: Category[] = []
     RECEIVERS_LIST: Receiver[] = []
-    FULL_ACCOUNTS_TRANSACTIONS_LIST: TransactionBarComponentData[] = []
     CONFIRM_BOX_DATA: ConfirmBoxData | null = null
 
     active_user_account_index = -1
@@ -53,7 +54,6 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         if (account_list_index < 0) {
             this.APP.APPERANCE.nav_bar_right_button_option$.next(null)
             this.APP.APPERANCE.setAppAccentColor(null)
-            this.account_transactions_list = this.FULL_ACCOUNTS_TRANSACTIONS_LIST
             this.fetchUserAccountTransactions(null)
         } else {
             this.APP.APPERANCE.nav_bar_right_button_option$.next('add_transaction')
