@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from "@angular/core";
 import { NumberSeparator } from "../../../pipes/number_separator.pipe";
 import { OpenAbleComponentInterface } from "../../interfaces/openable.component";
-import { TransactionsFilterNumberFromToOptions } from "../../../services/transaction.service";
+import { TransactionsFilterNumberFromToOptions } from "../../../services/storage.service";
 
 @Component({
     selector: 'amount_filter_choose_bubble',

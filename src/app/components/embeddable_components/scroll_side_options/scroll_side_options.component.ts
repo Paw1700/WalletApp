@@ -13,7 +13,7 @@ import { AfterViewInit, Component, EventEmitter, input, Input, Output } from "@a
 export class ScrollSideOptions implements AfterViewInit {
     @Input() LEFT_SIDE: ScrollSideBarOption | null = null
     @Input() RIGHT_SIDE: ScrollSideBarOption | null = null
-    @Input({required: true}) component_individual_id = ''
+    @Input({ required: true }) component_individual_id = ''
     @Output() leftSideClicked = new EventEmitter<any>()
     @Output() rightSideClicked = new EventEmitter<any>()
 
@@ -33,6 +33,7 @@ export class ScrollSideOptions implements AfterViewInit {
                 this.rightSideClicked.emit(this.RIGHT_SIDE?.return_value)
                 break
         }
+        this.setScrollPosition('center')
     }
 
     handleTouchEnd() {
@@ -43,11 +44,30 @@ export class ScrollSideOptions implements AfterViewInit {
         }
         const scroll_position = Number(Math.round(div.scrollLeft * 100 / div.offsetWidth)) + 1
         if (scroll_position < 15) {
-            div.scrollTo({left: 0, behavior: 'smooth'})
+            this.setScrollPosition('left')
         } else if (scroll_position > 35) {
-            div.scrollTo({left: 0.52 * div.offsetWidth, behavior: 'smooth'})
+            this.setScrollPosition('right')
         } else {
-            div.scrollTo({left: 0.25 * div.offsetWidth, behavior: 'smooth'})
+            this.setScrollPosition('center')
+        }
+    }
+
+    private setScrollPosition(position: 'left' | 'center' | 'right') {
+        const div = document.getElementById(this.component_individual_id)
+        if (!div) {
+            console.error('No DIV');
+            return
+        }
+        switch (position) {
+            case "left":
+                div.scrollTo({ left: 0, behavior: 'smooth' })
+                break
+            case "center":
+                div.scrollTo({ left: 0.25 * div.offsetWidth, behavior: 'smooth' })
+                break
+            case "right":
+                div.scrollTo({ left: 0.52 * div.offsetWidth, behavior: 'smooth' })
+                break
         }
     }
 }
