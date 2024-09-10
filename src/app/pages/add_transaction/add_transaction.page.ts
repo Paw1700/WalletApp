@@ -129,13 +129,39 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
         this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(async () => {
             try {
                 if (this.new_transaction.id !== '') {
-                    await this.APP.TRANSACTION.update(this.new_transaction)
+                    await this.updateTransaction()
                 } else {
-                    await this.APP.TRANSACTION.update(this.new_transaction)
+                    await this.newTransaction()
                 }
                 this.APP.navigate('home')
             } catch (err) {
                 this.APP.STATE.errorHappend(err as ErrorID)
+            }
+        })
+    }
+
+    private updateTransaction(): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                const transaction_old_data = await this.APP.TRANSACTION.getOne(this.new_transaction.id)
+                const amount_diff = - (transaction_old_data.amount - this.new_transaction.amount)
+                await this.APP.USER_ACCOUNT.changeAvaibleAmount(this.new_transaction.user_account_id, amount_diff)
+                await this.APP.TRANSACTION.update(this.new_transaction)
+                resolve()
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
+
+    private newTransaction(): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                await this.APP.USER_ACCOUNT.changeAvaibleAmount(this.new_transaction.user_account_id, this.new_transaction.amount)
+                await this.APP.TRANSACTION.save(this.new_transaction)
+                resolve()
+            } catch (err) {
+                reject(err)
             }
         })
     }

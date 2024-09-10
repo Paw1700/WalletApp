@@ -67,4 +67,34 @@ export class USER_ACCOUNT_SERVICE {
             }
         })
     }
+
+    changeAvaibleAmount(user_account_id: string, change: number) {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                const user_account = await this.getOne(user_account_id)
+                const old_avaible_amount = user_account.avaible_funds
+                const new_avaible_amount = old_avaible_amount + change
+                user_account.avaible_funds = new_avaible_amount
+                if (this.checkIfCanPay(user_account)) {
+                    await this.update(user_account)
+                    resolve()
+                } else {
+                    throw new Error('APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS')
+                }
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
+
+    private checkIfCanPay(user_account: UserAccount): boolean {
+        if (
+            user_account.avaible_funds < 0 &&
+            Math.abs(user_account.avaible_funds) > user_account.debet.limit
+        ) {
+            return false
+        } else {
+            return true
+        }
+    }
 }
