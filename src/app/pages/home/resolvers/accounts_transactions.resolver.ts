@@ -15,7 +15,7 @@ export class ACCOUNTS_TRANSACTIONS_RESOLVER implements Resolve<TransactionBarCom
             const accounts_transactions: TransactionBarComponentData[] = []
             const CATEGORIES_LIST = await this.getCategoryList()
             const RECEIVERS_LIST = await this.getReceiverList()
-            const transactions = await this.APP.DATA.TRANSACTION.getAll({
+            const transactions = await this.APP.TRANSACTION.getAll({
                 filter_date: {from: new Date(new Date().getTime() - DAYS_OFFSET * 30), to: null},
                 user_account_id: null,
                 category_id: null,

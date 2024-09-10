@@ -9,8 +9,8 @@ import { ReceiverChooseBubble } from "../../components/forms/receiver_choose_bub
 import { CategoryChooseBubble } from "../../components/forms/categorie_choose_bubble/categorie_choose_bubble.component";
 import { APP_SERVICE } from "../../app.service";
 import { TransactionBar, TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
-import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../services/data/transaction.data.service";
 import { SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
+import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../services/storage.service";
 
 @Component({
     selector: 'transactions_list_page',
@@ -91,7 +91,7 @@ export class TransactionsListPage {
     private async fetchTransactions() {
         try {
             this.transactions_list = []
-            const transactions = await this.APP.DATA.TRANSACTION.getAll(this.filter_options)
+            const transactions = await this.APP.TRANSACTION.getAll(this.filter_options)
             transactions.sort(SORTING_TRANSACTIONS_BY_DATE)
             transactions.forEach( tr => {
                 this.transactions_list.push({

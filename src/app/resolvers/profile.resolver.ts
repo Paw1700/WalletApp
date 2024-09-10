@@ -8,6 +8,6 @@ export class PROFILE_RESOLVER implements Resolve<Profile> {
     constructor(private APP: APP_SERVICE) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<Profile> {
-        return this.APP.DATA.PROFILE.get()
+        return this.APP.PROFILE.get()
     }
 }

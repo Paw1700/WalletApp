@@ -8,6 +8,6 @@ export class USER_ACCOUNTS_RESOLVER implements Resolve<UserAccount[]> {
     constructor(private APP: APP_SERVICE) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<UserAccount[]> {
-        return this.APP.DATA.USER_ACCOUNT.getAll()
+        return this.APP.USER_ACCOUNT.getAll()
     }
 }

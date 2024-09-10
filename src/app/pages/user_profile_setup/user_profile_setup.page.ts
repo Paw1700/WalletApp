@@ -31,7 +31,7 @@ export class UserProfileSetupPage extends NgUnsubscriber implements OnInit {
     }
 
     saveProfile() {
-        this.APP.DATA.PROFILE.save(this.profile)
+        this.APP.PROFILE.save(this.profile)
             .then(() => {
                 this.APP.navigate('home')
             })

@@ -1,25 +1,31 @@
 import { Injectable } from "@angular/core";
-import { APP_DATA } from "./services/data.service";
 import { APP_APPERANCE } from "./services/apperance.service";
 import { APP_UPDATE } from "./services/update.service";
 import { APP_SCHEDULE } from "./services/schedule.service";
 import { APP_BACKUP } from "./services/backup.service";
-import { APP_VALIDATOR } from "./services/validator.service";
+import { VALIDATOR_SERVICE } from "./services/validator.service";
 import { Router } from "@angular/router";
 import { APP_STATE } from "./services/state.service";
 import { AppLocations } from "./models";
+import { PROFILE_SERVICE } from "./services/profile.service";
+import { STORAGE_SERVICE } from "./services/storage.service";
+import { USER_ACCOUNT_SERVICE } from "./services/user_account.data.service";
+import { TRANSACTION_SERVICE } from "./services/transaction.service";
 
 @Injectable()
 export class APP_SERVICE {
     constructor(
-        public DATA: APP_DATA,
         public STATE: APP_STATE,
         public APPERANCE: APP_APPERANCE,
         public UPDATE: APP_UPDATE,
         public SCHEDULE: APP_SCHEDULE,
         public BACKUP: APP_BACKUP,
-        public VALIDATOR: APP_VALIDATOR,
-        private ROUTER: Router
+        public VALIDATOR: VALIDATOR_SERVICE,
+        public PROFILE: PROFILE_SERVICE,
+        public USER_ACCOUNT: USER_ACCOUNT_SERVICE,
+        public TRANSACTION: TRANSACTION_SERVICE,
+        private ROUTER: Router,
+        private STORAGE: STORAGE_SERVICE
     ) { }
 
     startApp(): Promise<void> {
@@ -27,7 +33,7 @@ export class APP_SERVICE {
             this.navigate('bootstrap')
             this.APPERANCE.restart()
 
-            await this.DATA.init()
+            await this.STORAGE.init()
             
             let redirection_location: AppLocations = 'home'
             const app_is_configured = await this.checkIfAppIsConfigured()
@@ -97,7 +103,7 @@ export class APP_SERVICE {
 
     private checkIfAppIsConfigured(): Promise<boolean> {
         return new Promise(async resolve => {
-            const profile = await this.DATA.PROFILE.get()
+            const profile = await this.PROFILE.get()
             if (!profile) {
                 resolve(false)
             } else {

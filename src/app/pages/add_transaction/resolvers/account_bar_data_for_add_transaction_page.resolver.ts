@@ -15,10 +15,10 @@ export class ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE implements Resolve
             const transaction_id = route.queryParamMap.get('tr_id')
             let user_account: UserAccount | null = null
             if (user_account_id !== null && transaction_id === null) {
-                user_account = await this.APP.DATA.USER_ACCOUNT.getOne(user_account_id)
+                user_account = await this.APP.USER_ACCOUNT.getOne(user_account_id)
             } else if (user_account_id === null && transaction_id !== null) {
-                const transaction = await this.APP.DATA.TRANSACTION.getOne(transaction_id)
-                user_account = await this.APP.DATA.USER_ACCOUNT.getOne(transaction.user_account_id)
+                const transaction = await this.APP.TRANSACTION.getOne(transaction_id)
+                user_account = await this.APP.USER_ACCOUNT.getOne(transaction.user_account_id)
             } else {
                 console.error("Cannot get user account id from route!");
                 return

@@ -9,7 +9,7 @@ export class TRANSACTIONS_RESOLVER implements Resolve<Transaction[]>{
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<Transaction[]> {
         return new Promise((resolve) => {
-            resolve(this.APP.DATA.TRANSACTION.getAll(null))
+            resolve(this.APP.TRANSACTION.getAll(null))
         })
     }
 }

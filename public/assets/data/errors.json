@@ -6,10 +6,9 @@
         "desc": "Wystąpił nieznany błąd aplikacji"
     },
     {
-        "id": "APP-DATA-PROFILE-SAVE-ID",
+        "id": "APP-DATA-PROFILE-SAVE",
         "type": "MAIN",
-        "title": "Błąd zapisu konta użytkownika",
-        "desc": "Brak id w danych konta użytkownika"
+        "title": "Błąd zapisu konta użytkownika"
     },
     {
         "id": "APP-DATA-PROFILE-SAVE-IMAGE",
@@ -45,10 +44,9 @@
         "title": "Błąd wczytania danych transakcji"
     },
     {
-        "id": "APP-DATA-TRANSACTION-SAVE-ID",
+        "id": "APP-DATA-TRANSACTION-SAVE",
         "type": "MAIN",
-        "title": "Błąd zapisywania danych transakcji",
-        "desc": "Brak id w danych transakcji"
+        "title": "Błąd zapisywania danych transakcji"
     },
     {
         "id": "APP-DATA-TRANSACTION-SAVE-AMOUNT",
@@ -79,10 +77,9 @@
         "title": "Błąd otrzymania danych konta bankowego"
     },
     {
-        "id": "APP-DATA-USER_ACCOUNT-SAVE-ID",
+        "id": "APP-DATA-USER_ACCOUNT-SAVE",
         "type": "MAIN",
-        "title": "Błąd zapisywania danych konta bankowego",
-        "desc": "Brak danych id konta bankowego"
+        "title": "Błąd zapisywania danych konta bankowego"
     },
     {
         "id": "APP-DATA-USER_ACCOUNT-SAVE-AVAIBLE_FUNDS",

@@ -94,7 +94,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
             if (user_account_id !== null && transaction_id === null) {
                 this.new_transaction.user_account_id = user_account_id
             } else if (user_account_id === null && transaction_id !== null) {
-                this.APP.DATA.TRANSACTION.getOne(transaction_id)
+                this.APP.TRANSACTION.getOne(transaction_id)
                     .then( transaction => {
                         this.transaction_type = transaction.amount > 0 ? 'income' : 'expense'
                         this.new_transaction = {
@@ -129,9 +129,9 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
         this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(async () => {
             try {
                 if (this.new_transaction.id !== '') {
-                    await this.APP.DATA.updateTransaction(this.new_transaction)
+                    await this.APP.TRANSACTION.update(this.new_transaction)
                 } else {
-                    await this.APP.DATA.newTransaction(this.new_transaction)
+                    await this.APP.TRANSACTION.update(this.new_transaction)
                 }
                 this.APP.navigate('home')
             } catch (err) {

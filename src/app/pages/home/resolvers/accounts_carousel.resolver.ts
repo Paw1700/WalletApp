@@ -12,7 +12,7 @@ export class ACCOUNTS_CAROUSEL_RESOLVER implements Resolve<AccountBarComponentDa
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<AccountBarComponentData[]> {
         return new Promise<AccountBarComponentData[]>(async (resolve) => {
             let accounts_data: Account[] = await this.getAccounts()
-            let user_accounts_data: UserAccount[] = await this.APP.DATA.USER_ACCOUNT.getAll()
+            let user_accounts_data: UserAccount[] = await this.APP.USER_ACCOUNT.getAll()
             const accounts_carouse_data: AccountBarComponentData[] = []
             user_accounts_data.forEach(us_acc => {
                 const account_data = accounts_data.filter(acc => acc.id === us_acc.account_id)[0]

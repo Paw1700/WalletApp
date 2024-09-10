@@ -2,11 +2,8 @@ import { Injectable } from "@angular/core";
 import { Profile, Transaction, UserAccount, ValidationResult } from "../models";
 
 @Injectable()
-export class APP_VALIDATOR {
+export class VALIDATOR_SERVICE {
     validateUserProfile(profile: Profile): ValidationResult {
-        if (!this.hasStringValue(profile.id)) {
-            return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-ID'}
-        }
         if (!this.hasStringValue(profile.image)) {
             return {pass: false, errCode: 'APP-DATA-PROFILE-SAVE-IMAGE'}
         }
@@ -20,9 +17,6 @@ export class APP_VALIDATOR {
     }
 
     validateUserAccount(user_account: UserAccount): ValidationResult {
-        if (!this.hasStringValue(user_account.account_id)) {
-            return {pass: false, errCode: "APP-DATA-USER_ACCOUNT-SAVE-ID"}
-        }
         if (!this.hasNumberValue(user_account.avaible_funds)) {
             return {pass: false, errCode: "APP-DATA-USER_ACCOUNT-SAVE-AVAIBLE_FUNDS"}
         }
@@ -38,9 +32,6 @@ export class APP_VALIDATOR {
     validateTranasaction(transaction: Transaction): ValidationResult {
         if (!this.hasNumberValue(transaction.amount, false)) {
             return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-AMOUNT'}
-        }
-        if (!this.hasStringValue(transaction.category_id)) {
-            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-ID'}
         }
         if (!this.hasDateValue(transaction.date)) {
             return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-DATE'}

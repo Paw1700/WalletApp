@@ -1,21 +1,19 @@
 import { inject, Injectable } from "@angular/core";
-import { Profile } from "../../models";
-import { DB_STORES } from "../data.service";
-import { DatabaseManager } from "../../util/db.driver";
-import { APP_VALIDATOR } from "../validator.service";
+import { Profile } from "../models";
+import { VALIDATOR_SERVICE } from "./validator.service";
+import { STORAGE_SERVICE } from "./storage.service";
 
 @Injectable()
-export class PROFILE_DATA_SERVICE {
-    private DB = inject(DatabaseManager)
-    private VALIDATOR = inject(APP_VALIDATOR)
-    private readonly DB_STORE = new DB_STORES().profile
+export class PROFILE_SERVICE {
+    private VALIDATOR = inject(VALIDATOR_SERVICE)
+    private STORAGE = inject(STORAGE_SERVICE)
 
     get(): Promise<Profile> {
         return new Promise(async (resolve, reject) => {
             try {
-                resolve((await this.DB.getAllObject<Profile>(this.DB_STORE))[0])
+                resolve(this.STORAGE.getProfile())
             } catch (err) {
-                reject("APP-DATA-PROFILE-GET")
+                reject(err)
             }
         })
     }
@@ -23,13 +21,11 @@ export class PROFILE_DATA_SERVICE {
     save(profile: Profile) {
         return new Promise<void>(async (resolve, reject) => {
             try {
-                profile.id = await this.DB.GENERATE_INDEX(this.DB_STORE)
                 const validation_result = this.VALIDATOR.validateUserProfile(profile)
                 if (validation_result.pass) {
-                    resolve(await this.DB.insertObject(this.DB_STORE, profile))
+                    resolve(this.STORAGE.saveProfile(profile))
                 } else {
-                    reject(validation_result.errCode)
-                    return
+                    throw new Error(validation_result.errCode)
                 }
             } catch (err) {
                 reject(err)
@@ -42,8 +38,7 @@ export class PROFILE_DATA_SERVICE {
             try {
                 const validation_result = this.VALIDATOR.validateUserProfile(profile)
                 if (validation_result.pass) {
-                    await this.DB.insertObject(this.DB_STORE, profile)
-                    resolve()
+                    resolve(this.STORAGE.updateProfile(profile))
                 } else {
                     throw new Error(validation_result.errCode)
                 }
@@ -56,10 +51,9 @@ export class PROFILE_DATA_SERVICE {
     delete() {
         return new Promise<void>(async (resolve, reject) => {
             try {
-                await this.DB.deleteAllObjects(this.DB_STORE)
-                resolve()
+                resolve(this.STORAGE.deleteProfile())
             } catch (err) {
-                reject('APP-DATA-PROFILE-DELETE')
+                reject(err)
             }
         })
     }

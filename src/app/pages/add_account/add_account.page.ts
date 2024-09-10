@@ -70,7 +70,7 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
     saveAccount() {
         const validation_result = this.APP.VALIDATOR.validateUserAccount(this.user_new_account)
         if (validation_result) {
-            this.APP.DATA.USER_ACCOUNT.save(this.user_new_account)
+            this.APP.USER_ACCOUNT.save(this.user_new_account)
             .then(() => {
                 this.APP.navigate('accounts_list')
             })
