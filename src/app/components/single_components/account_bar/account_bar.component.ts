@@ -32,7 +32,9 @@ export class AccountBarComponent implements OnInit {
                 },
                 bank_logo_src: "/assets/banks_logos/alior_bank.webp"
             }
-        }
+        },
+        user_account_id: null,
+        funds_data: null
     }
     bar_background = ''
     bank_logo = ''
@@ -58,7 +60,7 @@ export type AccountFundsData = {
 }
 
 export type AccountBarComponentData = {
-    user_account_id?: string,
+    user_account_id: string | null,
     account: Account,
-    funds_data?: AccountFundsData
+    funds_data: AccountFundsData | null
 }

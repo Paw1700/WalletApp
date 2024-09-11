@@ -24,8 +24,8 @@ export class APP_SERVICE {
         public PROFILE: PROFILE_SERVICE,
         public USER_ACCOUNT: USER_ACCOUNT_SERVICE,
         public TRANSACTION: TRANSACTION_SERVICE,
-        private ROUTER: Router,
-        private STORAGE: STORAGE_SERVICE
+        public STORAGE: STORAGE_SERVICE,
+        private ROUTER: Router
     ) { }
 
     startApp(): Promise<void> {

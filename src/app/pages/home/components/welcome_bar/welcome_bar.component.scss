@@ -1,0 +1,33 @@
+div.WELCOME_BAR {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div.TEXT {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6vh;
+        align-items: flex-start;
+        justify-content: center;
+
+        p {
+            &.WELCOME_TEXT {
+                font-size: 1rem;
+                font-weight: 400;
+                color: var(--font-color-secendary);
+            }
+
+            &.USER_NAME {
+                font-size: 1.58rem;
+                font-weight: 600;
+            }
+        }
+    }
+
+    img {
+        width: 12.5vw;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+}

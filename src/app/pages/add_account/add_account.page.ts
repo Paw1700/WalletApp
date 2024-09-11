@@ -46,7 +46,7 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
     receiveAccounts(bank_id: any) {
         this.account_list_of_choosen_bank = []
         this.ACCOUNTS_LIST.filter(acc => acc.bank_id === bank_id).forEach(acc => {
-            this.account_list_of_choosen_bank.push({account: acc})
+            this.account_list_of_choosen_bank.push({account: acc, funds_data: null, user_account_id: null})
         })
     }
 

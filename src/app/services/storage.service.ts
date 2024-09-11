@@ -1,6 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { DatabaseManager } from "../util/db.driver";
-import { Profile, Transaction, UserAccount } from "../models";
+import { Account, Category, Profile, Receiver, Transaction, UserAccount } from "../models";
+import { HttpClient } from "@angular/common/http";
 
 export class DB_STORES {
     constructor(
@@ -19,6 +20,7 @@ export class LS_STORES {
 @Injectable()
 export class STORAGE_SERVICE {
     private readonly DB = inject(DatabaseManager)
+    private readonly HTTP = inject(HttpClient)
     private readonly DB_NAME = 'WalletApp';
     private readonly DB_VERSION = 1;
     private readonly DB_STORES = new DB_STORES();
@@ -282,6 +284,30 @@ export class STORAGE_SERVICE {
             } catch (err) {
                 reject("APP-DATA-USER_ACCOUNT-DELETE")
             }
+        })
+    }
+
+    getReceivers(): Promise<Receiver[]> {
+        return new Promise(resolve => {
+            this.HTTP.get<Receiver[]>('/assets/data/receivers.json').subscribe( list => {
+                resolve(list)
+            })
+        })
+    }
+
+    getCategories(): Promise<Category[]> {
+        return new Promise(resolve => {
+            this.HTTP.get<Category[]>('/assets/data/categories.json').subscribe( list => {
+                resolve(list)
+            })
+        })
+    }
+
+    getAccounts(): Promise<Account[]> {
+        return new Promise(resolve => {
+            this.HTTP.get<Account[]>('/assets/data/accounts.json').subscribe( list => {
+                resolve(list)
+            })
         })
     }
 

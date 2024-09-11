@@ -10,45 +10,14 @@ div.PAGE {
     justify-content: flex-start;
     padding: 2vh 4.32vw;
 
-    div.WELCOME_BAR {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        div.TEXT {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6vh;
-            align-items: flex-start;
-            justify-content: center;
-
-            p {
-                &.WELCOME_TEXT {
-                    font-size: 1rem;
-                    font-weight: 400;
-                    color: var(--font-color-secendary);
-                }
-
-                &.USER_NAME {
-                    font-size: 1.58rem;
-                    font-weight: 600;
-                }
-            }
-        }
-
-        img {
-            width: 12.5vw;
-            object-fit: contain;
-            border-radius: 50%;
-        }
-    }
+    
 
     accounts_carousel {
         width: 100vw;
     }
 
-    transaction_list {
+    transaction_list,
+    welcome_bar {
         width: 100%;
     }
 
