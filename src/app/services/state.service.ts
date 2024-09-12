@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class APP_STATE {
     nav_bar_left_button_clicked$ = new Subject<void>()
     nav_bar_right_button_clicked$ = new Subject<void>()
+    last_app_location$ = new BehaviorSubject<AppLocations | null>(null)
     app_current_location$ = new BehaviorSubject<AppLocations>('bootstrap')
     error_data$ = new BehaviorSubject<ErrorModel | null>(null)
 

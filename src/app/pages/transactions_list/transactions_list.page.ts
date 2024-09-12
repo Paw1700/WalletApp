@@ -1,7 +1,7 @@
 import { Component, inject } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
-import { UserAccount, Account, Category, Receiver, Transaction, ErrorID, TransactionType } from "../../models";
+import { UserAccount, Account, Category, Receiver, ErrorID, TransactionType } from "../../models";
 import { AccountChooseByScroll } from "../../components/forms/account_choose_by_scroll/account_choose_by_scroll.component";
 import { TransactionTypeChooseBubble } from "../../components/forms/transactions_type_choose_bubble/transactions_type_choose_bubble.component";
 import { AmountFilterChooseBubble } from "../../components/forms/amount_filter_choose_bubble/amount_filter_choose_bubble.component";
@@ -87,6 +87,11 @@ export class TransactionsListPage {
 
     reactToReceiverBubbleOpenStateChange(e: boolean) {
         this.receiver_choose_bubble_open = e
+    }
+
+    goToEditTransaction(transaction_id: string) {
+        this.APP.STATE.last_app_location$.next('transactions_list')
+        this.APP.navigate('add_transaction', {tr_id: transaction_id})
     }
     
     private async fetchTransactions() {

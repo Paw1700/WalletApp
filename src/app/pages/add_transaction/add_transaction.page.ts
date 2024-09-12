@@ -121,7 +121,12 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
 
     private reactToNavBarLeftButtonClicked() {
         this.APP.STATE.nav_bar_left_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
-            this.APP.navigate('home')
+            if (this.APP.STATE.last_app_location$.value !== null) {
+                this.APP.navigate(this.APP.STATE.last_app_location$.value)
+                this.APP.STATE.last_app_location$.next(null)
+            } else {
+                this.APP.navigate('home')
+            }
         })
     }
     
@@ -133,7 +138,12 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
                 } else {
                     await this.newTransaction()
                 }
-                this.APP.navigate('home')
+                if (this.APP.STATE.last_app_location$.value !== null) {
+                    this.APP.navigate(this.APP.STATE.last_app_location$.value)
+                    this.APP.STATE.last_app_location$.next(null)
+                } else {
+                    this.APP.navigate('home')
+                }
             } catch (err) {
                 this.APP.STATE.errorHappend(err as ErrorID)
             }
