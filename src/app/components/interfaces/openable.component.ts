@@ -12,7 +12,7 @@ export class OpenAbleComponentInterface {
 
     protected changeComponentOpenessState(open?: boolean) {
         if (!this.block_openess_state_change) {
-            if (open) {
+            if (open !== undefined) {
                 this.component_open = open
                 this.component_openess_state.emit(open)
             } else {

@@ -15,9 +15,10 @@ export class AccountChooseBarComponentInterface extends OpenAbleComponentInterfa
     choosed_account_bar_data: AccountBarComponentData | null = null
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (this.ACCOUNTS_LIST.length === 0 && this.choosed_account_bar_data) {
+        if (this.ACCOUNTS_LIST.length === 0) {
             this.choosed_account_bar_data = null
             this.choosed_account_id.emit(null)
+            this.changeComponentOpenessState(false)
         }
     }
 

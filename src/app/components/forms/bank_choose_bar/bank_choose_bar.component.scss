@@ -16,7 +16,7 @@ div.BANK_CHOOSE_BAR {
     }
 
     div.BANKS_LIST {
-        width: 100%;
+        max-width: 100%;
         display: flex;
         flex-direction: row;
         gap: 3.8vw;
