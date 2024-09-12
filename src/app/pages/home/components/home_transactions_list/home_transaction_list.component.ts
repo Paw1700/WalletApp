@@ -4,13 +4,16 @@ import { ScrollSideBarOption, ScrollSideOptions } from "../../../../components/e
 import { HomePageService } from "../../home.page.service";
 import { NgUnsubscriber } from "../../../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
+import { Loader } from "../../../../components/UI/loader/loader.component";
+import { animate, query, stagger, style, transition, trigger } from "@angular/animations";
 
 @Component({
     selector: 'transaction_list',
     standalone: true,
     imports: [
         TransactionBar,
-        ScrollSideOptions
+        ScrollSideOptions,
+        Loader
     ],
     templateUrl: './home_transaction_list.component.html',
     styleUrl: './home_transaction_list.component.scss'
@@ -19,7 +22,7 @@ export class HomeTransactionList extends NgUnsubscriber implements OnInit {
     readonly PAGE_SERVICE = inject(HomePageService)
     readonly scroll_side_options: ScrollSideBarOption = {color: 'red', width_in_percent: 25, round_edges: true, text: 'Usuń', image: null, return_value: null}
 
-    transactions_list: TransactionBarComponentData[] = []
+    transactions_list: TransactionBarComponentData[] | null = null
 
     ngOnInit(): void {
         this.subscribeToTransactionBarList()

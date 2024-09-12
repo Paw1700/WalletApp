@@ -25,5 +25,5 @@ import { Component, Input } from "@angular/core";
     `
 })
 export class Loader {
-    @Input() size_in_px = 25
+    @Input() size_in_px = 30
 }

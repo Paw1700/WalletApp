@@ -11,6 +11,8 @@ import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
 import { ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE } from './pages/add_transaction/resolvers/account_bar_data_for_add_transaction_page.resolver';
 import { TransactionsListPage } from './pages/transactions_list/transactions_list.page';
 import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
+import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
+import { ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
 
 export const routes: Routes = [
     {
@@ -27,6 +29,10 @@ export const routes: Routes = [
         component: HomePage,
         data: {
             page_name: 'home'
+        },
+        resolve: {
+            accounts_bar_component_data_list: ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER,
+            profile: PROFILE_RESOLVER
         }
     },
     {

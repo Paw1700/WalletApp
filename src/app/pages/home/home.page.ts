@@ -11,6 +11,7 @@ import { Loader } from "../../components/UI/loader/loader.component";
 import { HomePageService } from "./home.page.service";
 import { WelcomeBar } from "./components/welcome_bar/welcome_bar.component";
 import { Profile } from "../../models";
+import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 
 @Component({
     selector: 'home_page',
@@ -35,15 +36,13 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     readonly PAGE_SERVICE = inject(HomePageService)
 
     CONFIRM_BOX_DATA: ConfirmBoxData | null = null
-    TRANSACTIONS_AMOUNT: number = 0
+    ACCOUNT_AMOUNT: number = 0
     PROFILE: Profile = { id: '', name: '', surname: '', image: '' }
 
     async ngOnInit() {
-        this.PAGE_SERVICE.fetchBarUserAccount()
+        this.getRouteDate()
         this.PAGE_SERVICE.fetchTransactionBarList()
-        this.getProfileData()
         this.subscribeToConfirmBoxData()
-        this.subscribeToAmountOfAccounts()
         this.subscribeToRightNavBarBtnClicked()
     }
 
@@ -55,11 +54,13 @@ export class HomePage extends NgUnsubscriber implements OnInit {
         }
     }
 
-    private getProfileData() {
-        this.APP.PROFILE.get()
-            .then( profile => {
-                this.PROFILE = profile
-            })
+    private getRouteDate() {
+        this.ROUTE.data.subscribe(route_data => {
+            this.PROFILE = route_data['profile']
+            const accounts_bar_component_data_list = route_data['accounts_bar_component_data_list'] as AccountBarComponentData[]
+            this.ACCOUNT_AMOUNT = accounts_bar_component_data_list.length
+            this.PAGE_SERVICE.accounts_bar_carousel_list$.next(accounts_bar_component_data_list)
+        })
     }
 
     private subscribeToConfirmBoxData() {
@@ -69,14 +70,8 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     }
 
     private subscribeToRightNavBarBtnClicked() {
-        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe( () => {
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
             this.PAGE_SERVICE.goToAddTransaction()
-        })
-    }
-
-    private subscribeToAmountOfAccounts() {
-        this.PAGE_SERVICE.accounts_bar_carousel_list$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe( list => {
-            this.TRANSACTIONS_AMOUNT = list.length
         })
     }
 }

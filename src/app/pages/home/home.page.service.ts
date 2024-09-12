@@ -9,12 +9,12 @@ import { ConfirmBoxData } from "../../components/UI/confirm_box/confirm_box.comp
 
 @Injectable()
 export class HomePageService {
-    readonly APP = inject(APP_SERVICE)
+    private readonly APP = inject(APP_SERVICE)
 
     profile$ = new BehaviorSubject<Profile>({ id: '', name: '', surname: '', image: '' })
     accounts_bar_carousel_list$ = new BehaviorSubject<AccountBarComponentData[]>([])
     active_account_carousel_list_index$ = new BehaviorSubject<number>(-1)
-    transaction_bar_list$ = new BehaviorSubject<TransactionBarComponentData[]>([])
+    transaction_bar_list$ = new BehaviorSubject<TransactionBarComponentData[] | null>(null)
     confirm_box_data$ = new BehaviorSubject<ConfirmBoxData | null>(null)
     transaction_id_to_delete$ = new BehaviorSubject<string | null>(null)
 
