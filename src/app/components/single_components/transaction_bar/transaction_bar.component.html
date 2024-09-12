@@ -1,7 +1,8 @@
 <div class="TRANSACTION_BAR">
     <div class="LEFT_SIDE">
-        <div class="CATEGORY_ICON">
-            <img [src]="component_data.category.logo_src.light" />
+        <div class="ICONS">
+            <img class="CATEGORY_ICONS" [src]="component_data.category.logo_src.light" />
+            <img class="RECEIVER_LOGO" [src]="component_data.receiver.logo_src">
         </div>
         <div class="TRANSACTION_DESC">
             <p class="DESC">{{ component_data.description ? component_data.description : component_data.category.name }}</p>

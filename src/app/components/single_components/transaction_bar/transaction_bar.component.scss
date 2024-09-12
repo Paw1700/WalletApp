@@ -12,18 +12,28 @@ div.TRANSACTION_BAR {
         align-items: center;
         justify-content: center;
 
-        div.CATEGORY_ICON {
+        div.ICONS {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 12.72vw;
             height: 12.72vw;
             background-color: var(--app-accent);
+            position: relative;
             border-radius: 50%;
-    
-            img {
+            
+            img.CATEGORY_ICONS {
                 width: 65%;
                 object-fit: contain;
+            }
+            
+            img.RECEIVER_LOGO {
+                border-radius: 50%;
+                width: 50%;
+                object-fit: contain;
+                position: absolute;
+                bottom: 0;
+                right: 0;
             }
         }
     
