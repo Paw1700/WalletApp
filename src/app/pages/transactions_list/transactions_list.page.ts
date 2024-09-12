@@ -11,6 +11,8 @@ import { APP_SERVICE } from "../../app.service";
 import { TransactionBar, TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
 import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../services/storage.service";
+import { trigger } from "@angular/animations";
+import { ScaleInOutAnimation } from "../../util/animation";
 
 @Component({
     selector: 'transactions_list_page',
@@ -24,7 +26,10 @@ import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../
         TransactionBar
     ],
     templateUrl: './transactions_list.page.html',
-    styleUrl: './transactions_list.page.scss'
+    styleUrl: './transactions_list.page.scss',
+    animations: [
+        trigger("transcation", ScaleInOutAnimation)
+    ]
 })
 export class TransactionsListPage {
     private readonly APP = inject(APP_SERVICE)

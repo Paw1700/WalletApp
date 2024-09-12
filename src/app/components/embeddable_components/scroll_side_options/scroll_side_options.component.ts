@@ -1,5 +1,5 @@
 import { NgStyle } from "@angular/common";
-import { AfterViewInit, Component, EventEmitter, input, Input, Output } from "@angular/core";
+import { AfterViewChecked, AfterViewInit, Component, EventEmitter, input, Input, OnInit, Output } from "@angular/core";
 
 @Component({
     selector: 'scroll_side_options',
@@ -10,14 +10,14 @@ import { AfterViewInit, Component, EventEmitter, input, Input, Output } from "@a
     templateUrl: './scroll_side_options.component.html',
     styleUrl: './scroll_side_options.component.scss'
 })
-export class ScrollSideOptions implements AfterViewInit {
+export class ScrollSideOptions implements AfterViewChecked {
     @Input() LEFT_SIDE: ScrollSideBarOption | null = null
     @Input() RIGHT_SIDE: ScrollSideBarOption | null = null
     @Input({ required: true }) component_individual_id = ''
     @Output() leftSideClicked = new EventEmitter<any>()
     @Output() rightSideClicked = new EventEmitter<any>()
 
-    ngAfterViewInit(): void {
+    ngAfterViewChecked(): void {
         if (this.LEFT_SIDE) {
             const div = document.getElementById(this.component_individual_id)
             div?.scrollTo({ left: ((this.LEFT_SIDE?.width_in_percent) / 100) * div?.offsetWidth })
