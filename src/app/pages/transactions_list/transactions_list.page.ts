@@ -70,6 +70,7 @@ export class TransactionsListPage {
                 break
             case "user_account_id":
                 this.filter_options.user_account_id = payload
+                this.setAccentColor(payload)
                 break
             case "category_id":
                 this.filter_options.category_id = payload?.id ? payload.id : null
@@ -129,5 +130,18 @@ export class TransactionsListPage {
                 }
             })
         })
+    }
+
+    private setAccentColor(user_account_id: string | null) {
+        if (user_account_id === null) {
+            this.APP.APPERANCE.setAppAccentColor(null)
+            return
+        }
+        const account = this.ACCOUNTS_BAR_DATA_LIST.filter(data => data.user_account_id === user_account_id)[0].account
+        this.APP.APPERANCE.setAppAccentColor(this.determinateAccentColor(account))
+    } 
+
+    private determinateAccentColor(account: Account): string {
+        return account.apperance.background_gradient.bottom !== null ? account.apperance.background_gradient.bottom : account.apperance.background_gradient.top
     }
 }
