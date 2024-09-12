@@ -39,7 +39,6 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     PROFILE: Profile = { id: '', name: '', surname: '', image: '' }
 
     async ngOnInit() {
-        this.APP.APPERANCE.setAppAccentColor(null)
         this.PAGE_SERVICE.fetchBarUserAccount()
         this.PAGE_SERVICE.fetchTransactionBarList()
         this.getProfileData()

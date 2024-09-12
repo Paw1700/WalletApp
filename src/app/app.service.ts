@@ -57,26 +57,31 @@ export class APP_SERVICE {
         switch (location) {
             case "home":
                 await this.ROUTER.navigateByUrl('/home')
+                this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case "bootstrap":
                 await this.ROUTER.navigateByUrl('/')
+                this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next(null)
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case "app_first_configuration":
                 await this.ROUTER.navigateByUrl('create_profile')
+                this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next(null)
                 this.APPERANCE.nav_bar_right_button_option$.next('arrow_right')
                 break
             case 'accounts_list':
                 await this.ROUTER.navigateByUrl('accounts_list')
+                this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next('add_account')
                 break
             case 'add_account':
                 await this.ROUTER.navigateByUrl('add_account')
+                this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break   
@@ -95,6 +100,7 @@ export class APP_SERVICE {
                 break
             case "transactions_list":
                 await this.ROUTER.navigateByUrl('transactions_list')
+                this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
