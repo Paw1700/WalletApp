@@ -54,6 +54,9 @@ export const routes: Routes = [
         component: AddAccountPage,
         data: {
             page_name: 'add_account'
+        },
+        resolve: {
+            accounts: ACCOUNTS_RESOLVER
         }
     },
     {

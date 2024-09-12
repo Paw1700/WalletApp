@@ -9,6 +9,7 @@ import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { APP_SERVICE } from "../../app.service";
 import { takeUntil } from "rxjs";
 import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'add_account_page',
@@ -23,12 +24,14 @@ import { AccountBarComponentData } from "../../components/single_components/acco
 })
 export class AddAccountPage extends NgUnsubscriber implements OnInit{
     readonly APP = inject(APP_SERVICE)
+    readonly ROUTE = inject(ActivatedRoute)
 
     readonly BANKS_LIST = BANKS_LIST_JSON as Bank[]
-    readonly ACCOUNTS_LIST = ACCOUNTS_LIST_JSON as Account[]
+    ACCOUNTS_LIST = ACCOUNTS_LIST_JSON as Account[]
     account_list_of_choosen_bank: AccountBarComponentData[] = []
 
     ngOnInit(): void {
+        this.fetchRouteData()
         this.reactToLeftNavBarClicked()
         this.reactToRightNavBarClicked()
     }
@@ -43,11 +46,13 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
         }
     } 
 
-    receiveAccounts(bank_id: any) {
+    receiveAccounts(bank: Bank | null) {
         this.account_list_of_choosen_bank = []
-        this.ACCOUNTS_LIST.filter(acc => acc.bank_id === bank_id).forEach(acc => {
-            this.account_list_of_choosen_bank.push({account: acc, funds_data: null, user_account_id: null})
-        })
+        if (bank) {
+            this.ACCOUNTS_LIST.filter(acc => acc.bank_id === bank.id).forEach(acc => {
+                this.account_list_of_choosen_bank.push({account: acc, funds_data: null, user_account_id: null})
+            })
+        }
     }
 
     handleFormInput(type: 'account_id' | 'start_funds' | 'debet_limit' | 'debet_interest', payload: any) {
@@ -75,6 +80,12 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
                 this.APP.navigate('accounts_list')
             })
         }
+    }
+
+    private fetchRouteData() {
+        this.ROUTE.data.subscribe(route_data => {
+            this.ACCOUNTS_LIST = route_data['accounts']
+        })
     }
 
     private reactToLeftNavBarClicked() {

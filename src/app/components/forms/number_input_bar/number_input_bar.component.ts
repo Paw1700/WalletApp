@@ -57,7 +57,7 @@ export class NumberInput extends OpenAbleComponentInterface implements OnChanges
         if (v === '') {
             this.inputed_number = null
         } else {
-            this.inputed_number = v
+            this.inputed_number = Number(v)
         }
         if (this.inputed_number) {
             this.inputed_value.emit(this.inputed_number)
