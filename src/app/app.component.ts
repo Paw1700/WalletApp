@@ -8,6 +8,7 @@ import { ErrorBar } from './components/UI/error_bar/error_bar.component';
 import { TransactionTypeChooseBubble } from './components/forms/transactions_type_choose_bubble/transactions_type_choose_bubble.component';
 import { ScrollSideOptions } from './components/embeddable_components/scroll_side_options/scroll_side_options.component';
 import { TransactionBar } from './components/single_components/transaction_bar/transaction_bar.component';
+import { FadeInPageAnimation, SlideToLeftPageAnimation, SlideToRightPageAnimation } from './util/animation';
 
 @Component({
   selector: 'app-root',
@@ -37,60 +38,13 @@ import { TransactionBar } from './components/single_components/transaction_bar/t
   animations: [
     trigger('ROUTE_ANIMATION', [
       // ** FADE */
-      transition('boot => *, home <=> transactions_list, home <=> accounts_list, accounts_list <=> transactions_list', [
-        group([
-          query(":enter", [
-            style({ zIndex: 1, opacity: 0 }),
-            animate('350ms ease-out', style({
-              opacity: 1
-            }))
-          ], { optional: true }),
-          query(":leave", [
-            style({ zIndex: 2, opacity: 1 }),
-            animate('350ms ease-in', style({
-              opacity: 0
-            }))
-          ], { optional: true })
-        ])
-      ]),
+      transition('boot => *, home <=> transactions_list, home <=> accounts_list, accounts_list <=> transactions_list', FadeInPageAnimation),
 
       //** SLIDE TO LEFT */
-      transition('accounts_list => add_account, home => add_transaction', [
-        group([
-          query(":enter", [
-            style({ position: 'absolute', left: '100vw', zIndex: 2 }),
-            animate('350ms linear', style({
-              left: 0
-            }))
-          ], { optional: true }),
-          query(":leave", [
-            style({ zIndex: 1, position: 'absolute', left: 0, opacity: 1 }),
-            animate('350ms linear', style({
-              left: '-100vw',
-              opacity: 0
-            }))
-          ], { optional: true })
-        ])
-      ]),
+      transition('accounts_list => add_account, home => add_transaction, transactions_list => add_transaction', SlideToLeftPageAnimation),
 
       //** SLIDE TO RIGHT */
-      transition('add_account => accounts_list, add_transaction => home', [
-        group([
-          query(":enter", [
-            style({ zIndex: 1, position: 'absolute', left: '-100vw' }),
-            animate('350ms linear', style({
-              left: 0
-            }))
-          ], { optional: true }),
-          query(":leave", [
-            style({ zIndex: 2, position: 'absolute', left: 0, opacity: 1 }),
-            animate('350ms linear', style({
-              left: '100vw',
-              opacity: 0
-            }))
-          ], { optional: true })
-        ])
-      ]),
+      transition('add_account => accounts_list, add_transaction => home, add_transaction => transactions_list', SlideToRightPageAnimation),
     ])
   ]
 })

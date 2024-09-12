@@ -1,0 +1,15 @@
+div.FILTER_OPTIONS {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.5vw;
+
+    receiver_choose_bubble.OPEN {
+        width: 100%;
+    }
+
+    category_choose_bubble {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,7 @@
+<div class="TRANSACTIONS_LIST HIDE_SCROLL_BAR">
+    @for (tr of TRANSACTIONS_LIST; track tr.transaction_id) {
+        <transaction_bar [@transcation] (click)="goToEditTransaction(tr.transaction_id)" [component_data]="tr" /> 
+    } @empty {
+        <p class="NO_TRANSACTIONS">Brak transakcji</p>
+    }
+</div>

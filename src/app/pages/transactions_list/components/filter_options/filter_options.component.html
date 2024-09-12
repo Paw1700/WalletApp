@@ -1,0 +1,6 @@
+<div class="FILTER_OPTIONS">
+    <transaction_type_choose_bubble (choosen_type)="handleFilterChange('type', $event)" />
+    <amount_filter_choose_bubble (chossen_amount_filter_values)="handleFilterChange('filter_amount', $event)" />
+    <receiver_choose_bubble [TRANSACTION_TYPE]="'expense'" (choosed_receiver_id)="handleFilterChange('receiver_id', $event)" [class.OPEN]="receiver_choose_bubble_open" (component_openess_state)="reactToReceiverBubbleOpenStateChange($event)" [RECEIVERS_LIST]="RECEIVERS_LIST" />
+    <category_choose_bubble (choosen_categorie)="handleFilterChange('category_id', $event)" [CATEGORIES_LIST]="CATEGORIES_LIST" />
+</div>
