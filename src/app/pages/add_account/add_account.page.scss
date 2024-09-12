@@ -1,6 +1,15 @@
 div.PAGE {
-    width: 91.36vw;
     justify-content: flex-start;
-    padding: 1.7vh 4.32vw;
+    padding-top: 1.7vh;
     gap: 1.75vh;
+
+    bank_choose_bar,
+    account_choose_list,
+    number_input {
+        width: 91.36vw;
+    }
+
+    bank_choose_bar {
+        width: 100%;
+    }
 }
