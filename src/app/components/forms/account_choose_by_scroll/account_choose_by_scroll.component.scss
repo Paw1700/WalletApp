@@ -4,7 +4,6 @@ div.ACCOUNT {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // gap: 1.17vh;
     
     div.CAROUSEL {
         max-width: 100%;
@@ -36,6 +35,7 @@ div.ACCOUNT {
             padding-block: 1.17vh;
             font-size: 1rem;
             font-weight: 600;
+            min-width: calc(92% - 1.5vw);
         }
     }
 
