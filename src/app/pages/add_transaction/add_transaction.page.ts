@@ -49,6 +49,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
         this.fetchRouteData()
         this.reactToNavBarLeftButtonClicked()
         this.reactToNavBarRightButtonClicked()
+        this.setAccentColor()
     }
 
     handleFormInput(type: 'date' | 'transaction_type' | 'category_id' | 'receiver_id' | 'amount' | 'desc', payload: any) {
@@ -117,6 +118,11 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
             this.CATEGORIES_LIST = route_data['categories']
             this.ACCOUNT_BAR_DATA = route_data['account_bar_data']
         })
+    }
+
+    private setAccentColor() {
+        const account_gradient_background = this.ACCOUNT_BAR_DATA.account.apperance.background_gradient
+        this.APP.APPERANCE.setAppAccentColor(account_gradient_background.bottom !== null ? account_gradient_background.bottom : account_gradient_background.top)
     }
 
     private reactToNavBarLeftButtonClicked() {
