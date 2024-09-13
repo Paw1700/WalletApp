@@ -47,6 +47,7 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
     } 
 
     receiveAccounts(bank: Bank | null) {
+        this.APP.APPERANCE.setAppAccentColor(null)
         this.account_list_of_choosen_bank = []
         if (bank) {
             this.ACCOUNTS_LIST.filter(acc => acc.bank_id === bank.id).forEach(acc => {
@@ -59,6 +60,8 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
         switch(type) {
             case "account_id":
                 this.user_new_account.account_id = payload
+                const acc_background_gradient = this.ACCOUNTS_LIST.filter(acc => acc.id === payload)[0].apperance.background_gradient
+                this.APP.APPERANCE.setAppAccentColor(acc_background_gradient.bottom !== null ? acc_background_gradient.bottom : acc_background_gradient.top)
                 break
             case "start_funds":
                 this.user_new_account.avaible_funds = payload
