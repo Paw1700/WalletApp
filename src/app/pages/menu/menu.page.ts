@@ -77,6 +77,9 @@ export class MenuPage implements OnInit {
             case 2:
                 this.APP.navigate('accounts_list')
                 break
+            default:
+                this.APP.navigate('home') 
+                break
         }
         this.show_page = false
     }
