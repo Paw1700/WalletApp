@@ -29,7 +29,8 @@ div.ACCOUNT_BAR {
     }
 
     div.AVAIBLE_FUNDS,
-    div.STATS {
+    div.STATS,
+    div.LIMIT {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -80,6 +81,12 @@ div.ACCOUNT_BAR {
         p.CURRENCY {
             font-size: 0.58em;
             font-weight: 500;
+        }
+
+        p.LEFT_DEBT_AMOUNT {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
         }
     }
 }

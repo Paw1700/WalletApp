@@ -32,7 +32,8 @@ export class ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE implements Resolve
                         stats_data: {
                             plus: 0,
                             minus: 0
-                        }
+                        },
+                        limit_number: user_account.debet.limit
                     }
                 })
             }

@@ -21,7 +21,8 @@ export class ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER implements Resolve<Account
                         stats_data: {
                             plus: 0,
                             minus: 0
-                        }
+                        },
+                        limit_number: us_acc.debet.limit
                     }
                 })
             })

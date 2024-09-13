@@ -73,7 +73,8 @@ export class HomePageService {
                 account: account_data,
                 funds_data: {
                     avaible_funds: us_acc.avaible_funds,
-                    stats_data: { plus: 0, minus: 0 }
+                    stats_data: { plus: 0, minus: 0 },
+                    limit_number: us_acc.debet.limit
                 }
             })
         })

@@ -3,7 +3,7 @@
         <img class="BANK_LOGO" [src]="bank_logo">
         <p class="TITLE">{{ bar_data.account.name }}</p>
     </div>
-    @if((bar_type == 'FUNDS_ONLY' || bar_type === 'FULL') && bar_data.funds_data) {
+    @if((bar_type !== 'NAME_ONLY') && bar_data.funds_data) {
         <div class="AVAIBLE_FUNDS">
             <p class="DESC">Dostępne środki</p>
             <div class="FUNDS">
@@ -12,7 +12,7 @@
             </div>
         </div>
     }
-    @if(bar_type === 'FULL' && bar_data.funds_data?.stats_data !== null) {
+    @if(bar_type === 'FULL_STATS' && bar_data.funds_data?.stats_data !== null) {
         <div class="STATS">
             <p class="DESC">W ciągu ostatnich 30 dni</p>
             <div class="VALUES">
@@ -27,6 +27,12 @@
                     <p class="CURRENCY">{{ bar_data.account.currency }}</p>
                 </div>
             </div>
+        </div>
+    }
+    @if(bar_type === 'FULL_LIMIT' && bar_data.funds_data?.limit_number !== null && bar_data.funds_data?.limit_number! > 0) {
+        <div class="LIMIT">
+            <p class="DESC">Pozostały limit debetu</p>
+            <p class="LEFT_DEBT_AMOUNT">{{ remaining_debet | number_separator }} {{ bar_data.account.currency }}</p>
         </div>
     }
 </div>

@@ -8,7 +8,7 @@
             </div>
         </div>
         @for (acc of accounts_bar_list; track $index) {
-            <account-bar [bar_data]="acc" />
+            <account-bar [bar_data]="acc" [bar_type]="'FULL_STATS'" />
         }
     </div>
     <div class="LIST_INDICATOR">

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { Account } from "../../../models";
 import { NgStyle } from "@angular/common";
 import { NumberSeparator } from "../../../pipes/number_separator.pipe";
@@ -13,9 +13,9 @@ import { NumberSeparator } from "../../../pipes/number_separator.pipe";
     templateUrl: './account_bar.component.html',
     styleUrl: './account_bar.component.scss'
 })
-export class AccountBarComponent implements OnInit {
-    @Input() bar_type: AccountBarComponentDisplayTypes = 'FULL'
-    @Input() bar_data: AccountBarComponentData = {
+export class AccountBarComponent implements OnInit, OnChanges {
+    @Input({required: true}) bar_type: AccountBarComponentDisplayTypes = 'FULL_STATS'
+    @Input({required: true}) bar_data: AccountBarComponentData = {
         account: {
             id: "KON-RNE-ALI-ANK",
             bank_id: "ALI-ANK",
@@ -36,11 +36,20 @@ export class AccountBarComponent implements OnInit {
         user_account_id: null,
         funds_data: null
     }
+    @Input() minus_funds = 0
+    
     bar_background = ''
     bank_logo = ''
+    remaining_debet = 0
 
     ngOnInit(): void {
         this.setBarStyle()
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.bar_type === 'FULL_LIMIT' && this.bar_data.funds_data !== null && this.bar_data.funds_data.limit_number !== null) {
+            this.remaining_debet = this.bar_data.funds_data.limit_number - this.minus_funds
+        } 
     }
     
     private setBarStyle() {
@@ -49,14 +58,15 @@ export class AccountBarComponent implements OnInit {
     }
 }
 
-export type AccountBarComponentDisplayTypes = 'NAME_ONLY' | 'FUNDS_ONLY' | 'FULL'
+export type AccountBarComponentDisplayTypes = 'NAME_ONLY' | 'FUNDS_ONLY' | 'FULL_STATS' | 'FULL_LIMIT'
 
 export type AccountFundsData = {
     avaible_funds: number,
-    stats_data?: {
+    stats_data: {
         plus: number,
         minus: number
-    }
+    } | null,
+    limit_number: number | null
 }
 
 export type AccountBarComponentData = {

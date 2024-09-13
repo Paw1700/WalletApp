@@ -72,7 +72,9 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
                 user_account_id: usa.id,
                 account: accounts_data.filter(acc => acc.id === usa.account_id)[0],
                 funds_data: {
-                    avaible_funds: usa.avaible_funds
+                    avaible_funds: usa.avaible_funds,
+                    limit_number: null,
+                    stats_data: null
                 }
             })
         })

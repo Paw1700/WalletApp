@@ -36,7 +36,7 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
         this.user_accounts_list_to_display = []
         this.user_accounts_list.forEach(user_acc => {
             let account = this.ACCOUNTS_LIST.filter(acc => acc.id === user_acc.account_id)[0]
-            this.user_accounts_list_to_display.push({ user_account_id: user_acc.id , account: account, funds_data: { avaible_funds: user_acc.avaible_funds, stats_data: { plus: 0, minus: 0 } } })
+            this.user_accounts_list_to_display.push({ user_account_id: user_acc.id , account: account, funds_data: { avaible_funds: user_acc.avaible_funds, stats_data: { plus: 0, minus: 0 }, limit_number: user_acc.debet.limit } })
         })
     }
 

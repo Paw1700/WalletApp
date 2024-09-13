@@ -4,7 +4,7 @@
         <p class="NO_ACCOUNTS">Brak kont bankowych</p>
     } @else {
         @for (item of user_accounts_list_to_display; track $index) {
-            <account-bar [bar_data]="item"/>
+            <account-bar [bar_data]="item" [bar_type]="'FULL_STATS'"/>
         }
     }
 </div>
