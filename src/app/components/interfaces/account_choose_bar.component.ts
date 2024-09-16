@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
 import { OpenAbleComponentInterface } from "./openable.component";
-import { AccountBarComponentData } from "../single_components/account_bar/account_bar.component";
+import { Account } from "../../models";
 
 @Component({
     selector: 'account_choose_bar',
@@ -8,11 +8,11 @@ import { AccountBarComponentData } from "../single_components/account_bar/accoun
     template: ''
 })
 export class AccountChooseBarComponentInterface extends OpenAbleComponentInterface implements OnChanges{
-    @Input({required: true}) ACCOUNTS_LIST: AccountBarComponentData[] = []
+    @Input({required: true}) ACCOUNTS_LIST: AccountChooseBarListItem[] = []
     @Output() choosed_account_id = new EventEmitter<string | null>()
     @Output() choosed_user_account_id = new EventEmitter<string | null>()
 
-    choosed_account_bar_data: AccountBarComponentData | null = null
+    choosed_account_bar_data: AccountChooseBarListItem | null = null
 
     ngOnChanges(changes: SimpleChanges): void {
         if (this.ACCOUNTS_LIST.length === 0) {
@@ -22,7 +22,7 @@ export class AccountChooseBarComponentInterface extends OpenAbleComponentInterfa
         }
     }
 
-    changeAccount(account_bar_data: AccountBarComponentData | null) {
+    changeAccount(account_bar_data: AccountChooseBarListItem | null) {
         if (this.ACCOUNTS_LIST.length === 0) {
             return
         }
@@ -40,4 +40,9 @@ export class AccountChooseBarComponentInterface extends OpenAbleComponentInterfa
             this.choosed_user_account_id.emit(null)
         }
     }
+}
+
+export type AccountChooseBarListItem = {
+    user_account_id: string | null,
+    account: Account
 }

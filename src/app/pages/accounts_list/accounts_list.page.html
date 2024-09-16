@@ -4,7 +4,11 @@
         <p class="NO_ACCOUNTS">Brak kont bankowych</p>
     } @else {
         @for (item of user_accounts_list_to_display; track $index) {
-            <account-bar [bar_data]="item" [bar_type]="'FULL_STATS'"/>
+            <account-bar 
+                [bar_type]="'WITH_STATS'"
+                [account]="item.account"
+                [account_funds_data]="item.funds_data"
+                [account_stats_data]="item.stats_data" />
         }
     }
 </div>

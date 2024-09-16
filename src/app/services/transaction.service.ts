@@ -38,7 +38,7 @@ export class TRANSACTION_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -53,7 +53,7 @@ export class TRANSACTION_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -63,7 +63,7 @@ export class TRANSACTION_SERVICE {
             try {
                 resolve(this.STORAGE.deleteTransaction(transaction_id))
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }

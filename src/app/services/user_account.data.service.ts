@@ -38,7 +38,7 @@ export class USER_ACCOUNT_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -53,7 +53,7 @@ export class USER_ACCOUNT_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -82,7 +82,7 @@ export class USER_ACCOUNT_SERVICE {
                     throw new Error('APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS')
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }

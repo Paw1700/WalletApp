@@ -1,10 +1,12 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { AccountBarComponent, AccountBarComponentData } from "../../../../components/single_components/account_bar/account_bar.component";
+import { AccountBarComponent, AccountBarFundsData } from "../../../../components/single_components/account_bar/account_bar.component";
 import { NumberSeparator } from "../../../../pipes/number_separator.pipe";
 import { NgStyle } from "@angular/common";
 import { HomePageService } from "../../home.page.service";
 import { NgUnsubscriber } from "../../../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
+import { Account } from "../../../../models";
+import { AccountStatsData } from "../../../../components/single_components/account_bar/components/account_bar_stats.component";
 
 @Component({
     selector: 'accounts_carousel',
@@ -19,7 +21,7 @@ import { takeUntil } from "rxjs";
 })
 export class AccountsCarousel extends NgUnsubscriber implements OnInit {
     readonly PAGE_SERVICE = inject(HomePageService)
-    accounts_bar_list: AccountBarComponentData[] = []
+    accounts_bar_list: AccountsCarouselListItem[] = []
 
     sum_of_avaible_funds = 0
     scroll_value = 0
@@ -45,9 +47,7 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
             this.accounts_bar_list = accounts_list
             this.sum_of_avaible_funds = 0
             accounts_list.forEach(acc => {
-                if (acc.funds_data) {
-                    this.sum_of_avaible_funds += acc.funds_data.avaible_funds
-                }
+                this.sum_of_avaible_funds += acc.account_funds_data.avaible_funds
             })
         })
     }
@@ -57,5 +57,12 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
             this.active_list_indicator = index
         })
     }
+}
+
+export type AccountsCarouselListItem = {
+    user_account_id: string,
+    account: Account,
+    account_funds_data: AccountBarFundsData,
+    stats_data: AccountStatsData
 }
 

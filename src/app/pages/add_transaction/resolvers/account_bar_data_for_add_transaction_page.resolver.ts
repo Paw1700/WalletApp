@@ -1,15 +1,15 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from "@angular/router";
-import { AccountBarComponentData } from "../../../components/single_components/account_bar/account_bar.component";
 import { APP_SERVICE } from "../../../app.service";
 import { HttpClient } from "@angular/common/http";
 import { Account, UserAccount } from "../../../models";
+import { AddTransactionPageAccountData } from "../add_transaction.page";
 
 @Injectable()
-export class ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE implements Resolve<AccountBarComponentData> {
+export class ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE implements Resolve<AddTransactionPageAccountData> {
     constructor(private APP: APP_SERVICE, private HTTP: HttpClient) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<AccountBarComponentData> {
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<AddTransactionPageAccountData> {
         return new Promise(async (resolve) => {
             const user_account_id = route.queryParamMap.get('usa_id')
             const transaction_id = route.queryParamMap.get('tr_id')
@@ -24,27 +24,16 @@ export class ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE implements Resolve
                 return
             }
             if (user_account) {
+                const account = await this.APP.STORAGE.getAccount(user_account.account_id)
                 resolve({
-                    user_account_id: user_account.id,
-                    account: await this.getAccount(user_account.account_id),
+                    account: account,
                     funds_data: {
                         avaible_funds: user_account.avaible_funds,
-                        stats_data: {
-                            plus: 0,
-                            minus: 0
-                        },
-                        limit_number: user_account.debet.limit
+                        debet_limit: user_account.debet.limit,
+                        account_currency: account.currency
                     }
                 })
             }
-        })
-    }
-
-    private getAccount(account_id: string) {
-        return new Promise<Account>((resolve) => {
-            this.HTTP.get<Account[]>("/assets/data/accounts.json").subscribe(data => {
-                resolve(data.filter(ac => ac.id === account_id)[0])
-            })
         })
     }
 }

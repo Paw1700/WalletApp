@@ -8,8 +8,12 @@
             </div>
         </div>
         @for (acc of accounts_bar_list; track $index) {
-            <account-bar [bar_data]="acc" [bar_type]="'FULL_STATS'" />
-        }
+            <account-bar 
+                [bar_type]="'WITH_STATS'"
+                [account]="acc.account" 
+                [account_funds_data]="acc.account_funds_data"
+                [account_stats_data]="acc.stats_data"/>
+            }
     </div>
     <div class="LIST_INDICATOR">
         <div [class.ACTIVE]="active_list_indicator === -1" class="MAIN_DOT"></div>

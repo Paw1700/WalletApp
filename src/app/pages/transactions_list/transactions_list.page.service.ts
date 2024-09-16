@@ -1,18 +1,18 @@
 import { inject, Injectable } from "@angular/core";
 import { APP_SERVICE } from "../../app.service";
 import { BehaviorSubject } from "rxjs";
-import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 import { Account, Category, ErrorID, Receiver, TransactionType } from "../../models";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../services/storage.service";
 import { SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
+import { AccountChooseBarListItem } from "../../components/interfaces/account_choose_bar.component";
 
 // !!! ADD FILTERING DATE !!!
 @Injectable()
 export class TransactionsListPageService {
     private readonly APP = inject(APP_SERVICE)
 
-    accounts_bar_component_data_list$ = new BehaviorSubject<AccountBarComponentData[]>([])
+    accounts_bar_component_data_list$ = new BehaviorSubject<AccountChooseBarListItem[]>([])
     categories_list$ = new BehaviorSubject<Category[]>([])
     receivers_list$ = new BehaviorSubject<Receiver[]>([])
     transactions_list$ = new BehaviorSubject<TransactionBarComponentData[]>([])

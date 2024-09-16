@@ -1,17 +1,16 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { APP_SERVICE } from "../../app.service";
-import { AccountsCarousel } from "./components/accounts-carousel/accounts-carousel.component";
+import { AccountsCarousel, AccountsCarouselListItem } from "./components/accounts-carousel/accounts-carousel.component";
 import { ActivatedRoute } from "@angular/router";
 import { takeUntil } from "rxjs";
-import { TransactionBar, TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
+import { TransactionBar } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { HomeTransactionList } from "./components/home_transactions_list/home_transaction_list.component";
 import { ConfirmBox, ConfirmBoxData } from "../../components/UI/confirm_box/confirm_box.component";
 import { Loader } from "../../components/UI/loader/loader.component";
 import { HomePageService } from "./home.page.service";
 import { WelcomeBar } from "./components/welcome_bar/welcome_bar.component";
 import { Profile } from "../../models";
-import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 
 @Component({
     selector: 'home_page',
@@ -57,7 +56,7 @@ export class HomePage extends NgUnsubscriber implements OnInit {
     private getRouteDate() {
         this.ROUTE.data.subscribe(route_data => {
             this.PROFILE = route_data['profile']
-            const accounts_bar_component_data_list = route_data['accounts_bar_component_data_list'] as AccountBarComponentData[]
+            const accounts_bar_component_data_list = route_data['accounts_bar_component_data_list'] as AccountsCarouselListItem[]
             this.ACCOUNT_AMOUNT = accounts_bar_component_data_list.length
             this.PAGE_SERVICE.accounts_bar_carousel_list$.next(accounts_bar_component_data_list)
         })

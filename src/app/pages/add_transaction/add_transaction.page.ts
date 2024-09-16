@@ -3,14 +3,14 @@ import { TransactionTypeChooseWithTitle } from "../../components/forms/transacti
 import { CategoryChooseScroll } from "../../components/forms/category_choose_scroll/category_choose_scroll.component";
 import { NumberInput } from "../../components/forms/number_input_bar/number_input_bar.component";
 import { ReceiverChooseList } from "../../components/forms/receiver_choose_list/receiver_choose_list.component";
-import { Category, ErrorID, Receiver, Transaction, TransactionType } from "../../models";
+import { Account, Category, ErrorID, Receiver, Transaction, TransactionType } from "../../models";
 import { TextInputBar } from "../../components/forms/text_input_bar/text_input_bar.component";
 import { ActivatedRoute } from "@angular/router";
 import { DateChooseBar } from "../../components/forms/date_choose_bar/date_choose_bar.component";
 import { APP_SERVICE } from "../../app.service";
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
-import { AccountBarComponent, AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
+import { AccountBarComponent, AccountBarFundsData } from "../../components/single_components/account_bar/account_bar.component";
 
 @Component({
     selector: 'add_transaction_page',
@@ -32,7 +32,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
     readonly ROUTE = inject(ActivatedRoute)
     RECEIVERS_LIST: Receiver[] = []
     CATEGORIES_LIST: Category[] = []
-    ACCOUNT_BAR_DATA!: AccountBarComponentData
+    ACCOUNT_BAR_DATA!: AddTransactionPageAccountData
 
     transaction_type: TransactionType = 'expense'
     new_transaction: Transaction = {
@@ -72,10 +72,14 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
                 this.new_transaction.receiver_id = payload
                 break
             case 'amount':
-                if (this.transaction_type === 'expense') {
-                    this.new_transaction.amount = -Math.abs(payload)
-                } else if (this.transaction_type = 'income') {
-                    this.new_transaction.amount = Math.abs(payload)
+                if (payload !== null) {
+                    if (this.transaction_type === 'expense') {
+                        this.new_transaction.amount = -Math.abs(payload)
+                    } else if (this.transaction_type = 'income') {
+                        this.new_transaction.amount = Math.abs(payload)
+                    }
+                } else {
+                    this.new_transaction.amount = 0
                 }
                 break
             case 'desc':
@@ -181,4 +185,9 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
             }
         })
     }
+}
+
+export type AddTransactionPageAccountData = {
+    account: Account,
+    funds_data: AccountBarFundsData
 }

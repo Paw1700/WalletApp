@@ -1,0 +1,38 @@
+<div [style.background]="bar_background" class="ACCOUNT_BAR">
+    <div class="TITLE_BAR">
+        <img class="BANK_LOGO" [src]="bank_logo">
+        <p class="TITLE">{{ bar_data.account.name }}</p>
+    </div>
+    @if((bar_type !== 'NAME_ONLY') && bar_data.funds_data) {
+        <div class="AVAIBLE_FUNDS">
+            <p class="DESC">Dostępne środki</p>
+            <div class="FUNDS">
+                <p class="AMOUNT">{{ bar_data.funds_data.avaible_funds | number_separator }}</p>
+                <p class="CURRENCY">{{ bar_data.account.currency }}</p>
+            </div>
+        </div>
+    }
+    @if(bar_type === 'FULL_STATS' && bar_data.funds_data?.stats_data !== null) {
+        <div class="STATS">
+            <p class="DESC">W ciągu ostatnich 30 dni</p>
+            <div class="VALUES">
+                <div [style.color]="bar_data.account.apperance.stats_alternative_colors.plus !== null ? bar_data.account.apperance.stats_alternative_colors.plus : 'var(--app-green)'"
+                    class="PLUS">
+                    <p class="AMOUNT">{{ bar_data.funds_data?.stats_data!.plus| number_separator }}</p>
+                    <p class="CURRENCY">{{ bar_data.account.currency }}</p>
+                </div>
+                <div [style.color]="bar_data.account.apperance.stats_alternative_colors.minus !== null ? bar_data.account.apperance.stats_alternative_colors.minus : 'var(--app-red)'"
+                    class="MINUS">
+                    <p class="AMOUNT">{{ bar_data.funds_data?.stats_data!.minus | number_separator }}</p>
+                    <p class="CURRENCY">{{ bar_data.account.currency }}</p>
+                </div>
+            </div>
+        </div>
+    }
+    @if(bar_type === 'FULL_LIMIT' && bar_data.funds_data?.limit_number !== null && bar_data.funds_data?.limit_number! > 0) {
+        <div class="LIMIT">
+            <p class="DESC">Pozostały limit debetu</p>
+            <p class="LEFT_DEBT_AMOUNT">{{ remaining_debet | number_separator }} {{ bar_data.account.currency }}</p>
+        </div>
+    }
+</div>

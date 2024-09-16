@@ -12,7 +12,7 @@ import { ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE } from './pages/add_tr
 import { TransactionsListPage } from './pages/transactions_list/transactions_list.page';
 import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
-import { ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
+import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
 
 export const routes: Routes = [
     {
@@ -31,7 +31,7 @@ export const routes: Routes = [
             page_name: 'home'
         },
         resolve: {
-            accounts_bar_component_data_list: ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER,
+            accounts_bar_component_data_list: ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER,
             profile: PROFILE_RESOLVER
         }
     },

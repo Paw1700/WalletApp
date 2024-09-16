@@ -37,7 +37,7 @@ export class NumberInput extends OpenAbleComponentInterface implements OnChanges
     @Input() suffix: string | null = null
     @Input() show_minus = true
     @Input() pre_inputed_value = 0
-    @Output() inputed_value = new EventEmitter<number>()
+    @Output() inputed_value = new EventEmitter<number | null>()
 
     inputed_number: number | null = null
     input_is_in_focus: boolean = false
@@ -59,9 +59,7 @@ export class NumberInput extends OpenAbleComponentInterface implements OnChanges
         } else {
             this.inputed_number = Number(v)
         }
-        if (this.inputed_number) {
-            this.inputed_value.emit(this.inputed_number)
-        }
+        this.inputed_value.emit(this.inputed_number)
     }
 
     inputIsInFocus(bool: any) {

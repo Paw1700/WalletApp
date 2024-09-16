@@ -2,17 +2,17 @@ import { inject, Injectable } from "@angular/core";
 import { APP_SERVICE } from "../../app.service";
 import { BehaviorSubject } from "rxjs";
 import { Account, Profile } from "../../models";
-import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { DAYS_OFFSET, SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
 import { ConfirmBoxData } from "../../components/UI/confirm_box/confirm_box.component";
+import { AccountsCarouselListItem } from "./components/accounts-carousel/accounts-carousel.component";
 
 @Injectable()
 export class HomePageService {
     private readonly APP = inject(APP_SERVICE)
 
     profile$ = new BehaviorSubject<Profile>({ id: '', name: '', surname: '', image: '' })
-    accounts_bar_carousel_list$ = new BehaviorSubject<AccountBarComponentData[]>([])
+    accounts_bar_carousel_list$ = new BehaviorSubject<AccountsCarouselListItem[]>([])
     active_account_carousel_list_index$ = new BehaviorSubject<number>(-1)
     transaction_bar_list$ = new BehaviorSubject<TransactionBarComponentData[] | null>(null)
     confirm_box_data$ = new BehaviorSubject<ConfirmBoxData | null>(null)
@@ -65,16 +65,20 @@ export class HomePageService {
     async fetchBarUserAccount() {
         const accounts_data = await this.APP.STORAGE.getAccounts()
         const user_accounts_data = await this.APP.USER_ACCOUNT.getAll()
-        const bar_accounts_data: AccountBarComponentData[] = []
+        const bar_accounts_data: AccountsCarouselListItem[] = []
         user_accounts_data.forEach(us_acc => {
             const account_data = accounts_data.filter(acc => acc.id === us_acc.account_id)[0]
             bar_accounts_data.push({
                 user_account_id: us_acc.id,
                 account: account_data,
-                funds_data: {
+                account_funds_data: {
                     avaible_funds: us_acc.avaible_funds,
-                    stats_data: { plus: 0, minus: 0 },
-                    limit_number: us_acc.debet.limit
+                    debet_limit: us_acc.debet.limit,
+                    account_currency: account_data.currency
+                },
+                stats_data: {
+                    plus: 0,
+                    minus: 0
                 }
             })
         })

@@ -4,12 +4,18 @@
             <p class="TITLE" [class.INACTIVE]="!component_open">Rachunek</p>
         </div>
     } @else {
-        <account-bar (click)="changeAccount(null)" [bar_type]="'NAME_ONLY'" [bar_data]="choosed_account_bar_data" />
+        <account-bar 
+            (click)="changeAccount(null)" 
+            [bar_type]="'NAME_ONLY'" 
+            [account]="choosed_account_bar_data.account" />
     }
     @if(component_open) {
         <div [@ACCOUNTS_LIST] class="ACCOUNTS_LIST">
             @for(acc of ACCOUNTS_LIST; track acc.user_account_id ? acc.user_account_id : acc.account.id) {
-                <account-bar (click)="changeAccount(acc)" [bar_type]="'NAME_ONLY'" [bar_data]="acc" />
+                <account-bar 
+                    (click)="changeAccount(acc)" 
+                    [bar_type]="'NAME_ONLY'" 
+                    [account]="acc.account" />
             }
         </div>
     }

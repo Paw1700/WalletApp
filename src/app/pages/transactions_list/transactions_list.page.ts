@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { AccountBarComponentData } from "../../components/single_components/account_bar/account_bar.component";
 import { AccountChooseByScroll } from "../../components/forms/account_choose_by_scroll/account_choose_by_scroll.component";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { TransactionsFilterOptions } from "../../services/storage.service";
@@ -10,6 +9,7 @@ import { takeUntil } from "rxjs";
 import { FilterOptions } from "./components/filter_options/filter_options.component";
 import { TransactionsList } from "./components/transactions_list/transactions_list.component";
 import { Account, UserAccount } from "../../models";
+import { AccountChooseBarListItem } from "../../components/interfaces/account_choose_bar.component";
 
 @Component({
     selector: 'transactions_list_page',
@@ -29,7 +29,7 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
     private readonly ROUTE = inject(ActivatedRoute)
     private readonly PAGE_SERVICE = inject(TransactionsListPageService)
 
-    ACCOUNTS_BAR_DATA_LIST: AccountBarComponentData[] = []
+    ACCOUNTS_BAR_DATA_LIST: AccountChooseBarListItem[] = []
 
     receiver_choose_bubble_open = false
     transactions_list: TransactionBarComponentData[] = []
@@ -66,16 +66,11 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
     }
 
     private populateAccountsBarData(user_accounts_list: UserAccount[], accounts_data: Account[]) {
-        const accounts_bar_data_list: AccountBarComponentData[] = []
+        const accounts_bar_data_list: AccountChooseBarListItem[] = []
         user_accounts_list.forEach( usa => {
             accounts_bar_data_list.push({
                 user_account_id: usa.id,
-                account: accounts_data.filter(acc => acc.id === usa.account_id)[0],
-                funds_data: {
-                    avaible_funds: usa.avaible_funds,
-                    limit_number: null,
-                    stats_data: null
-                }
+                account: accounts_data.filter(acc => acc.id === usa.account_id)[0]
             })
         })
         this.PAGE_SERVICE.accounts_bar_component_data_list$.next(accounts_bar_data_list)

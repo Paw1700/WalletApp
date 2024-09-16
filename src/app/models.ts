@@ -17,16 +17,20 @@ export interface Account {
     name: string,
     currency: Currency,
     apperance: {
-        background_gradient: {
-            top: string,
-            bottom: string | null
-        },
-        stats_alternative_colors: {
-            plus: string | null,
-            minus: string | null
-        },
+        background_gradient: AccountBarBackgroundGradient,
+        stats_alternative_colors: AccountStatsAlternativeColors,
         bank_logo_src: string
     }
+}
+
+export type AccountBarBackgroundGradient = {
+    top: string,
+    bottom: string | null
+}
+
+export type AccountStatsAlternativeColors = {
+    plus: string | null,
+    minus: string | null
 }
 
 export type Currency = "PLN" | "USD" | "EUR"

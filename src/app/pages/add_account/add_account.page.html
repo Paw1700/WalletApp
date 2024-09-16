@@ -1,7 +1,20 @@
 <div class="PAGE">
-    <bank_choose_bar [BANKS_LIST]="BANKS_LIST" (choosen_bank)="receiveAccounts($event)"/>
-    <account_choose_list (choosed_account_id)="handleFormInput('account_id', $event)" [ACCOUNTS_LIST]="account_list_of_choosen_bank" />
-    <number_input (inputed_value)="handleFormInput('start_funds', $event)" [title]="'Stan początkowy konta'" [suffix]="'PLN'" />
-    <number_input (inputed_value)="handleFormInput('debet_limit', $event)" [title]="'Limit debetu'" [suffix]="'PLN'" />
-    <number_input (inputed_value)="handleFormInput('debet_interest', $event)" [title]="'Oprocentowanie debetu'" [suffix]="'%'" />
+    <bank_choose_bar 
+        [BANKS_LIST]="BANKS_LIST" 
+        (choosen_bank)="receiveAccounts($event)"/>
+    <account_choose_list 
+        (choosed_account_id)="handleFormInput('account_id', $event)" 
+        [ACCOUNTS_LIST]="account_list_of_choosen_bank" />
+    <number_input 
+        [title]="'Stan początkowy konta'" 
+        [suffix]="'PLN'"
+        (inputed_value)="handleFormInput('start_funds', $event)" />
+    <number_input 
+        (inputed_value)="handleFormInput('debet_limit', $event)" 
+        [title]="'Limit debetu'" 
+        [suffix]="'PLN'" />
+    <number_input 
+        (inputed_value)="handleFormInput('debet_interest', $event)" 
+        [title]="'Oprocentowanie debetu'" 
+        [suffix]="'%'" />
 </div>

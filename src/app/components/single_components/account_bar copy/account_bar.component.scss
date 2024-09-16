@@ -1,0 +1,92 @@
+div.ACCOUNT_BAR {
+    max-width: 100%;
+    border-radius: 3.88vw;
+    color: white;
+    padding: 1.7vh 3.8vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.17vh;
+
+    div.TITLE_BAR {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 2.5vw;
+        width: 100%;
+
+        p.TITLE {
+            font-weight: 600;
+            font-size: 1.17rem;
+        }
+
+        img.BANK_LOGO {
+            height: 2.9vh;
+            object-fit: contain;
+        }
+    }
+
+    div.AVAIBLE_FUNDS,
+    div.STATS,
+    div.LIMIT {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        gap: 1.17vh;
+
+        div.FUNDS,
+        div.VALUES {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
+            width: 100%;
+            gap: 1.5vw;
+        }
+
+        div.FUNDS {
+            font-size: 1.76rem;
+        }
+
+        div.VALUES {
+            font-size: 0.7rem;
+            justify-content: space-around;
+
+            div.PLUS,
+            div.MINUS {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                gap: .5vw;
+            }
+        }
+
+        p.DESC {
+            width: 100%;
+            text-align: left;
+            font-size: 0.7rem;
+            font-weight: 300;
+        }
+
+        p.AMOUNT {
+            font-size: 1em;
+            font-weight: 500;
+            line-height: 1em;
+        }
+
+        p.CURRENCY {
+            font-size: 0.58em;
+            font-weight: 500;
+        }
+
+        p.LEFT_DEBT_AMOUNT {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+    }
+}

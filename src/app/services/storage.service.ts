@@ -94,7 +94,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-PROFILE-SAVE")
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -112,7 +112,7 @@ export class STORAGE_SERVICE {
                 await this.DB.insertObject(this.DB_STORES.profile, profile)
                 resolve()
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -196,7 +196,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-TRANSACTION-SAVE")
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -210,7 +210,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-TRANSACTION-SAVE")
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -256,7 +256,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-USER_ACCOUNT-SAVE")
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -270,7 +270,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-USER_ACCOUNT-SAVE")
                 }
             } catch (err) {
-                reject(err)
+                reject((err as Error).message)
             }
         })
     }
@@ -295,11 +295,23 @@ export class STORAGE_SERVICE {
         })
     }
 
+    getCategorie(category_id: string): Promise<Category> {
+        return new Promise(async (resolve) => {
+            resolve((await this.getCategories()).filter(cat => cat.id === category_id)[0])
+        })
+    }
+
     getCategories(): Promise<Category[]> {
         return new Promise(resolve => {
             this.HTTP.get<Category[]>('/assets/data/categories.json').subscribe( list => {
                 resolve(list)
             })
+        })
+    }
+
+    getAccount(account_id: string): Promise<Account> {
+        return new Promise(async resolve => {
+            resolve((await this.getAccounts()).filter(acc => acc.id === account_id)[0])
         })
     }
 

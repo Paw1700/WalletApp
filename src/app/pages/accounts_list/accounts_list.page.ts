@@ -4,8 +4,9 @@ import { APP_SERVICE } from "../../app.service";
 import ACCOUNTS_LIST_JSON from '../../../../public/assets/data/accounts.json'
 import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
-import { AccountBarComponentData, AccountBarComponent } from "../../components/single_components/account_bar/account_bar.component";
+import { AccountBarComponent, AccountBarFundsData } from "../../components/single_components/account_bar/account_bar.component";
 import { ActivatedRoute } from "@angular/router";
+import { AccountStatsData } from "../../components/single_components/account_bar/components/account_bar_stats.component";
 
 @Component({
     selector: 'accounts_list',
@@ -22,7 +23,7 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
     readonly ACCOUNTS_LIST = ACCOUNTS_LIST_JSON as Account[]
 
     user_accounts_list: UserAccount[] = []
-    user_accounts_list_to_display: AccountBarComponentData[] = []
+    user_accounts_list_to_display: AccountsPageListItem[] = []
 
     ngOnInit(): void {
         this.fetchAllUserAccounts()
@@ -36,7 +37,19 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
         this.user_accounts_list_to_display = []
         this.user_accounts_list.forEach(user_acc => {
             let account = this.ACCOUNTS_LIST.filter(acc => acc.id === user_acc.account_id)[0]
-            this.user_accounts_list_to_display.push({ user_account_id: user_acc.id , account: account, funds_data: { avaible_funds: user_acc.avaible_funds, stats_data: { plus: 0, minus: 0 }, limit_number: user_acc.debet.limit } })
+            this.user_accounts_list_to_display.push({ 
+                user_account_id: user_acc.id , 
+                account: account, 
+                funds_data: { 
+                    avaible_funds: user_acc.avaible_funds, 
+                    debet_limit: user_acc.debet.limit, 
+                    account_currency: account.currency 
+                },
+                stats_data: { 
+                    plus: 0, 
+                    minus: 0 
+                }
+            })
         })
     }
 
@@ -45,4 +58,11 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
             this.APP.navigate('add_account')
         })
     }
+}
+
+export type AccountsPageListItem = {
+    user_account_id: string,
+    account: Account,
+    funds_data: AccountBarFundsData,
+    stats_data: AccountStatsData
 }

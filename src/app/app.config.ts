@@ -24,7 +24,7 @@ import { STORAGE_SERVICE } from './services/storage.service';
 import { VALIDATOR_SERVICE } from './services/validator.service';
 import { USER_ACCOUNT_SERVICE } from './services/user_account.data.service';
 import { TRANSACTION_SERVICE } from './services/transaction.service';
-import { ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
+import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -62,6 +62,6 @@ export const appConfig: ApplicationConfig = {
     CATEGORY_RESOLVER,
     TRANSACTIONS_RESOLVER,
     ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE,
-    ACCOUNT_BAR_COMPONENT_DATA_LIST_RESOLVER
+    ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER
   ]
 };
