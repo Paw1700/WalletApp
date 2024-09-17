@@ -29,8 +29,7 @@ export class ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE implements Resolve
                     account: account,
                     funds_data: {
                         avaible_funds: user_account.avaible_funds,
-                        debet_limit: user_account.debet.limit,
-                        account_currency: account.currency
+                        debet_limit: user_account.debet.limit
                     }
                 })
             }

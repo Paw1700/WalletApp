@@ -38,8 +38,7 @@ export class AccountBarComponent implements OnInit, OnChanges {
     }
     @Input() account_funds_data: AccountBarFundsData = {
         avaible_funds: 0,
-        debet_limit: 0,
-        account_currency: "PLN"
+        debet_limit: 0
     }
     @Input() account_funds_diff = 0
     @Input() account_stats_data: AccountStatsData = {
@@ -76,6 +75,18 @@ export type AccountBarComponentDisplayTypes = 'NAME_ONLY' | 'FUNDS_ONLY' | 'WITH
 
 export type AccountBarFundsData = {
     avaible_funds: number,
-    debet_limit: number,
-    account_currency: Currency
+    debet_limit: number
+}
+
+export type AccountBarWithStatsData = {
+    user_account_id: string,
+    account: Account,
+    avaible_funds: number,
+    stats_data: AccountStatsData
+}
+
+export type AccountBarWithLimitData = {
+    user_account_id: string,
+    account: Account,
+    funds_data: AccountBarFundsData
 }

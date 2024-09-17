@@ -2,6 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { VALIDATOR_SERVICE } from "./validator.service";
 import { STORAGE_SERVICE } from "./storage.service";
 import { UserAccount } from "../models";
+import { DAYS_OFFSET } from "../constants";
 
 @Injectable()
 export class USER_ACCOUNT_SERVICE {
@@ -81,6 +82,32 @@ export class USER_ACCOUNT_SERVICE {
                 } else {
                     throw new Error('APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS')
                 }
+            } catch (err) {
+                reject((err as Error).message)
+            }
+        })
+    }
+
+    getAccountFundsStats(user_account_id: string, in_days = 30): Promise<{plus: number, minus: number}> {
+        return new Promise<{plus: number, minus: number}>(async (resolve, reject) => {
+            try {
+                const usa_transactions = await this.STORAGE.getTransactions({
+                    user_account_id: user_account_id,
+                    filter_date: {from: new Date(in_days * DAYS_OFFSET), to: null},
+                    category_id: null,
+                    receiver_id: null,
+                    filter_amount: null
+                })
+                let plus = 0
+                let minus = 0
+                usa_transactions.forEach( tr => {
+                    if (tr.amount > 0) {
+                        plus += tr.amount
+                    } else if (tr.amount < 0) {
+                        minus += Math.abs(tr.amount)
+                    }
+                })
+                resolve({plus: plus, minus: minus})
             } catch (err) {
                 reject((err as Error).message)
             }

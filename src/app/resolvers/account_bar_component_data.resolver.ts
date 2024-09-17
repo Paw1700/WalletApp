@@ -12,21 +12,18 @@ export class ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER implements Resolve<AccountsCarou
             const user_accounts = await this.APP.USER_ACCOUNT.getAll()
             const accounts = await this.APP.STORAGE.getAccounts()
             const account_bar_component_data_list: AccountsCarouselListItem[] = []
-            user_accounts.forEach( us_acc => {
+            for (let i = 0; i < user_accounts.length; i++) {
+                const us_acc = user_accounts[i]
                 account_bar_component_data_list.push({
                     user_account_id: us_acc.id,
                     account: accounts.filter(acc => acc.id === us_acc.account_id)[0],
-                    stats_data: {
-                        plus: 0,
-                        minus: 0
-                    },
+                    stats_data: await this.APP.USER_ACCOUNT.getAccountFundsStats(us_acc.id),
                     account_funds_data: {
                         avaible_funds: us_acc.avaible_funds,
-                        debet_limit: us_acc.debet.limit,
-                        account_currency: accounts.filter(acc => acc.id === us_acc.account_id)[0].currency
+                        debet_limit: us_acc.debet.limit
                     }
                 })
-            })
+            }
             resolve(account_bar_component_data_list)
         })
     }
