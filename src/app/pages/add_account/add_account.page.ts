@@ -60,8 +60,10 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
         switch(type) {
             case "account_id":
                 this.user_new_account.account_id = payload
-                const acc_background_gradient = this.ACCOUNTS_LIST.filter(acc => acc.id === payload)[0].apperance.background_gradient
-                this.APP.APPERANCE.setAppAccentColor(acc_background_gradient.bottom !== null ? acc_background_gradient.bottom : acc_background_gradient.top)
+                if (payload !== null) {
+                    const acc_background_gradient = this.ACCOUNTS_LIST.filter(acc => acc.id === payload)[0].apperance.background_gradient
+                    this.APP.APPERANCE.setAppAccentColor(acc_background_gradient.bottom !== null ? acc_background_gradient.bottom : acc_background_gradient.top)
+                }
                 break
             case "start_funds":
                 this.user_new_account.avaible_funds = payload !== null ? payload : 0
