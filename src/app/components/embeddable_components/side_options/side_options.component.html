@@ -1,0 +1,20 @@
+<div [class.OPEN]="show_side" class="SIDE_OPTIONS_COMPONENT">
+    <div (click)="contentClicked()" class="CONTENT">
+        <ng-content></ng-content>
+    </div>
+    @if (SIDE !== null) {
+        @for (side of SIDE; track $index) {
+            <div class="SIDE"
+                (click)="sideClicked($index, side.return_value)"
+                [class.OPEN]="show_side"
+                [style.backgroundColor]="side.color" 
+                [style.color]="side.color ? 'white' : 'var(--font-color)'" 
+            >
+                @if (side.image) {
+                    <img [src]="side.image" />
+                }
+                {{ side.text }}
+            </div>
+        }
+    }
+</div>

@@ -57,7 +57,8 @@ export class HomePageService {
         const transaction = await this.APP.TRANSACTION.getOne(transaction_id)
         await this.APP.USER_ACCOUNT.changeAvaibleAmount(transaction.user_account_id, -transaction.amount)
         await this.APP.TRANSACTION.delete(transaction_id)
-        this.fetchBarUserAccount()
+        await this.fetchBarUserAccount()
+        this.fetchTransactionBarList()
         this.confirm_box_data$.next(null)
         this.transaction_id_to_delete$.next(null)
     }

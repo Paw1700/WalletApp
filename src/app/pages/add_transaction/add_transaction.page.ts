@@ -111,6 +111,8 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
             if (PAGE_DATA.transaction !== null) {
                 this.new_transaction = PAGE_DATA.transaction
                 this.transaction_type = PAGE_DATA.transaction.amount > 0 ? 'income' : 'expense'
+            } else {
+                this.new_transaction.user_account_id = this.ACCOUNT_BAR_DATA.user_account_id
             }
         })
     }

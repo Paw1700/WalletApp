@@ -5,14 +5,14 @@ export const ScaleInAnimation: AnimationMetadata[] = [
         transform: 'scale(.8)',
         opacity: 0
     }),
-    animate('150ms ease-out', style({
+    animate('300ms ease-in-out', style({
         transform: 'scale(1)',
         opacity: 1
     }))
 ]
 
 export const ScaleOutAnimation: AnimationMetadata[] = [
-    animate('150ms ease-in', style({
+    animate('300ms ease-in-out', style({
         transform: 'scale(.8)',
         opacity: 0
     }))

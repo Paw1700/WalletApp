@@ -1,0 +1,45 @@
+div.SIDE_OPTIONS_COMPONENT {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+
+    &.OPEN {
+        gap: 2.5vw;
+    }
+
+    div.SIDE {
+        min-height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        border-radius: 2.5vw;
+        min-width: 0;
+        overflow: hidden;
+        transition: .3s ease-in-out;
+        opacity: 0;
+
+        &.OPEN {
+            padding-inline: 2.5vw;
+            min-width: 15vw;
+            opacity: 1;
+        }
+        
+        img {
+            height: 75%;
+            object-fit: contain;
+        }
+        
+        
+    }
+
+    div.CONTENT {
+        min-width: 100%;
+        min-height: 100%;
+    }
+}

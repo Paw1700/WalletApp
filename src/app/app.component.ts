@@ -9,6 +9,7 @@ import { TransactionTypeChooseBubble } from './components/forms/transactions_typ
 import { ScrollSideOptions } from './components/embeddable_components/scroll_side_options/scroll_side_options.component';
 import { TransactionBar } from './components/single_components/transaction_bar/transaction_bar.component';
 import { FadeInPageAnimation, SlideToLeftPageAnimation, SlideToRightPageAnimation } from './util/animation';
+import { SideOptionsComponent, SideOptionsComponentData } from './components/embeddable_components/side_options/side_options.component';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +18,7 @@ import { FadeInPageAnimation, SlideToLeftPageAnimation, SlideToRightPageAnimatio
     RouterOutlet,
     NavBar,
     MenuPage,
-    ErrorBar,
-    TransactionTypeChooseBubble,
-    ScrollSideOptions,
-    TransactionBar
+    ErrorBar
   ],
   template: `
     <div [@ROUTE_ANIMATION]="getRouteAnimationData()">
@@ -31,9 +29,6 @@ import { FadeInPageAnimation, SlideToLeftPageAnimation, SlideToRightPageAnimatio
     <error_bar />
   `,
   styles: `
-    scroll_side_options {
-      width: 91.34vw;
-    }
   `,
   animations: [
     trigger('ROUTE_ANIMATION', [

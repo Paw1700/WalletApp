@@ -3,9 +3,13 @@
 - [ ] Transaction Description Component don't have animation
 
 # IN PROGRESS
+- [ ] Don't Use Scroll to chose something (it's works bad for iPhone)
+    - [ ] Refactor Home Account Carousel
+    - [ ] Add Remembering Choosed Account
+    - [x] Refactor Home Transaction Scroll
 
 # NEXT TO DO 
-- [ ] Don't Use Scroll to chose something (it's works bad for iPhone)
+- [ ] Check if error are passed correctly
 
 
 # !!! V NEED UPDATE V
