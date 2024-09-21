@@ -109,5 +109,11 @@
         "type": "MAIN",
         "title": "Błąd dodawania transakcji",
         "desc": "Brak środków na koncie (lub brak limitu debetu)"
+    },
+    {
+        "id": "APP-RESOLVER-LACK_OF_URL_DATA",
+        "type": "FATAL",
+        "title": "Błąd pobierania danych podczas nawigacji",
+        "desc": "Brak danych potrzebnych do uzyskania danych w trakcie nawigacji"
     }
 ]

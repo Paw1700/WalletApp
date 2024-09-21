@@ -8,11 +8,11 @@ import { USER_ACCOUNTS_RESOLVER } from './resolvers/user_accounts.resolver';
 import { AddTransactionPage } from './pages/add_transaction/add_transaction.page';
 import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
-import { ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE } from './pages/add_transaction/resolvers/account_bar_data_for_add_transaction_page.resolver';
 import { TransactionsListPage } from './pages/transactions_list/transactions_list.page';
 import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
+import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/resolvers/add_transaction_data_resolver.resolver';
 
 export const routes: Routes = [
     {
@@ -73,9 +73,7 @@ export const routes: Routes = [
             page_name: 'add_transaction'
         },
         resolve: {
-            receivers: RECEIVERS_RESOLVER,
-            categories: CATEGORY_RESOLVER,
-            account_bar_data: ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE
+            add_transaction_page_data: ADD_TRANSACTION_PAGE_DATA_RESOLVER
         }
     },
     {

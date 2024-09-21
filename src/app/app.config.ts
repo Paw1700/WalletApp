@@ -19,12 +19,12 @@ import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { RECEIVERS_RESOLVER } from './resolvers/receivers.resolver';
 import { CATEGORY_RESOLVER } from './resolvers/category.resolver';
 import { TRANSACTIONS_RESOLVER } from './resolvers/transactions.resolver';
-import { ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE } from './pages/add_transaction/resolvers/account_bar_data_for_add_transaction_page.resolver';
 import { STORAGE_SERVICE } from './services/storage.service';
 import { VALIDATOR_SERVICE } from './services/validator.service';
 import { USER_ACCOUNT_SERVICE } from './services/user_account.data.service';
 import { TRANSACTION_SERVICE } from './services/transaction.service';
 import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
+import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/resolvers/add_transaction_data_resolver.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -61,7 +61,7 @@ export const appConfig: ApplicationConfig = {
     TRANSACTION_SERVICE,
     CATEGORY_RESOLVER,
     TRANSACTIONS_RESOLVER,
-    ACCOUNT_BAR_RESOLVER_FOR_ADDING_TRANSACTION_PAGE,
-    ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER
+    ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER,
+    ADD_TRANSACTION_PAGE_DATA_RESOLVER
   ]
 };

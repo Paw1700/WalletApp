@@ -1,7 +1,15 @@
 # BUG-LIST 
-- [ ] In Receivers search list is case sensitive
+- [ ] Others Button Dont work in choosing receivers
+- [ ] Transaction Description Component don't have animation
 
-# TO-DO LIST
+# IN PROGRESS
+
+# NEXT TO DO 
+- [ ] Don't Use Scroll to chose something (it's works bad for iPhone)
+
+
+# !!! V NEED UPDATE V
+# APP ELEMENTS LIST
 - [ ] Build interface
     - [ ] Pages
         - [x] Menu
