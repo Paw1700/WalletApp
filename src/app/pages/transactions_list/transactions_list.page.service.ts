@@ -7,7 +7,6 @@ import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../
 import { SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
 import { AccountChooseBarListItem } from "../../components/interfaces/account_choose_bar.component";
 
-// !!! ADD FILTERING DATE !!!
 @Injectable()
 export class TransactionsListPageService {
     private readonly APP = inject(APP_SERVICE)
@@ -43,7 +42,7 @@ export class TransactionsListPageService {
             })
             this.transactions_list$.next(transactions_bar_list)
         } catch (err) {
-            this.APP.STATE.errorHappend(err)
+            this.APP.STATE.errorHappend(err as Error)
         }
     }
 

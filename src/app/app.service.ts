@@ -35,7 +35,8 @@ export class APP_SERVICE {
 
             await this.STORAGE.init()
             
-            let redirection_location: AppLocations = 'home'
+            // let redirection_location: AppLocations = 'home'
+            let redirection_location: AppLocations = 'account'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
 
@@ -46,7 +47,7 @@ export class APP_SERVICE {
             }
 
             setTimeout(() => {
-                this.navigate(redirection_location)
+                this.navigate(redirection_location, {user_account_id: "accounts-0"})
                 resolve()
             }, 1500)
         })
@@ -86,20 +87,31 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break   
             case 'add_transaction':
-                if (!options && (!options.usa_id || !options.tr_id)) {
+                if (!options && (!options.usa_id || !options.tr_id)) { // !!!
                     console.error('Lack of user account id or transaction id in navigation method');
                     return 
                 }
                 if (options.usa_id) {
-                    await this.ROUTER.navigateByUrl(`add_transaction?usa_id=${options.usa_id}`)
+                    await this.ROUTER.navigateByUrl(`add_transaction?usa_id=${options.usa_id}`) // !!!
                 } else if (options.tr_id) {
-                    await this.ROUTER.navigateByUrl(`add_transaction?tr_id=${options.tr_id}`)
+                    await this.ROUTER.navigateByUrl(`add_transaction?tr_id=${options.tr_id}`) // !!!
                 }
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next('save')
                 break
             case "transactions_list":
                 await this.ROUTER.navigateByUrl('transactions_list')
+                this.APPERANCE.setAppAccentColor(null)
+                this.APPERANCE.nav_bar_left_button_option$.next('menu')
+                this.APPERANCE.nav_bar_right_button_option$.next(null)
+                break
+            case "account":
+                if (!options || !options.user_account_id) {
+                    this.STATE.errorHappend(new Error('APP-GENERAL'))
+                    console.error('Lack of user account id in navigation method');
+                    return
+                }
+                await this.ROUTER.navigateByUrl(`account?user_account_id=${options.user_account_id}`) 
                 this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next('menu')
                 this.APPERANCE.nav_bar_right_button_option$.next(null)

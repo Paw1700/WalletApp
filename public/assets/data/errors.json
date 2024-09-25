@@ -1,7 +1,7 @@
 [
     {
         "id": "APP-GENERAL",
-        "type": "MAIN",
+        "type": "FATAL",
         "title": "Błąd aplikacji",
         "desc": "Wystąpił nieznany błąd aplikacji"
     },

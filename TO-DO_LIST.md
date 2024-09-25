@@ -4,8 +4,11 @@
 
 # IN PROGRESS
 - [ ] Create App Schemat 
-- [x] Check if error are passed correctly
+- [ ] Creating Account Page
+
+# IN FUTURE 
 - [ ] Add Remembering Choosed Account
+- [ ] Add Filtering Date in Transaction List
 
 
 # !!! V NEED UPDATE V

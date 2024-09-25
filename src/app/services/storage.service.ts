@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { DatabaseManager } from "../util/db.driver";
-import { Account, Category, Profile, Receiver, Transaction, UserAccount } from "../models";
+import { Account, Bank, Category, Profile, Receiver, Transaction, UserAccount } from "../models";
 import { HttpClient } from "@angular/common/http";
 
 export class DB_STORES {
@@ -319,6 +319,22 @@ export class STORAGE_SERVICE {
         return new Promise(resolve => {
             this.HTTP.get<Account[]>('/assets/data/accounts.json').subscribe( list => {
                 resolve(list)
+            })
+        })
+    }
+
+    getBanks(): Promise<Bank[]> {
+        return new Promise(resolve => {
+            this.HTTP.get<Bank[]>('/assets/data/banks.json').subscribe( list => {
+                resolve(list)
+            })
+        })
+    }
+
+    getBank(bank_id: string): Promise<Bank> {
+        return new Promise(resolve => {
+            this.HTTP.get<Bank[]>('/assets/data/banks.json').subscribe( list => {
+                resolve(list.filter(bank => bank.id === bank_id)[0])
             })
         })
     }

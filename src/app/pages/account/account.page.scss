@@ -1,0 +1,27 @@
+div.PAGE {
+
+    div.ACCOUNT {
+        width: 91.34%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: flex-start;
+        padding-inline: 4.32%;
+        padding-block: 1.7vh;
+        color: white;
+        gap: 1.17vh;
+
+        p.AVAIBLE_FUNDS {
+            font-size: 1.6rem;
+            font-weight: 500;
+            width: 100%;
+            text-align: right;
+    
+            span {
+                font-size: 0.58em;
+                font-weight: 500;
+            }
+        }
+    }
+    
+}

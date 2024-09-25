@@ -13,6 +13,8 @@ import { ACCOUNTS_RESOLVER } from './resolvers/accounts.resolver';
 import { PROFILE_RESOLVER } from './resolvers/profile.resolver';
 import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
 import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/resolvers/add_transaction_data_resolver.resolver';
+import { AccountPage } from './pages/account/account.page';
+import { ACCOUNT_PAGE_DATA_RESOLVER } from './pages/account/account.page.resolver';
 
 export const routes: Routes = [
     {
@@ -88,6 +90,17 @@ export const routes: Routes = [
             accounts_data: ACCOUNTS_RESOLVER,
             categories_list: CATEGORY_RESOLVER,
             receivers_list: RECEIVERS_RESOLVER
+        }
+    },
+    {
+        path: 'account',
+        pathMatch: 'full',
+        component: AccountPage,
+        data: {
+            page_name: 'account'
+        },
+        resolve: {
+            account_page_data: ACCOUNT_PAGE_DATA_RESOLVER
         }
     }
 ];

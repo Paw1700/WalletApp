@@ -1,0 +1,6 @@
+<div class="PAGE">
+    <div [style.background]="background_gradient" class="ACCOUNT">
+        <account_name_bar [account]="account" [bank_name]="bank_name" />
+        <p class="AVAIBLE_FUNDS">{{ user_account.avaible_funds| number_separator }} <span>{{ account.currency }}</span></p>
+    </div>
+</div>

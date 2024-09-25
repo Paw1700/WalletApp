@@ -14,7 +14,7 @@ export class APP_STATE {
     private error_list: ErrorModel[] = []
 
     constructor(private HTTP: HttpClient) {
-        this.HTTP.get<ErrorModel[]>('/assets/data/errors.json').subscribe( err_list => {
+        this.HTTP.get<ErrorModel[]>('/assets/data/errors.json').subscribe(err_list => {
             this.error_list = err_list
         })
     }
@@ -22,11 +22,13 @@ export class APP_STATE {
     errorHappend(error_object: Error) {
         const err_code = error_object.message
         const err = this.error_list.filter(e => e.id === err_code)[0]
-        
+
         this.error_data$.next(err)
 
-        setTimeout(() => {
-            this.error_data$.next(null)
-        }, 2000)
+        if (err.type !== 'FATAL') {
+            setTimeout(() => {
+                this.error_data$.next(null)
+            }, 2000)
+        }
     }
 }

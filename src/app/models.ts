@@ -126,7 +126,21 @@ export interface UserStock {
     }
 }
 
-export type AppLocations = 'home' | 'bootstrap' | 'app_first_configuration' | 'app_data_update' | 'add_account' | 'add_transaction' | 'accounts_list' | 'settings' | 'credits_list' | 'add_credit' | 'account_page' | 'credit_page' | 'transactions_list'
+export type AppLocations = 
+    'home' | 
+    'bootstrap' | 
+    'app_first_configuration' | 
+    'app_data_update' | 
+    'add_account' | 
+    'add_transaction' | 
+    'accounts_list' | 
+    'settings' | 
+    'credits_list' | 
+    'add_credit' | 
+    'account_page' | 
+    'credit_page' | 
+    'transactions_list' | 
+    'account'
 
 export type AppLocationListItem = {
     name: string,
