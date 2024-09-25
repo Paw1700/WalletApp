@@ -1,0 +1,43 @@
+<mxfile host="65bd71144e">
+    <diagram id="R2RRpO5pG8_qlRIXTBHp" name="APP SERVICES">
+        <mxGraphModel dx="1592" dy="737" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2500" pageHeight="2500" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" style="edgeStyle=none;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#33FF99;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="10">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#33FF99;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="12">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="&lt;b&gt;&lt;font color=&quot;#33ff99&quot;&gt;APP SERVICE&lt;/font&gt;&lt;/b&gt;&lt;br&gt;Collects all child services and starts app" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1117" y="33" width="232" height="109" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font color=&quot;#33ff99&quot;&gt;&lt;b&gt;APP STATE&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;ul&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Keep state of app&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;glass=0;" vertex="1" parent="1">
+                    <mxGeometry x="468" y="196" width="164" height="73" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;b&gt;&lt;font color=&quot;#33ff99&quot;&gt;APP APPERANCE&lt;/font&gt;&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Keep state of app apperance&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Changes App Apperance within HTML and CSS&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="661" y="198" width="295" height="122" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;font color=&quot;#33ff99&quot;&gt;&lt;b&gt;APP UPDATE&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;ul&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Update data of user if needed after app update&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Converts Backup's of older app to actual if needed&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                    <mxGeometry x="980" y="196" width="296" height="101" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="&lt;font color=&quot;#33ff99&quot;&gt;&lt;b&gt;APP SCHEDULE&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;ul&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Manages in app transactions scheduler. &lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Add Transactions acording to schedule&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1322" y="196" width="340" height="103" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="&lt;font color=&quot;#33ff99&quot;&gt;&lt;b&gt;APP BACKUP&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;Creates application backup date to send or copy&lt;/li&gt;&lt;li style=&quot;text-align: left;&quot;&gt;Implements data from backup&lt;/li&gt;&lt;/ul&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="1699" y="196" width="349" height="102" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

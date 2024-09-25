@@ -14,7 +14,7 @@ export class USER_ACCOUNT_SERVICE {
             try {
                 resolve(this.STORAGE.getAllUserAccounts())
             } catch (err) {
-                reject("APP-DATA-USER_ACCOUNT-GET")
+                reject(new Error("APP-DATA-USER_ACCOUNT-GET"))
             }
         })
     }
@@ -24,7 +24,7 @@ export class USER_ACCOUNT_SERVICE {
             try {
                 resolve(this.STORAGE.getUserAccount(user_account_id))
             } catch (err) {
-                reject("APP-DATA-USER_ACCOUNT-GET")
+                reject(new Error("APP-DATA-USER_ACCOUNT-GET"))
             }
         })
     }
@@ -39,7 +39,7 @@ export class USER_ACCOUNT_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -54,7 +54,7 @@ export class USER_ACCOUNT_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -64,7 +64,7 @@ export class USER_ACCOUNT_SERVICE {
             try {
                 resolve(this.STORAGE.deleteUserAccount(user_account_id))
             } catch (err) {
-                reject("APP-DATA-USER_ACCOUNT-DELETE")
+                reject(new Error("APP-DATA-USER_ACCOUNT-DELETE"))
             }
         })
     }
@@ -83,7 +83,7 @@ export class USER_ACCOUNT_SERVICE {
                     throw new Error('APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS')
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -109,7 +109,7 @@ export class USER_ACCOUNT_SERVICE {
                 })
                 resolve({plus: plus, minus: minus})
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }

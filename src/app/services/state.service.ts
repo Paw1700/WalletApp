@@ -19,8 +19,9 @@ export class APP_STATE {
         })
     }
 
-    errorHappend(error_id: string) {
-        const err = this.error_list.filter(e => e.id === error_id)[0]
+    errorHappend(error_object: Error) {
+        const err_code = error_object.message
+        const err = this.error_list.filter(e => e.id === err_code)[0]
         
         this.error_data$.next(err)
 

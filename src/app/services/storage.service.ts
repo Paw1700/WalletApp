@@ -41,7 +41,7 @@ export class STORAGE_SERVICE {
                 );
                 resolve();
             } catch {
-                reject('DB-CONNECT-ERROR');
+                reject(new Error('DB-CONNECT-ERROR'));
             }
         })
     }
@@ -58,7 +58,7 @@ export class STORAGE_SERVICE {
                     resolve();
                 }, 500)
             } catch {
-                reject('APP-RESET-ERROR');
+                reject(new Error('APP-RESET-ERROR'));
             }
         });
     }
@@ -71,7 +71,7 @@ export class STORAGE_SERVICE {
             try {
                 resolve((await this.DB.getAllObject<Profile>(this.DB_STORES.profile))[0])
             } catch (err) {
-                reject("APP-DATA-PROFILE-GET")
+                reject(new Error("APP-DATA-PROFILE-GET"))
             }
         })
     }
@@ -94,7 +94,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-PROFILE-SAVE")
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -112,7 +112,7 @@ export class STORAGE_SERVICE {
                 await this.DB.insertObject(this.DB_STORES.profile, profile)
                 resolve()
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -126,7 +126,7 @@ export class STORAGE_SERVICE {
                 await this.DB.deleteAllObjects(this.DB_STORES.profile)
                 resolve()
             } catch (err) {
-                reject('APP-DATA-PROFILE-DELETE')
+                reject(new Error('APP-DATA-PROFILE-DELETE'))
             }
         })
     }
@@ -136,7 +136,7 @@ export class STORAGE_SERVICE {
             try {
                 resolve(await this.DB.getObject<Transaction>(this.DB_STORES.transactions, transaction_id))
             } catch (err) {
-                reject("APP-DATA-TRANSACTION-GET-ONE")
+                reject(new Error("APP-DATA-TRANSACTION-GET-ONE"))
             }
         })
     }
@@ -181,7 +181,7 @@ export class STORAGE_SERVICE {
                 }
                 resolve(all_transactions)
             } catch (err) {
-                reject("APP-DATA-TRANSACTION-GET")
+                reject(new Error("APP-DATA-TRANSACTION-GET"))
             }
         })
     }
@@ -196,7 +196,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-TRANSACTION-SAVE")
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -210,7 +210,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-TRANSACTION-SAVE")
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -221,7 +221,7 @@ export class STORAGE_SERVICE {
                 await this.DB.RELEASE_INDEX(this.DB_STORES.transactions, transaction_id)
                 resolve(await this.DB.deleteObject(this.DB_STORES.transactions, transaction_id))
             } catch (err) {
-                reject("APP-DATA-TRANSACTION-DELETE")
+                reject(new Error("APP-DATA-TRANSACTION-DELETE"))
             }
         })
     }
@@ -231,7 +231,7 @@ export class STORAGE_SERVICE {
             try {
                 resolve(await this.DB.getAllObject<UserAccount>(this.DB_STORES.accounts))
             } catch (err) {
-                reject("APP-DATA-USER_ACCOUNT-GET")
+                reject(new Error("APP-DATA-USER_ACCOUNT-GET"))
             }
         })
     }
@@ -241,7 +241,7 @@ export class STORAGE_SERVICE {
             try {
                 resolve(await this.DB.getObject<UserAccount>(this.DB_STORES.accounts, user_account_id))
             } catch (err) {
-                reject("APP-DATA-USER_ACCOUNT-GET")
+                reject(new Error("APP-DATA-USER_ACCOUNT-GET"))
             }
         })
     }
@@ -256,7 +256,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-USER_ACCOUNT-SAVE")
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -270,7 +270,7 @@ export class STORAGE_SERVICE {
                     throw new Error("APP-DATA-USER_ACCOUNT-SAVE")
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -282,7 +282,7 @@ export class STORAGE_SERVICE {
                 await this.DB.deleteObject(this.DB_STORES.accounts, user_account_id)
                 resolve()
             } catch (err) {
-                reject("APP-DATA-USER_ACCOUNT-DELETE")
+                reject(new Error("APP-DATA-USER_ACCOUNT-DELETE"))
             }
         })
     }

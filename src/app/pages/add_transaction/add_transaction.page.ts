@@ -138,7 +138,7 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
                 }
                 this.navigateBack()
             } catch (err) {
-                this.APP.STATE.errorHappend(err as ErrorID)
+                this.APP.STATE.errorHappend(err as Error)
             }
         })
     }

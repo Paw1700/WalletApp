@@ -13,7 +13,7 @@ export class TRANSACTION_SERVICE {
             try {
                 resolve(this.STORAGE.getOneTransaction(transaction_id))
             } catch (err) {
-                reject("APP-DATA-TRANSACTION-GET-ONE")
+                reject(new Error("APP-DATA-TRANSACTION-GET-ONE"))
             }
         })
     }
@@ -23,7 +23,7 @@ export class TRANSACTION_SERVICE {
             try {
                 resolve(this.STORAGE.getTransactions(options))
             } catch (err) {
-                reject("APP-DATA-TRANSACTION-GET")
+                reject(new Error("APP-DATA-TRANSACTION-GET"))
             }
         })
     }
@@ -38,7 +38,7 @@ export class TRANSACTION_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -53,7 +53,7 @@ export class TRANSACTION_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -63,7 +63,7 @@ export class TRANSACTION_SERVICE {
             try {
                 resolve(this.STORAGE.deleteTransaction(transaction_id))
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }

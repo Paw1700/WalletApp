@@ -43,8 +43,7 @@ export class TransactionsListPageService {
             })
             this.transactions_list$.next(transactions_bar_list)
         } catch (err) {
-            this.APP.STATE.errorHappend(err as ErrorID)
-            console.error(err)
+            this.APP.STATE.errorHappend(err)
         }
     }
 

@@ -59,7 +59,7 @@ export class ADD_TRANSACTION_PAGE_DATA_RESOLVER implements Resolve<AddTransactio
                 })
             } catch (err) {
                 console.error(err);
-                this.APP.STATE.errorHappend((err as Error).message)
+                this.APP.STATE.errorHappend(err as Error)
                 reject()
             }
         })

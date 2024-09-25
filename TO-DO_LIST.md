@@ -3,14 +3,9 @@
 - [ ] Transaction Description Component don't have animation
 
 # IN PROGRESS
-- [x] Don't Use Scroll to chose something (it's works bad for iPhone)
-    - [x] Refactor Home Account Carousel
-    - [x] Refactor Choose User Account By Scroll to switch
-    - [x] Refactor Home Transaction Scroll
+- [ ] Create App Schemat 
+- [x] Check if error are passed correctly
 - [ ] Add Remembering Choosed Account
-
-# NEXT TO DO 
-- [ ] Check if error are passed correctly
 
 
 # !!! V NEED UPDATE V

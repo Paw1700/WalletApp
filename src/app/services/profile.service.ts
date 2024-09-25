@@ -13,7 +13,7 @@ export class PROFILE_SERVICE {
             try {
                 resolve(this.STORAGE.getProfile())
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -28,7 +28,7 @@ export class PROFILE_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -43,7 +43,7 @@ export class PROFILE_SERVICE {
                     throw new Error(validation_result.errCode)
                 }
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
@@ -53,7 +53,7 @@ export class PROFILE_SERVICE {
             try {
                 resolve(this.STORAGE.deleteProfile())
             } catch (err) {
-                reject((err as Error).message)
+                reject(err)
             }
         })
     }
