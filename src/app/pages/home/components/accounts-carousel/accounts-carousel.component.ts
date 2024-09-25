@@ -7,6 +7,7 @@ import { NgUnsubscriber } from "../../../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
 import { Account } from "../../../../models";
 import { AccountStatsData } from "../../../../components/single_components/account_bar/components/account_bar_stats.component";
+import { ArrowButton } from "./components/arrow_button.component";
 
 @Component({
     selector: 'accounts_carousel',
@@ -14,6 +15,7 @@ import { AccountStatsData } from "../../../../components/single_components/accou
     imports: [
         AccountBarComponent,
         NumberSeparator,
+        ArrowButton,
         NgStyle
     ],
     templateUrl: './accounts-carousel.component.html',
@@ -24,22 +26,25 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
     accounts_bar_list: AccountsCarouselListItem[] = []
 
     sum_of_avaible_funds = 0
-    scroll_value = 0
     active_list_indicator = -1
+    accounts_carrousel_x_offset = 0
 
     ngOnInit(): void {
         this.subscribeToAccountsBarCarouselList()
         this.subscribeToActiveAccountCarouselListIndex()
     }
 
-    handleScrollGesture(e: any) {
-        this.scroll_value = e.target.scrollLeft
-    }
-
-    handleTouchEnd() {
-        const scroll_value_divided_by_window_width_rounded_to_integer = Math.round(this.scroll_value / window.innerWidth)
-        document.getElementById('CAROUSEL')?.scrollTo({ left: scroll_value_divided_by_window_width_rounded_to_integer * window.innerWidth, top: 0, behavior: 'smooth' })
-        this.PAGE_SERVICE.changeActiveUserAccount(scroll_value_divided_by_window_width_rounded_to_integer - 1)
+    changeAccount(direction: 'left' | 'right') {
+        switch (direction) {
+            case "left":
+                if (this.active_list_indicator - 1 >= -1) 
+                    this.PAGE_SERVICE.changeActiveUserAccount(this.active_list_indicator - 1)
+                break
+            case "right":
+                if (this.active_list_indicator + 1 < this.accounts_bar_list.length)                 
+                    this.PAGE_SERVICE.changeActiveUserAccount(this.active_list_indicator + 1)
+                break
+        }
     }
 
     private subscribeToAccountsBarCarouselList() {
@@ -55,7 +60,12 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
     private subscribeToActiveAccountCarouselListIndex() {
         this.PAGE_SERVICE.active_account_carousel_list_index$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(index => {
             this.active_list_indicator = index
+            this.changeXAccountCarouselOffset(index + 1)
         })
+    }
+
+    private changeXAccountCarouselOffset(position: number) {
+        this.accounts_carrousel_x_offset = 100 * position
     }
 }
 

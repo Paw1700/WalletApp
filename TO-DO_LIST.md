@@ -4,9 +4,10 @@
 
 # IN PROGRESS
 - [ ] Don't Use Scroll to chose something (it's works bad for iPhone)
-    - [ ] Refactor Home Account Carousel
-    - [ ] Add Remembering Choosed Account
+    - [x] Refactor Home Account Carousel
+    - [ ] Refactor Choose User Account By Scroll to switch
     - [x] Refactor Home Transaction Scroll
+- [ ] Add Remembering Choosed Account
 
 # NEXT TO DO 
 - [ ] Check if error are passed correctly
