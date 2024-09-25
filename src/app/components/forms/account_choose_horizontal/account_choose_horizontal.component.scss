@@ -1,0 +1,48 @@
+div.ACCOUNT {
+    width: 91.34%;
+    padding-inline: 4.32%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    div.CAROUSEL_COVER {
+        width: 83%;
+        overflow: hidden;
+
+        div.CAROUSEL {
+            max-width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            overflow: visible;
+            position: relative;
+            right: 0;
+            top: 0;
+            transition: right .3s ease-in-out;
+    
+            div.ALL_ACCOUNTS_BAR,
+            account-bar {
+                margin-inline: 4%;
+                min-width: 92%;
+            }
+    
+            div.ALL_ACCOUNTS_BAR {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: .75vw solid var(--app-default-accent);
+                box-sizing: content-box;
+                border-radius: 2.5vw;
+                padding-block: 1.17vh;
+                font-size: 1rem;
+                font-weight: 600;
+                min-width: calc(92% - 1.5vw);
+            }
+        }
+    }
+    
+    .DISABLED {
+        opacity: 0.25;
+    }
+}

@@ -16,13 +16,13 @@
             }
     </div>
     <div class="BOTTOM">
-        <arrow_button (click)="changeAccount('left')" [arrow_direction]="'left'" />
+        <arrow_button [class.DISABLED]="active_list_indicator === -1" (click)="changeAccount('left')" [arrow_direction]="'left'" />
         <div class="LIST_INDICATOR">
             <div [class.ACTIVE]="active_list_indicator === -1" class="MAIN_DOT"></div>
             @for (item of accounts_bar_list; track $index) {
                 <div [class.ACTIVE]="$index === active_list_indicator" class="DOT"></div>
             }
         </div>
-        <arrow_button (click)="changeAccount('right')" [arrow_direction]="'right'" />
+        <arrow_button [class.DISABLED]="active_list_indicator === accounts_bar_list.length - 1" (click)="changeAccount('right')" [arrow_direction]="'right'" />
     </div>
 </div>

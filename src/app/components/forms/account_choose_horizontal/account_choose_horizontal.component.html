@@ -1,0 +1,14 @@
+<div class="ACCOUNT">
+    <arrow_button [class.DISABLED]="accounts_list_choosed_index === -1" (click)="changeCarouselAccount('left')" [arrow_direction]="'left'" />
+    <div class="CAROUSEL_COVER">
+        <div [style.right.%]="account_carousel_x_offset" class="CAROUSEL">
+            <div class="ALL_ACCOUNTS_BAR">Wszystkie konta</div>
+            @for(acc of ACCOUNTS_LIST; track acc.user_account_id ? acc.user_account_id : acc.account.id) {
+                <account-bar 
+                    [bar_type]="'NAME_ONLY'" 
+                    [account]="acc.account" />
+            }
+        </div>
+    </div>
+    <arrow_button [class.DISABLED]="accounts_list_choosed_index === ACCOUNTS_LIST.length - 1" (click)="changeCarouselAccount('right')" [arrow_direction]="'right'" />
+</div>

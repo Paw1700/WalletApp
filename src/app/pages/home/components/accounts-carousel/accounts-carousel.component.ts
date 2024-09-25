@@ -7,7 +7,7 @@ import { NgUnsubscriber } from "../../../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
 import { Account } from "../../../../models";
 import { AccountStatsData } from "../../../../components/single_components/account_bar/components/account_bar_stats.component";
-import { ArrowButton } from "./components/arrow_button.component";
+import { ArrowButton } from "../../../../components/UI/arrow_button.component";
 
 @Component({
     selector: 'accounts_carousel',

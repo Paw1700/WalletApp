@@ -1,6 +1,6 @@
 <div class="PAGE">
     <p class="TITLE">Transakcje</p>
-    <account_choose_by_scroll [ACCOUNTS_LIST]="ACCOUNTS_BAR_DATA_LIST" (choosed_user_account_id)="handleUserAccountChange($event)" />
+    <account_choose_horizontal [ACCOUNTS_LIST]="ACCOUNTS_BAR_DATA_LIST" (choosed_user_account_id)="handleUserAccountChange($event)" />
     <filter_options />
     <transactions_list />
 </div>

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { AccountChooseByScroll } from "../../components/forms/account_choose_by_scroll/account_choose_by_scroll.component";
+import { AccountChooseHorizontal } from "../../components/forms/account_choose_horizontal/account_choose_horizontal.component";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { TransactionsFilterOptions } from "../../services/storage.service";
 import { TransactionsListPageService } from "./transactions_list.page.service";
@@ -15,7 +15,7 @@ import { AccountChooseBarListItem } from "../../components/interfaces/account_ch
     selector: 'transactions_list_page',
     standalone: true,
     imports: [
-        AccountChooseByScroll,
+        AccountChooseHorizontal,
         FilterOptions,
         TransactionsList
     ],
