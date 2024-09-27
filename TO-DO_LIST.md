@@ -13,6 +13,8 @@
 - [ ] Add Remembering Choosed Account
 - [ ] Add Filtering Date in Transaction List
 
+# CODE OPTIMALISATION
+- [ ] [SCSS] Font Size Fixed Sizes
 
 # !!! V NEED UPDATE V
 # APP ELEMENTS LIST

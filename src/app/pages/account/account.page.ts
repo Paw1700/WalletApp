@@ -53,11 +53,11 @@ export class AccountPage extends NgUnsubscriber implements OnInit {
     background_gradient = ''
 
     ngOnInit(): void {
-        this.getRouteData()
+        this.getResolverData()
         this.setAccountBackgroundGradient()
     }
 
-    private getRouteData() {
+    private getResolverData() {
         this.ROUTE.data.subscribe(route_data => {
             this.account = route_data['account_page_data'].account
             this.user_account = route_data['account_page_data'].user_account

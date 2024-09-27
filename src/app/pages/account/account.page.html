@@ -4,4 +4,15 @@
         <p class="AVAIBLE_FUNDS">{{ user_account.avaible_funds| number_separator }} <span>{{ account.currency }}</span></p>
         <columnar_stats [data]="[]" />
     </div>
+    <div class="ACCOUNT_DATA">
+        <p class="TITLE">Dane konta</p>
+        <div class="ACCOUNT_DEBET_LIMIT">
+            <p class="TITLE">Limit debetowy</p>
+            <p class="VALUE">{{ user_account.debet.limit | number_separator }} <span>{{ account.currency }}</span></p>
+        </div>
+        <div class="ACCOUNT_DEBET_INTEREST">
+            <p class="TITLE">Oprocentowanie debetu</p>
+            <p class="VALUE">{{ user_account.debet.interest | number_separator }} <span>%</span></p>
+        </div>
+    </div>
 </div>
