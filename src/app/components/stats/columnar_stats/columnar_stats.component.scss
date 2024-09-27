@@ -1,0 +1,53 @@
+:host {
+    width: 100%;
+
+    div.CHART {
+        width: 100%;
+        border-left: .25vw solid white;
+        border-bottom: .25vw solid white;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        justify-content: space-evenly;
+        margin-bottom: 5vh;
+
+        div.DATA_SET {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-inline: 2.5vw;
+            position: relative;
+            top: 4vh;
+            gap: 1.5vh;
+            
+            div.COLUMNS {
+                width: 100%;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-items: flex-end;
+                justify-content: center;
+
+                column {
+                    width: 50%;
+                }
+            }
+
+            p.DESC {
+                // padding-top: 1.25vh;
+                font-weight: 300;
+            }
+        }
+
+        p.EMPTY_DATA {
+            position: relative;
+            bottom: 50%;
+            font-weight: 500;
+            opacity: .5;
+        }
+    }
+}

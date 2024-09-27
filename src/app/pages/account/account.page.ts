@@ -5,13 +5,15 @@ import { APP_SERVICE } from "../../app.service";
 import { Account, UserAccount } from "../../models";
 import { AccountNameBar } from "./components/account_name_bar.component";
 import { NumberSeparator } from "../../pipes/number_separator.pipe";
+import { ColumnarStats } from "../../components/stats/columnar_stats/columnar_stats.component";
 
 @Component({
     selector: 'account_page',
     standalone: true,
     imports: [
         AccountNameBar,
-        NumberSeparator
+        NumberSeparator,
+        ColumnarStats
     ],
     templateUrl: './account.page.html',
     styleUrl: './account.page.scss'

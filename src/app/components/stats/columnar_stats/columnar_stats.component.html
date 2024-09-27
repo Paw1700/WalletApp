@@ -1,0 +1,14 @@
+<div [style.height.vh]="chart_height_in_vh" class="CHART">
+    @for(column_data of data; track $index) {
+        <div class="DATA_SET">
+            <div class="COLUMNS">
+                @for (column_data of column_data.columns; track $index) {
+                    <column [height_in_px]="(column_data.height_in_percent * max_height_in_px)/100" [color]="column_data.color" />
+                }
+            </div>
+            <p class="DESC">{{ column_data.description }}</p>
+        </div>
+    } @empty {
+        <p class="EMPTY_DATA">Brak danych</p>
+    }
+</div>

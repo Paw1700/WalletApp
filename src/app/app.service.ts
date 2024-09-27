@@ -35,8 +35,7 @@ export class APP_SERVICE {
 
             await this.STORAGE.init()
             
-            // let redirection_location: AppLocations = 'home'
-            let redirection_location: AppLocations = 'account'
+            let redirection_location: AppLocations = 'home'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()
 
@@ -47,7 +46,7 @@ export class APP_SERVICE {
             }
 
             setTimeout(() => {
-                this.navigate(redirection_location, {user_account_id: "accounts-0"})
+                this.navigate('account', {user_account_id: "accounts-4"})
                 resolve()
             }, 1500)
         })
