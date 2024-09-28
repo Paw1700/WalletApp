@@ -5,7 +5,7 @@ import { APP_SERVICE } from "../../app.service";
 import { Account, UserAccount } from "../../models";
 import { AccountNameBar } from "./components/account_name_bar.component";
 import { NumberSeparator } from "../../pipes/number_separator.pipe";
-import { ColumnarStats } from "../../components/stats/columnar_stats/columnar_stats.component";
+import { ColumnarStats, ColumnStatsData } from "../../components/stats/columnar_stats/columnar_stats.component";
 
 @Component({
     selector: 'account_page',
@@ -49,6 +49,7 @@ export class AccountPage extends NgUnsubscriber implements OnInit {
         }
     }
     bank_name = ''
+    columnar_stats_data: ColumnStatsData[] = []
 
     background_gradient = ''
 
@@ -62,6 +63,7 @@ export class AccountPage extends NgUnsubscriber implements OnInit {
             this.account = route_data['account_page_data'].account
             this.user_account = route_data['account_page_data'].user_account
             this.bank_name = route_data['account_page_data'].bank_name
+            this.columnar_stats_data = route_data['account_page_data'].columnar_stats_data
         })
     }
 

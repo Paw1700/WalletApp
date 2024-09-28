@@ -150,14 +150,30 @@ export class STORAGE_SERVICE {
                         const value = filter_options.user_account_id
                         all_transactions = all_transactions.filter(tr => tr.user_account_id === value)
                     }
-                    if (filter_options.filter_date) {
-                        if (filter_options.filter_date.from !== null) {
-                            const value = filter_options.filter_date.from
-                            all_transactions = all_transactions.filter(tr => tr.date.getTime() >= value.getTime())
+                    if (filter_options.filter_date !== null) { 
+                        if (filter_options.filter_date.from_to !== null) {
+                            if (filter_options.filter_date.from_to.from !== null) {
+                                const value = filter_options.filter_date.from_to.from
+                                all_transactions = all_transactions.filter(tr => tr.date.getTime() >= value.getTime())
+                            }
+                            if (filter_options.filter_date.from_to.to !== null) {
+                                const value = filter_options.filter_date.from_to.to
+                                all_transactions = all_transactions.filter(tr => tr.date.getTime() <= value.getTime())
+                            }
                         }
-                        if (filter_options.filter_date.to !== null) {
-                            const value = filter_options.filter_date.to
-                            all_transactions = all_transactions.filter(tr => tr.date.getTime() <= value.getTime())
+                        if (filter_options.filter_date.specific_date !== null) {
+                            if (filter_options.filter_date.specific_date.day !== null) {
+                                const value = filter_options.filter_date.specific_date.day
+                                all_transactions = all_transactions.filter(tr => tr.date.getDate() === value)
+                            }
+                            if (filter_options.filter_date.specific_date.month !== null) {
+                                const value = filter_options.filter_date.specific_date.month
+                                all_transactions = all_transactions.filter(tr => tr.date.getMonth() === value)
+                            }
+                            if (filter_options.filter_date.specific_date.year !== null) {
+                                const value = filter_options.filter_date.specific_date.year
+                                all_transactions = all_transactions.filter(tr => tr.date.getFullYear() === value)
+                            }
                         }
                     }
                     if (filter_options.category_id !== null) {
@@ -349,7 +365,10 @@ export class STORAGE_SERVICE {
 
 export type TransactionsFilterOptions = {
     user_account_id: string | null,
-    filter_date: TransactionsFilterDateFromToOptions | null,
+    filter_date: {
+        from_to: TransactionsFilterDateFromToOptions | null,
+        specific_date: TransactionFilterDateOptions | null
+    } | null,
     category_id: string | null,
     receiver_id: string | null,
     filter_amount: TransactionsFilterNumberFromToOptions | null
@@ -362,6 +381,12 @@ export type TransactionsFilterNumberFromToOptions = {
 export type TransactionsFilterDateFromToOptions = {
     from: Date | null,
     to: Date | null
+}
+
+export type TransactionFilterDateOptions = {
+    day: number | null,
+    month: number | null,
+    year: number | null
 }
 
 export type TransactionsFilterOptionsList = 'user_account_id' | 'filter_date' | 'category_id' | 'receiver_id' | 'filter_amount'

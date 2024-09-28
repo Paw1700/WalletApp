@@ -93,7 +93,7 @@ export class USER_ACCOUNT_SERVICE {
             try {
                 const usa_transactions = await this.STORAGE.getTransactions({
                     user_account_id: user_account_id,
-                    filter_date: {from: new Date(in_days * DAYS_OFFSET), to: null},
+                    filter_date: {from_to: {from: new Date(in_days * DAYS_OFFSET), to: null}, specific_date: null},
                     category_id: null,
                     receiver_id: null,
                     filter_amount: null

@@ -4,10 +4,10 @@
 
 # IN PROGRESS
 - [ ] Create App Schemat 
-- [ ] Creating Account Page
+- [x] Creating Account Page
     - [x] Account Upper Data Bar
     - [x] Transactions Stats
-    - [ ] User Account Data
+    - [x] User Account Data
 
 # IN FUTURE 
 - [ ] Add Remembering Choosed Account

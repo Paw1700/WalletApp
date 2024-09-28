@@ -2,7 +2,7 @@
     <div [style.background]="background_gradient" class="ACCOUNT">
         <account_name_bar [account]="account" [bank_name]="bank_name" />
         <p class="AVAIBLE_FUNDS">{{ user_account.avaible_funds| number_separator }} <span>{{ account.currency }}</span></p>
-        <columnar_stats [data]="[]" />
+        <columnar_stats [data]="columnar_stats_data" />
     </div>
     <div class="ACCOUNT_DATA">
         <p class="TITLE">Dane konta</p>

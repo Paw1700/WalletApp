@@ -90,7 +90,7 @@ export class HomePageService {
         const RECEIVERS_LIST = await this.APP.STORAGE.getReceivers()
         const usa_id = this.active_account_carousel_list_index$.value > -1 ? this.accounts_bar_carousel_list$.value[this.active_account_carousel_list_index$.value].user_account_id : null
         const transaction = await this.APP.TRANSACTION.getAll({
-            filter_date: { from: new Date(new Date().getTime() - DAYS_OFFSET * 30), to: null },
+            filter_date: {from_to: { from: new Date(new Date().getTime() - DAYS_OFFSET * 30), to: null }, specific_date: null},
             user_account_id: usa_id,
             category_id: null,
             receiver_id: null,
