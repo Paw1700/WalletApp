@@ -51,6 +51,10 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
         this.PAGE_SERVICE.setFilterOption('user_account_id', user_account_id)
     }
 
+    goToAccount() {
+        this.PAGE_SERVICE.goToUserAccount()
+    }
+
     private fetchRouteData() {
         this.ROUTE.data.subscribe( resolver_data => {
             this.PAGE_SERVICE.categories_list$.next(resolver_data['categories_list'])

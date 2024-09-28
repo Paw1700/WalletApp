@@ -3,10 +3,10 @@
 - [ ] Transaction Description Component don't have animation
 
 # IN PROGRESS
-- [ ] Add Remembering Choosed Account
 
 # IN FUTURE 
 - [ ] Add Filtering Date in Transaction List
+- [ ] Add Remembering Choosed Account and Account Carousel order
 
 # CODE OPTIMALISATION
 - [ ] [SCSS] Font Size Fixed Sizes

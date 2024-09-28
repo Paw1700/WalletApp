@@ -11,6 +11,7 @@ export class AccountChooseBarComponentInterface extends OpenAbleComponentInterfa
     @Input({required: true}) ACCOUNTS_LIST: AccountChooseBarListItem[] = []
     @Output() choosed_account_id = new EventEmitter<string | null>()
     @Output() choosed_user_account_id = new EventEmitter<string | null>()
+    @Output() account_bar_clicked = new EventEmitter<AccountChooseBarListItem | null>()
 
     choosed_account_bar_data: AccountChooseBarListItem | null = null
 
@@ -39,6 +40,10 @@ export class AccountChooseBarComponentInterface extends OpenAbleComponentInterfa
             this.choosed_account_id.emit(null)
             this.choosed_user_account_id.emit(null)
         }
+    }
+
+    accountBarClicked(account_bar_data: AccountChooseBarListItem | null) {
+        this.account_bar_clicked.emit(account_bar_data)
     }
 }
 

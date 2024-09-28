@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { AccountBarComponent } from "../../single_components/account_bar/account_bar.component";
-import { AccountChooseBarComponentInterface } from "../../interfaces/account_choose_bar.component";
+import { AccountChooseBarComponentInterface, AccountChooseBarListItem } from "../../interfaces/account_choose_bar.component";
 import { ArrowButton } from "../../UI/arrow_button.component";
 
 @Component({

@@ -5,6 +5,7 @@
             <div class="ALL_ACCOUNTS_BAR">Wszystkie konta</div>
             @for(acc of ACCOUNTS_LIST; track acc.user_account_id ? acc.user_account_id : acc.account.id) {
                 <account-bar 
+                    (click)="accountBarClicked(acc)"
                     [bar_type]="'NAME_ONLY'" 
                     [account]="acc.account" />
             }

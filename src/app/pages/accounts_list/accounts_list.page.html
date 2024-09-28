@@ -6,6 +6,7 @@
         <div class="ACCOUNTS_LIST HIDE_SCROLL_BAR">
             @for (item of user_accounts_list_to_display; track $index) {
                 <account-bar 
+                    (click)="goToAccount(item.user_account_id)"
                     [bar_type]="'WITH_STATS'"
                     [account]="item.account"
                     [account_funds_data]="item.funds_data"

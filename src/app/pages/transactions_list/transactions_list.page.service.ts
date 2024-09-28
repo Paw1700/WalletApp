@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { APP_SERVICE } from "../../app.service";
 import { BehaviorSubject } from "rxjs";
-import { Account, Category, ErrorID, Receiver, TransactionType } from "../../models";
+import { Account, Category, Receiver, TransactionType } from "../../models";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../services/storage.service";
 import { SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
@@ -49,6 +49,11 @@ export class TransactionsListPageService {
     goToEditTransaction(transaction_id: string) {
         this.APP.STATE.last_app_location$.next('transactions_list')
         this.APP.navigate('add_transaction', { tr_id: transaction_id })
+    }
+
+    goToUserAccount() {
+        this.APP.STATE.last_app_location$.next('transactions_list')
+        this.APP.navigate('account', { user_account_id: this.filter_options$.value.user_account_id })
     }
 
     setFilterOption(type: TransactionsFilterOptionsList | 'type', payload: any) {

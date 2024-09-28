@@ -30,6 +30,11 @@ export class AccountsListPage extends NgUnsubscriber implements OnInit {
         this.listenToNavBarRightButtonClick()
     }
 
+    goToAccount(user_account_id: string) {
+        this.APP.STATE.last_app_location$.next('accounts_list')
+        this.APP.navigate('account', {user_account_id: user_account_id})
+    }
+
     private async fetchAllUserAccounts() {
         this.ROUTE.data.subscribe( route_data => {
             this.user_accounts_list = route_data['user_accounts']
