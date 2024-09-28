@@ -10,6 +10,7 @@ import { ScrollSideOptions } from './components/embeddable_components/scroll_sid
 import { TransactionBar } from './components/single_components/transaction_bar/transaction_bar.component';
 import { FadeInPageAnimation, SlideToLeftPageAnimation, SlideToRightPageAnimation } from './util/animation';
 import { SideOptionsComponent, SideOptionsComponentData } from './components/embeddable_components/side_options/side_options.component';
+import { SLIDE_TO_LEFT_ANIMATION_PAGES, SLIDE_TO_RIGHT_ANIMATION_PAGES } from './constants';
 
 @Component({
   selector: 'app-root',
@@ -36,10 +37,10 @@ import { SideOptionsComponent, SideOptionsComponentData } from './components/emb
       transition('boot => *, home <=> transactions_list, home <=> accounts_list, accounts_list <=> transactions_list', FadeInPageAnimation),
 
       //** SLIDE TO LEFT */
-      transition('accounts_list => add_account, home => add_transaction, transactions_list => add_transaction', SlideToLeftPageAnimation),
+      transition(SLIDE_TO_LEFT_ANIMATION_PAGES, SlideToLeftPageAnimation),
 
       //** SLIDE TO RIGHT */
-      transition('add_account => accounts_list, add_transaction => home, add_transaction => transactions_list', SlideToRightPageAnimation),
+      transition(SLIDE_TO_RIGHT_ANIMATION_PAGES, SlideToRightPageAnimation),
     ])
   ]
 })

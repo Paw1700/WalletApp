@@ -12,7 +12,9 @@
                 [bar_type]="'WITH_STATS'"
                 [account]="acc.account" 
                 [account_funds_data]="acc.account_funds_data"
-                [account_stats_data]="acc.stats_data"/>
+                [account_stats_data]="acc.stats_data"
+                (click)="goToAccountPage(acc.user_account_id)"
+                />
             }
     </div>
     <div class="BOTTOM">

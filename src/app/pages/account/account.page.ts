@@ -6,6 +6,7 @@ import { Account, UserAccount } from "../../models";
 import { AccountNameBar } from "./components/account_name_bar.component";
 import { NumberSeparator } from "../../pipes/number_separator.pipe";
 import { ColumnarStats, ColumnStatsData } from "../../components/stats/columnar_stats/columnar_stats.component";
+import { takeUntil } from "rxjs";
 
 @Component({
     selector: 'account_page',
@@ -56,6 +57,7 @@ export class AccountPage extends NgUnsubscriber implements OnInit {
     ngOnInit(): void {
         this.getResolverData()
         this.setAccountBackgroundGradient()
+        this.reactToLeftNavButton()
     }
 
     private getResolverData() {
@@ -71,5 +73,16 @@ export class AccountPage extends NgUnsubscriber implements OnInit {
         this.background_gradient = `linear-gradient(180deg, ${this.account.apperance.background_gradient.top} 0%, ${this.account.apperance.background_gradient.bottom ? this.account.apperance.background_gradient.bottom : this.account.apperance.background_gradient.top} 100%)`
         this.APP.APPERANCE.setStatusBarColor(this.account.apperance.background_gradient.top)
         this.APP.APPERANCE.setAppAccentColor(this.account.apperance.background_gradient.bottom !== null ? this.account.apperance.background_gradient.bottom : this.account.apperance.background_gradient.top)
+    }
+
+    private reactToLeftNavButton() {
+        this.APP.STATE.nav_bar_left_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            if (this.APP.STATE.last_app_location$.value !== null) {
+                this.APP.navigate(this.APP.STATE.last_app_location$.value)
+                this.APP.STATE.last_app_location$.next(null)
+            } else {
+                this.APP.navigate('home')
+            }
+        })
     }
 }

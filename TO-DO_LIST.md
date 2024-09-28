@@ -3,14 +3,9 @@
 - [ ] Transaction Description Component don't have animation
 
 # IN PROGRESS
-- [ ] Create App Schemat 
-- [x] Creating Account Page
-    - [x] Account Upper Data Bar
-    - [x] Transactions Stats
-    - [x] User Account Data
+- [ ] Add Remembering Choosed Account
 
 # IN FUTURE 
-- [ ] Add Remembering Choosed Account
 - [ ] Add Filtering Date in Transaction List
 
 # CODE OPTIMALISATION

@@ -46,8 +46,8 @@ export class APP_SERVICE {
             }
 
             setTimeout(() => {
-                // this.navigate(redirection_location)
-                this.navigate('account', {user_account_id: "accounts-0"})
+                this.navigate(redirection_location)
+                // this.navigate('account', {user_account_id: "accounts-0"})
                 resolve()
             }, 1500)
         })
@@ -113,7 +113,7 @@ export class APP_SERVICE {
                 }
                 await this.ROUTER.navigateByUrl(`account?user_account_id=${options.user_account_id}`) 
                 this.APPERANCE.setAppAccentColor(null)
-                this.APPERANCE.nav_bar_left_button_option$.next('menu')
+                this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             default:

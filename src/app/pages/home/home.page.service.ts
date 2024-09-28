@@ -48,6 +48,11 @@ export class HomePageService {
         }
     }
 
+    goToAccountPage(user_account_id: string) {
+        this.APP.STATE.last_app_location$.next('home')
+        this.APP.navigate('account', {user_account_id: user_account_id})
+    }
+
     async deleteTransaction() {
         const transaction_id = this.transaction_id_to_delete$.value
         if (transaction_id === null) {

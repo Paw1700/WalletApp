@@ -47,6 +47,10 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
         }
     }
 
+    goToAccountPage(user_account_id: string) {
+        this.PAGE_SERVICE.goToAccountPage(user_account_id)
+    }
+
     private subscribeToAccountsBarCarouselList() {
         this.PAGE_SERVICE.accounts_bar_carousel_list$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(accounts_list => {
             this.accounts_bar_list = accounts_list

@@ -11,3 +11,7 @@ export const SORTING_TRANSACTIONS_BY_DATE = ((a: Transaction, b: Transaction) =>
         return 0
     }
 })
+
+export const SLIDE_TO_LEFT_ANIMATION_PAGES = 'accounts_list => add_account, home => add_transaction, transactions_list => add_transaction, home => account'
+
+export const SLIDE_TO_RIGHT_ANIMATION_PAGES = 'add_account => accounts_list, add_transaction => home, add_transaction => transactions_list, account => home'
