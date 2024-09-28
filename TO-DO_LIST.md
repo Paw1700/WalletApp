@@ -16,6 +16,10 @@
 # CODE OPTIMALISATION
 - [ ] [SCSS] Font Size Fixed Sizes
 
+# APP SCHEMAT IN DRAW IO
+- [x] APP SERVICES
+- [x] ALGORITHM - USER PROFILE SETUP
+
 # !!! V NEED UPDATE V
 # APP ELEMENTS LIST
 - [ ] Build interface
