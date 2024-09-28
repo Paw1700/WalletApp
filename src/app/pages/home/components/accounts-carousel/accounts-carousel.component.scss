@@ -85,12 +85,12 @@ div.ACCOUNTS_CAROUSEL {
             }
     
             div.MAIN_DOT {
-                border: .75vw solid var(--font-color);
+                border: .75vw solid var(--app-accent);
                 box-sizing: border-box;
             }
     
             div.DOT {
-                background-color: var(--font-color);
+                background-color: var(--app-accent);
             }
         }
     }

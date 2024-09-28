@@ -4,100 +4,26 @@
 
 # IN PROGRESS
 
-# IN FUTURE 
+# NEXT TO DO
+- [ ] Complete Companies List
+- [ ] Complete Categories List
+- [ ] Add Other Currencies 
 - [ ] Add Filtering Date in Transaction List
 - [ ] Add Remembering Choosed Account and Account Carousel order
+- [ ] Funds transferring between accounts
+- [ ] Adding Scheduled Transactions
+- [ ] Credit Functions
+- [ ] Stock Market Functions
+- [ ] List of assets
+- [ ] Stats Page
+- [ ] Settings Page
+- [ ] App Versioning
+- [ ] Backuping
 
 # CODE OPTIMALISATION
 - [ ] [SCSS] Font Size Fixed Sizes
-
+- [ ] [TS] Check If Methods Names Are Good
+ 
 # APP SCHEMAT IN DRAW IO
 - [x] APP SERVICES
 - [x] ALGORITHM - USER PROFILE SETUP
-
-# !!! V NEED UPDATE V
-# APP ELEMENTS LIST
-- [ ] Build interface
-    - [ ] Pages
-        - [x] Menu
-        - [x] Home 
-        - [ ] Transaction list 
-        - [x] Adding transaction 
-        - [ ] Editing transaction
-        - [x] List of accounts 
-        - [x] Adding account
-        - [ ] Overview account 
-        - [ ] List of planned transaction 
-        - [ ] Adding planned transaction
-        - [ ] List of credits
-        - [ ] Adding credit
-        - [ ] Stock Market 
-        - [ ] Adding Stock
-        - [ ] Settings
-        - [x] Boot Screen
-        - [x] First setup
-    - [ ] Components
-        - [x] Account Bar (3 types: BIG/MIDDLE/SMALL)
-        - [x] Transaction Bar
-        - [x] Categorie Choose Bar
-        - [x] Receiver Choose Bar
-        - [x] Description Bar
-        - [x] Transaction Type Choose Bar
-        - [x] Number Input Bar
-        - [x] Bank Choose Bar
-        - [x] Account Choose Bar
-        - [x] Bottom Nav Bar
-- [ ] Build logic
-    - [ ] Add static data
-        - [x] Banks
-        - [x] Accounts
-        - [x] Categories
-        - [ ] Receivers
-        - [ ] Stock Markets
-        - [ ] Accounts for Stock Markets
-    - [ ] Build logic
-        - [x] IndexedDB Driver
-        - [ ] -- MAIN --
-            - [ ] Application Start Logic
-                - [ ] Check App Version
-                - [x] Check App is Configured
-                - [ ] Check if there is schedule transactions
-                - [x] Navigate Away to Home Page
-            - [ ] App Version Checking
-            - [ ] App Navigation
-        - [ ] -- APPERANCE --
-            - [x] Changing Status Bar Color Method
-            - [x] Changing Acccent Color Method
-            - [ ] Setting Apperance By App
-        - [ ] -- UPDATE --
-            - [ ] App Data Update Scripts
-            - [ ] App Backup Update Scripts
-        - [ ] -- BACKUP --
-            - [ ] Create Backup
-            - [ ] Implement Backup Data
-        - [ ] -- VALIDATOR --
-            - [ ] Check App Backup validity
-            - [ ] Check Profile Validity
-            - [x] Checkc Account Data Validity
-            - [x] Check Transaction Data Validity
-        - [ ] -- DATA --
-            - [x] Adding transaction
-            - [x] -- TRANSACTION --
-                - [x] Adding transaction
-                - [x] Updating transaction
-                - [x] Getting transaction
-                - [x] Deleting transaction
-            - [x] -- PROFILE --
-                - [x] Adding profile
-                - [x] Updating profile 
-                - [x] Getting profile
-                - [x] Deleting profile
-            - [x] -- USER_ACCOUNT --
-                - [x] Adding user account
-                - [x] Updating user account
-                - [x] Getting user account
-                - [x] Deleting user account
-- [ ] Error Logic
-    - [x] App Data Profile
-    - [ ] App Data Transaction
-    - [ ] App Data User Account
