@@ -1,5 +1,15 @@
 [
     {
+        "id": "ABR-BLE",
+        "name": "Abra Meble",
+        "logo_src": "/assets/receivers_logos/abra_meble.webp"
+    },
+    {
+        "id": "ACT-ION",
+        "name": "Action",
+        "logo_src": "/assets/receivers_logos/action.webp"
+    },
+    {
         "id": "AGA-BLE",
         "name": "Agata Meble",
         "logo_src": "/assets/receivers_logos/agata_meble.webp"
@@ -15,6 +25,11 @@
         "logo_src": "/assets/receivers_logos/allegro.webp"
     },
     {
+        "id": "ALS-SEN",
+        "name": "Alsen",
+        "logo_src": "/assets/receivers_logos/alsen.webp"
+    },
+    {
         "id": "AUC-HAN",
         "name": "Auchan",
         "logo_src": "/assets/receivers_logos/auchan.webp"
@@ -28,6 +43,16 @@
         "id": "BLA-ITE",
         "name": "Black Red White",
         "logo_src": "/assets/receivers_logos/black_red_white.webp"
+    },
+    {
+        "id": "BOD-ZIO",
+        "name": "Bodzio",
+        "logo_src": "/assets/receivers_logos/bodzio.webp"
+    },
+    {
+        "id": "BRI-MAN",
+        "name": "Bricoman",
+        "logo_src": "/assets/receivers_logos/bricoman.webp"
     },
     {
         "id": "BRI-CHE",
@@ -55,6 +80,11 @@
         "logo_src": "/assets/receivers_logos/dino.webp"
     },
     {
+        "id": "DUZ-BEN",
+        "name": "Duży Ben",
+        "logo_src": "/assets/receivers_logos/duzy_ben.webp"
+    },
+    {
         "id": "E.L-ERC",
         "name": "E.Leclerc",
         "logo_src": "/assets/receivers_logos/eleclerc.webp"
@@ -75,6 +105,11 @@
         "logo_src": "/assets/receivers_logos/h&m.webp"
     },
     {
+        "id": "HOM-YOU",
+        "name": "Home&You",
+        "logo_src": "/assets/receivers_logos/home_and_you.webp"
+    },
+    {
         "id": "IKE-KEA",
         "name": "Ikea",
         "logo_src": "/assets/receivers_logos/ikea.webp"
@@ -85,9 +120,34 @@
         "logo_src": "/assets/receivers_logos/intermarche.webp"
     },
     {
+        "id": "JUL-ULA",
+        "name": "Jula",
+        "logo_src": "/assets/receivers_logos/jula.webp"
+    },
+    {
+        "id": "JYS-YSK",
+        "name": "Jysk",
+        "logo_src": "/assets/receivers_logos/jysk.webp"
+    },
+    {
         "id": "KAU-AND",
         "name": "Kaufland",
         "logo_src": "/assets/receivers_logos/kaufland.webp"
+    },
+    {
+        "id": "KIK-KIK",
+        "name": "Kik",
+        "logo_src": "/assets/receivers_logos/kik.webp"
+    },
+    {
+        "id": "LER-LIN",
+        "name": "Leroy Merlin",
+        "logo_src": "/assets/receivers_logos/leroy_merlin.webp"
+    },
+    {
+        "id": "LEW-TAN",
+        "name": "Lewiatan",
+        "logo_src": "/assets/receivers_logos/lewiatan.webp"
     },
     {
         "id": "LID_IDL",
@@ -95,9 +155,29 @@
         "logo_src": "/assets/receivers_logos/lidl.webp"
     },
     {
+        "id": "MED-ERT",
+        "name": "Media Expert",
+        "logo_src": "/assets/receivers_logos/media_expert.webp"
+    },
+    {
+        "id": "MED-RKT",
+        "name": "Media Markt",
+        "logo_src": "/assets/receivers_logos/media_markt.webp"
+    },
+    {
+        "id": "NEO-NET",
+        "name": "Neonet",
+        "logo_src": "/assets/receivers_logos/neonet.webp"
+    },
+    {
         "id": "NET-TTO",
         "name": "Netto",
         "logo_src": "/assets/receivers_logos/netto.webp"
+    },
+    {
+        "id": "OBI-OBI",
+        "name": "Obi",
+        "logo_src": "/assets/receivers_logos/obi.webp"
     },
     {
         "id": "ORL-LEN",
@@ -115,9 +195,39 @@
         "logo_src": "/assets/receivers_logos/polomarket.webp"
     },
     {
+        "id": "RTV-AGD",
+        "name": "RTV Euro AGD",
+        "logo_src": "/assets/receivers_logos/rtv_euro_agd.webp"
+    },
+    {
         "id": "ROS-ANN",
         "name": "Rossmann",
         "logo_src": "/assets/receivers_logos/rossmann.webp"
+    },
+    {
+        "id": "SPO-LEM",
+        "name": "SPOŁEM",
+        "logo_src": "/assets/receivers_logos/spolem.webp"
+    },
+    {
+        "id": "SIN-SAY",
+        "name": "Sinsay",
+        "logo_src": "/assets/receivers_logos/sinsay.webp"
+    },
+    {
+        "id": "SUP-ARM",
+        "name": "Super-Pharm",
+        "logo_src": "/assets/receivers_logos/super_pharm.webp"
+    },
+    {
+        "id": "TED-EDI",
+        "name": "TEDi",
+        "logo_src": "/assets/receivers_logos/tedi.webp"
+    },
+    {
+        "id": "TWO-KET",
+        "name": "Twój Market",
+        "logo_src": "/assets/receivers_logos/twoj_market.webp"
     },
     {
         "id": "ZAB-BKA",

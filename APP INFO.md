@@ -27,3 +27,54 @@
 # APP SCHEMAT IN DRAW IO
 - [x] APP SERVICES
 - [x] ALGORITHM - USER PROFILE SETUP
+
+# RECEIVERS LIST
+- Abra Meble
+- Action
+- Agata Meble
+- Aldi
+- Allegro
+- Alsen
+- Auchan
+- Biedronka
+- Black Red White
+- Bodzio
+- Bricoman
+- Bricomarche
+- Carrefour
+- Castorama
+- Dealz
+- Dino
+- Duzy Ben
+- ELeclerc
+- Empik
+- Google
+- H&M
+- Hebe
+- Home&You
+- Ikea
+- Intermarche
+- Jula
+- Jysk
+- Kaufland
+- Kik
+- Leroy Merlin
+- Lewiatan
+- Lidl
+- Media Expert
+- Media Markt
+- Neonet
+- Netto
+- Obi
+- Orlen
+- Pepco
+- Polomarket
+- Rossmann
+- RTV Euro AGD
+- Sinsay
+- Społem
+- Super-Pharm
+- TEDi
+- Twój Market
+- Zabka
+
