@@ -80,6 +80,14 @@
         }
     },
     {
+        "id": "WOR",
+        "name": "Praca",
+        "logo_src": {
+            "light": "/assets/category_icons/work_light.webp",
+            "dark": "/assets/category_icons/work_dark.webp"
+        }
+    },
+    {
         "id": "BIL",
         "name": "Rachunki",
         "logo_src": {
@@ -93,6 +101,14 @@
         "logo_src": {
             "light": "/assets/category_icons/entertaiment_light.webp",
             "dark": "/assets/category_icons/entertaiment_dark.webp"
+        }
+    },
+    {
+        "id": "TRA",
+        "name": "Transport",
+        "logo_src": {
+            "light": "/assets/category_icons/transport_light.webp",
+            "dark": "/assets/category_icons/transport_dark.webp"
         }
     },
     {

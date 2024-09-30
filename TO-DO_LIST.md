@@ -3,10 +3,10 @@
 - [ ] Transaction Description Component don't have animation
 
 # IN PROGRESS
+- [ ] Complete Categories List (Transfer money)
+- [ ] Complete Companies List
 
 # NEXT TO DO
-- [ ] Complete Companies List
-- [ ] Complete Categories List
 - [ ] Add Other Currencies 
 - [ ] Add Filtering Date in Transaction List
 - [ ] Add Remembering Choosed Account and Account Carousel order
