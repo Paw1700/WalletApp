@@ -37,9 +37,10 @@ export class ADD_TRANSACTION_PAGE_DATA_RESOLVER implements Resolve<AddTransactio
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<AddTransactionPageData> {
         return new Promise(async (resolve, reject) => {
             try {
+                this.resetResolverData()
                 const receivers_from_storage = await this.APP.STORAGE.getReceivers()
                 const categories_from_storage = await this.APP.STORAGE.getCategories()
-
+                
                 const user_account_id_from_url = route.queryParamMap.get('usa_id')
                 const transaction_id_from_url = route.queryParamMap.get('tr_id')
 
@@ -98,6 +99,34 @@ export class ADD_TRANSACTION_PAGE_DATA_RESOLVER implements Resolve<AddTransactio
                 reject(err)
             }
         })
+    }
+
+    private resetResolverData(): void {
+        this.user_account_bar_data = {
+            user_account_id: '',
+            account: {
+                id: '',
+                bank_id: '',
+                name: '',
+                currency: "PLN",
+                apperance: {
+                    background_gradient: {
+                        top: "",
+                        bottom: null
+                    },
+                    stats_alternative_colors: {
+                        plus: null,
+                        minus: null
+                    },
+                    bank_logo_src: ''
+                }
+            },
+            funds_data: {
+                avaible_funds: 0,
+                debet_limit: 0
+            }
+        }
+        this.transaction = null
     }
 }
 

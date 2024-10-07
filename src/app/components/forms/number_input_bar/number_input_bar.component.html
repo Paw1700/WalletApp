@@ -8,7 +8,7 @@
             }
         </p>
         @if (!component_open && inputed_number) {
-            <p class="NUMBER_BAGDE">{{ inputed_number | number_separator }} {{ suffix }}</p>
+            <p [@badge] class="NUMBER_BAGDE">{{ inputed_number | number_separator }} {{ suffix }}</p>
         }
     </div>
     @if (component_open) {

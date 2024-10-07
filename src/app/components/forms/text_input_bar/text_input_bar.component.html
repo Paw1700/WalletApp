@@ -6,6 +6,6 @@
         }
     </div>
     @if (component_open) {
-        <input type="text" [value]="inputed_text" [placeholder]="placeholder" (blur)="changeComponentOpenessState()" (input)="setValue($event)">
+        <input [@input_bar] type="text" [value]="inputed_text" [placeholder]="placeholder" (blur)="changeComponentOpenessState()" (input)="setValue($event)">
     }
 </div>

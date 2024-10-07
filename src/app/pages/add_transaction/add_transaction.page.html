@@ -2,7 +2,7 @@
     <account-bar 
         [account]="ACCOUNT_BAR_DATA.account"
         [account_funds_data]="ACCOUNT_BAR_DATA.funds_data"
-        [account_funds_diff]="new_transaction.amount"
+        [account_funds_diff]="transaction_new_amount_diff"
         [bar_type]="'WITH_LIMIT'" />
     <date_choose_bar 
         [inputed_date]="new_transaction.date" 

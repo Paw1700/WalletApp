@@ -29,6 +29,24 @@ import { animate, style, transition, trigger } from "@angular/animations";
                     height: 0
                 }))
             ]),
+        ]),
+        trigger('badge', [
+            transition(":enter", [
+                style({
+                    opacity: 0,
+                    width: 0
+                }),
+                animate('250ms 50ms ease-out', style({
+                    opacity: 1,
+                    width: "*"
+                }))
+            ]),
+            transition(":leave", [
+                animate('250ms 50ms ease-out', style({
+                    opacity: 0,
+                    width: 0
+                }))
+            ])
         ])
     ]
 })

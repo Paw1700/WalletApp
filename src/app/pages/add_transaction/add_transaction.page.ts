@@ -46,6 +46,8 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
         amount: 0,
         description: ""
     }
+    transaction_new_amount_diff = 0
+    transaction_old_amount = 0
 
     ngOnInit(): void {
         this.fetchRouteDataAndPreparePageData()
@@ -100,17 +102,19 @@ export class AddTransactionPage extends NgUnsubscriber implements OnInit {
                 this.new_transaction.amount = Math.abs(this.new_transaction.amount)
             }
         }
+        this.transaction_new_amount_diff = this.new_transaction.amount - this.transaction_old_amount 
     }
 
     private fetchRouteDataAndPreparePageData() {
         this.ROUTE.data.subscribe(route_data => {
-            const PAGE_DATA: AddTransactionPageData = route_data['add_transaction_page_data']
+            const PAGE_DATA: AddTransactionPageData = route_data['add_transaction_page_data']            
             this.RECEIVERS_LIST = PAGE_DATA.receivers
             this.CATEGORIES_LIST = PAGE_DATA.categories
             this.ACCOUNT_BAR_DATA = PAGE_DATA.user_account_bar_data
             if (PAGE_DATA.transaction !== null) {
                 this.new_transaction = PAGE_DATA.transaction
                 this.transaction_type = PAGE_DATA.transaction.amount > 0 ? 'income' : 'expense'
+                this.transaction_old_amount = PAGE_DATA.transaction.amount
             } else {
                 this.new_transaction.user_account_id = this.ACCOUNT_BAR_DATA.user_account_id
             }

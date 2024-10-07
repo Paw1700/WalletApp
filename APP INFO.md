@@ -1,13 +1,19 @@
 # BUG-LIST 
 - [ ] Others Button Dont work in choosing receivers
-- [ ] Transaction Description Component don't have animation
+    - [ ] Change Resolver to create receiver from name if dont have id
+- [x] Transaction Description Component don't have animation
+- [x] When editing transaction avaible amount is change from start
 
 # IN PROGRESS
-- [ ] Complete Categories List (Transfer money)
+- [ ] Complete Categories List
 - [ ] Complete Companies List
+- [ ] Add Other Currencies
+    - [ ] Add Accounts Data Of Foreign Currency
+    - [ ] Add Account Currency Switch in Adding Account
+    - [ ] Add Currency Converting 
+    - [ ] Add Other Currency to sum of avaible funds
 
 # NEXT TO DO
-- [ ] Add Other Currencies 
 - [ ] Add Filtering Date in Transaction List
 - [ ] Add Remembering Choosed Account and Account Carousel order
 - [ ] Funds transferring between accounts
@@ -78,3 +84,22 @@
 - Twój Market
 - Zabka
 
+# CATEGORIES LIST
+- Auto
+- Dom
+- Edukacja
+- Elektronika
+- Hazard
+- Inne
+- Kosmetyki
+- Moda
+- Paliwo
+- Podatki
+- Praca
+- Rachunki
+- Rozrywka
+- Transport
+- Ubezpieczenia
+- Uroczystość
+- Zakupy
+- Zdrowie

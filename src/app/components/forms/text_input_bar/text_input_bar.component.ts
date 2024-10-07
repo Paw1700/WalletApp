@@ -8,6 +8,24 @@ import { trigger, transition, style, animate } from "@angular/animations";
     templateUrl: './text_input_bar.component.html',
     styleUrl: './text_input_bar.component.scss',
     animations: [
+        trigger('input_bar', [
+            transition(":enter", [
+                style({
+                    opacity: 0,
+                    height: 0
+                }),
+                animate('250ms 50ms ease-out', style({
+                    opacity: 1,
+                    height: "*"
+                }))
+            ]),
+            transition(":leave", [
+                animate('50ms ease-in', style({
+                    opacity: 0,
+                    height: 0
+                }))
+            ]),
+        ]),
         trigger('badge', [
             transition(":enter", [
                 style({
