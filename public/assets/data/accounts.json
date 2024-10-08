@@ -1,6 +1,6 @@
 [
     {
-        "id": "KON-RNE-ALI-ANK",
+        "id": "KON-RNE-ALI-ANK_PLN",
         "bank_id": "ALI-ANK",
         "name": "Konto Elitarne",
         "currency": "PLN",
@@ -17,7 +17,7 @@
         }
     },
     {
-        "id": "KON-STE-ALI-ANK",
+        "id": "KON-STE-ALI-ANK_PLN",
         "bank_id": "ALI-ANK",
         "name": "Konto Jakże Osobiste",
         "currency": "PLN",
@@ -34,7 +34,41 @@
         }
     },
     {
-        "id": "MOJ-IUM-BNP-BAS",
+        "id": "KON-OWE-ALI-ANK_USD",
+        "bank_id": "ALI-ANK",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#6B113D",
+                "bottom": "#4A0725"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/alior_bank.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-ALI-ANK_EUR",
+        "bank_id": "ALI-ANK",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#6B113D",
+                "bottom": "#4A0725"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/alior_bank.webp"
+        }
+    },
+    {
+        "id": "MOJ-IUM-BNP-BAS_PLN",
         "bank_id": "BNP-BAS",
         "name": "Moje konto Premium",
         "currency": "PLN",
@@ -51,7 +85,7 @@
         }
     },
     {
-        "id": "KON-STE-BNP-BAS",
+        "id": "KON-STE-BNP-BAS_PLN",
         "bank_id": "BNP-BAS",
         "name": "Konto Osobiste",
         "currency": "PLN",
@@ -68,7 +102,41 @@
         }
     },
     {
-        "id": "KON-OLD-CIT-OWY",
+        "id": "RAC-OWY-BNP-BAS_USD",
+        "bank_id": "BNP-BAS",
+        "name": "Rachunek Walutowy USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#00A874",
+                "bottom": "#008669"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+        }
+    },
+    {
+        "id": "RAC-OWY-BNP-BAS_EUR",
+        "bank_id": "BNP-BAS",
+        "name": "Rachunek Walutowy EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#00A874",
+                "bottom": "#008669"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/bnp_paribas.webp"
+        }
+    },
+    {
+        "id": "KON-OLD-CIT-OWY_PLN",
         "bank_id": "CIT-OWY",
         "name": "Konto CitiGold",
         "currency": "PLN",
@@ -85,7 +153,7 @@
         }
     },
     {
-        "id": "KON-NTO-CIT-OWY",
+        "id": "KON-NTO-CIT-OWY_PLN",
         "bank_id": "CIT-OWY",
         "name": "Konto CitiKonto",
         "currency": "PLN",
@@ -102,7 +170,41 @@
         }
     },
     {
-        "id": "KON-TNE-BAN-KAO",
+        "id": "KON-OWE-CIT-OWY_EUR",
+        "bank_id": "CIT-OWY",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#0072C6",
+                "bottom": "#00000C"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/city_handlowy.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-CIT-OWY_USD",
+        "bank_id": "CIT-OWY",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#0072C6",
+                "bottom": "#00000C"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/city_handlowy.webp"
+        }
+    },
+    {
+        "id": "KON-TNE-BAN-KAO_PLN",
         "bank_id": "BAN-KAO",
         "name": "Konto Przekorzystne",
         "currency": "PLN",
@@ -119,7 +221,7 @@
         }
     },
     {
-        "id": "KON-ING-BAN-KAO",
+        "id": "KON-ING-BAN-KAO_PLN",
         "bank_id": "BAN-KAO",
         "name": "Konto Private Banking",
         "currency": "PLN",
@@ -136,7 +238,41 @@
         }
     },
     {
-        "id": "KON-ECT-SAN-DER",
+        "id": "KON-OWE-BAN-KAO_EUR",
+        "bank_id": "BAN-KAO",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#B71614",
+                "bottom": "#79150D"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-BAN-KAO_USD",
+        "bank_id": "BAN-KAO",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#B71614",
+                "bottom": "#79150D"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/bank_pekao.webp"
+        }
+    },
+    {
+        "id": "KON-ECT-SAN-DER_PLN",
         "bank_id": "SAN-DER",
         "name": "Konto Select",
         "currency": "PLN",
@@ -153,7 +289,7 @@
         }
     },
     {
-        "id": "KON-DER-SAN-DER",
+        "id": "KON-DER-SAN-DER_PLN",
         "bank_id": "SAN-DER",
         "name": "Konto Santander",
         "currency": "PLN",
@@ -170,7 +306,41 @@
         }
     },
     {
-        "id": "KON-VIP-CRE-OLE",
+        "id": "KON-OWE-SAN-DER_EUR",
+        "bank_id": "SAN-DER",
+        "name": "Konto24 Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#E1261D",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/santander.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-SAN-DER_USD",
+        "bank_id": "SAN-DER",
+        "name": "Konto24 Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#E1261D",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/santander.webp"
+        }
+    },
+    {
+        "id": "KON-VIP-CRE-OLE_PLN",
         "bank_id": "CRE-OLE",
         "name": "Konto dla Ciebie VIP",
         "currency": "PLN",
@@ -187,7 +357,7 @@
         }
     },
     {
-        "id": "KON-BIE-CRE-OLE",
+        "id": "KON-BIE-CRE-OLE_PLN",
         "bank_id": "CRE-OLE",
         "name": "Konto dla Ciebie",
         "currency": "PLN",
@@ -204,7 +374,41 @@
         }
     },
     {
-        "id": "KON-RUM-PKO-SKI",
+        "id": "KON-OWE-CRE-OLE_EUR",
+        "bank_id": "CRE-OLE",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#008A91",
+                "bottom": "#006645"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-CRE-OLE_USD",
+        "bank_id": "CRE-OLE",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#008A91",
+                "bottom": "#006645"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/credit_agricole.webp"
+        }
+    },
+    {
+        "id": "KON-RUM-PKO-SKI_PLN",
         "bank_id": "PKO-SKI",
         "name": "Konto Aurum",
         "currency": "PLN",
@@ -221,7 +425,7 @@
         }
     },
     {
-        "id": "KON-ERO-PKO-SKI",
+        "id": "KON-ERO-PKO-SKI_PLN",
         "bank_id": "PKO-SKI",
         "name": "Konto za Zero",
         "currency": "PLN",
@@ -238,10 +442,78 @@
         }
     },
     {
-        "id": "MIL-360-MIL-ANK",
+        "id": "KON-OWE-PKO-SKI_USD",
+        "bank_id": "PKO-SKI",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#004895",
+                "bottom": "#000010"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-PKO-SKI_EUR",
+        "bank_id": "PKO-SKI",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#004895",
+                "bottom": "#000010"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": "#FF0000"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/pko_bank_polski.webp"
+        }
+    },
+    {
+        "id": "MIL-360-MIL-ANK_PLN",
         "bank_id": "MIL-ANK",
         "name": "Millennium 360°",
         "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#9A1856",
+                "bottom": "#1A2344"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/millennium_bank.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-MIL-ANK_EUR",
+        "bank_id": "MIL-ANK",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#9A1856",
+                "bottom": "#1A2344"
+            },
+            "stats_alternative_colors": {
+                "plus": null,
+                "minus": null
+            },
+            "bank_logo_src": "/assets/account_bank_logos/millennium_bank.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-MIL-ANK_USD",
+        "bank_id": "MIL-ANK",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
         "apperance": {
             "background_gradient": {
                 "top": "#9A1856",
@@ -272,7 +544,7 @@
         }
     },
     {
-        "id": "KON-TOW-BOS-ANK",
+        "id": "KON-TOW-BOS-ANK_PLN",
         "bank_id": "BOS-ANK",
         "name": "Konto bez Kosztów",
         "currency": "PLN",
@@ -289,7 +561,7 @@
         }
     },
     {
-        "id": "KON-DKU-BAN-OWY",
+        "id": "KON-DKU-BAN-OWY_PLN",
         "bank_id": "BAN-OWY",
         "name": "Konto w Porządku",
         "currency": "PLN",
@@ -306,7 +578,7 @@
         }
     },
     {
-        "id": "KON-IVE-ING-SKI",
+        "id": "KON-IVE-ING-SKI_PLN",
         "bank_id": "ING-SKI",
         "name": "Konto Active",
         "currency": "PLN",
@@ -323,7 +595,7 @@
         }
     },
     {
-        "id": "KON-ECT-ING-SKI",
+        "id": "KON-ECT-ING-SKI_PLN",
         "bank_id": "ING-SKI",
         "name": "Konto Direct",
         "currency": "PLN",
@@ -340,7 +612,41 @@
         }
     },
     {
-        "id": "PRI-ING-MBA-XNK",
+        "id": "KON-OWE-ING-SKI_EUR",
+        "bank_id": "ING-SKI",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#F68121",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-ING-SKI_USD",
+        "bank_id": "ING-SKI",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
+        "apperance": {
+            "background_gradient": {
+                "top": "#F68121",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/ing_bank_slaski.webp"
+        }
+    },
+    {
+        "id": "PRI-ING-MBA-XNK_PLN",
         "bank_id": "MBA-XNK",
         "name": "Private Banking",
         "currency": "PLN",
@@ -357,10 +663,44 @@
         }
     },
     {
-        "id": "EKO-NTO-MBA-XNK",
+        "id": "EKO-NTO-MBA-XNK_PLN",
         "bank_id": "MBA-XNK",
         "name": "eKonto",
         "currency": "PLN",
+        "apperance": {
+            "background_gradient": {
+                "top": "#AE0100",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/mbank.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-MBA-XNK_EUR",
+        "bank_id": "MBA-XNK",
+        "name": "Konto Walutowe EUR",
+        "currency": "EUR",
+        "apperance": {
+            "background_gradient": {
+                "top": "#AE0100",
+                "bottom": null
+            },
+            "stats_alternative_colors": {
+                "plus": "#00FF00",
+                "minus": "#FFFFFF"
+            },
+            "bank_logo_src": "/assets/account_bank_logos/mbank.webp"
+        }
+    },
+    {
+        "id": "KON-OWE-MBA-XNK_USD",
+        "bank_id": "MBA-XNK",
+        "name": "Konto Walutowe USD",
+        "currency": "USD",
         "apperance": {
             "background_gradient": {
                 "top": "#AE0100",
