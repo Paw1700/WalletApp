@@ -22,6 +22,9 @@ import { Component, Input } from "@angular/core";
             p.TITLE {
                 font-weight: 600;
                 font-size: 1.17rem;
+                text-wrap: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             img.BANK_LOGO {

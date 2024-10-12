@@ -24,7 +24,7 @@
         [pre_inputed_value]="new_transaction.amount" 
         (inputed_value)="handleFormInput('amount', $event)" 
         [title]="'Kwota'" 
-        [suffix]="'PLN'" />
+        [suffix]="ACCOUNT_BAR_DATA.account.currency" />
     <text_input_bar 
         [pre_inputed_text]="new_transaction.description" 
         (inputed_text)="handleFormInput('desc', $event)" 

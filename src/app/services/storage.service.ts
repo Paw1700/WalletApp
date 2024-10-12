@@ -6,7 +6,7 @@ import { HttpClient } from "@angular/common/http";
 export class DB_STORES {
     constructor(
         public profile = 'profile',
-        public accounts = 'accounts',
+        public user_accounts = 'user_accounts',
         public transactions = 'transactions'
     ) { }
 }
@@ -245,7 +245,7 @@ export class STORAGE_SERVICE {
     getAllUserAccounts(): Promise<UserAccount[]> {
         return new Promise(async (resolve, reject) => {
             try {
-                resolve(await this.DB.getAllObject<UserAccount>(this.DB_STORES.accounts))
+                resolve(await this.DB.getAllObject<UserAccount>(this.DB_STORES.user_accounts))
             } catch (err) {
                 reject(new Error("APP-DATA-USER_ACCOUNT-GET"))
             }
@@ -255,7 +255,7 @@ export class STORAGE_SERVICE {
     getUserAccount(user_account_id: string): Promise<UserAccount> {
         return new Promise(async (resolve, reject) => {
             try {
-                resolve(await this.DB.getObject<UserAccount>(this.DB_STORES.accounts, user_account_id))
+                resolve(await this.DB.getObject<UserAccount>(this.DB_STORES.user_accounts, user_account_id))
             } catch (err) {
                 reject(new Error("APP-DATA-USER_ACCOUNT-GET"))
             }
@@ -265,9 +265,9 @@ export class STORAGE_SERVICE {
     saveUserAccount(user_account: UserAccount): Promise<void> {
         return new Promise(async (resolve, reject) => {
             try {
-                user_account.id = await this.DB.GENERATE_INDEX(this.DB_STORES.accounts)
+                user_account.id = await this.DB.GENERATE_INDEX(this.DB_STORES.user_accounts)
                 if (this.idValidation(user_account.id)) {
-                    resolve(await this.DB.insertObject(this.DB_STORES.accounts, user_account))
+                    resolve(await this.DB.insertObject(this.DB_STORES.user_accounts, user_account))
                 } else {
                     throw new Error("APP-DATA-USER_ACCOUNT-SAVE")
                 }
@@ -281,7 +281,7 @@ export class STORAGE_SERVICE {
         return new Promise(async (resolve, reject) => {
             try {
                 if (this.idValidation(user_account.id)) {
-                    resolve(await this.DB.insertObject(this.DB_STORES.accounts, user_account))
+                    resolve(await this.DB.insertObject(this.DB_STORES.user_accounts, user_account))
                 } else {
                     throw new Error("APP-DATA-USER_ACCOUNT-SAVE")
                 }
@@ -294,8 +294,8 @@ export class STORAGE_SERVICE {
     deleteUserAccount(user_account_id: string): Promise<void> {
         return new Promise(async (resolve, reject) => {
             try {
-                await this.DB.RELEASE_INDEX(this.DB_STORES.accounts, user_account_id)
-                await this.DB.deleteObject(this.DB_STORES.accounts, user_account_id)
+                await this.DB.RELEASE_INDEX(this.DB_STORES.user_accounts, user_account_id)
+                await this.DB.deleteObject(this.DB_STORES.user_accounts, user_account_id)
                 resolve()
             } catch (err) {
                 reject(new Error("APP-DATA-USER_ACCOUNT-DELETE"))

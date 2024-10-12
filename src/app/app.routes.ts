@@ -86,8 +86,8 @@ export const routes: Routes = [
             page_name: 'transactions_list'
         },
         resolve: {
-            user_accounts_data: USER_ACCOUNTS_RESOLVER,
-            accounts_data: ACCOUNTS_RESOLVER,
+            user_accounts_list: USER_ACCOUNTS_RESOLVER,
+            accounts_list: ACCOUNTS_RESOLVER,
             categories_list: CATEGORY_RESOLVER,
             receivers_list: RECEIVERS_RESOLVER
         }

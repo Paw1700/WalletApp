@@ -93,6 +93,7 @@ export class HomePageService {
     async fetchTransactionBarList() {
         const CATEGORIES_LIST = await this.APP.STORAGE.getCategories()
         const RECEIVERS_LIST = await this.APP.STORAGE.getReceivers()
+        const ACCOUNTS_LIST = await this.APP.STORAGE.getAccounts()
         const usa_id = this.active_account_carousel_list_index$.value > -1 ? this.accounts_bar_carousel_list$.value[this.active_account_carousel_list_index$.value].user_account_id : null
         const transaction = await this.APP.TRANSACTION.getAll({
             filter_date: {from_to: { from: new Date(new Date().getTime() - DAYS_OFFSET * 30), to: null }, specific_date: null},
@@ -103,7 +104,11 @@ export class HomePageService {
         })
         transaction.sort(SORTING_TRANSACTIONS_BY_DATE)
         const new_transaction_bar_list: TransactionBarComponentData[] = []
-        transaction.forEach(tr => {
+        // used for loop instead of foreach, because of async nature within foreach loop, it breaks Angular list pop up animation
+        for (let i = 0; i <= transaction.length - 1; i++) {
+            const tr = transaction[i]
+            const user_account = await this.APP.USER_ACCOUNT.getOne(tr.user_account_id)
+            const account = ACCOUNTS_LIST.filter(acc => acc.id === user_account.account_id)[0]
             new_transaction_bar_list.push({
                 transaction_id: tr.id,
                 user_account_id: tr.user_account_id,
@@ -112,9 +117,9 @@ export class HomePageService {
                 description: tr.description,
                 receiver: RECEIVERS_LIST.filter(r => r.id === tr.receiver_id)[0],
                 transaction_price: tr.amount,
-                transaction_currency: 'PLN'
+                transaction_currency: account.currency
             })
-        })
+        }
         this.transaction_bar_list$.next(new_transaction_bar_list)
     }
 

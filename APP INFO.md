@@ -9,11 +9,12 @@
 - [ ] Complete Companies List
 - [ ] Add Other Currencies
     - [x] Add Accounts Data Of Foreign Currency
-    - [ ] Add Account Currency Switch in Adding Account
+    - [x] Chech if diffrent currency than PLN is recognized
     - [ ] Add Currency Converting 
     - [ ] Add Other Currency to sum of avaible funds
 
 # NEXT TO DO
+- [ ] Transaction List Show Source Account [NEED TO REDISGN TRANSACTION BAR]
 - [ ] Add Filtering Date in Transaction List
 - [ ] Add Remembering Choosed Account and Account Carousel order
 - [ ] Funds transferring between accounts
@@ -23,6 +24,8 @@
 - [ ] List of assets
 - [ ] Stats Page
 - [ ] Settings Page
+    - [ ] Setting up default currency
+    - [ ] App Data Managment
 - [ ] App Versioning
 - [ ] Backuping
 

@@ -41,9 +41,10 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
         receiver_id: null
     }
 
-    ngOnInit(): void {
-        this.fetchRouteData()
+    async ngOnInit() {
+        await this.fetchRouteData()
         this.subscribeToAccountsBarDataList()
+        this.PAGE_SERVICE.populateAccountsBarData()
         this.PAGE_SERVICE.fetchTransactions()
     }
 
@@ -56,10 +57,14 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
     }
 
     private fetchRouteData() {
-        this.ROUTE.data.subscribe( resolver_data => {
-            this.PAGE_SERVICE.categories_list$.next(resolver_data['categories_list'])
-            this.PAGE_SERVICE.receivers_list$.next(resolver_data['receivers_list'])
-            this.populateAccountsBarData(resolver_data['user_accounts_data'] as UserAccount[], resolver_data['accounts_data'] as Account[])
+        return new Promise<void>(resolve => {
+            this.ROUTE.data.subscribe( resolver_data => {
+                this.PAGE_SERVICE.categories_list$.next(resolver_data['categories_list'])
+                this.PAGE_SERVICE.receivers_list$.next(resolver_data['receivers_list'])
+                this.PAGE_SERVICE.accounts_list$.next(resolver_data['accounts_list'])
+                this.PAGE_SERVICE.user_accounts_list$.next(resolver_data['user_accounts_list'])
+                resolve()
+            })
         })
     }
 
@@ -67,16 +72,5 @@ export class TransactionsListPage extends NgUnsubscriber implements OnInit {
         this.PAGE_SERVICE.accounts_bar_component_data_list$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe( accounts_list => {
             this.ACCOUNTS_BAR_DATA_LIST = accounts_list
         })
-    }
-
-    private populateAccountsBarData(user_accounts_list: UserAccount[], accounts_data: Account[]) {
-        const accounts_bar_data_list: AccountChooseBarListItem[] = []
-        user_accounts_list.forEach( usa => {
-            accounts_bar_data_list.push({
-                user_account_id: usa.id,
-                account: accounts_data.filter(acc => acc.id === usa.account_id)[0]
-            })
-        })
-        this.PAGE_SERVICE.accounts_bar_component_data_list$.next(accounts_bar_data_list)
     }
 }

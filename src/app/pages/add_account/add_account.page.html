@@ -7,12 +7,12 @@
         [ACCOUNTS_LIST]="account_list_of_choosen_bank" />
     <number_input 
         [title]="'Stan początkowy konta'" 
-        [suffix]="'PLN'"
+        [suffix]="account_currency"
         (inputed_value)="handleFormInput('start_funds', $event)" />
     <number_input 
         (inputed_value)="handleFormInput('debet_limit', $event)" 
         [title]="'Limit debetu'" 
-        [suffix]="'PLN'" />
+        [suffix]="account_currency" />
     <number_input 
         (inputed_value)="handleFormInput('debet_interest', $event)" 
         [title]="'Oprocentowanie debetu'" 

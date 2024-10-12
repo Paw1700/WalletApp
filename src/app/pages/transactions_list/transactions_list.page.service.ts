@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { APP_SERVICE } from "../../app.service";
 import { BehaviorSubject } from "rxjs";
-import { Account, Category, Receiver, TransactionType } from "../../models";
+import { Account, Category, Receiver, TransactionType, UserAccount } from "../../models";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { TransactionsFilterOptions, TransactionsFilterOptionsList } from "../../services/storage.service";
 import { SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
@@ -12,6 +12,8 @@ export class TransactionsListPageService {
     private readonly APP = inject(APP_SERVICE)
 
     accounts_bar_component_data_list$ = new BehaviorSubject<AccountChooseBarListItem[]>([])
+    accounts_list$ = new BehaviorSubject<Account[]>([])
+    user_accounts_list$ = new BehaviorSubject<UserAccount[]>([])
     categories_list$ = new BehaviorSubject<Category[]>([])
     receivers_list$ = new BehaviorSubject<Receiver[]>([])
     transactions_list$ = new BehaviorSubject<TransactionBarComponentData[]>([])
@@ -28,10 +30,13 @@ export class TransactionsListPageService {
             const transactions_bar_list: TransactionBarComponentData[] = []
             const transactions = await this.APP.TRANSACTION.getAll(this.filter_options$.value)
             transactions.sort(SORTING_TRANSACTIONS_BY_DATE)
-            transactions.forEach(tr => {
+            for (let i = 0; i <= transactions.length - 1; i++) {
+                const tr = transactions[i]
+                const user_account = this.user_accounts_list$.value.filter(acc => acc.id === tr.user_account_id)[0]
+                const account = this.accounts_list$.value.filter(acc => acc.id === user_account.account_id)[0]
                 transactions_bar_list.push({
                     transaction_id: tr.id,
-                    transaction_currency: 'PLN',
+                    transaction_currency: account.currency,
                     date: tr.date,
                     transaction_price: tr.amount,
                     user_account_id: tr.user_account_id,
@@ -39,7 +44,7 @@ export class TransactionsListPageService {
                     receiver: this.receivers_list$.value.filter(rec => rec.id === tr.receiver_id)[0],
                     description: tr.description
                 })
-            })
+            }
             this.transactions_list$.next(transactions_bar_list)
         } catch (err) {
             this.APP.STATE.errorHappend(err as Error)
@@ -93,6 +98,17 @@ export class TransactionsListPageService {
         }
         this.filter_options$.next(filter_options)
         this.fetchTransactions()
+    }
+
+    populateAccountsBarData() {
+        const accounts_bar_data_list: AccountChooseBarListItem[] = []
+        this.user_accounts_list$.value.forEach( usa => {
+            accounts_bar_data_list.push({
+                user_account_id: usa.id,
+                account: this.accounts_list$.value.filter(acc => acc.id === usa.account_id)[0]
+            })
+        })
+        this.accounts_bar_component_data_list$.next(accounts_bar_data_list)
     }
 
     private setAccentColor(user_account_id: string | null) {

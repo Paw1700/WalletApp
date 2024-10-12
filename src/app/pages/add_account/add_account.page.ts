@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { BankChooseBar } from "../../components/forms/bank_choose_bar/bank_choose_bar.component";
-import { Account, Bank, UserAccount } from "../../models";
+import { Account, Bank, Currency, UserAccount } from "../../models";
 import { AccountChooseList } from "../../components/forms/account_choose_list/account_choose_list.component";
 import { NumberInput } from "../../components/forms/number_input_bar/number_input_bar.component";
 import BANKS_LIST_JSON from '../../../../public/assets/data/banks.json'
@@ -45,6 +45,7 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
             interest: 0
         }
     } 
+    account_currency: Currency = 'PLN'
 
     receiveAccounts(bank: Bank | null) {
         this.APP.APPERANCE.setAppAccentColor(null)
@@ -61,6 +62,7 @@ export class AddAccountPage extends NgUnsubscriber implements OnInit{
             case "account_id":
                 this.user_new_account.account_id = payload
                 if (payload !== null) {
+                    this.account_currency = this.ACCOUNTS_LIST.filter(acc => acc.id === payload)[0].currency
                     const acc_background_gradient = this.ACCOUNTS_LIST.filter(acc => acc.id === payload)[0].apperance.background_gradient
                     this.APP.APPERANCE.setAppAccentColor(acc_background_gradient.bottom !== null ? acc_background_gradient.bottom : acc_background_gradient.top)
                 }
