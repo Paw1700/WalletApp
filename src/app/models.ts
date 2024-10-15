@@ -35,6 +35,12 @@ export type AccountStatsAlternativeColors = {
 
 export type Currency = "PLN" | "USD" | "EUR"
 
+export interface CurrencyData {
+    id: Currency,
+    effective_date: Date,
+    rate: number
+}
+
 export interface UserAccount {
     id: string,
     account_id: string,
@@ -179,7 +185,9 @@ export type ErrorID =
     'APP-DATA-USER_ACCOUNT-SAVE-INTEREST_LIMIT' |
     'APP-DATA-USER_ACCOUNT-DELETE' |
     'APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS' |
-    'APP-RESOLVER-LACK_OF_URL_DATA'
+    'APP-RESOLVER-LACK_OF_URL_DATA' |
+    'APP-DATA-CURRENCY-SAVE' |
+    'APP-DATA-CURRENCY-FETCH'
 
 export interface ErrorModel {
     id: string,

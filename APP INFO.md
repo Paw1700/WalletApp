@@ -1,4 +1,10 @@
-# BUG-LIST 
+# BUG-LIST
+
+
+# IMPORTANT - CHANGE IN DB DRIVER IN GET FUNCTIONS TO ADD UNDEFINED TYPE IF DATA NOT FIND 
+
+
+
 - [ ] Others Button Dont work in choosing receivers
     - [ ] Change Resolver to create receiver from name if dont have id
 - [x] Transaction Description Component don't have animation
@@ -10,8 +16,9 @@
 - [ ] Add Other Currencies
     - [x] Add Accounts Data Of Foreign Currency
     - [x] Chech if diffrent currency than PLN is recognized
-    - [ ] Add Currency Converting 
+    - [x] Add Currency Services 
     - [ ] Add Other Currency to sum of avaible funds
+    - [ ] Add Tarnsfering Funds Between Accounts (need to create new model for exchange transactions)
 
 # NEXT TO DO
 - [ ] Transaction List Show Source Account [NEED TO REDISGN TRANSACTION BAR]

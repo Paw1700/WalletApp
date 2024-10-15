@@ -111,9 +111,19 @@
         "desc": "Brak środków na koncie (lub brak limitu debetu)"
     },
     {
+        "id": "APP-DATA-CURRENCY-SAVE",
+        "type": "MAIN",
+        "title": "Błąd zapisu kursu waluty"
+    },
+    {
         "id": "APP-RESOLVER-LACK_OF_URL_DATA",
         "type": "FATAL",
         "title": "Błąd pobierania danych podczas nawigacji",
         "desc": "Brak danych potrzebnych do uzyskania danych w trakcie nawigacji"
+    },
+    {
+        "id": "APP-DATA-CURRENCY-FETCH",
+        "type": "MAIN",
+        "title": "Błąd pobierania kursu waluty"
     }
 ]

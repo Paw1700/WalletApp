@@ -1,13 +1,14 @@
 import { inject, Injectable } from "@angular/core";
 import { DatabaseManager } from "../util/db.driver";
-import { Account, Bank, Category, Profile, Receiver, Transaction, UserAccount } from "../models";
+import { Account, Bank, Category, Currency, CurrencyData, Profile, Receiver, Transaction, UserAccount } from "../models";
 import { HttpClient } from "@angular/common/http";
 
 export class DB_STORES {
     constructor(
         public profile = 'profile',
         public user_accounts = 'user_accounts',
-        public transactions = 'transactions'
+        public transactions = 'transactions',
+        public currencies_data = 'currencies_data',
     ) { }
 }
 
@@ -352,6 +353,32 @@ export class STORAGE_SERVICE {
             this.HTTP.get<Bank[]>('/assets/data/banks.json').subscribe( list => {
                 resolve(list.filter(bank => bank.id === bank_id)[0])
             })
+        })
+    }
+
+    getCurrencyData(currency_id: Currency): Promise<CurrencyData> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve(await this.DB.getObject<CurrencyData>(this.DB_STORES.currencies_data, currency_id))
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
+
+    saveCurrencyData(currency_data: CurrencyData): Promise<void> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                // IDs of curriency data must be from Currency Type
+                if (this.idValidation(currency_data.id)) {
+                    resolve(await this.DB.insertObject(this.DB_STORES.currencies_data, currency_data))
+                } else {
+                    throw new Error("APP-DATA-CURRENCY-SAVE")
+                }
+            }
+            catch (err) {
+                reject(err)
+            }
         })
     }
 

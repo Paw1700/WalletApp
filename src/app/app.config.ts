@@ -26,6 +26,7 @@ import { TRANSACTION_SERVICE } from './services/transaction.service';
 import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_component_data.resolver';
 import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/resolvers/add_transaction_data_resolver.resolver';
 import { ACCOUNT_PAGE_DATA_RESOLVER } from './pages/account/account.page.resolver';
+import { CURRENCY_SERVICE } from './services/currency.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -53,6 +54,7 @@ export const appConfig: ApplicationConfig = {
     VALIDATOR_SERVICE,
     PROFILE_SERVICE,
     USER_ACCOUNT_SERVICE,
+    CURRENCY_SERVICE,
 
     //RESOLVERS
     USER_ACCOUNTS_RESOLVER,
