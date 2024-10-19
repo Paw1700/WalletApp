@@ -356,7 +356,7 @@ export class STORAGE_SERVICE {
         })
     }
 
-    getCurrencyData(currency_id: Currency): Promise<CurrencyData> {
+    getCurrencyData(currency_id: Currency): Promise<CurrencyData | undefined> {
         return new Promise(async (resolve, reject) => {
             try {
                 resolve(await this.DB.getObject<CurrencyData>(this.DB_STORES.currencies_data, currency_id))

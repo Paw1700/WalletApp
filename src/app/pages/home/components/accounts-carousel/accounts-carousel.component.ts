@@ -55,8 +55,12 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
         this.PAGE_SERVICE.accounts_bar_carousel_list$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(accounts_list => {
             this.accounts_bar_list = accounts_list
             this.sum_of_avaible_funds = 0
-            accounts_list.forEach(acc => {
-                this.sum_of_avaible_funds += acc.account_funds_data.avaible_funds
+            accounts_list.forEach(async acc => {
+                if (acc.account.currency === "PLN") {
+                    this.sum_of_avaible_funds += acc.account_funds_data.avaible_funds
+                } else {
+                    this.sum_of_avaible_funds += await this.PAGE_SERVICE.exchangeMoney(acc.account.currency, "PLN", acc.account_funds_data.avaible_funds)
+                } 
             })
         })
     }

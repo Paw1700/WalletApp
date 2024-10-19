@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { APP_SERVICE } from "../../app.service";
 import { BehaviorSubject } from "rxjs";
-import { Account, Profile } from "../../models";
+import { Account, Currency, Profile } from "../../models";
 import { TransactionBarComponentData } from "../../components/single_components/transaction_bar/transaction_bar.component";
 import { DAYS_OFFSET, SORTING_TRANSACTIONS_BY_DATE } from "../../constants";
 import { ConfirmBoxData } from "../../components/UI/confirm_box/confirm_box.component";
@@ -51,6 +51,17 @@ export class HomePageService {
     goToAccountPage(user_account_id: string) {
         this.APP.STATE.last_app_location$.next('home')
         this.APP.navigate('account', {user_account_id: user_account_id})
+    }
+
+    exchangeMoney(from: Currency, to: Currency, amount: number) {
+        return new Promise<number>(async (resolve, reject) => {
+            try {
+                const exchange_rate = await this.APP.CURRENCY.getExchangeRate(from, to)
+                resolve(Number((amount * exchange_rate).toFixed(2)))
+            } catch (err) {
+                reject(err)
+            }
+        })
     }
 
     async deleteTransaction() {

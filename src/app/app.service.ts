@@ -11,6 +11,7 @@ import { PROFILE_SERVICE } from "./services/profile.service";
 import { STORAGE_SERVICE } from "./services/storage.service";
 import { USER_ACCOUNT_SERVICE } from "./services/user_account.data.service";
 import { TRANSACTION_SERVICE } from "./services/transaction.service";
+import { CURRENCY_SERVICE } from "./services/currency.service";
 
 @Injectable()
 export class APP_SERVICE {
@@ -25,6 +26,7 @@ export class APP_SERVICE {
         public USER_ACCOUNT: USER_ACCOUNT_SERVICE,
         public TRANSACTION: TRANSACTION_SERVICE,
         public STORAGE: STORAGE_SERVICE,
+        public CURRENCY: CURRENCY_SERVICE,
         private ROUTER: Router
     ) { }
 
@@ -35,6 +37,7 @@ export class APP_SERVICE {
 
             await this.STORAGE.init()
             
+            await this.CURRENCY.updateCurrency()
             let redirection_location: AppLocations = 'home'
             const app_is_configured = await this.checkIfAppIsConfigured()
             const app_is_up_to_date = this.checkIfAppIsUpToDate()

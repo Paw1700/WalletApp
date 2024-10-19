@@ -12,10 +12,10 @@ export class CURRENCY_SERVICE {
         return new Promise(async (resolve, reject) => {
             try {
                 await this.updateCurrency()
-                let from_currency_rate = (await this.STORAGE.getCurrencyData(from)).rate 
-                from_currency_rate = from_currency_rate !== undefined ? from_currency_rate : 1
-                let to_currency_rate = (await this.STORAGE.getCurrencyData(to)).rate
-                to_currency_rate = to_currency_rate !== undefined ? to_currency_rate : 1
+                const from_currency = await this.STORAGE.getCurrencyData(from)
+                const from_currency_rate = from_currency !== undefined ? from_currency.rate : 1
+                const to_currency = await this.STORAGE.getCurrencyData(to) 
+                let to_currency_rate = to_currency !== undefined ? to_currency.rate : 1
                 resolve(from_currency_rate / to_currency_rate)
             } catch (err) {
                 reject(err)
@@ -81,10 +81,10 @@ export class CURRENCY_SERVICE {
 
     // CHECK IF CURRENCY DATA FROM NBP COULD BE NEWER (NEXT DAY AND AFTER 12:00)
     private chechIfUpdateCurrencyPossible(currency_data_effective_date: Date): boolean {
-        if ((currency_data_effective_date.getTime() / 86_400_000) === (new Date().getTime()/ 86_400_000) && new Date().getHours() < 12) {
-            return false
+        if ((currency_data_effective_date.getTime() / 86_400_000) >= (new Date().getTime()/ 86_400_000) && new Date().getHours() >= 12) {
+            return true
         }
-        return true
+        return false
     }
 }
 
