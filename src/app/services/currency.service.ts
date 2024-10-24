@@ -39,6 +39,7 @@ export class CURRENCY_SERVICE {
                     if (currency_data_from_DB !== undefined && !this.chechIfUpdateCurrencyPossible(currency_data_from_DB.effective_date)) {
                         break
                     }
+                    console.log('Updating currency: ' + currency_code);
                     const currency_data_from_NBP = await this.fetchNBPData(currency_code as Currency)
                     await this.STORAGE.saveCurrencyData({
                         id: currency_code as Currency,
@@ -79,9 +80,22 @@ export class CURRENCY_SERVICE {
         })
     }
 
-    // CHECK IF CURRENCY DATA FROM NBP COULD BE NEWER (NEXT DAY AND AFTER 12:00)
+    // CHECK IF CURRENCY DATA FROM NBP COULD BE NEWER (NEXT DAY AND AFTER 12:00 NOT TODAY IS WEEKEND)
     private chechIfUpdateCurrencyPossible(currency_data_effective_date: Date): boolean {
-        if ((currency_data_effective_date.getTime() / 86_400_000) >= (new Date().getTime()/ 86_400_000) && new Date().getHours() >= 12) {
+        const currency_data_days = Math.floor(currency_data_effective_date.getTime() / 86_400_000)
+        const currency_data_date_in_week = currency_data_effective_date.getDay()
+        const currency_data_date_in_week_is_not_friday = currency_data_date_in_week !== 5
+        const today_days = Math.floor(new Date().getTime() / 86_400_000)
+        const is_weekend = new Date().getDay() === 6 || new Date().getDay() === 0
+        const is_afternoon = new Date().getHours() >= 12
+        if (
+            (
+                currency_data_days < today_days && !is_weekend && is_afternoon
+            ) ||
+            (
+                today_days - currency_data_days >= 2 && !(!currency_data_date_in_week_is_not_friday && is_weekend)
+            )
+        ) {
             return true
         }
         return false
