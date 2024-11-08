@@ -1,13 +1,12 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { AccountBarComponent, AccountBarFundsData } from "../../../../components/single_components/account_bar/account_bar.component";
 import { NumberSeparator } from "../../../../pipes/number_separator.pipe";
-import { NgStyle } from "@angular/common";
 import { HomePageService } from "../../home.page.service";
 import { NgUnsubscriber } from "../../../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
 import { Account } from "../../../../models";
 import { AccountStatsData } from "../../../../components/single_components/account_bar/components/account_bar_stats.component";
-import { ArrowButton } from "../../../../components/UI/arrow_button.component";
+import { CarouselSwitcher } from "../../../../components/single_components/carousel_switcher/carousel_switcher.component";
 
 @Component({
     selector: 'accounts_carousel',
@@ -15,8 +14,7 @@ import { ArrowButton } from "../../../../components/UI/arrow_button.component";
     imports: [
         AccountBarComponent,
         NumberSeparator,
-        ArrowButton,
-        NgStyle
+        CarouselSwitcher
     ],
     templateUrl: './accounts-carousel.component.html',
     styleUrl: './accounts-carousel.component.scss'
@@ -26,25 +24,16 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
     accounts_bar_list: AccountsCarouselListItem[] = []
 
     sum_of_avaible_funds = 0
-    active_list_indicator = -1
     accounts_carrousel_x_offset = 0
+    carousel_switcher_config: boolean[] = []
 
     ngOnInit(): void {
         this.subscribeToAccountsBarCarouselList()
         this.subscribeToActiveAccountCarouselListIndex()
     }
 
-    changeAccount(direction: 'left' | 'right') {
-        switch (direction) {
-            case "left":
-                if (this.active_list_indicator - 1 >= -1) 
-                    this.PAGE_SERVICE.changeActiveUserAccount(this.active_list_indicator - 1)
-                break
-            case "right":
-                if (this.active_list_indicator + 1 < this.accounts_bar_list.length)                 
-                    this.PAGE_SERVICE.changeActiveUserAccount(this.active_list_indicator + 1)
-                break
-        }
+    changeAccount(account_index: number) {
+        this.PAGE_SERVICE.changeActiveUserAccount(account_index - 1)
     }
 
     goToAccountPage(user_account_id: string) {
@@ -54,6 +43,8 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
     private subscribeToAccountsBarCarouselList() {
         this.PAGE_SERVICE.accounts_bar_carousel_list$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(accounts_list => {
             this.accounts_bar_list = accounts_list
+            this.carousel_switcher_config = Array(accounts_list.length + 1).fill(false)
+            this.carousel_switcher_config[0] = true
             this.sum_of_avaible_funds = 0
             accounts_list.forEach(async acc => {
                 if (acc.account.currency === "PLN") {
@@ -67,7 +58,6 @@ export class AccountsCarousel extends NgUnsubscriber implements OnInit {
 
     private subscribeToActiveAccountCarouselListIndex() {
         this.PAGE_SERVICE.active_account_carousel_list_index$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(index => {
-            this.active_list_indicator = index
             this.changeXAccountCarouselOffset(index + 1)
         })
     }

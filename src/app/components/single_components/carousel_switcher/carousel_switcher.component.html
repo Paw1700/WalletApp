@@ -1,0 +1,9 @@
+<div class="SWITCHER">
+    <arrow_button [class.DISABLED]="actual_active_index === 0" (click)="goDirection('left')" [arrow_direction]="'left'" />
+    <div class="LIST_INDICATOR">
+        @for (item of carousel_list; track $index) {
+            <div [class.ACTIVE]="$index === actual_active_index" [class.DOT]="!item" [class.MAIN_DOT]="item"></div>
+        }
+    </div>
+    <arrow_button [class.DISABLED]="actual_active_index === carousel_list.length - 1" (click)="goDirection('right')" [arrow_direction]="'right'" />
+</div>

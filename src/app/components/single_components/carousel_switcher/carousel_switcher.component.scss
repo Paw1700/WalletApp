@@ -1,0 +1,42 @@
+div.SWITCHER {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    div.LIST_INDICATOR {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25vw;
+
+        div.MAIN_DOT,
+        div.DOT {
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            opacity: .2;
+
+            &.ACTIVE {
+                opacity: 1;
+            }
+        }
+
+        div.MAIN_DOT {
+            border: .75vw solid var(--app-accent);
+            box-sizing: border-box;
+        }
+
+        div.DOT {
+            background-color: var(--app-accent);
+        }
+    }
+}
+
+.DISABLED {
+    opacity: .25;
+}
