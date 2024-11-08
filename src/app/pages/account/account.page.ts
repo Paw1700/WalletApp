@@ -60,6 +60,10 @@ export class AccountPage extends NgUnsubscriber implements OnInit {
         this.reactToLeftNavButton()
     }
 
+    goToTransferPage() {
+        this.APP.navigate('transfer_funds')
+    }
+
     private getResolverData() {
         this.ROUTE.data.subscribe(route_data => {
             this.account = route_data['account_page_data'].account

@@ -44,13 +44,13 @@ export const SlideToLeftPageAnimation: AnimationMetadata[] = [
     group([
         query(":enter", [
             style({ position: 'absolute', left: '100vw', zIndex: 2 }),
-            animate('350ms linear', style({
+            animate('350ms ease-in-out', style({
                 left: 0
             }))
         ], { optional: true }),
         query(":leave", [
             style({ zIndex: 1, position: 'absolute', left: 0, opacity: 1 }),
-            animate('350ms linear', style({
+            animate('350ms ease-in-out', style({
                 left: '-100vw',
                 opacity: 0
             }))
@@ -62,13 +62,13 @@ export const SlideToRightPageAnimation: AnimationMetadata[] = [
     group([
         query(":enter", [
             style({ zIndex: 1, position: 'absolute', left: '-100vw' }),
-            animate('350ms linear', style({
+            animate('350ms ease-in-out', style({
                 left: 0
             }))
         ], { optional: true }),
         query(":leave", [
             style({ zIndex: 2, position: 'absolute', left: 0, opacity: 1 }),
-            animate('350ms linear', style({
+            animate('350ms ease-in-out', style({
                 left: '100vw',
                 opacity: 0
             }))

@@ -15,6 +15,7 @@ import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_comp
 import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/resolvers/add_transaction_data_resolver.resolver';
 import { AccountPage } from './pages/account/account.page';
 import { ACCOUNT_PAGE_DATA_RESOLVER } from './pages/account/account.page.resolver';
+import { TransferFundsPage } from './pages/transfer_funds/transfer_funds.component';
 
 export const routes: Routes = [
     {
@@ -101,6 +102,14 @@ export const routes: Routes = [
         },
         resolve: {
             account_page_data: ACCOUNT_PAGE_DATA_RESOLVER
+        }
+    },
+    {
+        path: 'transfer_funds',
+        pathMatch: 'full',
+        component: TransferFundsPage,
+        data: {
+            page_name: 'transfer_funds'
         }
     }
 ];

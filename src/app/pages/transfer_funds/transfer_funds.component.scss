@@ -1,0 +1,28 @@
+div.PAGE {
+    justify-content: flex-start;
+    padding-top: 1.7vh;
+    gap: 1.75vh;
+
+    div.EXCHANGE_RATE {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 91.36vw;
+
+        number_input {
+            width: 100%;
+        }
+
+        p.EXCHANGE_RATE_DISC {
+            width: 100%;
+            text-align: left;
+            opacity: .25;
+        }
+    }
+
+    number_input {
+        width: 91.34vw;
+    }
+
+}

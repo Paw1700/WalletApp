@@ -64,4 +64,14 @@ div.PAGE {
             }
         }
     }
+
+    button.GO_TO_TRANSFER_PAGE {
+        width: 91.34%;
+        height: 3rem;
+        border-radius: .88rem;
+        background-color: var(--app-accent);
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+    }
 }

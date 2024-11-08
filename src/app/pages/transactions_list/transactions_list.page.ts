@@ -8,7 +8,6 @@ import { NgUnsubscriber } from "../../util/ngUnsubscriber";
 import { takeUntil } from "rxjs";
 import { FilterOptions } from "./components/filter_options/filter_options.component";
 import { TransactionsList } from "./components/transactions_list/transactions_list.component";
-import { Account, UserAccount } from "../../models";
 import { AccountChooseBarListItem } from "../../components/interfaces/account_choose_bar.component";
 
 @Component({

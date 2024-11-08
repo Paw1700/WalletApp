@@ -146,7 +146,8 @@ export type AppLocations =
     'account_page' | 
     'credit_page' | 
     'transactions_list' | 
-    'account'
+    'account' |
+    'transfer_funds'
 
 export type AppLocationListItem = {
     name: string,

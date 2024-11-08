@@ -126,6 +126,12 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
+            case 'transfer_funds':
+                await this.ROUTER.navigateByUrl(`transfer_funds`) 
+                this.APPERANCE.setAppAccentColor(null)
+                this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
+                this.APPERANCE.nav_bar_right_button_option$.next('save')
+                break
             default:
                 await this.ROUTER.navigateByUrl('/home')
                 this.APPERANCE.setAppAccentColor(null)
