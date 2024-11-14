@@ -125,5 +125,16 @@
         "id": "APP-DATA-CURRENCY-FETCH",
         "type": "MAIN",
         "title": "Błąd pobierania kursu waluty"
+    },
+    {
+        "id": "APP-DATA-FUNDS_TRANSACTION-SAVE-UA_ID",
+        "type": "MAIN",
+        "title": "Bład zapisywania danych transakcji"
+    },
+    {
+        "id": "APP-DATA-FUNDS_TRANSACTION-SAVE-EXCHANGE_RATE",
+        "type": "MAIN",
+        "title": "Bład zapisywania danych transakcji",
+        "desc": "Brak kursu waluty w danych transakcji"
     }
 ]

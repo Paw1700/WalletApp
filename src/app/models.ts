@@ -76,6 +76,17 @@ export interface Transaction {
     description: string
 }
 
+export interface FundsTransaction {
+    id: string,
+    date: Date,
+    user_account_id: {
+        from: string,
+        to: string
+    },
+    exchange_rate_from_to: number,
+    amount_from_to: number
+}
+
 export type TransactionType = 'income' | 'expense'
 
 export interface ScheduleTransaction {
@@ -188,7 +199,9 @@ export type ErrorID =
     'APP-DATA-TRANSACTION-ADD-NOT_ENOUGH_FUNDS' |
     'APP-RESOLVER-LACK_OF_URL_DATA' |
     'APP-DATA-CURRENCY-SAVE' |
-    'APP-DATA-CURRENCY-FETCH'
+    'APP-DATA-CURRENCY-FETCH' |
+    'APP-DATA-FUNDS_TRANSACTION-SAVE-UA_ID' | 
+    'APP-DATA-FUNDS_TRANSACTION-SAVE-EXCHANGE_RATE'
 
 export interface ErrorModel {
     id: string,

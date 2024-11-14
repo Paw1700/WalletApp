@@ -13,7 +13,7 @@
     - [x] Add Currency Services 
     - [x] Add Other Currency to sum of avaible funds
     - [ ] Add Tarnsfering Funds Between Accounts (need to create new model for exchange transactions)
-        - [NOW] Create Exchange Funds Page
+        - [x] Create Exchange Funds Page
             - [x] Create component for accounts carousel changing buttons
         - [ ] Create Excahnge Funds Page Logic
 

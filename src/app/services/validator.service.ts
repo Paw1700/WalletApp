@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Profile, Transaction, UserAccount, ValidationResult } from "../models";
+import { FundsTransaction, Profile, Transaction, UserAccount, ValidationResult } from "../models";
 
 @Injectable()
 export class VALIDATOR_SERVICE {
@@ -41,6 +41,22 @@ export class VALIDATOR_SERVICE {
         }
         if (!this.hasStringValue(transaction.user_account_id)) {
             return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-UA_ID'}
+        }
+        return {pass: true}
+    }
+
+    validateFundsTransaction(funds_transaction: FundsTransaction): ValidationResult {
+        if (!this.hasNumberValue(funds_transaction.amount_from_to, false)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-AMOUNT'}
+        }
+        if (!this.hasDateValue(funds_transaction.date)) {
+            return {pass: false, errCode: 'APP-DATA-TRANSACTION-SAVE-DATE'}
+        }
+        if (!this.hasNumberValue(funds_transaction.exchange_rate_from_to, false)) {
+            return {pass: false, errCode: 'APP-DATA-FUNDS_TRANSACTION-SAVE-EXCHANGE_RATE'}
+        }
+        if (!this.hasStringValue(funds_transaction.user_account_id.from) || !this.hasStringValue(funds_transaction.user_account_id.to)) {
+            return {pass: false, errCode: 'APP-DATA-FUNDS_TRANSACTION-SAVE-UA_ID'}
         }
         return {pass: true}
     }

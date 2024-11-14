@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { DatabaseManager } from "../util/db.driver";
-import { Account, Bank, Category, Currency, CurrencyData, Profile, Receiver, Transaction, UserAccount } from "../models";
+import { Account, Bank, Category, Currency, CurrencyData, FundsTransaction, Profile, Receiver, Transaction, UserAccount } from "../models";
 import { HttpClient } from "@angular/common/http";
 
 export class DB_STORES {
@@ -8,6 +8,7 @@ export class DB_STORES {
         public profile = 'profile',
         public user_accounts = 'user_accounts',
         public transactions = 'transactions',
+        public funds_transactions = 'funds_transactions',
         public currencies_data = 'currencies_data',
     ) { }
 }
@@ -142,6 +143,16 @@ export class STORAGE_SERVICE {
         })
     }
 
+    getOneFundsTransaction(funds_transaction_id: string): Promise<FundsTransaction> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                resolve(await this.DB.getObject<FundsTransaction>(this.DB_STORES.funds_transactions, funds_transaction_id))
+            } catch (err) {
+                reject(new Error("APP-DATA-TRANSACTION-GET-ONE"))
+            }
+        })
+    }
+
     getTransactions(filter_options: TransactionsFilterOptions | null): Promise<Transaction[]> {
         return new Promise(async (resolve, reject) => {
             try {
@@ -232,6 +243,20 @@ export class STORAGE_SERVICE {
         })
     }
 
+    updateFundsTransaction(funds_transaction: FundsTransaction): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                if (this.idValidation(funds_transaction.id)) {
+                    resolve(await this.DB.insertObject<FundsTransaction>(this.DB_STORES.funds_transactions, funds_transaction))
+                } else {
+                    throw new Error("APP-DATA-TRANSACTION-SAVE")
+                }
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
+
     deleteTransaction(transaction_id: string): Promise<void> {
         return new Promise<void>(async (resolve, reject) => {
             try {
@@ -239,6 +264,32 @@ export class STORAGE_SERVICE {
                 resolve(await this.DB.deleteObject(this.DB_STORES.transactions, transaction_id))
             } catch (err) {
                 reject(new Error("APP-DATA-TRANSACTION-DELETE"))
+            }
+        })
+    }
+
+    deleteFundsTransaction(funds_transaction_id: string): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                await this.DB.RELEASE_INDEX(this.DB_STORES.funds_transactions, funds_transaction_id)
+                resolve(await this.DB.deleteObject(this.DB_STORES.funds_transactions, funds_transaction_id))
+            } catch (err) {
+                reject(new Error("APP-DATA-TRANSACTION-DELETE"))
+            }
+        })
+    }
+
+    saveFundsTransaction(funds_transaction: FundsTransaction): Promise<void> {
+        return new Promise<void>(async (resolve, reject) => {
+            try {
+                funds_transaction.id = await this.DB.GENERATE_INDEX(this.DB_STORES.funds_transactions)
+                if (this.idValidation(funds_transaction.id)) {
+                    resolve(await this.DB.insertObject<FundsTransaction>(this.DB_STORES.funds_transactions, funds_transaction))
+                } else {
+                    throw new Error("APP-DATA-TRANSACTION-SAVE")
+                }
+            } catch (err) {
+                reject(err)
             }
         })
     }
