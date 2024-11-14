@@ -16,6 +16,7 @@ import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/reso
 import { AccountPage } from './pages/account/account.page';
 import { ACCOUNT_PAGE_DATA_RESOLVER } from './pages/account/account.page.resolver';
 import { TransferFundsPage } from './pages/transfer_funds/transfer_funds.component';
+import { TRANSFER_FUNDS_PAGE_RESOLVER } from './pages/transfer_funds/transfer_funds.resolver';
 
 export const routes: Routes = [
     {
@@ -110,6 +111,9 @@ export const routes: Routes = [
         component: TransferFundsPage,
         data: {
             page_name: 'transfer_funds'
+        },
+        resolve: {
+            page_data: TRANSFER_FUNDS_PAGE_RESOLVER
         }
     }
 ];

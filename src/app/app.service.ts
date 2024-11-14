@@ -49,8 +49,8 @@ export class APP_SERVICE {
             }
 
             setTimeout(() => {
-                this.navigate(redirection_location)
-                // this.navigate('account', {user_account_id: "accounts-0"})
+                // this.navigate(redirection_location)
+                this.navigate('transfer_funds')
                 resolve()
             }, 1500)
         })

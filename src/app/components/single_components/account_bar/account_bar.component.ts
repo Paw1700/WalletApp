@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
 import { AccountBarTitleBar } from "./components/account_bar_title_bar.component";
-import { Account, Currency } from "../../../models";
+import { Account } from "../../../models";
 import { AccountBarFunds } from "./components/account_bar_funds.component";
 import { AccountBarDebtLimit } from "./components/account_bar_debt_limit.component";
 import { AccountBarStats, AccountStatsData } from "./components/account_bar_stats.component";

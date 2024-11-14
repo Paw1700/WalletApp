@@ -17,3 +17,11 @@ export const getMonthName = (month_number: number) => {
     const months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"]
     return months[month_number]
 }
+
+export function copyArray<T>(array: T[]): T[] {
+    return JSON.parse(JSON.stringify(array))
+}
+
+export function removeElementFromArray<T>(array: T[], index: number): T[] {
+    return array.slice(0, index).concat(array.slice(index + 1))
+}

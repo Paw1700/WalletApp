@@ -27,6 +27,7 @@ import { ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER } from './resolvers/account_bar_comp
 import { ADD_TRANSACTION_PAGE_DATA_RESOLVER } from './pages/add_transaction/resolvers/add_transaction_data_resolver.resolver';
 import { ACCOUNT_PAGE_DATA_RESOLVER } from './pages/account/account.page.resolver';
 import { CURRENCY_SERVICE } from './services/currency.service';
+import { TRANSFER_FUNDS_PAGE_RESOLVER } from './pages/transfer_funds/transfer_funds.resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -66,6 +67,7 @@ export const appConfig: ApplicationConfig = {
     TRANSACTIONS_RESOLVER,
     ACCOUNT_BAR_CAROUSEL_LIST_RESOLVER,
     ADD_TRANSACTION_PAGE_DATA_RESOLVER,
-    ACCOUNT_PAGE_DATA_RESOLVER
+    ACCOUNT_PAGE_DATA_RESOLVER,
+    TRANSFER_FUNDS_PAGE_RESOLVER
   ]
 };

@@ -1,5 +1,20 @@
 <div class="PAGE">
-    <carousel_switcher [carousel_list]="[true, false, false]"/>
+    <div class="ACCOUNT_CAROUSEL">
+        <div [style.right.vw]="from_carousel_x_offset" class="CAROUSEL">
+            @for (account of all_accounts; track account.account.id) {
+                <account-bar [bar_type]="'FUNDS_ONLY'" [account]="account.account" [account_funds_data]="account.funds_data" />
+            }
+        </div>
+    </div>
+    <carousel_switcher (change_direction)="changeAccount('from', $event)" [block_go_left]="from_block_sides.left" [block_go_right]="from_block_sides.right" [actual_active_index]="from_active_account_index" [carousel_list]="all_accounts_list_indicator"/>
+    <div class="ACCOUNT_CAROUSEL">
+        <div [style.right.vw]="to_carousel_x_offset" class="CAROUSEL">
+            @for (account of all_accounts; track account.account.id) {
+                <account-bar [bar_type]="'FUNDS_ONLY'" [account]="account.account" [account_funds_data]="account.funds_data" />
+            }
+        </div>
+    </div>
+    <carousel_switcher (change_direction)="changeAccount('to', $event)" [block_go_left]="to_block_sides.left" [block_go_right]="to_block_sides.right" [actual_active_index]="to_active_account_index" [carousel_list]="all_accounts_list_indicator"/>
     <div class="EXCHANGE_RATE">
         <number_input [title]="'Kurs'" />
         <p class="EXCHANGE_RATE_DISC">Kurs średni NBP z dnia</p>
