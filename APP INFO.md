@@ -1,8 +1,9 @@
 # BUG-LIST
 - [ ] Others Button Dont work in choosing receivers
     - [ ] Change Resolver to create receiver from name if dont have id
-- [x] Transaction Description Component don't have animation
-- [x] When editing transaction avaible amount is change from start
+- [ ] Transfer Page 
+    - [ ] To Account Block Input Possibility
+    - [ ] In front setting from account 
 
 # IN PROGRESS
 - [ ] Complete Categories List

@@ -5,6 +5,7 @@ import { AccountBarComponent } from "../../components/single_components/account_
 import { APP_SERVICE } from "../../app.service";
 import { ActivatedRoute } from "@angular/router";
 import { TransferFundsPageResolvedData, TransferFundsPageUserAccounts } from "./transfer_funds.resolver";
+import { Currency } from "../../models";
 
 @Component({
     selector: 'transfer_funds_page',
@@ -39,15 +40,37 @@ export class TransferFundsPage implements OnInit {
     }
 
     exchange_rate: number | null = null
-    exchange_amount: number | null = null
+    exchange_from_amount: number | null = null
+    exchange_to_amount: number | null = null
     exchange_effective_date: string | null = null
+    exchange_from_currency: Currency | null = null
+    exchange_to_currency: Currency | null = null
 
     async ngOnInit(): Promise<void> {
         await this.readRouteData()
         this.setListIndicator()
     }
 
-    changeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
+    async reactToUserChangeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
+        this.changeAccount(account, direction)
+        this.updateCarousel()
+        await this.fetchExchangeRate()
+        this.setExchangeAmountCurrency()
+        this.calculateExchangeToAccountAmount()
+    }
+
+    reactToUserExchangeRateInput(exchange_rate: number | null) {
+        this.exchange_rate = exchange_rate
+        this.exchange_effective_date = null
+        this.calculateExchangeToAccountAmount()
+    }
+
+    reactToUserExchangeAmountInput(exchange_amount: number | null) {
+        this.exchange_from_amount = exchange_amount
+        this.calculateExchangeToAccountAmount()
+    }
+
+    private changeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
         switch(account) {
             case "from":
                 if (direction === 'left') {
@@ -70,18 +93,16 @@ export class TransferFundsPage implements OnInit {
                 }
                 break
         }
-        this.updateCarousel()
-        this.fetchExchangeRate()
-    }
-
-    reactToUserExchangeRateInput(exchange_rate: number | null) {
-        this.exchange_rate = exchange_rate
-        this.exchange_effective_date = null
     }
 
     private async fetchExchangeRate() {
         this.exchange_rate = await this.APP.CURRENCY.getExchangeRate(this.all_accounts[this.from_active_account_index].account.currency, this.all_accounts[this.to_active_account_index].account.currency)
         this.exchange_effective_date = (await this.APP.CURRENCY.getExchangeRateEffectiveDate(this.all_accounts[this.from_active_account_index].account.currency, this.all_accounts[this.to_active_account_index].account.currency)).toLocaleDateString().slice(0, 10)
+    }
+
+    private setExchangeAmountCurrency() {
+        this.exchange_from_currency = this.all_accounts[this.from_active_account_index].account.currency
+        this.exchange_to_currency = this.all_accounts[this.to_active_account_index].account.currency
     }
 
     private updateCarousel() {
@@ -93,6 +114,12 @@ export class TransferFundsPage implements OnInit {
         
         this.to_block_sides.left = this.toAccountActiveIndexIsFirst() || !this.toAccountActiveIndexHaveSpaceOnLeft()
         this.to_block_sides.right = this.toAccountActiveIndexIsLast() || !this.toAccountActiveIndexHaveSpaceOnRight()
+    }
+
+    private calculateExchangeToAccountAmount() {
+        if (this.exchange_from_amount && this.exchange_rate) {
+            this.exchange_to_amount = this.exchange_from_amount * this.exchange_rate
+        }
     }
 
     private readRouteData(): Promise<void> {
