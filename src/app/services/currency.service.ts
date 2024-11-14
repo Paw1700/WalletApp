@@ -16,7 +16,22 @@ export class CURRENCY_SERVICE {
                 const from_currency_rate = from_currency !== undefined ? from_currency.rate : 1
                 const to_currency = await this.STORAGE.getCurrencyData(to) 
                 let to_currency_rate = to_currency !== undefined ? to_currency.rate : 1
-                resolve(from_currency_rate / to_currency_rate)
+                resolve(Number((from_currency_rate / to_currency_rate).toFixed(4)))
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
+
+    getExchangeRateEffectiveDate(from: Currency, to: Currency): Promise<Date> {
+        return new Promise(async (resolve, reject) => {
+            try {
+                await this.updateCurrency()
+                const from_currency = await this.STORAGE.getCurrencyData(from)
+                const from_currency_rate = from_currency !== undefined ? from_currency.effective_date : new Date()
+                const to_currency = await this.STORAGE.getCurrencyData(to) 
+                let to_currency_rate = to_currency !== undefined ? to_currency.effective_date : new Date()
+                resolve(new Date(Math.max(from_currency_rate.getTime(), to_currency_rate.getTime())))
             } catch (err) {
                 reject(err)
             }

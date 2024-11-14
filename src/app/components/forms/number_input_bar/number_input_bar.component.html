@@ -8,14 +8,19 @@
             }
         </p>
         @if (!component_open && inputed_number) {
-            <p [@badge] class="NUMBER_BAGDE">{{ inputed_number | number_separator }} {{ suffix }}</p>
+            <p [@badge] class="NUMBER_BAGDE">
+                @if (show_value_as_money) { {{ inputed_number | number_separator }} } @else { {{ inputed_number }} } {{ suffix }}
+            </p>
         }
     </div>
     @if (component_open) {
         <div [@input_bar] class="INPUT_BAR">
             <div class="INPUT_BOX" [class.WITH_SUFFIX]="suffix">
                 <input [class.FOCUSED]="input_is_in_focus" type="number" (blur)="inputIsInFocus(false)" (focus)="inputIsInFocus(true)" (input)="setValue($event)"/>
-                <p [class.SHOW]="!input_is_in_focus" [class.FOCUSED]="inputed_number !== 0 && inputed_number !== null">{{ inputed_number | number_separator }}</p>
+                <p [class.SHOW]="!input_is_in_focus" [class.FOCUSED]="inputed_number !== 0 && inputed_number !== null">
+                    @if (show_value_as_money){ {{ inputed_number | number_separator }} }
+                    @else { {{inputed_number}} }
+                </p>
             </div>
             @if (suffix) {
                 <p class="CURRENCY">{{ suffix }}</p>

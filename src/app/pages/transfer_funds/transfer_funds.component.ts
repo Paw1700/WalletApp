@@ -5,7 +5,6 @@ import { AccountBarComponent } from "../../components/single_components/account_
 import { APP_SERVICE } from "../../app.service";
 import { ActivatedRoute } from "@angular/router";
 import { TransferFundsPageResolvedData, TransferFundsPageUserAccounts } from "./transfer_funds.resolver";
-import { removeElementFromArray } from "../../util/utils";
 
 @Component({
     selector: 'transfer_funds_page',
@@ -39,6 +38,10 @@ export class TransferFundsPage implements OnInit {
         right: false
     }
 
+    exchange_rate: number | null = null
+    exchange_amount: number | null = null
+    exchange_effective_date: string | null = null
+
     async ngOnInit(): Promise<void> {
         await this.readRouteData()
         this.setListIndicator()
@@ -68,8 +71,18 @@ export class TransferFundsPage implements OnInit {
                 break
         }
         this.updateCarousel()
+        this.fetchExchangeRate()
     }
 
+    reactToUserExchangeRateInput(exchange_rate: number | null) {
+        this.exchange_rate = exchange_rate
+        this.exchange_effective_date = null
+    }
+
+    private async fetchExchangeRate() {
+        this.exchange_rate = await this.APP.CURRENCY.getExchangeRate(this.all_accounts[this.from_active_account_index].account.currency, this.all_accounts[this.to_active_account_index].account.currency)
+        this.exchange_effective_date = (await this.APP.CURRENCY.getExchangeRateEffectiveDate(this.all_accounts[this.from_active_account_index].account.currency, this.all_accounts[this.to_active_account_index].account.currency)).toLocaleDateString().slice(0, 10)
+    }
 
     private updateCarousel() {
         this.from_carousel_x_offset = 100 * this.from_active_account_index

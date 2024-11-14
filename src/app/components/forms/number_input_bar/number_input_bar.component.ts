@@ -54,6 +54,7 @@ export class NumberInput extends OpenAbleComponentInterface implements OnChanges
     @Input({ required: true }) title: string = ''
     @Input() suffix: string | null = null
     @Input() show_minus = true
+    @Input() show_value_as_money = false
     @Input() pre_inputed_value = 0
     @Output() inputed_value = new EventEmitter<number | null>()
 
