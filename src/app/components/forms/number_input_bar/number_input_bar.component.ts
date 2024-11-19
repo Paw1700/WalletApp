@@ -62,12 +62,10 @@ export class NumberInput extends OpenAbleComponentInterface implements OnChanges
     input_is_in_focus: boolean = false
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (this.pre_inputed_value !== 0) {
-            if (this.show_minus) {
-                this.inputed_number = this.pre_inputed_value
-            } else {
-                this.inputed_number = Math.abs(this.pre_inputed_value)
-            }
+        if (this.show_minus) {
+            this.inputed_number = this.pre_inputed_value
+        } else {
+            this.inputed_number = Math.abs(this.pre_inputed_value)
         }
     }
 

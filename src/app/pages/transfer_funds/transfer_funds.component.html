@@ -2,7 +2,7 @@
     <div class="ACCOUNT_CAROUSEL">
         <div [style.right.vw]="from_carousel_x_offset" class="CAROUSEL">
             @for (account of all_accounts; track account.account.id) {
-                <account-bar [bar_type]="'FUNDS_ONLY'" [account]="account.account" [account_funds_data]="account.funds_data" [account_funds_diff]="exchange_from_amount ? exchange_from_amount : 0" />
+                <account-bar [bar_type]="'FUNDS_ONLY'" [account]="account.account" [account_funds_data]="account.funds_data" [account_funds_diff]="exchange_from_amount ? -exchange_from_amount : 0" />
             }
         </div>
     </div>
@@ -23,8 +23,8 @@
             }
         </div>
     }
-    <number_input (inputed_value)="reactToUserExchangeAmountInput($event)" [block_openess_state_change]="true" [component_open]="true" [title]="exchange_from_currency !==  exchange_to_currency ? 'Kwota z konta' : 'Kwota'" [suffix]="exchange_from_currency" [show_value_as_money]="true" [pre_inputed_value]="exchange_from_amount ? exchange_from_amount : 0" />
+    <number_input (inputed_value)="reactToUserExchangeFromAmountInput($event)" [block_openess_state_change]="true" [component_open]="true" [title]="exchange_from_currency !==  exchange_to_currency ? 'Kwota z konta' : 'Kwota'" [suffix]="exchange_from_currency" [show_value_as_money]="true" [pre_inputed_value]="exchange_from_amount ? exchange_from_amount : 0" />
     @if (exchange_from_currency !== exchange_to_currency) {
-        <number_input [block_openess_state_change]="true" [component_open]="true" [title]="'Kwota na konto'" [suffix]="exchange_to_currency" [show_value_as_money]="true" [pre_inputed_value]="exchange_to_amount ? exchange_to_amount : 0" />
+        <number_input (inputed_value)="reactToUserExchangeToAmountInput($event)" [block_openess_state_change]="true" [component_open]="true" [title]="'Kwota na konto'" [suffix]="exchange_to_currency" [show_value_as_money]="true" [pre_inputed_value]="exchange_to_amount ? exchange_to_amount : 0" />
     }
 </div>

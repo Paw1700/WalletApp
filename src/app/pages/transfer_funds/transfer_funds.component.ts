@@ -39,7 +39,7 @@ export class TransferFundsPage implements OnInit {
         right: false
     }
 
-    exchange_rate: number | null = null
+    exchange_rate: number = 1
     exchange_from_amount: number | null = null
     exchange_to_amount: number | null = null
     exchange_effective_date: string | null = null
@@ -54,20 +54,26 @@ export class TransferFundsPage implements OnInit {
     async reactToUserChangeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
         this.changeAccount(account, direction)
         this.updateCarousel()
+        this.resetAmountValues()
         await this.fetchExchangeRate()
         this.setExchangeAmountCurrency()
         this.calculateExchangeToAccountAmount()
     }
 
     reactToUserExchangeRateInput(exchange_rate: number | null) {
-        this.exchange_rate = exchange_rate
+        this.exchange_rate = exchange_rate ? exchange_rate : 1
         this.exchange_effective_date = null
         this.calculateExchangeToAccountAmount()
     }
 
-    reactToUserExchangeAmountInput(exchange_amount: number | null) {
+    reactToUserExchangeFromAmountInput(exchange_amount: number | null) {
         this.exchange_from_amount = exchange_amount
-        this.calculateExchangeToAccountAmount()
+        this.calculateExchangeToAccountAmount('from')
+    }
+
+    reactToUserExchangeToAmountInput(exchange_amount: number | null) {
+        this.exchange_to_amount = exchange_amount
+        this.calculateExchangeToAccountAmount('to')
     }
 
     private changeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
@@ -116,10 +122,20 @@ export class TransferFundsPage implements OnInit {
         this.to_block_sides.right = this.toAccountActiveIndexIsLast() || !this.toAccountActiveIndexHaveSpaceOnRight()
     }
 
-    private calculateExchangeToAccountAmount() {
-        if (this.exchange_from_amount && this.exchange_rate) {
+    private calculateExchangeToAccountAmount(type?: 'from' | 'to') {
+        if (this.exchange_from_amount && this.exchange_rate && type === 'from') {
             this.exchange_to_amount = this.exchange_from_amount * this.exchange_rate
+        } else if (this.exchange_to_amount && this.exchange_rate && type === 'to') {
+            this.exchange_from_amount = this.exchange_to_amount / this.exchange_rate
+        } else if (this.exchange_from_amount == null || this.exchange_to_amount == null) {
+            this.exchange_from_amount = null
+            this.exchange_to_amount = null
         }
+    }
+
+    private resetAmountValues() {
+        this.exchange_from_amount = null
+        this.exchange_to_amount = null
     }
 
     private readRouteData(): Promise<void> {
