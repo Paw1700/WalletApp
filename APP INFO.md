@@ -2,7 +2,6 @@
 - [ ] Others Button Dont work in choosing receivers
     - [ ] Change Resolver to create receiver from name if dont have id
 - [ ] Transfer Page 
-    - [ ] To Account Block Input Possibility
     - [ ] In front setting from account 
 
 # IN PROGRESS
@@ -13,10 +12,10 @@
     - [x] Chech if diffrent currency than PLN is recognized
     - [x] Add Currency Services 
     - [x] Add Other Currency to sum of avaible funds
-    - [ ] Add Tarnsfering Funds Between Accounts (need to create new model for exchange transactions)
+    - [x] Add Tarnsfering Funds Between Accounts (need to create new model for exchange transactions)
         - [x] Create Exchange Funds Page
             - [x] Create component for accounts carousel changing buttons
-        - [ ] Create Excahnge Funds Page Logic
+        - [x] Create Excahnge Funds Page Logic
 
 # NEXT TO DO
 - [ ] Deleting Accounts

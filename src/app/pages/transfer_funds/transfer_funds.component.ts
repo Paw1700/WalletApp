@@ -5,7 +5,9 @@ import { AccountBarComponent } from "../../components/single_components/account_
 import { APP_SERVICE } from "../../app.service";
 import { ActivatedRoute } from "@angular/router";
 import { TransferFundsPageResolvedData, TransferFundsPageUserAccounts } from "./transfer_funds.resolver";
-import { Currency } from "../../models";
+import { Currency, FundsTransaction } from "../../models";
+import { NgUnsubscriber } from "../../util/ngUnsubscriber";
+import { takeUntil } from "rxjs";
 
 @Component({
     selector: 'transfer_funds_page',
@@ -18,7 +20,7 @@ import { Currency } from "../../models";
     templateUrl: './transfer_funds.component.html',
     styleUrl: './transfer_funds.component.scss'
 })
-export class TransferFundsPage implements OnInit {
+export class TransferFundsPage extends NgUnsubscriber implements OnInit {
     private readonly APP = inject(APP_SERVICE)
     private readonly ROUTE = inject(ActivatedRoute)
 
@@ -31,7 +33,7 @@ export class TransferFundsPage implements OnInit {
         left: false,
         right: false
     }
-    
+
     to_active_account_index = 1
     to_carousel_x_offset = 100
     to_block_sides = {
@@ -49,6 +51,11 @@ export class TransferFundsPage implements OnInit {
     async ngOnInit(): Promise<void> {
         await this.readRouteData()
         this.setListIndicator()
+        this.reactToLeftNavButtonClicked()
+        this.reactToRightNavButtonClicked()
+        this.updateCarousel()
+        await this.fetchExchangeRate()
+        this.setExchangeAmountCurrency()
     }
 
     async reactToUserChangeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
@@ -76,26 +83,94 @@ export class TransferFundsPage implements OnInit {
         this.calculateExchangeToAccountAmount('to')
     }
 
+    private reactToRightNavButtonClicked() {
+        this.APP.STATE.nav_bar_right_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            this.saveFundsTransaction().then(() => {
+                this.APP.navigate('home')
+            })
+        })
+    }
+
+    private reactToLeftNavButtonClicked() {
+        this.APP.STATE.nav_bar_left_button_clicked$.pipe(takeUntil(this.ngUnsubscriber$)).subscribe(() => {
+            if (this.APP.STATE.last_app_location$.value !== null) {
+                this.APP.navigate(this.APP.STATE.last_app_location$.value)
+                this.APP.STATE.last_app_location$.next(null)
+            } else {
+                this.APP.navigate('home')
+            }
+        })
+    }
+
+    private saveFundsTransaction() {
+        return new Promise<void>(async resolve => {
+            try {
+                if (!this.exchange_rate) {
+                    throw new Error('APP-DATA-FUNDS_TRANSACTION-SAVE-EXCHANGE_RATE')
+                }
+                if (!this.exchange_from_amount || !this.exchange_to_amount) {
+                    throw new Error('APP-DATA-TRANSACTION-SAVE-AMOUNT')
+                }
+                const funds_transaction: FundsTransaction = {
+                    id: '',
+                    date: new Date(),
+                    user_account_id: {
+                        from: this.all_accounts[this.from_active_account_index].account.id,
+                        to: this.all_accounts[this.to_active_account_index].account.id
+                    },
+                    exchange_rate_from_to: this.exchange_rate,
+                    amount_from_to: this.exchange_from_amount,
+                }
+                await this.APP.TRANSACTION.saveFundsTransaction(funds_transaction)
+                await this.APP.USER_ACCOUNT.changeAvaibleAmount(this.all_accounts[this.from_active_account_index].user_account_id, -this.exchange_from_amount)
+                await this.APP.USER_ACCOUNT.changeAvaibleAmount(this.all_accounts[this.to_active_account_index].user_account_id, this.exchange_to_amount)
+                resolve()
+            } catch (err) {
+                this.APP.STATE.errorHappend(err as Error)
+            }
+        })
+    }
+
     private changeAccount(account: 'from' | 'to', direction: 'left' | 'right') {
-        switch(account) {
+        switch (account) {
             case "from":
-                if (direction === 'left') {
-                    this.from_active_account_index -= this.from_active_account_index - 1 === this.to_active_account_index ? 
-                        (this.from_active_account_index - 2 < 0 ? 0 : 2) : (this.from_active_account_index - 1 < 0 ? 0 : 1)
-                } else {
-                    this.from_active_account_index += 
-                        this.from_active_account_index + 1 === this.to_active_account_index ? 
-                        (this.from_active_account_index + 2 > this.all_accounts.length - 1 ? 0 : 2) : (this.from_active_account_index + 1 > this.all_accounts.length - 1 ? 0 : 1)
+                switch (direction) {
+                    case "left":
+                        if (this.from_active_account_index - 1 === this.to_active_account_index) {
+                            this.from_active_account_index -= 1
+                            this.to_active_account_index += 1
+                        } else if (this.from_active_account_index - 1 >= 0) {
+                            this.from_active_account_index -= 1
+                        }
+                        break
+                    case "right":
+                        if (this.from_active_account_index + 1 === this.to_active_account_index) {
+                            this.from_active_account_index += 1
+                            this.to_active_account_index -= 1
+                        } else if (this.to_active_account_index + 1 <= this.all_accounts.length - 1) {
+                            this.from_active_account_index += 1
+                        }
+                        break
                 }
                 break
             case "to":
-                if (direction === 'left') {
-                    this.to_active_account_index -= this.to_active_account_index - 1 === this.from_active_account_index ? 
-                        (this.to_active_account_index - 2 < 0 ? 0 : 2) : (this.to_active_account_index - 1 < 0 ? 0 : 1)
-                } else {
-                    this.to_active_account_index += 
-                        this.to_active_account_index + 1 === this.from_active_account_index ? 
-                        (this.to_active_account_index + 2 > this.all_accounts.length - 1 ? 0 : 2) : (this.to_active_account_index + 1 > this.all_accounts.length - 1 ? 0 : 1)
+                switch (direction) {
+                    case "left":
+                        if (this.to_active_account_index - 1 === this.from_active_account_index) {
+                            this.to_active_account_index -= 1
+                            this.from_active_account_index += 1
+                        } else if (this.to_active_account_index - 1 >= 0) {
+                            this.to_active_account_index -= 1
+                        }
+                        break
+                    case "right":
+                        if (this.to_active_account_index + 1 === this.from_active_account_index) {
+                            this.to_active_account_index += 1
+                            this.from_active_account_index -= 1
+                        } else if (this.to_active_account_index + 1 <= this.all_accounts.length - 1) {
+                            this.to_active_account_index += 1
+                        }
+                        break
                 }
                 break
         }
@@ -115,18 +190,18 @@ export class TransferFundsPage implements OnInit {
         this.from_carousel_x_offset = 100 * this.from_active_account_index
         this.to_carousel_x_offset = 100 * this.to_active_account_index
 
-        this.from_block_sides.left = this.fromAccoutActiveIndexIsFirst() ||  !this.fromAccountActiveIndexHaveSpaceOnLeft()
-        this.from_block_sides.right = this.fromAccountActiveIndexIsLast() || !this.fromAccountActiveIndexHaveSpaceOnRight()
-        
-        this.to_block_sides.left = this.toAccountActiveIndexIsFirst() || !this.toAccountActiveIndexHaveSpaceOnLeft()
-        this.to_block_sides.right = this.toAccountActiveIndexIsLast() || !this.toAccountActiveIndexHaveSpaceOnRight()
+        this.from_block_sides.left = this.fromAccoutActiveIndexIsFirst()
+        this.from_block_sides.right = this.fromAccountActiveIndexIsLast()
+
+        this.to_block_sides.left = this.toAccountActiveIndexIsFirst()
+        this.to_block_sides.right = this.toAccountActiveIndexIsLast()
     }
 
     private calculateExchangeToAccountAmount(type?: 'from' | 'to') {
         if (this.exchange_from_amount && this.exchange_rate && type === 'from') {
-            this.exchange_to_amount = this.exchange_from_amount * this.exchange_rate
+            this.exchange_to_amount = Number((this.exchange_from_amount * this.exchange_rate).toFixed(2))
         } else if (this.exchange_to_amount && this.exchange_rate && type === 'to') {
-            this.exchange_from_amount = this.exchange_to_amount / this.exchange_rate
+            this.exchange_from_amount = Number((this.exchange_to_amount / this.exchange_rate).toFixed(2))
         } else if (this.exchange_from_amount == null || this.exchange_to_amount == null) {
             this.exchange_from_amount = null
             this.exchange_to_amount = null

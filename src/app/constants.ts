@@ -12,6 +12,6 @@ export const SORTING_TRANSACTIONS_BY_DATE = ((a: Transaction, b: Transaction) =>
     }
 })
 
-export const SLIDE_TO_LEFT_ANIMATION_PAGES = 'accounts_list => add_account, home => add_transaction, transactions_list => add_transaction, home => account, transactions_list => account, accounts_list => account'
+export const SLIDE_TO_LEFT_ANIMATION_PAGES = 'accounts_list => add_account, home => add_transaction, transactions_list => add_transaction, home => account, transactions_list => account, accounts_list => account, * => transfer_funds'
 
-export const SLIDE_TO_RIGHT_ANIMATION_PAGES = 'add_account => accounts_list, add_transaction => home, add_transaction => transactions_list, account => home, account => transactions_list, account => accounts_list'
+export const SLIDE_TO_RIGHT_ANIMATION_PAGES = 'add_account => accounts_list, add_transaction => home, add_transaction => transactions_list, account => home, account => transactions_list, account => accounts_list, transfer_funds => *'

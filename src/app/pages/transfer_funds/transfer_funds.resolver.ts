@@ -24,6 +24,7 @@ export class TRANSFER_FUNDS_PAGE_RESOLVER implements Resolve<TransferFundsPageRe
                     return
                 }
                 return_data.user_accounts.push({
+                    user_account_id: us_acc.id,
                     account: acc,
                     funds_data: {
                         avaible_funds: us_acc.avaible_funds,
@@ -41,6 +42,7 @@ export interface TransferFundsPageResolvedData {
 }
 
 export interface TransferFundsPageUserAccounts {
+    user_account_id: string,
     account: Account,
     funds_data: AccountBarFundsData
 }
