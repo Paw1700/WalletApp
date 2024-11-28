@@ -7,7 +7,7 @@
 # IN PROGRESS
 - [ ] Complete Categories List
 - [ ] Complete Companies List
-- [ ] Add Other Currencies
+- [x] Add Other Currencies
     - [x] Add Accounts Data Of Foreign Currency
     - [x] Chech if diffrent currency than PLN is recognized
     - [x] Add Currency Services 

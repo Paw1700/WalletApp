@@ -127,6 +127,11 @@ export class APP_SERVICE {
                 this.APPERANCE.nav_bar_right_button_option$.next(null)
                 break
             case 'transfer_funds':
+                const user_accounts_length = (await this.USER_ACCOUNT.getAll()).length
+                if (user_accounts_length < 2) {
+                    this.STATE.errorHappend(new Error("APP-FUNDS_TRANSACTION-NOT_ENOUGH_ACCOUNTS"))
+                    return
+                }
                 await this.ROUTER.navigateByUrl(`transfer_funds`) 
                 this.APPERANCE.setAppAccentColor(null)
                 this.APPERANCE.nav_bar_left_button_option$.next('arrow_left')
